@@ -5,10 +5,10 @@ latest_version_str = str(latest_version_cmd)
 latest_version_str_x = latest_version_str.split(':-') 
 latest_version = latest_version_str_x[1]
 print(latest_version)
-print(latest_version_str_x)
-print(latest_version_str)
 print(latest_version_cmd)
+print(latest_version_str)
 print(install_version)
+print(latest_version_str_x)
 if install_version == latest_version:
 	print ("Docker is up to date")
 else:
