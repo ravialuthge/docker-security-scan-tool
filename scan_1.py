@@ -7,8 +7,7 @@ root_dir_x = root_dir_output.decode("utf-8")
 root_dir = root_dir_x.replace("'",'')
 root_dir_ch_output = os.popen(root_dir_ch_cmd).read()
 root_dir_ch = root_dir_ch_output.rstrip()
-print(root_dir)
-print(root_dir_ch)
+
 if root_dir == root_dir_ch:
 	print ("crated separate partition for docker root directory")
 else:
