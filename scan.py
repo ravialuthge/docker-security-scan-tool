@@ -8,3 +8,4 @@ if install_version == latest_version:
 	print ("Docker is up to date")
 else:
 	print ("Docker not update")
+print(latest_version)
