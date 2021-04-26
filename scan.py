@@ -9,3 +9,5 @@ if install_version == latest_version:
 else:
 	print ("Docker not update")
 print(latest_version)
+print(latest_version_str_x)
+print(latest_version_str)
