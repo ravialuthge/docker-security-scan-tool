@@ -1,16 +1,19 @@
 import os
-install_version = os.system('docker version --format "{{.Server.Version}}"')
-print("a:" , install_version)
-latest_version_cmd = os.system('yum list docker-ce --showduplicates | sort -r | awk "{print $2}" | sed -n 6p')
-latest_version_str = str(latest_version_cmd)
-latest_version_str_x = latest_version_str.split(':-') 
+import subprocess
+import re
+
+latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
+install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
+install_version_x = install_version_output.decode("utf-8")
+install_version = install_version_x.replace("'",'')
+latest_version_output = os.popen(latest_version_cmd).read()
+latest_version_str = latest_version_output.rstrip()
+latest_version_str_x = re.split(':|-',latest_version_str)
 latest_version = latest_version_str_x[1]
-#print(latest_version)
-#print(latest_version_cmd)
-#print(latest_version_str)
-#print(install_version)
-#print(latest_version_str_x)
+
 if install_version == latest_version:
 	print ("Docker is up to date")
-else:
+elif install_version != latest_version:
 	print ("Docker not update")
+else:
+    print ("Docker not install")
