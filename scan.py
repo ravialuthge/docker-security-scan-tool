@@ -1,6 +1,6 @@
 import os
 install_version = os.system('docker version --format "{{.Server.Version}}"')
-print(install_version)
+print("a" install_version)
 latest_version_cmd = os.system('yum list docker-ce --showduplicates | sort -r | awk "{print $2}" | sed -n 6p')
 latest_version_str = str(latest_version_cmd)
 latest_version_str_x = latest_version_str.split(':-') 
