@@ -4,12 +4,12 @@ latest_version_cmd = os.system('yum list docker-ce --showduplicates | sort -r | 
 latest_version_str = str(latest_version_cmd)
 latest_version_str_x = latest_version_str.split() 
 latest_version = latest_version_str_x[1]
-if install_version == latest_version:
-	print ("Docker is up to date")
-else:
-	print ("Docker not update")
 print(latest_version)
 print(latest_version_str_x)
 print(latest_version_str)
 print(latest_version_cmd)
 print(install_version)
+if install_version == latest_version:
+	print ("Docker is up to date")
+else:
+	print ("Docker not update")
