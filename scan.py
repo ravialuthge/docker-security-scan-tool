@@ -11,3 +11,4 @@ else:
 print(latest_version)
 print(latest_version_str_x)
 print(latest_version_str)
+print(latest_version_cmd)
