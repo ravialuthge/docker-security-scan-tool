@@ -33,4 +33,3 @@ def docker_root():
 		print ("not crated separate partition for docker root directory")
 
 docker_version()
-docker_root()
