@@ -18,6 +18,7 @@ def docker_version():
 		print ("Docker not update")
 	else:
 		print ("Docker not install")
+	return docker_root()
 
 def docker_root():
 	root_dir_ch_cmd = "df -h | grep $(docker info -f '{{ .DockerRootDir }}') | awk '{print $6}'"
