@@ -55,8 +55,7 @@ def container_user():
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_re_a = container_user()
-	container_user_re_b = container_user()
+	container_user_re_a,container_user_re_b = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
