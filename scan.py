@@ -32,13 +32,13 @@ def docker_root():
 		docker_root_re = "crated separate partition for docker root directory"
 	else:
 		docker_root_re = "not crated separate partition for docker root directory"
-	return output()
+	return output(docker_root_re)
 
 def output():
 	print ('# --------------------------------------------------------------------------------------------\n\
-	# CIS Docker $version Benchmark\n\
-	# # v1.0.0 - 04-22-2015\n\
-	# # ---------------------------------------------------------------------------------------------\n\
+# CIS Docker $version Benchmark\n\
+# # v1.0.0 - 04-22-2015\n\
+# # ---------------------------------------------------------------------------------------------\n\
 	')
 	print ('INFO   ', docker_version_re)
 	print ('WARN   ', docker_root_re)
