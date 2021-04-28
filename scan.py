@@ -35,6 +35,8 @@ def docker_root():
 	return docker_root_re
 
 def output():
+	docker_version_re = docker_version()
+	docker_root_re = docker_root()
 	print ('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker $version Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
