@@ -1,6 +1,7 @@
 import os
 import subprocess
 import re
+from termcolor import colored
 
 def docker_version():
 	latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
@@ -42,8 +43,8 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # # ---------------------------------------------------------------------------------------------\n\
 	')
-	print ('INFO   ', docker_version_re)
-	print ('WARN   ', docker_root_re)
+	print (colored('INFO   ', 'blue'), docker_version_re)
+	print (colored('WARN   ', 'red'), docker_root_re)
 
 if __name__ == "__main__":     
 	output()
