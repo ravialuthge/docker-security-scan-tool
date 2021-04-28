@@ -18,7 +18,7 @@ def docker_version():
 		docker_version_re = "Docker not update"
 	else:
 		docker_version_re = "Docker not install"
-	return docker_root()
+	return output(docker_version_re)
 
 def docker_root():
 	root_dir_ch_cmd = "df -h | grep $(docker info -f '{{ .DockerRootDir }}') | awk '{print $6}'"
@@ -34,7 +34,7 @@ def docker_root():
 		docker_root_re = "not crated separate partition for docker root directory"
 	return output(docker_root_re)
 
-def output(docker_root_re):
+def output(docker_version_re,docker_root_re):
 	print ('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker $version Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
