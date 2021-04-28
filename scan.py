@@ -58,7 +58,7 @@ def container_user_b():
 				container_user_re_b = "not user for the container has been created"
 		else:
 				container_user_re_b = "user for the container has been created"
-		container_user_re_b = container_user_re_bc		
+		container_user_re_bc = container_user_re_b		
     return container_user_re_bc
 
 def output():
