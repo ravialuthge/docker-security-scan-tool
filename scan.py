@@ -47,11 +47,11 @@ def container_user():
 	return container_user_re_a
 
 	for i in (container_users):
-	if i == 'User=' or i == 'User=root':
-			container_user_re_b = "not user for the container has been created:"
-	else:
-			container_user_re_b = "user for the container has been created:"
-	return container_user_re_b
+		if i == 'User=' or i == 'User=root':
+				container_user_re_b = "not user for the container has been created:"
+		else:
+				container_user_re_b = "user for the container has been created:"
+		return container_user_re_b
 
 def output():
 	docker_version_re = docker_version()
