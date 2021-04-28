@@ -13,11 +13,11 @@ def docker_version():
 	latest_version = latest_version_str_x[1]
 
 	if install_version == latest_version:
-		print ("Docker is up to date")
+		docker_version_re = "Docker is up to date"
 	elif install_version != latest_version:
-		print ("Docker not update")
+		docker_version_re = "Docker not update"
 	else:
-		print ("Docker not install")
+		docker_version_re = "Docker not install"
 	return docker_root()
 
 def docker_root():
@@ -29,8 +29,18 @@ def docker_root():
 	root_dir_ch = root_dir_ch_output.rstrip()
 
 	if root_dir == root_dir_ch:
-		print ("crated separate partition for docker root directory")
+		docker_root_re = "crated separate partition for docker root directory"
 	else:
-		print ("not crated separate partition for docker root directory")
+		docker_root_re = "not crated separate partition for docker root directory"
+	return output()
 
+def output():
+	print ('# --------------------------------------------------------------------------------------------\n\
+	# CIS Docker $version Benchmark\n\
+	# # v1.0.0 - 04-22-2015\n\
+	# # ---------------------------------------------------------------------------------------------\n\
+	')
+	print ('INFO   ', docker_version_re)
+	print ('WARN   ', docker_root_re)
+     
 docker_version()
