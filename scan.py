@@ -42,7 +42,6 @@ def container_user():
 	images_output = os.popen(images_cmd).read()
 	images = images_output.split()
 	container_users = container_user_output.split()
-	if 
 	for c in range(len(images)):
 		container_user_re = images[c] + " " + container_users[c]
 	return container_user_re_a
