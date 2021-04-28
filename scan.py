@@ -35,9 +35,21 @@ def docker_root():
 		docker_root_re = "not crated separate partition for docker root directory"
 	return docker_root_re
 
+def container_user():
+	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
+	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
+	container_user_output = os.popen(container_user_cmd).read()
+	images_output = os.popen(images_cmd).read()
+	images = images_output.split()
+	container_users = container_user_output.split()
+	for c in range(len(images)):
+		container_user_re = images[c] + " " + container_users[c]
+		return container_user_re
+
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
+	container_user_re = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
@@ -46,6 +58,8 @@ def output():
 	print (colored('Docker Host',attrs=['bold']))
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
+	print (colored('Docker Images',attrs=['bold']))
+	print (colored('WARN   ', 'red'), container_user_re)
 
 if __name__ == "__main__":     
 	output()
