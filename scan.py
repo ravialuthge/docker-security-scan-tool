@@ -1,7 +1,7 @@
 import os
 import subprocess
 import re
-import colored
+from termcolor import colored
 
 def docker_version():
 	latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
