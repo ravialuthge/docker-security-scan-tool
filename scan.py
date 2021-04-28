@@ -34,7 +34,7 @@ def docker_root():
 		docker_root_re = "not crated separate partition for docker root directory"
 	return output(docker_root_re)
 
-def output():
+def output(docker_root_re):
 	print ('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker $version Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
