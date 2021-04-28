@@ -67,7 +67,8 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (colored('WARN   ', 'red'), container_user_re_a , container_user_re_b)
-
+	print (colored('WARN   ', 'red'), container_user_re_a)
+    print (colored('WARN   ', 'red'), container_user_re_b)
+	
 if __name__ == "__main__":     
 	output()
