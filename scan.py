@@ -42,30 +42,21 @@ def container_user():
 	images_output = os.popen(images_cmd).read()
 	images = images_output.split()
 	container_users = container_user_output.split()
-	for c in range(len(images)):
-		container_user_re_a = images[c] + " " + container_users[c]
-	return container_user_re_a
-
-def container_user_b():
-	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
-	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
-	container_user_output = os.popen(container_user_cmd).read()
-	images_output = os.popen(images_cmd).read()
-	images = images_output.split()
-	container_users = container_user_output.split()
 	for i in (container_users):
 		if i == 'User=' or i == 'User=root':
-				container_user_re_b = "not user for the container has been created"
+				container_user_re = "not user for the container has been created"
 		else:
-				container_user_re_b = "user for the container has been created"
-		container_user_re_bc = container_user_re_b		
-        return container_user_re_bc
+				container_user_re = "user for the container has been created"
+#	for c in range(len(images)):
+#		container_user_re_a = images[c] + " " + container_users[c]
+	return container_user_re
+
 
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_re_a = container_user()
-	container_user_re_b = container_user_b()
+	container_user_re = container_user()
+	
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
@@ -75,8 +66,7 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (colored('WARN   ', 'red'), container_user_re_a)
-    print (colored('WARN   ', 'red'), container_user_re_b)
+	print (colored('WARN   ', 'red'), container_user_re)
 
 if __name__ == "__main__":     
 	output()
