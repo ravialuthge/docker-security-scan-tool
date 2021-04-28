@@ -59,7 +59,7 @@ def container_user_b():
 		else:
 				container_user_re_b = "user for the container has been created"
 		container_user_re_b = container_user_re_bc		
-        return container_user_re_bc
+    return container_user_re_bc
 
 def output():
 	docker_version_re = docker_version()
