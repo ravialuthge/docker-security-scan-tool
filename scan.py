@@ -44,7 +44,7 @@ def container_user():
 	container_users = container_user_output.split()
 	for c in range(len(images)):
 		container_user_re = images[c] + " " + container_users[c]
-	    return container_user_re
+	return container_user_re
 
 def output():
 	docker_version_re = docker_version()
