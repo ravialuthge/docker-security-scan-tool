@@ -42,15 +42,23 @@ def container_user():
 	images_output = os.popen(images_cmd).read()
 	images = images_output.split()
 	container_users = container_user_output.split()
+	if 
 	for c in range(len(images)):
-		container_user_re_output = images[c] + " " + container_users[c]
-		container_user_re = str(container_user_re_output)
-	return container_user_re
+		container_user_re = images[c] + " " + container_users[c]
+	return container_user_re_a
+
+	for i in (container_users):
+	if i == 'User=' or i == 'User=root':
+			container_user_re_b = "not user for the container has been created:"
+	else:
+			container_user_re_b = "user for the container has been created:"
+	return container_user_re_b
 
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_re = container_user()
+	container_user_re_a = container_user()
+	container_user_re_b = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
@@ -60,7 +68,7 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (colored('WARN   ', 'red'), container_user_re)
+	print (colored('WARN   ', 'red'), container_user_re_a , container_user_re_b)
 
 if __name__ == "__main__":     
 	output()
