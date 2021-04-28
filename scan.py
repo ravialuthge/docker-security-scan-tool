@@ -45,7 +45,14 @@ def container_user():
 	for c in range(len(images)):
 		container_user_re_a = images[c] + " " + container_users[c]
 	return container_user_re_a
+
 def container_user_b():
+	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
+	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
+	container_user_output = os.popen(container_user_cmd).read()
+	images_output = os.popen(images_cmd).read()
+	images = images_output.split()
+	container_users = container_user_output.split()
 	for i in (container_users):
 		if i == 'User=' or i == 'User=root':
 				container_user_re_b = "not user for the container has been created:"
