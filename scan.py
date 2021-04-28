@@ -44,18 +44,20 @@ def container_user():
 	container_users = container_user_output.split()
 	for c in range(len(images)):
 		container_user_re_a = images[c] + " " + container_users[c]
-
+	return container_user_re_a
+def container_user_b():
 	for i in (container_users):
 		if i == 'User=' or i == 'User=root':
 				container_user_re_b = "not user for the container has been created:"
 		else:
 				container_user_re_b = "user for the container has been created:"
-	return container_user_re_a,container_user_re_b
+	return container_user_re_b
 
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_re_a,container_user_re_b = container_user()
+	container_user_re_a = container_user()
+	container_user_re_b = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
