@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 
-def docker_version():
+def docker_version(docker_version_re):
 	latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
 	install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
 	install_version_x = install_version_output.decode("utf-8")
@@ -18,9 +18,8 @@ def docker_version():
 		docker_version_re = "Docker not update"
 	else:
 		docker_version_re = "Docker not install"
-	return output(docker_version_re)
 
-def docker_root():
+def docker_root(docker_root_re):
 	root_dir_ch_cmd = "df -h | grep $(docker info -f '{{ .DockerRootDir }}') | awk '{print $6}'"
 	root_dir_output = subprocess.check_output(["docker", "info" , "--format" , "'{{.DockerRootDir}}'"])
 	root_dir_x = root_dir_output.decode("utf-8")
@@ -32,9 +31,8 @@ def docker_root():
 		docker_root_re = "crated separate partition for docker root directory"
 	else:
 		docker_root_re = "not crated separate partition for docker root directory"
-	return output(docker_root_re)
 
-def output(docker_version_re,docker_root_re):
+def output():
 	print ('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker $version Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
