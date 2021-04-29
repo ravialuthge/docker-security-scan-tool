@@ -99,6 +99,6 @@ def output():
 
 
 if __name__ == "__main__":     
-	output(sys.argv[1:])
+	output()
 os.remove("re.txt")
 os.remove("re_st.txt")
