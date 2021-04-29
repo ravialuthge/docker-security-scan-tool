@@ -44,6 +44,7 @@ def container_user():
 	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
 		container_user_co_ch = 'images not found'
+		return container_user_co_ch
 	else:
 		container_user_output = os.popen(container_user_cmd).read()
 		images_output = os.popen(images_cmd).read()
@@ -66,7 +67,7 @@ def container_user():
 		container_user_co_f_st = f_st.read()
 		table = [[container_user_co_f_st , images_output , container_user_co_f]]
 		return table
-    return container_user_co_ch
+    
 
 def output():
 	docker_version_re = docker_version()
