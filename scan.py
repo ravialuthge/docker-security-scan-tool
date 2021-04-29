@@ -94,11 +94,11 @@ def output():
 			print (tabulate(table))
 		elif current_argument in ("-h", "--help"):
 			print ('help')
-		elif current_argument in ("-s", "--scan") and current_value= 'host':	
+		elif current_argument in ("-s", "--scan") and current_value = 'host':	
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
-		elif current_argument in ("-s", "--scan") and current_value= 'images':
+		elif current_argument in ("-s", "--scan") and current_value = 'images':
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 
