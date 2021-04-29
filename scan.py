@@ -86,7 +86,7 @@ def output(argv):
 		print ('test.py -i <inputfile> -o <outputfile>')
 		sys.exit(2)
 	for opt, arg in opts:
-		if opt == '-h':
+		if opt == '':
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 		elif opt in ("-i", "--ifile"):
