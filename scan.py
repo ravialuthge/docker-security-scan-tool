@@ -63,7 +63,7 @@ def container_user():
 	container_user_co_f = f.read()
 	container_user_co_f_st = f_st.read()
 	table = [[container_user_co_f_st , images_output , container_user_co_f]]
-	return table,container_user_co_null
+	return table
 
 
 def output():
