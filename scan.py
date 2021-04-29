@@ -2,6 +2,7 @@ import os
 import subprocess
 import re
 from termcolor import colored
+from tabulate import tabulate
 
 def docker_version():
 	latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
@@ -42,14 +43,20 @@ def container_user():
 	images_output = os.popen(images_cmd).read()
 	images = images_output.split()
 	container_users = container_user_output.split()
+	f = open("re.txt", "w")
 	for i in (container_users):
-		if i == 'User=' or i == 'User=root':
-				container_user_re = "not user for the container has been created"
-		else:
-				container_user_re = "user for the container has been created"
-#	for c in range(len(images)):
-#		container_user_re_a = images[c] + " " + container_users[c]
-	return container_user_re
+	if i == 'User=' or i == 'User=root':
+			container_user_co = "not user for the container has been created"
+	else:
+			container_user_co = "user for the container has been created"
+	f.write(container_user_co)
+	f.write("\n")
+	f= open("re.txt", "r")
+	container_user_co_f = f.read()
+	table = [[images_output , container_user_co_f]]
+	print(tabulate(table))
+	
+	return table
 
 
 def output():
@@ -66,7 +73,8 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (colored('WARN   ', 'red'), container_user_re)
+	print (colored('WARN   ', 'red'), tabulate(table))
 
 if __name__ == "__main__":     
 	output()
+os.remove("re.txt")
