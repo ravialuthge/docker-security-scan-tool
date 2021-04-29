@@ -71,7 +71,7 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (colored('WARN   ', 'red'), tabulate(table))
+	print (tabulate(table))
 
 if __name__ == "__main__":     
 	output()
