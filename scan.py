@@ -49,6 +49,8 @@ def container_user():
 	 if i == 'User=' or i == 'User=root':
 			container_user_co = 'not user for the container has been created'
 			container_user_co_st = colored('WARN  ', 'red')
+	 elif i == '':
+		    container_user_co = 'images not'
 	 else:
 			container_user_co = 'user for the container has been created'
 			container_user_co_st = colored('PASS  ', 'green')
@@ -61,7 +63,7 @@ def container_user():
 	container_user_co_f = f.read()
 	container_user_co_f_st = f_st.read()
 	table = [[container_user_co_f_st , images_output , container_user_co_f]]
-	return table
+	return table,container_user_co_null
 
 
 def output():
@@ -72,7 +74,7 @@ def output():
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
-#  -------------------------------------------------------------------------------------------\n\
+# --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
 	print (colored('Docker Host',attrs=['bold']))
 	print (colored('INFO   ', 'blue'), docker_version_re)
