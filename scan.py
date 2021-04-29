@@ -80,6 +80,10 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
+	full_cmd_arguments = sys.argv
+    argument_list = full_cmd_arguments[1:]
+	short_options = "ha:s"
+    long_options = ["help", "all", "scan="]
 	try:
 		arguments, values = getopt.getopt(argument_list, short_options, long_options)
 	except getopt.error as err:
