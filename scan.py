@@ -80,28 +80,29 @@ def output(argv):
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
+
 	try:
-		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+		opts, args = getopt.getopt(argv,"ua:h:i",["all=","host=","images="])
 	except getopt.GetoptError:
-		print ('test.py -i <inputfile> -o <outputfile>')
+		print ('error')
 		sys.exit(2)
 	for opt, arg in opts:
-		if opt == '':
-			print (colored('Docker Images',attrs=['bold']))
-			print (tabulate(table))
-		elif opt in ("-i", "--ifile"):
-			inputfile = arg
+		if opt == '-u':
+			print ("usage")
+			sys.exit()
+		elif opt in ("-a", "--all"):
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
-		elif opt in ("-o", "--ofile"):
-			outputfile = arg
+		elif opt in ("-h", "--host"):
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
-
+        elif opt in ("-i", "--images"):
+			print (colored('Docker Images',attrs=['bold']))
+			print (tabulate(table))
 
 
 if __name__ == "__main__":     
