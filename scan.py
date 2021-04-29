@@ -79,22 +79,23 @@ def output(argv):
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	if str(sys.argv) == '':
-		print (colored('Docker Host',attrs=['bold']))
-		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
-		print (colored('Docker Images',attrs=['bold']))
-		print (tabulate(table))
-	elif str(sys.argv) == '-h':
-		print ('help')
-		sys.exit()
-	elif str(sys.argv) == '-s host':
-		print (colored('Docker Host',attrs=['bold']))
-		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
-	elif str(sys.argv) == '-s images':
-		print (colored('Docker Images',attrs=['bold']))
-		print (tabulate(table))
+	for opt  in opts:
+		if opt == '':
+			print (colored('Docker Host',attrs=['bold']))
+			print (colored('INFO   ', 'blue'), docker_version_re)
+			print (colored('WARN   ', 'red'), docker_root_re)
+			print (colored('Docker Images',attrs=['bold']))
+			print (tabulate(table))
+		elif opt == '-h':
+			print ('help')
+			sys.exit()
+		elif opt == '-s host':
+			print (colored('Docker Host',attrs=['bold']))
+			print (colored('INFO   ', 'blue'), docker_version_re)
+			print (colored('WARN   ', 'red'), docker_root_re)
+		elif opt == '-s images':
+			print (colored('Docker Images',attrs=['bold']))
+			print (tabulate(table))
 
 
 
