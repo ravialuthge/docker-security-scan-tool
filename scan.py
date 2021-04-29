@@ -48,10 +48,10 @@ def container_user():
 	for i in (container_users):
 	 if i == 'User=' or i == 'User=root':
 			container_user_co = 'not user for the container has been created'
-			container_user_co_st = colored('WARN', 'red')
+			container_user_co_st = colored('WARN ', 'red')
 	 else:
 			container_user_co = 'user for the container has been created'
-			container_user_co_st = colored('PASS', 'green')
+			container_user_co_st = colored('PASS ', 'green')
 	 f.write(container_user_co)
 	 f.write("\n")
 	 f_st.write(container_user_co_st)
