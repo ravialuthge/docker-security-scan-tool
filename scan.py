@@ -49,8 +49,6 @@ def container_user():
 	 if i == 'User=' or i == 'User=root':
 			container_user_co = 'not user for the container has been created'
 			container_user_co_st = colored('WARN  ', 'red')
-	 elif i == '':
-		    container_user_co = 'images not'
 	 else:
 			container_user_co = 'user for the container has been created'
 			container_user_co_st = colored('PASS  ', 'green')
