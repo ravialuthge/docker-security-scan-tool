@@ -80,7 +80,7 @@ def output(argv):
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	try:
+    try:
       opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
     except getopt.GetoptError:
       print ('test.py -i <inputfile> -o <outputfile>')
