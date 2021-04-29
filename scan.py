@@ -69,7 +69,7 @@ def container_user():
 		return table
     
 
-def output(argv):
+def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	table = container_user()
@@ -79,26 +79,26 @@ def output(argv):
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-		if opt == '':
+		if len(sys.argv) == 1:
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
-		elif opt == '-h':
+		elif len(sys.argv) == 2 and str(sys.argv) == '-h':
 			print ('help')
 			sys.exit()
-		elif opt == '-s host':
+		elif len(sys.argv) == 2 and str(sys.argv) == 'host':
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
-		elif opt == '-s images':
+		elif len(sys.argv) == 2 and str(sys.argv) == 'images':
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 
 
 
 if __name__ == "__main__":     
-	output(sys.argv[1:])
+	output()
 os.remove("re.txt")
 os.remove("re_st.txt")
