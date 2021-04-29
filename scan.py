@@ -82,7 +82,7 @@ def output(argv):
 	', 'green', attrs=['bold']))
 
 	try:
-		opts, args = getopt.getopt(argv,"ua:h:i",["all=","host=","images="])
+		opts, args = getopt.getopt(argv,"ua:hi:",["all=","host=","images="])
 	except getopt.GetoptError:
 		print ('error')
 		sys.exit(2)
