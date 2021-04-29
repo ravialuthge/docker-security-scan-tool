@@ -44,7 +44,7 @@ def container_user():
 	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
 		container_user_co_ch = 'images not found'
-		return container_user_co_ch
+	return container_user_co_ch
 	else:
 		container_user_output = os.popen(container_user_cmd).read()
 		images_output = os.popen(images_cmd).read()
