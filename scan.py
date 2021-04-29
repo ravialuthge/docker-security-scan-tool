@@ -43,8 +43,7 @@ def container_user():
 	f = open("re.txt", "w")
 	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
-		container_user_co_ch = 'images not found'
-	return container_user_co_ch
+		container_user_co = 'images not found'
 	else:
 		container_user_output = os.popen(container_user_cmd).read()
 		images_output = os.popen(images_cmd).read()
@@ -72,7 +71,6 @@ def container_user():
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_co_ch = container_user()
 	table = container_user()
 	
 	print (colored('# --------------------------------------------------------------------------------------------\n\
@@ -84,7 +82,6 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
-	print (container_user_co_ch)
 	print (tabulate(table))
 
 if __name__ == "__main__":     
