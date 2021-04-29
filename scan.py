@@ -81,7 +81,7 @@ def output():
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
 	try:
-    	arguments, values = getopt.getopt(argument_list, short_options, long_options)
+		arguments, values = getopt.getopt(argument_list, short_options, long_options)
 	except getopt.error as err:
 		print (str(err))
 		sys.exit(2)
