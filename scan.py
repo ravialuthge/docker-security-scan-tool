@@ -70,7 +70,7 @@ def container_user():
 		return table
     
 
-def output():
+def output(argv):
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	table = container_user()
@@ -80,35 +80,31 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	full_cmd_arguments = sys.argv
-    argument_list = full_cmd_arguments[1:]
-	short_options = "ha:s"
-    long_options = ["help", "all", "scan="]
 	try:
-		arguments, values = getopt.getopt(argument_list, short_options, long_options)
-	except getopt.error as err:
-		print (str(err))
-		sys.exit(2)
-	for current_argument, current_value in arguments:
-		if current_argument in ("-a", "--all"):
-			print (colored('Docker Host',attrs=['bold']))
-			print (colored('INFO   ', 'blue'), docker_version_re)
-			print (colored('WARN   ', 'red'), docker_root_re)
-			print (colored('Docker Images',attrs=['bold']))
-			print (tabulate(table))
-		elif current_argument in ("-h", "--help"):
-			print ('help')
-		elif current_argument in ("-s", "--scan") and current_value == 'host':	
-			print (colored('Docker Host',attrs=['bold']))
-			print (colored('INFO   ', 'blue'), docker_version_re)
-			print (colored('WARN   ', 'red'), docker_root_re)
-		elif current_argument in ("-s", "--scan") and current_value == 'images':
-			print (colored('Docker Images',attrs=['bold']))
-			print (tabulate(table))
+      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+    except getopt.GetoptError:
+      print ('test.py -i <inputfile> -o <outputfile>')
+      sys.exit(2)
+    for opt, arg in opts:
+      if opt == '-h':
+         print (colored('Docker Images',attrs=['bold']))
+	     print (tabulate(table))
+      elif opt in ("-i", "--ifile"):
+        inputfile = arg
+        print (colored('Docker Host',attrs=['bold']))
+		print (colored('INFO   ', 'blue'), docker_version_re)
+		print (colored('WARN   ', 'red'), docker_root_re)
+		print (colored('Docker Images',attrs=['bold']))
+	    print (tabulate(table))
+      elif opt in ("-o", "--ofile"):
+        outputfile = arg
+        print (colored('Docker Host',attrs=['bold']))
+	    print (colored('INFO   ', 'blue'), docker_version_re)
+	    print (colored('WARN   ', 'red'), docker_root_re)
 
 
 
 if __name__ == "__main__":     
-	output()
+	output(sys.argv[1:])
 os.remove("re.txt")
 os.remove("re_st.txt")
