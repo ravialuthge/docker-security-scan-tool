@@ -40,6 +40,8 @@ def container_user():
 	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
 	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
 	images_ch_cmd = "docker images -q  2> /dev/null"
+	f = open("re.txt", "w")
+	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
 		container_user_co = 'images not found'
 	else:
@@ -47,8 +49,6 @@ def container_user():
 		images_output = os.popen(images_cmd).read()
 		images = images_output.split()
 		container_users = container_user_output.split()
-		f = open("re.txt", "w")
-		f_st = open("re_st.txt", "w")
 		for i in (container_users):
 		 if i == 'User=' or i == 'User=root':
 				container_user_co = 'not user for the container has been created'
