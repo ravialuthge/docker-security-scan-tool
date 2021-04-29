@@ -86,7 +86,7 @@ def output(argv):
 	except getopt.GetoptError:
 		print ('error')
 		sys.exit(2)
-	for opt, arg in opts:
+	for opt in opts:
 		if opt == '-u':
 			print ("usage")
 			sys.exit()
