@@ -69,7 +69,7 @@ def container_user():
 		return table
     
 
-def output():
+def output(argv):
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	table = container_user()
@@ -99,6 +99,6 @@ def output():
 
 
 if __name__ == "__main__":     
-	output()
+	output(sys.argv[1:])
 os.remove("re.txt")
 os.remove("re_st.txt")
