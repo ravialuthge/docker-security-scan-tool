@@ -4,6 +4,7 @@ import re
 from termcolor import colored
 from tabulate import tabulate
 import sys
+import getopt
 
 def docker_version():
 	latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
@@ -79,22 +80,27 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	if sys.argv[2] == '':
-		print (colored('Docker Host',attrs=['bold']))
-		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
-		print (colored('Docker Images',attrs=['bold']))
-		print (tabulate(table))
-	elif len(sys.argv) == 2 and str(sys.argv) == '-h':
-		print ('help')
-		sys.exit()
-	elif len(sys.argv) == 2 and str(sys.argv) == 'host':
-		print (colored('Docker Host',attrs=['bold']))
-		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
-	elif len(sys.argv) == 2 and str(sys.argv) == 'images':
-		print (colored('Docker Images',attrs=['bold']))
-		print (tabulate(table))
+	try:
+    	arguments, values = getopt.getopt(argument_list, short_options, long_options)
+	except getopt.error as err:
+		print (str(err))
+		sys.exit(2)
+	for current_argument, current_value in arguments:
+		if current_argument in ("-a", "--all"):
+			print (colored('Docker Host',attrs=['bold']))
+			print (colored('INFO   ', 'blue'), docker_version_re)
+			print (colored('WARN   ', 'red'), docker_root_re)
+			print (colored('Docker Images',attrs=['bold']))
+			print (tabulate(table))
+		elif current_argument in ("-h", "--help"):
+			print ('help')
+		elif current_argument in ("-s", "--scan") and current_value= 'host':	
+			print (colored('Docker Host',attrs=['bold']))
+			print (colored('INFO   ', 'blue'), docker_version_re)
+			print (colored('WARN   ', 'red'), docker_root_re)
+		elif current_argument in ("-s", "--scan") and current_value= 'images':
+			print (colored('Docker Images',attrs=['bold']))
+			print (tabulate(table))
 
 
 
