@@ -40,15 +40,15 @@ def container_user():
 	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
 	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
 	images_ch_cmd = "docker images -q  2> /dev/null"
-	f = open("re.txt", "w")
-	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
-		container_user_co = 'images not found'
+		container_user_co_ch = 'images not found'
 	else:
 		container_user_output = os.popen(container_user_cmd).read()
 		images_output = os.popen(images_cmd).read()
 		images = images_output.split()
 		container_users = container_user_output.split()
+		f = open("re.txt", "w")
+	    f_st = open("re_st.txt", "w")
 		for i in (container_users):
 		 if i == 'User=' or i == 'User=root':
 				container_user_co = 'not user for the container has been created'
@@ -66,13 +66,13 @@ def container_user():
 		container_user_co_f_st = f_st.read()
 		table = [[container_user_co_f_st , images_output , container_user_co_f]]
 		return table
-
+    return container_user_co_ch
 
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
-	container_user_re = container_user()
 	table = container_user()
+	container_user_co_ch = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
@@ -82,6 +82,7 @@ def output():
 	print (colored('INFO   ', 'blue'), docker_version_re)
 	print (colored('WARN   ', 'red'), docker_root_re)
 	print (colored('Docker Images',attrs=['bold']))
+	print (container_user_co_ch)
 	print (tabulate(table))
 
 if __name__ == "__main__":     
