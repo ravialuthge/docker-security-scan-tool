@@ -100,7 +100,7 @@ def output(argv):
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
-	    elif opt in ("-i", "--images"):
+		elif opt in ("-i", "--images"):
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 
