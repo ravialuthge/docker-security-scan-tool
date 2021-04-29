@@ -78,7 +78,7 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	if len(sys.argv) == '':
+	if len(sys.argv) == 1:
 		print (colored('Docker Host',attrs=['bold']))
 		print (colored('INFO   ', 'blue'), docker_version_re)
 		print (colored('WARN   ', 'red'), docker_root_re)
