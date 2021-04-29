@@ -46,9 +46,9 @@ def container_user():
 	f = open("re.txt", "w")
 	for i in (container_users):
 	 if i == 'User=' or i == 'User=root':
-			container_user_co = "not user for the container has been created"
+			container_user_co = colored('not user for the container has been created' , 'red')
 	 else:
-			container_user_co = "user for the container has been created"
+			container_user_co = colored('user for the container has been created' , 'green')
 	 f.write(container_user_co)
 	 f.write("\n")
 	f= open("re.txt", "r")
