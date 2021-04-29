@@ -54,8 +54,6 @@ def container_user():
 	f= open("re.txt", "r")
 	container_user_co_f = f.read()
 	table = [[images_output , container_user_co_f]]
-	print(tabulate(table))
-	
 	return table
 
 
@@ -63,7 +61,7 @@ def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	container_user_re = container_user()
-	
+	table = container_user()
 	print (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
