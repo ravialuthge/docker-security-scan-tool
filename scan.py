@@ -79,26 +79,26 @@ def output():
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
-	if len(sys.argv) == '':
+	if str(sys.argv) == '':
 		print (colored('Docker Host',attrs=['bold']))
 		print (colored('INFO   ', 'blue'), docker_version_re)
 		print (colored('WARN   ', 'red'), docker_root_re)
 		print (colored('Docker Images',attrs=['bold']))
 		print (tabulate(table))
-	elif len(sys.argv) == '-h':
+	elif str(sys.argv) == '-h':
 		print ('help')
 		sys.exit()
-	elif len(sys.argv) == '-s host':
+	elif str(sys.argv) == '-s host':
 		print (colored('Docker Host',attrs=['bold']))
 		print (colored('INFO   ', 'blue'), docker_version_re)
 		print (colored('WARN   ', 'red'), docker_root_re)
-	elif len(sys.argv) == '-s images':
+	elif str(sys.argv) == '-s images':
 		print (colored('Docker Images',attrs=['bold']))
 		print (tabulate(table))
 
 
 
 if __name__ == "__main__":     
-	output(sys.argv[1])
+	output(sys.argv[1:])
 os.remove("re.txt")
 os.remove("re_st.txt")
