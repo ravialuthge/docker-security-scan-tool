@@ -17,7 +17,7 @@ def docker_version():
 	latest_version = latest_version_str_x[1]
 
 	if install_version == latest_version:
-		docker_version_re = "Docker is up to date"
+		docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
 	elif install_version != latest_version:
 		docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
 	else:
@@ -33,9 +33,9 @@ def docker_root():
 	root_dir_ch = root_dir_ch_output.rstrip()
 
 	if root_dir == root_dir_ch:
-		docker_root_re = "crated separate partition for docker root directory"
+		docker_root_re = colored('PASS   ', 'green') + "crated separate partition for docker root directory"
 	else:
-		docker_root_re = "not crated separate partition for docker root directory"
+		docker_root_re = colored('WARN   ', 'red') + "not crated separate partition for docker root directory"
 	return docker_root_re
 
 def container_user():
@@ -82,21 +82,23 @@ def output():
 	', 'green', attrs=['bold']))
 
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
+	sc_ho_1 = (docker_version_re)
+	sc_ho_2 = (docker_root_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
 	arguments = len(sys.argv) -1
 	if arguments == 0:
 		print (banner)
 		print (sc_ho)
-		print (docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
+		print (sc_ho_1)
+		print (sc_ho_2)
 		print (sc_im)
 		print (sc_im_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
 		print (banner)
 		print (sc_ho)
-		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (colored('WARN   ', 'red'), docker_root_re)
+		print (sc_ho_1)
+		print (sc_ho_2)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		print (banner)
 		print (sc_im)
