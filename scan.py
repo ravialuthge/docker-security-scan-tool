@@ -89,12 +89,12 @@ def output():
 		print (colored('WARN   ', 'red'), docker_root_re)
 		print (colored('Docker Images',attrs=['bold']))
 		print (tabulate(table))
-	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
+	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan=') and sys.argv[2] == 'host':
 		print (banner)
 		print (colored('Docker Host',attrs=['bold']))
 		print (colored('INFO   ', 'blue'), docker_version_re)
 		print (colored('WARN   ', 'red'), docker_root_re)
-	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
+	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan=') and sys.argv[2] == 'images':
 		print (banner)
 		print (colored('Docker Images',attrs=['bold']))
 		print (tabulate(table))
