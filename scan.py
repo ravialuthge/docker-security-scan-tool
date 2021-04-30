@@ -19,7 +19,7 @@ def docker_version():
 	if install_version == latest_version:
 		docker_version_re = "Docker is up to date"
 	elif install_version != latest_version:
-		docker_version_re = "Docker not update"
+		docker_version_re = colored('INFO   ', 'blue'),"Docker not update"
 	else:
 		docker_version_re = "Docker not install"
 	return docker_version_re
@@ -88,7 +88,7 @@ def output():
 	if arguments == 0:
 		print (banner)
 		print (sc_ho)
-		print (colored('INFO   ', 'blue'), docker_version_re)
+		print (docker_version_re)
 		print (colored('WARN   ', 'red'), docker_root_re)
 		print (sc_im)
 		print (sc_im_1)
