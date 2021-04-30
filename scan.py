@@ -51,7 +51,7 @@ def container_user():
 		images = images_output.split()
 		container_users = container_user_output.split()
 		f = open("re.txt", "w")
-	    f_st = open("re_st.txt", "w")
+		f_st = open("re_st.txt", "w")
 		for i in (container_users):
 		 if i == 'User=' or i == 'User=root':
 				container_user_co = 'not user for the container has been created'
