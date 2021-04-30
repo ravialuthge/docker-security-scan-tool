@@ -82,8 +82,6 @@ def output():
 	', 'green', attrs=['bold']))
 
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
-	sc_ho_1	= (colored('INFO   ', 'blue'), docker_version_re)
-	sc_ho_2	= (colored('WARN   ', 'red'), docker_root_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
 	arguments = len(sys.argv) -1
@@ -91,14 +89,14 @@ def output():
 		print (banner)
 		print (sc_ho)
 		print (colored('INFO   ', 'blue'), docker_version_re)
-		print (sc_ho_2)
+		print (colored('WARN   ', 'red'), docker_root_re)
 		print (sc_im)
 		print (sc_im_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
 		print (banner)
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
+		print (colored('INFO   ', 'blue'), docker_version_re)
+		print (colored('WARN   ', 'red'), docker_root_re)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		print (banner)
 		print (sc_im)
