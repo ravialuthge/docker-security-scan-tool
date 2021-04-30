@@ -90,7 +90,7 @@ def output():
 	if arguments == 0:
 		print (banner)
 		print (sc_ho)
-		print (sc_ho_1)
+		print (colored('INFO   ', 'blue'), docker_version_re)
 		print (sc_ho_2)
 		print (sc_im)
 		print (sc_im_1)
