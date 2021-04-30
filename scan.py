@@ -70,45 +70,41 @@ def container_user():
 		return table
     
 
-def output(argv):
+def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	table = container_user()
 	
-	flage = (colored('# --------------------------------------------------------------------------------------------\n\
+	banner = (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
 
-	try:
-		opts, args = getopt.getopt(argv,"ua:hi:",["all=","host=","images="])
-	except getopt.GetoptError:
-		print ('error')
-		sys.exit(2)
-	for opt, arg in opts:
-		if opt == '-u':
-			print ("usage")
-			sys.exit()
-		elif opt in ("-a", "--all"):
-			print (flage)
-			print (colored('Docker Host',attrs=['bold']))
-			print (colored('INFO   ', 'blue'), docker_version_re)
-			print (colored('WARN   ', 'red'), docker_root_re)
-			print (colored('Docker Images',attrs=['bold']))
-			print (tabulate(table))
-		elif opt in ("-h", "--host"):
-			print (flage)
-			print (colored('Docker Host',attrs=['bold']))
-			print (colored('INFO   ', 'blue'), docker_version_re)
-			print (colored('WARN   ', 'red'), docker_root_re)
-		elif opt in ("-i", "--images"):
-			print (flage)
-			print (colored('Docker Images',attrs=['bold']))
-			print (tabulate(table))
+	arguments = len(sys.argv) -1
+	if arguments == 0:
+		print (banner)
+		print (colored('Docker Host',attrs=['bold']))
+		print (colored('INFO   ', 'blue'), docker_version_re)
+		print (colored('WARN   ', 'red'), docker_root_re)
+		print (colored('Docker Images',attrs=['bold']))
+		print (tabulate(table))
+	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
+		print (banner)
+		print (colored('Docker Host',attrs=['bold']))
+		print (colored('INFO   ', 'blue'), docker_version_re)
+		print (colored('WARN   ', 'red'), docker_root_re)
+	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
+		print (banner)
+		print (colored('Docker Images',attrs=['bold']))
+		print (tabulate(table))
+	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
+		print ("help")
+    else:
+		print ("error")
 
 
 if __name__ == "__main__":     
-	output(sys.argv[1:])
+	output()
 os.remove("re.txt")
 os.remove("re_st.txt")
