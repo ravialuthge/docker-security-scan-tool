@@ -82,7 +82,7 @@ def output():
 	', 'green', attrs=['bold']))
 
 	sc_ho	= colored('Docker Host',attrs=['bold'])
-	sc_ho_1	= colored('INFO   ', 'blue'), docker_version_re
+	sc_ho_1	= str(colored('INFO   ', 'blue'), docker_version_re)
 	sc_ho_2	= colored('WARN   ', 'red'), docker_root_re
 	sc_im	= colored('Docker Images',attrs=['bold'])
 	sc_im_1	= (tabulate(table))
@@ -90,7 +90,7 @@ def output():
 	if arguments == 0:
 		print (banner)
 		print (sc_ho)
-		print str(sc_ho_1)
+		print (sc_ho_1)
 		print (sc_ho_2)
 		print (sc_im)
 		print (sc_im_1)
