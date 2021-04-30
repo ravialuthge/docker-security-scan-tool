@@ -75,7 +75,7 @@ def output(argv):
 	docker_root_re = docker_root()
 	table = container_user()
 	
-	print (colored('# --------------------------------------------------------------------------------------------\n\
+	flage = (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
 # --------------------------------------------------------------------------------------------\n\
@@ -91,16 +91,19 @@ def output(argv):
 			print ("usage")
 			sys.exit()
 		elif opt in ("-a", "--all"):
+			print (flage)
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 		elif opt in ("-h", "--host"):
+			print (flage)
 			print (colored('Docker Host',attrs=['bold']))
 			print (colored('INFO   ', 'blue'), docker_version_re)
 			print (colored('WARN   ', 'red'), docker_root_re)
 		elif opt in ("-i", "--images"):
+			print (flage)
 			print (colored('Docker Images',attrs=['bold']))
 			print (tabulate(table))
 
