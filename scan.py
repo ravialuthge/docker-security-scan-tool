@@ -70,46 +70,45 @@ def container_user():
 		table = [[container_user_co_f_st , images_output , container_user_co_f]]
 		return table
 
-def   
+def health_check():
 
-health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
-container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
-container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
+	health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
+	container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
+	container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
 
-health_ch_output = os.popen(health_ch_cmd).read()
-container_image_output = os.popen(container_image_cmd).read()
-container_name_output = os.popen(container_name_cmd).read()
+	health_ch_output = os.popen(health_ch_cmd).read()
+	container_image_output = os.popen(container_image_cmd).read()
+	container_name_output = os.popen(container_name_cmd).read()
 
-health_ch = health_ch_output.splitlines()
-container_image = container_image_output.split()
-container_name = container_name_output.split()
+	health_ch = health_ch_output.splitlines()
 
-f = open("re_a.txt", "w")
-f_st = open("re_st_a.txt", "w")
-print (health_ch)
-for i in (health_ch):
-		 if i == '<nil>':
-				health_ch_co = 'not health check'
-				health_ch_co_st = colored('WARN  ', 'red')
-		 else:
-				health_ch_co = 'health check'
-				health_ch_co_st = colored('PASS  ', 'green')
-		 f.write(health_ch_co)
-		 f.write("\n")
-		 f_st.write(health_ch_co_st)
-		 f_st.write("\n")
-f= open("re_a.txt", "r")
-f_st= open("re_st_a.txt", "r")
-health_ch_co_f = f.read()
-health_ch_co_f_st = f_st.read()
-table = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
-print (tabulate(table))
+	f_he = open("re_he.txt", "w")
+	f_st_he = open("re_st_he.txt", "w")
+
+	for h in (health_ch):
+			if h == '<nil>':
+					health_ch_co = 'not health check'
+					health_ch_co_st = colored('WARN  ', 'red')
+			else:
+					health_ch_co = 'health check'
+					health_ch_co_st = colored('PASS  ', 'green')
+			f_he.write(health_ch_co)
+			f_he.write("\n")
+			f_st_he.write(health_ch_co_st)
+			f_st_he.write("\n")
+	f_he= open("re_he.txt", "r")
+	f_st_he= open("re_st_he.txt", "r")
+	health_ch_co_f = f_he.read()
+	health_ch_co_f_st = f_st_he.read()
+	table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
+	return table_he
 
 def output():
 	docker_version_re = docker_version()
 	docker_root_re = docker_root()
 	table = container_user()
-	
+	table_he = health_check()
+
 	banner = (colored('# --------------------------------------------------------------------------------------------\n\
 # CIS Docker 1.6 Benchmark\n\
 # # v1.0.0 - 04-22-2015\n\
@@ -121,6 +120,9 @@ def output():
 	sc_ho_2 = (docker_root_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
+	sc_co   = (colored('Docker Containers',attrs=['bold']))
+	sc_co_1 = (tabulate(table_he))
+	
 	arguments = len(sys.argv) -1
 	if arguments == 0:
 		print (banner)
@@ -129,6 +131,8 @@ def output():
 		print (sc_ho_2)
 		print (sc_im)
 		print (sc_im_1)
+		print (sc_co)
+		print (sc_co_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
 		print (banner)
 		print (sc_ho)
@@ -138,6 +142,10 @@ def output():
 		print (banner)
 		print (sc_im)
 		print (sc_im_1)
+	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'containers':
+		print (banner)
+		print (sc_co)
+		print (sc_co_1)
 	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
 		print ("help")
 	else:
@@ -148,3 +156,5 @@ if __name__ == "__main__":
 	output()
 os.remove("re.txt")
 os.remove("re_st.txt")
+os.remove("re_he.txt")
+os.remove("re_st_he.txt")
