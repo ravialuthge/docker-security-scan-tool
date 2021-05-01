@@ -94,7 +94,7 @@ def output():
 		print (sc_ho_1)
 		print (sc_ho_2)
 		print (sc_im)
-		print (tabulate(table))
+		print (sc_im_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
 		print (banner)
 		print (sc_ho)
