@@ -78,7 +78,8 @@ def health_check():
 
 	health_ch_output = os.popen(health_ch_cmd).read()
 	container_image_output = os.popen(container_image_cmd).read()
-	container_name_output = os.popen(container_name_cmd).read()
+	container_name_output_all = os.popen(container_name_cmd).read()
+	container_name_output = container_name_output_all.replace("/",'')
 
 	health_ch = health_ch_output.splitlines()
 
@@ -87,10 +88,10 @@ def health_check():
 
 	for h in (health_ch):
 			if h == '<nil>':
-					health_ch_co = 'not health check'
+					health_ch_co = 'not added health check instructions'
 					health_ch_co_st = colored('WARN  ', 'red')
 			else:
-					health_ch_co = 'health check'
+					health_ch_co = 'added health check instructions'
 					health_ch_co_st = colored('PASS  ', 'green')
 			f_he.write(health_ch_co)
 			f_he.write("\n")
@@ -122,7 +123,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
-	
+
 	arguments = len(sys.argv) -1
 	if arguments == 0:
 		print (banner)
