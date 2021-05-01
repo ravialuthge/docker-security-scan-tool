@@ -112,5 +112,5 @@ def output():
 
 if __name__ == "__main__":     
 	output()
-os.remove("re.txt")
-os.remove("re_st.txt")
+#os.remove("re.txt")
+#os.remove("re_st.txt")
