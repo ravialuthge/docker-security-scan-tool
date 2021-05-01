@@ -70,7 +70,40 @@ def container_user():
 		table = [[container_user_co_f_st , images_output , container_user_co_f]]
 		return table
 
-def     
+def   
+
+health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
+container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
+container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
+
+health_ch_output = os.popen(health_ch_cmd).read()
+container_image_output = os.popen(container_image_cmd).read()
+container_name_output = os.popen(container_name_cmd).read()
+
+health_ch = health_ch_output.splitlines()
+container_image = container_image_output.split()
+container_name = container_name_output.split()
+
+f = open("re_a.txt", "w")
+f_st = open("re_st_a.txt", "w")
+print (health_ch)
+for i in (health_ch):
+		 if i == '<nil>':
+				health_ch_co = 'not health check'
+				health_ch_co_st = colored('WARN  ', 'red')
+		 else:
+				health_ch_co = 'health check'
+				health_ch_co_st = colored('PASS  ', 'green')
+		 f.write(health_ch_co)
+		 f.write("\n")
+		 f_st.write(health_ch_co_st)
+		 f_st.write("\n")
+f= open("re_a.txt", "r")
+f_st= open("re_st_a.txt", "r")
+health_ch_co_f = f.read()
+health_ch_co_f_st = f_st.read()
+table = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
+print (tabulate(table))
 
 def output():
 	docker_version_re = docker_version()
