@@ -59,10 +59,10 @@ def container_user():
 		 else:
 				container_user_co = 'user for the container has been created'
 				container_user_co_st = colored('PASS  ', 'green')
-		f.write(container_user_co)
-		f.write("\n")
-		f_st.write(container_user_co_st)
-		f_st.write("\n")
+		 f.write(container_user_co)
+		 f.write("\n")
+		 f_st.write(container_user_co_st)
+		 f_st.write("\n")
 		f= open("re.txt", "r")
 		f_st= open("re_st.txt", "r")
 		container_user_co_f = f.read()
@@ -112,5 +112,5 @@ def output():
 
 if __name__ == "__main__":     
 	output()
-#os.remove("re.txt")
-#os.remove("re_st.txt")
+os.remove("re.txt")
+os.remove("re_st.txt")
