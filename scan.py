@@ -69,7 +69,8 @@ def container_user():
 		container_user_co_f_st = f_st.read()
 		table = [[container_user_co_f_st , images_output , container_user_co_f]]
 		return table
-    
+
+def     
 
 def output():
 	docker_version_re = docker_version()
