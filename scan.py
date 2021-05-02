@@ -129,8 +129,7 @@ def output():
 
 	arguments = len(sys.argv) -1
 	if arguments == 0:
-		sub_version = "1.2.0"
-		main_version = "v1.2.0 - 07-29-2019"
+		
 		print (banner, sub_version="1.2.0" , main_version="v1.2.0 - 07-29-2019")
 		print (sc_ho)
 		print (sc_ho_1)
