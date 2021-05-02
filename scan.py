@@ -75,18 +75,17 @@ def health_check():
 	health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
 	container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 	container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
-
-	health_ch_output = os.popen(health_ch_cmd).read()
-	container_image_output = os.popen(container_image_cmd).read()
-	container_name_output_all = os.popen(container_name_cmd).read()
-	container_name_output = container_name_output_all.replace("/",'')
-
-	health_ch = health_ch_output.splitlines()
 	container_ch_cmd = "docker ps -q  2> /dev/null"
 
 	if os.popen(container_ch_cmd).read() == "":
 		container_he_co = 'containers not running'
 	else:
+		health_ch_output = os.popen(health_ch_cmd).read()
+		container_image_output = os.popen(container_image_cmd).read()
+		container_name_output_all = os.popen(container_name_cmd).read()
+		container_name_output = container_name_output_all.replace("/",'')
+
+		health_ch = health_ch_output.splitlines()
 		f_he = open("re_he.txt", "w")
 		f_st_he = open("re_st_he.txt", "w")
 
