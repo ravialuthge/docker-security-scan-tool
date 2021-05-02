@@ -172,16 +172,22 @@ def output():
 		print (sc_co)
 		print (sc_co_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'host':
-		print (banner)
+		sub_version="1.2.0"
+		main_version="v1.2.0 - 07-29-2019"
+		print (banner .format(sub_version, main_version))
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
-		print (banner)
+		sub_version="1.2.0"
+		main_version="v1.2.0 - 07-29-2019"
+		print (banner .format(sub_version, main_version))
 		print (sc_im)
 		print (sc_im_1)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'containers':
-		print (banner)
+		sub_version="1.2.0"
+		main_version="v1.2.0 - 07-29-2019"
+		print (banner .format(sub_version, main_version))
 		print (sc_co)
 		print (sc_co_1)
 	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
