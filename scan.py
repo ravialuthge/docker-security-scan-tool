@@ -113,7 +113,7 @@ def output():
 	table_he = health_check()
 
 	banner = (colored('# --------------------------------------------------------------------------------------------\n\
-# CIS Docker {sub_version} Benchmark\n\
+# CIS Docker %s Benchmark\n\
 # # {main_version}\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
@@ -130,7 +130,7 @@ def output():
 	if arguments == 0:
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
-		print (banner)
+		print (banner %sub_version)
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
