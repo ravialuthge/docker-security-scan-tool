@@ -42,7 +42,8 @@ def container_user():
 	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
 	container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
 	images_ch_cmd = "docker images -q  0> /dev/null"
-	
+	f = open("re.txt", "w")
+	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
 		container_user_co = 'images not found'
 	else:
@@ -50,8 +51,7 @@ def container_user():
 		images_output = os.popen(images_cmd).read()
 		images = images_output.split()
 		container_users = container_user_output.split()
-		f = open("re.txt", "w")
-		f_st = open("re_st.txt", "w")
+		
 		for i in (container_users):
 		 if i == 'User=' or i == 'User=root':
 				container_user_co = 'not user for the container has been created'
@@ -76,7 +76,8 @@ def health_check():
 	container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 	container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
 	container_ch_cmd = "docker ps -q  2> /dev/null"
-
+	f_he = open("re_he.txt", "w")
+	f_st_he = open("re_st_he.txt", "w")
 	if os.popen(container_ch_cmd).read() == "":
 		container_he_co = 'containers not running'
 	else:
@@ -86,8 +87,6 @@ def health_check():
 		container_name_output = container_name_output_all.replace("/",'')
 
 		health_ch = health_ch_output.splitlines()
-		f_he = open("re_he.txt", "w")
-		f_st_he = open("re_st_he.txt", "w")
 
 		for h in (health_ch):
 				if h == '<nil>':
