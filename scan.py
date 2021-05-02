@@ -82,7 +82,7 @@ def health_check():
 	container_name_output = container_name_output_all.replace("/",'')
 
 	health_ch = health_ch_output.splitlines()
-	container_ch_cmd = "docker ps -q  0> /dev/null"
+	container_ch_cmd = "docker ps -q  2> /dev/null"
 
 	if os.popen(container_ch_cmd).read() == "":
 		container_he_co = 'containers not running'
