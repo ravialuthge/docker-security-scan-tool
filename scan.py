@@ -114,9 +114,9 @@ def output():
 	table = container_user()
 	table_he = health_check()
 
-	banner = (colored('# --------------------------------------------------------------------------------------------\n\
-# CIS Docker 1.6 Benchmark\n\
-# # v1.0.0 - 04-22-2015\n\
+	banner = (colored(f'# --------------------------------------------------------------------------------------------\n\
+# CIS Docker {sub_version} Benchmark\n\
+# # {main_version}\n\
 # --------------------------------------------------------------------------------------------\n\
 	', 'green', attrs=['bold']))
 
@@ -130,6 +130,8 @@ def output():
 
 	arguments = len(sys.argv) -1
 	if arguments == 0:
+		sub_version = "1.2.0"
+		main_version = "v1.2.0 - 07-29-2019"
 		print (banner)
 		print (sc_ho)
 		print (sc_ho_1)
