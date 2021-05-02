@@ -160,7 +160,7 @@ def output():
 		print (sc_im_1)
 		print (sc_co)
 		print (sc_co_1)
-	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.0.0':
+	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and (sys.argv[2] == '1.0.0'):
 		sub_version="1.0.0"
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
