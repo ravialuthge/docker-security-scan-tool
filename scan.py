@@ -111,6 +111,7 @@ def output():
 	docker_root_re = docker_root()
 	table = container_user()
 	table_he = health_check()
+	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
 # CIS Docker {0} Benchmark\n\
