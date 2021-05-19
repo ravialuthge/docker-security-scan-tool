@@ -5,16 +5,16 @@ from termcolor import colored
 from tabulate import tabulate
 import sys
 import getopt
-import docker_containers
-import docker_host
-import docker_images
+import test_cases.docker_containers
+import test_cases.docker_host
+import test_cases.docker_images
 import runpy
 
 def output():
-	docker_version_re = docker_host.docker_version()
-	docker_root_re = docker_host.docker_root()
-	table = docker_images.container_user()
-	table_he = docker_containers.health_check()
+	docker_version_re = test_cases.docker_host.docker_version()
+	docker_root_re = test_cases.docker_host.docker_root()
+	table = test_cases.docker_images.container_user()
+	table_he = test_cases.docker_containers.health_check()
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
