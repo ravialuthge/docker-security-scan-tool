@@ -39,8 +39,7 @@ def kernel_version():
 	recommand_version_cmd = "3.10.0"
 	install_kernel_version_cmd = "uname -r"
 	install_kernel_version_str = re.split('-',install_kernel_version_cmd)
-	install_kernel_version_str_x = install_kernel_version_str.replace("'",'')
-	install_kernel_version = install_kernel_version_str_x[1]
+	install_kernel_version = install_kernel_version_str[1]
 
 	if install_kernel_version >= recommand_version_cmd:
 		kernel_version_re = colored('PASS   ', 'green') + "kernal is up to date"
