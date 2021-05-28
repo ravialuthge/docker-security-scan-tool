@@ -34,3 +34,16 @@ def docker_root():
 	else:
 		docker_root_re = colored('WARN   ', 'red') + "not crated separate partition for docker root directory"
 	return docker_root_re
+
+def kernel_version():
+	recommand_version_cmd = "3.10.0"
+	install_kernel_version_cmd = "uname -r"
+	install_kernel_version_str = re.split('-',install_kernel_version_cmd)
+	install_kernel_version_str_x = install_kernel_version_str.replace("'",'')
+	install_kernel_version = install_kernel_version_str_x[1]
+
+	if install_kernel_version >= recommand_version_cmd:
+		kernel_version_re = colored('PASS   ', 'green') + "kernal is up to date"
+	else:
+		kernel_version_re = colored('WARN   ', 'red') + "kernal not update"
+	return kernel_version_re	

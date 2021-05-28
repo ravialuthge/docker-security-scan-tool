@@ -15,6 +15,7 @@ def output():
 	docker_root_re = test_cases.docker_host.docker_root()
 	table = test_cases.docker_images.container_user()
 	table_he = test_cases.docker_containers.health_check()
+	kernel_version_re = test_cases.docker_host.kernel_version()
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -26,10 +27,12 @@ def output():
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
 	sc_ho_1 = (docker_version_re)
 	sc_ho_2 = (docker_root_re)
+	sc_ho_3 = (kernel_version_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
+
 
 	arguments = len(sys.argv) -1
 	if arguments == 0:
@@ -39,6 +42,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -50,6 +54,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -61,6 +66,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -71,6 +77,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -81,6 +88,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -91,6 +99,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -102,6 +111,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -113,6 +123,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -124,6 +135,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -135,6 +147,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -146,6 +159,7 @@ def output():
 		print (sc_ho)
 		print (sc_ho_1)
 		print (sc_ho_2)
+		print (sc_ho_3)
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
