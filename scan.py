@@ -16,6 +16,7 @@ def output():
 	table = test_cases.docker_images.container_user()
 	table_he = test_cases.docker_containers.health_check()
 	kernel_version_re = test_cases.docker_host.kernel_version()
+	trusted_users_re =  test_cases.docker_host.trusted_users()
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
