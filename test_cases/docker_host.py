@@ -40,7 +40,7 @@ def kernel_version():
 	install_kernel_version_cmd = "uname -r"
 	root_dir_ch_output_output = os.popen(install_kernel_version_cmd).read()
 	install_kernel_version_str = re.split('-',root_dir_ch_output_output)
-	install_kernel_version = install_kernel_version_str[1]
+	install_kernel_version = install_kernel_version_str[0]
 
 	if install_kernel_version >= recommand_version_cmd:
 		kernel_version_re = colored('PASS   ', 'green') + "kernal is up to date"
@@ -56,7 +56,6 @@ def trusted_users():
 	trusted_users = trusted_users_cmd_str[3]
 
 	if trusted_users == "":
-		print (trusted_users)
 		trusted_users_re = colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
 	else:
 		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
