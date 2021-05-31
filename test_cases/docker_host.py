@@ -46,3 +46,15 @@ def kernel_version():
 	else:
 		kernel_version_re = colored('WARN   ', 'red') + "kernal not update"
 	return kernel_version_re	
+
+def trusted_users():
+	
+	trusted_users_cmd = "cat /etc/group | grep docker"
+	trusted_users_cmd_str = re.split(':',trusted_users_cmd)
+	trusted_users = trusted_users_cmd_str[4]
+
+	if trusted_users == "":
+		trusted_users_re = colored('PASS   ', 'green') + "allow trusted users to control Docker daemon"
+	else:
+		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
+	return trusted_users_re
