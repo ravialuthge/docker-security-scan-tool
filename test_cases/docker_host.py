@@ -53,7 +53,7 @@ def trusted_users():
 	trusted_users_cmd = "cat /etc/group | grep docker"
 	health_ch_output_output = os.popen(trusted_users_cmd).read()
 	trusted_users_cmd_str = re.split(':',health_ch_output_output)
-	trusted_users = trusted_users_cmd_str[4]
+	trusted_users = trusted_users_cmd_str[3]
 
 	if trusted_users == "":
 		trusted_users_re = colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
