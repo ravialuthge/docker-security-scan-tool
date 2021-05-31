@@ -55,7 +55,7 @@ def trusted_users():
 	trusted_users_cmd_str = re.split(':',health_ch_output_output)
 	trusted_users = trusted_users_cmd_str[3]
 
-	if trusted_users == "":
+	if trusted_users == '':
 		trusted_users_re = colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
 	else:
 		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
