@@ -38,7 +38,8 @@ def docker_root():
 def kernel_version():
 	recommand_version_cmd = "3.10.0"
 	install_kernel_version_cmd = "uname -r"
-	install_kernel_version_str = re.split('-',install_kernel_version_cmd)
+	root_dir_ch_output_output = os.popen(install_kernel_version_cmd).read()
+	install_kernel_version_str = re.split('-',root_dir_ch_output_output)
 	install_kernel_version = install_kernel_version_str[1]
 
 	if install_kernel_version >= recommand_version_cmd:
@@ -50,7 +51,8 @@ def kernel_version():
 def trusted_users():
 	
 	trusted_users_cmd = "cat /etc/group | grep docker"
-	trusted_users_cmd_str = re.split(':',trusted_users_cmd)
+	health_ch_output_output = os.popen(trusted_users_cmd).read()
+	trusted_users_cmd_str = re.split(':',health_ch_output_output)
 	trusted_users = trusted_users_cmd_str[4]
 
 	if trusted_users == "":
