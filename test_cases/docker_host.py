@@ -58,6 +58,6 @@ def trusted_users():
 	if trusted_users_output == None:
 		trusted_users_re = colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
 	else:
-		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
+		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon" + trusted_users_output
 	return trusted_users_re
 
