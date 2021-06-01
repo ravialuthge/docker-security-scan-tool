@@ -51,7 +51,7 @@ def kernel_version():
 def trusted_users():
 	
 	trusted_users_cmd = "cat /etc/group | grep docker"
-	trusted_users_cmd_a = "cat /etc/group | grep docker | awk '{print $3}'"
+	trusted_users_cmd_a = "cat /etc/group | grep docker | awk '{print user=$3}'"
 	health_ch_output_output = os.popen(trusted_users_cmd).read()
 	trusted_users_cmd_str = re.split(':',health_ch_output_output)
 	trusted_users = trusted_users_cmd_str[3]
