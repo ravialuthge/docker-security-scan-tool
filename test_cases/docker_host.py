@@ -57,7 +57,8 @@ def trusted_users():
 	trusted_users_output_ab = trusted_users_output_a.replace('',"'")
 	trusted_users_output = "user=" + trusted_users_output_ab
 
-	if trusted_users_output == "user='":
+	if trusted_users_output == "user=' \
+	'":
 		trusted_users_re = colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
 	else:
 		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon" + trusted_users_output
