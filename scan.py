@@ -54,7 +54,7 @@ def output():
 		print (sc_im_1)
 		print (sc_co)
 		print (sc_co_1)
-	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'hello':
+	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
 		plugin_1.run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
 		sub_version="1.1.0"
