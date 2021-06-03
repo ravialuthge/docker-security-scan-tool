@@ -37,8 +37,8 @@ def output():
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
+	sc_co_1_1 = (container_he_co)
 	sc_co_1 = (tabulate(table_he))
-	sc_co_1_1 = container_he_co
 	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
@@ -55,8 +55,9 @@ def output():
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
-		print (sc_co_1)
 		print (sc_co_1_1)
+		print (sc_co_1)
+		
 	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
 		plugin_1.run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
