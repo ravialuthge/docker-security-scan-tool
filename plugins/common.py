@@ -7,10 +7,10 @@ class banner:
 class outputpl:
     
     def __init__(test, *, plugins: list=list()):
-        test.test_modules = [banner()]
+        test.banner_out = [banner()]
         test.test_plugins = plugins
 
     def run(test):
-        modules_run = test.test_modules + test.test_plugins
+        modules_run = test.banner_out + test.test_plugins
         for module in modules_run:
             module.scan()
