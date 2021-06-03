@@ -9,7 +9,7 @@ import test_cases.docker_containers
 import test_cases.docker_host
 import test_cases.docker_images
 import runpy
-from plugins.hello import HelloWorldPrinter, AlohaWorldPrinter
+from plugins.hello import dockerdatadirscan, dockeruserscan
 from plugins.common import MyApplication
 
 def output():
@@ -37,7 +37,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
-	app_1 = MyApplication(plugins=[HelloWorldPrinter(), AlohaWorldPrinter()])
+	app_1 = MyApplication(plugins=[dockerdatadirscan(), dockeruserscan()])
 
 
 	arguments = len(sys.argv) -1

@@ -1,21 +1,20 @@
 class InternalPrinter:
-    """Internal business logic"""
-    def process(self):
+    def scan(test):
         print("Internal Hello")
 
 class MyApplication:
-    """First attempt at a plugin system"""
-    def __init__(self, *, plugins: list=list()):
-        self.internal_modules = [InternalPrinter()]
-        self._plugins = plugins
+    
+    def __init__(test, *, plugins: list=list()):
+        test.internal_modules = [InternalPrinter()]
+        test._plugins = plugins
 
-    def run(self):
+    def run(test):
         print("Starting program")
         print("-" * 79)
 
-        modules_to_execute = self.internal_modules + self._plugins
+        modules_to_execute = test.internal_modules + test._plugins
         for module in modules_to_execute:
-            module.process()
+            module.scan()
 
         print("-" * 79)
         print("Program done")
