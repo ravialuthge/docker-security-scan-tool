@@ -10,7 +10,7 @@ import test_cases.docker_host
 import test_cases.docker_images
 import runpy
 from plugins.hello import dockerdatadirscan, dockeruserscan
-from plugins.common import MyApplication
+from plugins.common import output
 
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
@@ -37,7 +37,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
-	app_1 = MyApplication(plugins=[dockerdatadirscan(), dockeruserscan()])
+	plugin_1 = output(plugins=[dockerdatadirscan(), dockeruserscan()])
 
 
 	arguments = len(sys.argv) -1
@@ -55,7 +55,7 @@ def output():
 		print (sc_co)
 		print (sc_co_1)
 	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'hello':
-		app_1.run()
+		plugin_1.run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
 		sub_version="1.1.0"
 		main_version="v1.1.0 - 07-06-2017"
