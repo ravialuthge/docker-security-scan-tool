@@ -1,6 +1,8 @@
+from termcolor import colored
+
 class banner:
     def scan(test):
-        print("custom test cases")
+        print(colored('custom test cases',attrs=['bold']))
 
 class outputpl:
     
