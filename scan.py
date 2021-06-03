@@ -9,7 +9,7 @@ import test_cases.docker_containers
 import test_cases.docker_host
 import test_cases.docker_images
 import runpy
-from plugins.hello import dockerdatadirscan, dockeruserscan
+from plugins.hello import dockerdatadirscan,dockeruserscan
 from plugins.common import outputpl
 
 def output():

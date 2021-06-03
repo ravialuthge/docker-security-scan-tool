@@ -11,3 +11,5 @@ class outputpl:
         modules_to_execute = test.test_modules + test.test_plugins
         for module in modules_to_execute:
             module.scan()
+    
+        print ()
