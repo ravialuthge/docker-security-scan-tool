@@ -17,6 +17,7 @@ def output():
 	docker_root_re = test_cases.docker_host.docker_root()
 	table = test_cases.docker_images.container_user()
 	table_he = test_cases.docker_containers.health_check()
+	container_he_co = test_cases.docker_containers.health_check()
 	kernel_version_re = test_cases.docker_host.kernel_version()
 	trusted_users_re =  test_cases.docker_host.trusted_users()
 	full_cmd_arguments = sys.argv
@@ -37,6 +38,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
+	sc_co_1_1 = container_he_co
 	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
@@ -54,6 +56,7 @@ def output():
 		print (sc_im_1)
 		print (sc_co)
 		print (sc_co_1)
+		print (sc_co_1_1)
 	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
 		plugin_1.run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
