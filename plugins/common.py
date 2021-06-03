@@ -11,6 +11,6 @@ class outputpl:
         test.test_plugins = plugins
 
     def run(test):
-        modules_to_execute = test.test_modules + test.test_plugins
-        for module in modules_to_execute:
+        modules_run = test.test_modules + test.test_plugins
+        for module in modules_run:
             module.scan()
