@@ -9,6 +9,8 @@ import test_cases.docker_containers
 import test_cases.docker_host
 import test_cases.docker_images
 import runpy
+from plugins.hello import HelloWorldPrinter, AlohaWorldPrinter
+from plugins.common import MyApplication
 
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
@@ -25,6 +27,7 @@ def output():
 # --------------------------------------------------------------------------------------------\n\
 	", 'green', attrs=['bold']))
 
+
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
 	sc_ho_1 = (docker_version_re)
 	sc_ho_2 = (docker_root_re)
@@ -34,6 +37,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
+	app_1 = MyApplication(plugins=[HelloWorldPrinter(), AlohaWorldPrinter()])
 
 
 	arguments = len(sys.argv) -1
@@ -50,6 +54,8 @@ def output():
 		print (sc_im_1)
 		print (sc_co)
 		print (sc_co_1)
+	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'hello':
+		print (app_1)
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
 		sub_version="1.1.0"
 		main_version="v1.1.0 - 07-06-2017"
@@ -172,7 +178,7 @@ def output():
 		print (sc_ho_1)
 		print (sc_ho_2)
 		print (sc_ho_3)
-		print (sc_ho_4)
+		print (sc_ho_4)	
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
