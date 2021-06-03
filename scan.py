@@ -10,7 +10,7 @@ import test_cases.docker_host
 import test_cases.docker_images
 import runpy
 from plugins.hello import dockerdatadirscan, dockeruserscan
-from plugins.common import output
+from plugins.common import outputpl
 
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
@@ -37,7 +37,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
-	plugin_1 = output(plugins=[dockerdatadirscan(),dockeruserscan()])
+	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
 	arguments = len(sys.argv) -1

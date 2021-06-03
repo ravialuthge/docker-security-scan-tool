@@ -2,7 +2,7 @@ class banner:
     def scan(test):
         print("custom test cases")
 
-class output:
+class outputpl:
     
     def __init__(test, *, plugins: list=list()):
         test.test_modules = [banner()]
