@@ -12,7 +12,7 @@ def health_check():
 	f_he = open("re_he.txt", "w")
 	f_st_he = open("re_st_he.txt", "w")
 	if os.popen(container_ch_cmd).read() == "":
-		container_he_co = 'containers not running'
+		print ('containers not running')
 	else:
 		health_ch_output = os.popen(health_ch_cmd).read()
 		container_image_output = os.popen(container_image_cmd).read()
