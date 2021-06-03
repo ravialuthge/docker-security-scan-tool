@@ -37,7 +37,7 @@ def output():
 	sc_im_1	= (tabulate(table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
-	plugin_1 = output(plugins=[dockerdatadirscan(), dockeruserscan()])
+	plugin_1 = output(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
 	arguments = len(sys.argv) -1
