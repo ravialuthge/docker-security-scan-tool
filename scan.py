@@ -19,6 +19,7 @@ def output():
 	table_he = test_cases.docker_containers.health_check()
 	kernel_version_re = test_cases.docker_host.kernel_version()
 	trusted_users_re =  test_cases.docker_host.trusted_users()
+	update_instruction_table = test_cases.docker_images.update_ins()
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -35,6 +36,7 @@ def output():
 	sc_ho_4 = (trusted_users_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
+	sc_im_2	= (tabulate(update_instruction_table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
 	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
@@ -52,6 +54,7 @@ def output():
 		print (sc_ho_4)
 		print (sc_im)
 		print (sc_im_1)
+		print (sc_im_2)
 		print (sc_co)
 		print (sc_co_1)
 		
