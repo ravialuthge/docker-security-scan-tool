@@ -50,7 +50,7 @@ def kernel_version():
 
 def trusted_users():
 	
-	trusted_users_cmd = "cat /etc/group | grep docker"
+	trusted_users_cmd = "getent group docker"
 	health_ch_output_output = os.popen(trusted_users_cmd).read()
 	trusted_users_cmd_str = re.split(':',health_ch_output_output)
 	trusted_users_output_a = trusted_users_cmd_str[3]
@@ -61,4 +61,5 @@ def trusted_users():
 	else:
 		trusted_users_re = colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
 	return trusted_users_re
+
 
