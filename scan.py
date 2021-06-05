@@ -15,12 +15,15 @@ from plugins.common import outputpl
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
 	docker_root_re = test_cases.docker_host.docker_root()
-	table = test_cases.docker_images.container_user()
-	table_he = test_cases.docker_containers.health_check()
-	table_he_a = test_cases.docker_containers.health_check()
 	kernel_version_re = test_cases.docker_host.kernel_version()
 	trusted_users_re =  test_cases.docker_host.trusted_users()
+
+	table = test_cases.docker_images.container_user()
 	update_instruction_table = test_cases.docker_images.update_ins()
+
+	table_he = test_cases.docker_containers.health_check()
+	table_apparmor = test_cases.docker_containers.apparmor()
+	
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -40,6 +43,7 @@ def output():
 	sc_im_2	= (tabulate(update_instruction_table))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
+	sc_co_2 = (tabulate(table_apparmor))
 	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
@@ -58,6 +62,7 @@ def output():
 		print (sc_im_2)
 		print (sc_co)
 		print (sc_co_1)
+		print (sc_co_2)
 		
 	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
 		plugin_1.run()
