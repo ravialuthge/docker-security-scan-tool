@@ -6,7 +6,7 @@ class banner:
 
 class outputpl:
     
-    def __init__(test, plugins):
+    def __init__(test,plugins):
         test.banner_out = [banner()]
         test.test_plugins = plugins
 
