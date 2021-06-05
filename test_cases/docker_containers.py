@@ -42,7 +42,7 @@ def health_check():
 		return table_he
 
 def apparmor():
-	images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
+	images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 	apparmor_cmd = "docker ps -q | xargs docker inspect --format '{{ .Id }}: AppArmorProfile={{ .AppArmorProfile }}'"
 	images_ch_cmd = "docker images -q  0> /dev/null"
 	f_app = open("re_apparmor.txt", "w")
