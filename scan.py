@@ -17,6 +17,7 @@ def output():
 	docker_root_re = test_cases.docker_host.docker_root()
 	table = test_cases.docker_images.container_user()
 	table_he = test_cases.docker_containers.health_check()
+	table_he_a = test_cases.docker_containers.health_check()
 	kernel_version_re = test_cases.docker_host.kernel_version()
 	trusted_users_re =  test_cases.docker_host.trusted_users()
 	update_instruction_table = test_cases.docker_images.update_ins()
