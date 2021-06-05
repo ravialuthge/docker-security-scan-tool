@@ -66,8 +66,8 @@ def apparmor():
 		 f_app.write("\n")
 		 f_st_app.write(apparmor_co_st)
 		 f_st_app.write("\n")
-		f_app= open("re.txt", "r")
-		f_st_app= open("re_st.txt", "r")
+		f_app= open("re_apparmor.txt", "r")
+		f_st_app= open("re_st_apparmor.txt", "r")
 		apparmor_co_f = f_app.read()
 		apparmor_co_f_st = f_st_app.read()
 		table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
