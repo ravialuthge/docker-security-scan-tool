@@ -57,7 +57,7 @@ def apparmor():
 		
 		for i in (apparmor_profile):
 		 if i == 'AppArmorProfile=':
-				apparmor_co = 'Verify AppArmor Profile'
+				apparmor_co = 'Verify AppArmor Profile, if applicable'
 				apparmor_co_st = colored('WARN  ', 'red')
 		 else:
 				apparmor_co = 'AppArmor Profile available'
