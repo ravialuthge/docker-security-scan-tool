@@ -50,7 +50,7 @@ def update_ins():
 		
 
 		for im in (images):
-			update_ins_cmd = "docker history" + im + " | grep -e 'update'"
+			update_ins_cmd = 'docker history ' + im + " | grep -e 'update'"
 			update_ins_output = os.popen(update_ins_cmd).read()
 			update_instruction = update_ins_output.split()
 			for i in (update_instruction):
