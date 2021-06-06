@@ -1,4 +1,5 @@
 
+
 class outputpl:
     
     def __init__(test,plugins):
@@ -7,5 +8,4 @@ class outputpl:
 
     def run(test):
         modules_run = test.test_plugins
-        for module in modules_run:
-            module.scan()
+        
