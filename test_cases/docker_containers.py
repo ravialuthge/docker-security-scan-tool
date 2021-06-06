@@ -3,18 +3,17 @@ import subprocess
 import re
 from termcolor import colored
 
-class containers:
+def containers():
 	container_ch_cmd = "docker ps -q  2> /dev/null"
 	if os.popen(container_ch_cmd).read() == "":
 			table_he_out = 'containers not running'
-			table_he = [[table_he_out]]
-			return table_he
+			table_he_a = [[table_he_out]]
+			return table_he_a
 	else:
 		def health_check():
 			health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
 			container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 			container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
-			container_ch_cmd = "docker ps -q  2> /dev/null"
 			f_he = open("re_he.txt", "w")
 			f_st_he = open("re_st_he.txt", "w")
 			health_ch_output = os.popen(health_ch_cmd).read()
