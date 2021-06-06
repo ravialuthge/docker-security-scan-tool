@@ -13,7 +13,7 @@ def health_check():
 	f_st_he = open("re_st_he.txt", "w")
 	if os.popen(container_ch_cmd).read() == "":
 		table_he_out = 'containers not running'
-	 	table_he_a = [[table_he_out]]
+		table_he_a = [[table_he_out]]
 		return table_he_a
 	else:
 		health_ch_output = os.popen(health_ch_cmd).read()
