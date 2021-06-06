@@ -3,20 +3,21 @@ import subprocess
 import re
 from termcolor import colored
 
-class containers:
- def containersnotfund():	
+
+def containersnotfund():	
     container_ch_cmd = "docker ps -q  2> /dev/null"
     if os.popen(container_ch_cmd).read() == "":
 		    table_he_out = 'containers not running'
 		    table_he_a = [[table_he_out]]
 		    return table_he_a
     else:
-	    def health_check():
+	    def health_check(containersnotfund):
 		    health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
 		    container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 		    container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
 		    f_he = open("re_he.txt", "w")
 		    f_st_he = open("re_st_he.txt", "w")
+			
 		    health_ch_output = os.popen(health_ch_cmd).read()
 		    container_image_output = os.popen(container_image_cmd).read()
 		    container_name_output_all = os.popen(container_name_cmd).read()
@@ -42,7 +43,7 @@ class containers:
 		    table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
 		    return table_he
 
-	    def apparmor():
+	    def apparmor(health_check):
 		    images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
 		    apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
 		    images_ch_cmd = "docker images -q  0> /dev/null"
