@@ -30,7 +30,3 @@ class dockeruserscan:
             print (colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon")
         else:
             print (colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon")
-
-class helloworld:
-    def scan(test):
-        print ("helloworld")

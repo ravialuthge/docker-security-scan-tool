@@ -9,7 +9,7 @@ import test_cases.docker_containers
 import test_cases.docker_host
 import test_cases.docker_images
 import runpy
-from plugins.testplugin import dockerdatadirscan,dockeruserscan,helloworld
+from plugins.testplugin import dockerdatadirscan,dockeruserscan
 from plugins.common import outputpl
 
 def output():
@@ -44,7 +44,7 @@ def output():
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
 	sc_co_2 = (tabulate(table_apparmor))
-	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan(),helloworld()])
+	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
 
 
 	arguments = len(sys.argv) -1
