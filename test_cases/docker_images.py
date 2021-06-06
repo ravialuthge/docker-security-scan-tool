@@ -11,6 +11,8 @@ def container_user():
 	f_st = open("re_st.txt", "w")
 	if os.popen(images_ch_cmd).read() == "":
 		container_user_co = 'images not found'
+		table_he_a = [[container_user_co]]
+		return table_he_a
 	else:
 		container_user_output = os.popen(container_user_cmd).read()
 		images_output = os.popen(images_cmd).read()
