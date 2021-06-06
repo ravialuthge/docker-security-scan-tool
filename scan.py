@@ -22,8 +22,8 @@ def output():
 	table = test_cases.docker_images.container_user()
 	update_instruction_table = test_cases.docker_images.update_ins()
 
-	table_he = test_cases.docker_containers.health_check()
-	table_apparmor = test_cases.docker_containers.apparmor()
+	table_he = test_cases.docker_containers.containers().health_check()
+	table_apparmor = test_cases.docker_containers.containers().apparmor()
 	
 	full_cmd_arguments = sys.argv
 
