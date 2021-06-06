@@ -12,6 +12,8 @@ import runpy
 from plugins.datadir import dockerdatadirscan
 from plugins.dockeruser import dockeruserscan
 from plugins.common import outputpl
+from test_cases.process import cis_version
+from test_cases.docker_host import cis_version_120
 
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
@@ -45,7 +47,7 @@ def output():
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	sc_co_1 = (tabulate(table_he))
 	sc_co_2 = (tabulate(table_apparmor))
-	plugin_1 = outputpl(plugins=[dockerdatadirscan(),dockeruserscan()])
+	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
 
 
 	arguments = len(sys.argv) -1
@@ -66,7 +68,7 @@ def output():
 		print (sc_co_2)
 		
 	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
-		plugin_1.run()
+		sc_ho_plugin_120.version_run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
 		sub_version="1.1.0"
 		main_version="v1.1.0 - 07-06-2017"
