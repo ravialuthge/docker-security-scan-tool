@@ -3,8 +3,8 @@ import subprocess
 import re
 from termcolor import colored
 
-class containers():
-  def containersnotfund():	
+class containers:
+ def containersnotfund():	
     container_ch_cmd = "docker ps -q  2> /dev/null"
     if os.popen(container_ch_cmd).read() == "":
 		    table_he_out = 'containers not running'
