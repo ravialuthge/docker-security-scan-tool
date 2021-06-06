@@ -11,6 +11,6 @@ from plugins.common import outputpl
 class cis_version_120:
 	def version_scan(version):
 		plugin_host_120 = outputpl(plugins=[dockerversion()])
-		return plugin_host_120
+		plugin_host_120.run()
 
 
