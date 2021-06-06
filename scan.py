@@ -9,7 +9,8 @@ import test_cases.docker_containers
 import test_cases.docker_host
 import test_cases.docker_images
 import runpy
-from plugins.testplugin import dockerdatadirscan,dockeruserscan
+from plugins.datadir import dockerdatadirscan
+from plugins.dockeruser import dockeruserscan
 from plugins.common import outputpl
 
 def output():
