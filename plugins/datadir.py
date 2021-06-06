@@ -1,6 +1,5 @@
 import os
 import subprocess
-import re
 from termcolor import colored
 
 class dockerdatadirscan:
