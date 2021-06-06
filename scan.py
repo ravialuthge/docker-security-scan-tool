@@ -18,7 +18,6 @@ from test_cases.docker_host import cis_version_120
 def output():
 	docker_version_re = test_cases.docker_host.docker_version()
 	docker_root_re = test_cases.docker_host.docker_root()
-	kernel_version_re = test_cases.docker_host.kernel_version()
 	trusted_users_re =  test_cases.docker_host.trusted_users()
 
 	table = test_cases.docker_images.container_user()
