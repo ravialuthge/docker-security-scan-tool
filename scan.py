@@ -34,10 +34,6 @@ def output():
 
 
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
-	sc_ho_1 = (docker_version_re)
-	sc_ho_2 = (docker_root_re)
-	sc_ho_3 = (kernel_version_re)
-	sc_ho_4 = (trusted_users_re)
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_im_1	= (tabulate(table))
 	sc_im_2	= (tabulate(update_instruction_table))
@@ -53,10 +49,7 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+		sc_ho_plugin_120.version_run()
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_im_2)
@@ -71,10 +64,7 @@ def output():
 		main_version="v1.1.0 - 07-06-2017"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -84,10 +74,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -96,10 +83,7 @@ def output():
 		sub_version_a="1.11.0"
 		print (banner .format(sub_version_a, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -108,10 +92,7 @@ def output():
 		sub_version_b="1.12.0"
 		print (banner .format(sub_version_b, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -120,10 +101,7 @@ def output():
 		sub_version_c="1.13.0"
 		print (banner .format(sub_version_c, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+		
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -133,10 +111,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+		
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -146,10 +121,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -159,10 +131,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -172,10 +141,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)
+	
 		print (sc_im)
 		print (sc_im_1)
 		print (sc_co)
@@ -185,10 +151,7 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (sc_ho_1)
-		print (sc_ho_2)
-		print (sc_ho_3)
-		print (sc_ho_4)	
+	
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
