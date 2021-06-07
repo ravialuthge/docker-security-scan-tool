@@ -47,7 +47,9 @@ def apparmor():
 		f_app = open("re_apparmor.txt", "w")
 		f_st_app = open("re_st_apparmor.txt", "w")
 		if os.popen(images_ch_cmd).read() == "":
-			container_user_co = 'images not found'
+			table_he_out = 'containers not running'
+			table_he_a = [[table_he_out]]
+			return table_he_a
 		else:
 			apparmor_output = os.popen(apparmor_cmd).read()
 			images_output = os.popen(images_cmd).read()
