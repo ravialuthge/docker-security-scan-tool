@@ -1,5 +1,6 @@
 import os
 from termcolor import colored
+from tabulate import tabulate
 
 class updateins:
     def scan(test):
@@ -35,4 +36,4 @@ class updateins:
             update_instruction_co_f = f_up.read()
             update_instruction_co_f_st = f_st_up.read()
             update_instruction_table = [[update_instruction_co_f_st , images_output , update_instruction_co_f]]
-            print (update_instruction_table)
+            print (tabulate(update_instruction_table))

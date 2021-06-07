@@ -1,5 +1,6 @@
 import os
 from termcolor import colored
+from tabulate import tabulate
 
 class  containeruser:
     def scan(test):
@@ -32,4 +33,4 @@ class  containeruser:
             container_user_co_f = f.read()
             container_user_co_f_st = f_st.read()
             table = [[container_user_co_f_st , images_output , container_user_co_f]]
-            print (table)
+            print (tabulate(table))
