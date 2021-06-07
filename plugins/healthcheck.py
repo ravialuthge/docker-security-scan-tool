@@ -2,6 +2,7 @@ import os
 import subprocess
 import re
 from termcolor import colored
+from tabulate import tabulate
 
 class healthcheck:
     def scan(test):
@@ -40,4 +41,4 @@ class healthcheck:
             health_ch_co_f = f_he.read()
             health_ch_co_f_st = f_st_he.read()
             table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
-            print (table_he)
+            print (tabulate(table_he))

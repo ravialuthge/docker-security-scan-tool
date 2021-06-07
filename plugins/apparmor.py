@@ -1,5 +1,6 @@
 import os
 from termcolor import colored
+from tabulate import tabulate
 
 class apparmor:
     def scan(test):
@@ -32,4 +33,4 @@ class apparmor:
             apparmor_co_f = f_app.read()
             apparmor_co_f_st = f_st_app.read()
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            print (table_apparmor)
+            print (tabulate(table_apparmor))
