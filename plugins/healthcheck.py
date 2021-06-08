@@ -13,7 +13,7 @@ class healthcheck:
         container_ch_cmd = "docker ps -q  2> /dev/null"
         f_he = open("re_he.txt", "w")
         f_st_he = open("re_st_he.txt", "w")
-        if os.popen(container_ch_cmd).read() == "":
+        if os.popen(container_ch_cmd).read() == "" or os.popen(health_ch_cmd).read() == "docker inspect":
             table_he_out = 'containers not running'
             table_he_a = [[table_he_out]]
             print (table_he_a)
