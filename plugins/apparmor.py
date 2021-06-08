@@ -5,13 +5,14 @@ from tabulate import tabulate
 class apparmor:
     def scan(test):
         images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
-        apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
+        
         images_ch_cmd = "docker images -q  0> /dev/null"
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
         if os.popen(images_ch_cmd).read() == "":
             container_user_co = 'images not found'
         else:
+            apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
             apparmor_output = os.popen(apparmor_cmd).read()
             images_output = os.popen(images_cmd).read()
         
