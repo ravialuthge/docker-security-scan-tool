@@ -2,10 +2,10 @@ import os
 import subprocess
 import re
 from termcolor import colored
-from plugins.dockerversion import dockerversion
-from plugins.datadir import dockerdatadirscan
-from plugins.kernelversion import kernelversion
-from plugins.dockeruser import dockeruserscan
+from plugins.dockerversion import *
+from plugins.datadir import *
+from plugins.kernelversion import *
+from plugins.dockeruser import *
 from plugins.common import outputpl
 
 class cis_version_120:

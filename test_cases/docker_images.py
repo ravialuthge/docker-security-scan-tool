@@ -2,8 +2,8 @@ import os
 import subprocess
 import re
 from termcolor import colored
-from plugins.containeruser import containeruser
-from plugins.updateins import updateins
+from plugins.containeruser import *
+from plugins.updateins import *
 from plugins.common import outputpl
 
 class cis_version_image_120:
