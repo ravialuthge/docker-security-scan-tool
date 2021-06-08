@@ -2,8 +2,8 @@ import os
 import subprocess
 import re
 from termcolor import colored
-from plugins.healthcheck import healthcheck
-from plugins.apparmor import apparmor
+from plugins.healthcheck import *
+from plugins.apparmor import *
 from plugins.common import outputpl
 
 class cis_version_containers_120:
