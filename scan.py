@@ -5,17 +5,17 @@ from termcolor import colored
 from tabulate import tabulate
 import sys
 import getopt
-import test_cases.docker_containers
-import test_cases.docker_host
-import test_cases.docker_images
+import profiles.docker_containers
+import profiles.docker_host
+import profiles.docker_images
 import runpy
 from plugins.datadir import dockerdatadirscan
 from plugins.dockeruser import dockeruserscan
 from plugins.common import outputpl
-from test_cases.process import cis_version
-from test_cases.docker_host import cis_version_120
-from test_cases.docker_images import cis_version_image_120
-from test_cases.docker_containers import cis_version_containers_120
+from profiles.process import cis_version
+from profiles.docker_host import cis_version_120
+from profiles.docker_images import cis_version_image_120
+from profiles.docker_containers import cis_version_containers_120
 
 def output():
 	
