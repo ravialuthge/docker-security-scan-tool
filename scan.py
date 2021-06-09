@@ -41,6 +41,8 @@ def output():
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
 	sc_co_plugin_120 = cis_version(version_plugins=[cis_version_containers_120()])
 
+	plugin_list = os.listdir('plugins/.')
+
 
 	arguments = len(sys.argv) -1
 	if arguments == 0:
@@ -163,6 +165,7 @@ def output():
 
 	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
 		print ("help")
+		print (plugin_list)
 	else:
 		print ("error")
 
