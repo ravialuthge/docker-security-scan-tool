@@ -41,7 +41,7 @@ def output():
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
 	sc_co_plugin_120 = cis_version(version_plugins=[cis_version_containers_120()])
 
-	plugin_list = os.listdir('plugins/.')
+	plugin_list = os.listdir('plugins/*.py')
 
 
 	arguments = len(sys.argv) -1
