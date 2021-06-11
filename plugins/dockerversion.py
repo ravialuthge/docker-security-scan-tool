@@ -19,17 +19,23 @@ class dockerversion:
             latest_version_str = latest_version_output.rstrip()
             latest_version_str_x = re.split(':|-',latest_version_str)
             latest_version = latest_version_str_x[1]
+            if install_version == latest_version:
+                docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
+            elif install_version != latest_version:
+                docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
+            else:
+                docker_version_re = "Docker not install"
+            print (docker_version_re)
         elif centos_version == 8:
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 4p"
             latest_version_output = os.popen(latest_version_cmd).read()
             latest_version_str = latest_version_output.rstrip()
             latest_version_str_x = re.split(':|-',latest_version_str)
             latest_version = latest_version_str_x[1]
-        
-        if install_version == latest_version:
-            docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
-        elif install_version != latest_version:
-            docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
-        else:
-            docker_version_re = "Docker not install"
-        print (docker_version_re)
+            if install_version == latest_version:
+                docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
+            elif install_version != latest_version:
+                docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
+            else:
+                docker_version_re = "Docker not install"
+            print (docker_version_re)
