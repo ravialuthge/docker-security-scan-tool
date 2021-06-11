@@ -13,9 +13,9 @@ from plugins.datadir import dockerdatadirscan
 from plugins.dockeruser import dockeruserscan
 from plugins.common import outputpl
 from profiles.process import cis_version
-from profiles.docker_host import cis_version_120
-from profiles.docker_images import cis_version_image_120
-from profiles.docker_containers import cis_version_containers_120
+from profiles.docker_host import *
+from profiles.docker_images import *
+from profiles.docker_containers import *
 
 def output():
 	
@@ -38,6 +38,7 @@ def output():
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	
 	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
+	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
 	sc_co_plugin_120 = cis_version(version_plugins=[cis_version_containers_120()])
 
@@ -109,10 +110,11 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		
+		sc_ho_plugin_16.version_run()
 		print (sc_im)
 	
 		print (sc_co)
+		
 
 	elif ((sys.argv[1] == '-sv' or sys.argv[1] == '--sub-version') and sys.argv[2] == '1.0.0') and sys.argv[3] == '1.11.0':
 		sub_version="1.11.0"

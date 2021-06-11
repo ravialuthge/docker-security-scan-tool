@@ -13,4 +13,9 @@ class cis_version_120:
 		plugin_host_120 = outputpl(plugins=[dockerversion(),dockerdatadirscan(),kernelversion(),dockeruserscan()])
 		plugin_host_120.run()
 
+class cis_version_16:
+	def version_scan(version):
+		plugin_host_16 = outputpl(plugins=[dockerversion(),dockerdatadirscan(),kernelversion(),dockeruserscan()])
+		plugin_host_16.run()
+
 
