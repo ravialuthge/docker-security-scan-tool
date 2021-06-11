@@ -13,7 +13,7 @@ class dockerversion:
         centos_version_cmd_output_a = centos_version_cmd_output.rstrip()
         centos_version_str_x = centos_version_cmd_output_a.split(".")
         centos_version = centos_version_str_x[0]
-        if centos_version == 7:
+        if centos_version == '7':
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
             latest_version_output = os.popen(latest_version_cmd).read()
             latest_version_str = latest_version_output.rstrip()
@@ -26,7 +26,7 @@ class dockerversion:
             else:
                 docker_version_re = "Docker not install"
             print (docker_version_re)
-        elif centos_version == 8:
+        elif centos_version == '8':
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 4p"
             latest_version_output = os.popen(latest_version_cmd).read()
             latest_version_str = latest_version_output.rstrip()
