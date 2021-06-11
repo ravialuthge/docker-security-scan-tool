@@ -18,14 +18,14 @@ class dockerversion:
             latest_version_output = os.popen(latest_version_cmd).read()
             latest_version_str = latest_version_output.rstrip()
             latest_version_str_x = re.split(':|-',latest_version_str)
-            latest_version = latest_version_str_x[1]
+            latest_version_a = latest_version_str_x[1]
         elif os.popen(centos_version).read() == 8:
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 4p"
             latest_version_output = os.popen(latest_version_cmd).read()
             latest_version_str = latest_version_output.rstrip()
             latest_version_str_x = re.split(':|-',latest_version_str)
-            latest_version = latest_version_str_x[1]
-
+            latest_version_a = latest_version_str_x[1]
+        latest_version = latest_version_a
         if install_version == latest_version:
             docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
         elif install_version != latest_version:
