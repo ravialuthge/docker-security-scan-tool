@@ -6,7 +6,8 @@ from termcolor import colored
 class dockerversion:
     def scan(test):
         install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
-        install_version_x = install_version_output.decode("utf-8")
+        install_version_output_a = install_version_output.rstrip()
+        install_version_x = install_version_output_a.decode("utf-8")
         install_version = install_version_x.replace("'",'')
         centos_version_cmd = "cat /etc/centos-release | awk '{print $4}'"
         centos_version_cmd_output = os.popen(centos_version_cmd).read()
