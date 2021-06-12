@@ -12,7 +12,7 @@ class healthcheck:
         if os.popen(container_ch_cmd).read() == "":
             table_he_out = 'containers not running'
             table_he_a = [[table_he_out]]
-            print (table_he_a)
+            print (table_he_out)
         else:
             health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
             container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
