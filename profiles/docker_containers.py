@@ -11,6 +11,11 @@ class cis_version_containers_120:
 		plugin_containers_120 = outputpl(plugins=[healthcheck(),apparmor()])
 		plugin_containers_120.run()
 
+class cis_version_containers_16:
+	def version_scan(version):
+		plugin_containers_16 = outputpl(plugins=[apparmor()])
+		plugin_containers_16.run()
+
 
 
 	

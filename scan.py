@@ -40,7 +40,9 @@ def output():
 	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
 	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
+	sc_im_plugin_16 = cis_version(version_plugins=[cis_version_image_16()]) 
 	sc_co_plugin_120 = cis_version(version_plugins=[cis_version_containers_120()])
+	sc_co_plugin_16 = cis_version(version_plugins=[cis_version_containers_16()])
 
 
 
@@ -112,8 +114,9 @@ def output():
 		print (sc_ho)
 		sc_ho_plugin_16.version_run()
 		print (sc_im)
-	
+		sc_im_plugin_16.version_run()
 		print (sc_co)
+		sc_co_plugin_16.version_run()
 		
 
 	elif ((sys.argv[1] == '-sv' or sys.argv[1] == '--sub-version') and sys.argv[2] == '1.0.0') and sys.argv[3] == '1.11.0':

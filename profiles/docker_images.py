@@ -10,3 +10,8 @@ class cis_version_image_120:
 	def version_scan(version):
 		plugin_images_120 = outputpl(plugins=[containeruser(),updateins()])
 		plugin_images_120.run()
+
+class cis_version_image_16:
+	def version_scan(version):
+		plugin_images_16 = outputpl(plugins=[containeruser()])
+		plugin_images_16.run()
