@@ -11,7 +11,6 @@ class  containeruser:
         f_st = open("re_st.txt", "w")
         if os.popen(images_ch_cmd).read() == "":
             images_ch_co = 'images not found'
-            print (images_ch_co)
         else:
             container_user_output = os.popen(container_user_cmd).read()
             images_output = os.popen(images_cmd).read()
