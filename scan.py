@@ -63,8 +63,6 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 		
-	elif (sys.argv[1] == '-p' or sys.argv[1] == '--plugin') and sys.argv[2] == 'testplugin':
-		sc_ho_plugin_120.version_run()
 	elif (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.1.0':
 		sub_version="1.1.0"
 		main_version="v1.1.0 - 07-06-2017"
