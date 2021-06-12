@@ -12,6 +12,7 @@ class updateins:
 
         if os.popen(images_ch_cmd).read() == "":
             images_ch_co = 'images not found'
+            print (images_ch_co)
         else:
             images_output = os.popen(images_cmd).read()
             images = images_output.split()
