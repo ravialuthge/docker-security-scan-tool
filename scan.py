@@ -78,16 +78,17 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-	
+		sc_ho_plugin_16.version_run()
 		print (sc_im)
-	
+		sc_im_plugin_16.version_run()
 		print (sc_co)
+		sc_co_plugin_16.version_run()
 		
 
 		sub_version_a="1.11.0"
 		print (banner .format(sub_version_a, main_version))
 		print (sc_ho)
-	
+		sc_ho_plugin_111.version_run()
 		print (sc_im)
 	
 		print (sc_co)
@@ -98,8 +99,9 @@ def output():
 		print (sc_ho)
 
 		print (sc_im)
-	
+		sc_im_plugin_112.version_run()
 		print (sc_co)
+		sc_co_plugin_112.version_run()
 	
 
 		sub_version_c="1.13.0"
