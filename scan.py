@@ -169,7 +169,7 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
-		print ("-v , --version       optional  run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0\n\\n\
+		print ("-v , --version       optional  run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0\n\n\
 -sv , --sub-version  optional  run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 	else:
 		print ("error")
