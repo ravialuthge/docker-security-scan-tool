@@ -47,7 +47,7 @@ def output():
 
 
 	arguments = len(sys.argv) -1
-	if arguments == 0:
+	if arguments == 0 or (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.2.0':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
