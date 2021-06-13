@@ -19,11 +19,6 @@ from profiles.docker_containers import *
 
 def output():
 	
-
-	
-
-
-	
 	full_cmd_arguments = sys.argv
 
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
