@@ -158,19 +158,19 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-	
+		sc_ho_plugin_120.version_run()
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'images':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_im)
-	
+		sc_im_plugin_120.version_run()
 	elif (sys.argv[1] == '-s' or sys.argv[1] == '--scan') and sys.argv[2] == 'containers':
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_co)
-
+		sc_co_plugin_120.version_run()
 	elif (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
 		print ("help")
 
