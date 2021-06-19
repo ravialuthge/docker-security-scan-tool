@@ -9,7 +9,7 @@ class encryptnet:
         f_encryptnet = open("re_encryptnet.txt", "w")
         f_st_encryptnet = open("re_st_encryptnet.txt", "w")
         encryptnet_ch_cmd = "docker network ls --filter driver=overlay --quiet | xargs docker network inspect --format '{{.Name}}' | grep -v 'dtr\|interlock map\|ingress'"
-        encryptnet_ch_en_cmd = "docker network ls --filter driver=overlay --quiet | xargs docker network inspect --format '{{ .Options }}' | grep -v 'dtr\|interlock map\|ingress map'"
+        encryptnet_ch_en_cmd = "docker network ls --filter driver=overlay --quiet | xargs docker network inspect --format '{{.Name}} {{ .Options }}' | grep -v 'dtr\|interlock map\|ingress map'"
         
         encryptnet_ch_output = os.popen(encryptnet_ch_cmd).read()
         encryptnet_ch_en_output = os.popen(encryptnet_ch_en_cmd).read()
