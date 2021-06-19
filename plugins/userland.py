@@ -6,9 +6,9 @@ class userland:
 	def scan(test):
 	    userland_cmd = "ps -ef | grep dockerd | grep userland-proxy"
 	    userland_output_a = os.popen(userland_cmd).read()
-	    userland_output = userland_output_a.rstrip()
+	    userland_output = "proxy=" + userland_output_a
 
-	    if userland_output == '':
+	    if userland_output == 'proxy=':
 		    userland_re = colored('WARN   ', 'red') + "Disable Userland Proxy"
 	    else:
 		    userland_re = colored('PASS   ', 'green') + "Userland Proxy disabled"
