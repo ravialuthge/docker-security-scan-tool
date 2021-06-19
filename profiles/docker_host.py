@@ -8,6 +8,7 @@ from plugins.kernelversion import *
 from plugins.dockeruser import *
 from plugins.cgroup import *
 from plugins.auditcontainerd import *
+from plugins.userland import *
 from plugins.common import outputpl
 
 class cis_version_120:
@@ -29,6 +30,11 @@ class cis_version_112:
 	def version_scan(version):
 		plugin_host_112 = outputpl(plugins=[auditcontainerd()])
 		plugin_host_112.run()
+
+class cis_version_113:
+	def version_scan(version):
+		plugin_host_113 = outputpl(plugins=[userland()])
+		plugin_host_113.run()
 
 
 

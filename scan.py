@@ -36,6 +36,7 @@ def output():
 	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
 	sc_ho_plugin_111 = cis_version(version_plugins=[cis_version_111()])
 	sc_ho_plugin_112 = cis_version(version_plugins=[cis_version_112()])
+	sc_ho_plugin_113 = cis_version(version_plugins=[cis_version_113()])
 
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
 	sc_im_plugin_16 = cis_version(version_plugins=[cis_version_image_16()])
@@ -106,7 +107,7 @@ def output():
 		sub_version_c="1.13.0"
 		print (banner .format(sub_version_c, main_version))
 		print (sc_ho)
-		
+		sc_ho_plugin_113.version_run()
 		print (sc_im)
 	
 		print (sc_co)
@@ -150,7 +151,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-	
+		sc_ho_plugin_113.version_run()
 		print (sc_im)
 	
 		print (sc_co)
@@ -184,13 +185,12 @@ if __name__ == "__main__":
 	output()
 
 try:
-	os.remove("re.txt")
-	os.remove("re_st.txt")
-	os.remove("re_he.txt")
-	os.remove("re_st_he.txt")
-	os.remove("re_up.txt")
-	os.remove("re_st_up.txt")
-	os.remove("re_apparmor.txt")
-	os.remove("re_st_apparmor.txt")
+	os.remove.endswith(".txt")
+#	os.remove("re_st.txt")
+#   os.remove("re_st_he.txt")
+#	os.remove("re_up.txt")
+#	os.remove("re_st_up.txt")
+#	os.remove("re_apparmor.txt")
+#	os.remove("re_st_apparmor.txt")
 except:
 	pass
