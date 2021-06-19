@@ -26,7 +26,7 @@ class encryptnet:
                 f_encryptnet.write("\n")
                 f_st_encryptnet.write(encryptnet_ch_co_st)
                 f_st_encryptnet.write("\n")
-		f_encryptnet= open("re_encryptnet.txt", "r")
+	        f_encryptnet= open("re_encryptnet.txt", "r")
 		f_st_encryptnet= open("re_st_encryptnet.txt", "r")
 		encryptnet_ch_co_f = f_encryptnet.read()
 		encryptnet_ch_co_f_st = f_st_encryptnet.read()
