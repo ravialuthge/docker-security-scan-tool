@@ -35,6 +35,7 @@ def output():
 	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
 	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
 	sc_ho_plugin_111 = cis_version(version_plugins=[cis_version_111()])
+	sc_ho_plugin_112 = cis_version(version_plugins=[cis_version_112()])
 
 	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
 	sc_im_plugin_16 = cis_version(version_plugins=[cis_version_image_16()])
@@ -95,7 +96,7 @@ def output():
 		sub_version_b="1.12.0"
 		print (banner .format(sub_version_b, main_version))
 		print (sc_ho)
-
+		sc_ho_plugin_112.version_run()
 		print (sc_im)
 		sc_im_plugin_112.version_run()
 		print (sc_co)
@@ -138,7 +139,7 @@ def output():
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-	
+		sc_ho_plugin_112.version_run()
 		print (sc_im)
 		sc_im_plugin_112.version_run()
 		print (sc_co)
