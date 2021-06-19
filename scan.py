@@ -186,6 +186,6 @@ if __name__ == "__main__":
 
 try:
 	os.remove("re.txt")
-	os.remove("re_*.txt")
+	os.remove("re_*")
 except:
 	pass
