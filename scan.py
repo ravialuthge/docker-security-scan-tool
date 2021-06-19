@@ -184,6 +184,12 @@ def output():
 if __name__ == "__main__":     
 	output()
 
+pwd_cmd = "pwd"
+pwd_output = os.popen(pwd_cmd).read()
+pwd_list = os.listdir(pwd_output)
+for list in pwd_list:
+    if list.endswith(".txt"):
+        os.remove(os.path.join(pwd_output, list))
 try:
 	os.remove("re.txt")
 	os.remove("re_*")
