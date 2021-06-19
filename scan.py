@@ -185,7 +185,8 @@ if __name__ == "__main__":
 	output()
 
 pwd_cmd = "pwd"
-pwd_output = os.popen(pwd_cmd).read()
+pwd_output_a = os.popen(pwd_cmd).read()
+pwd_output = pwd_output_a.rstrip()
 pwd_list = os.listdir(pwd_output)
 for list in pwd_list:
     if list.endswith(".txt"):
