@@ -18,11 +18,12 @@ class encryptnet:
 
         for en in (encryptnet_ch):
                 if word in en:
-                        encryptnet_ch_co = 'Encrypt data exchanged between containers on different nodes on the overlay network'
-                        encryptnet_ch_co_st = colored('WARN  ', 'red')
-                else:
                         encryptnet_ch_co = 'Encrypted data exchanged between containers on different nodes on the overlay network'
                         encryptnet_ch_co_st = colored('PASS  ', 'green')
+                        
+                else:
+                        encryptnet_ch_co = 'Encrypt data exchanged between containers on different nodes on the overlay network'
+                        encryptnet_ch_co_st = colored('WARN  ', 'red')
                 f_encryptnet.write(encryptnet_ch_co) 
                 f_encryptnet.write("\n")
                 f_st_encryptnet.write(encryptnet_ch_co_st)
