@@ -16,6 +16,7 @@ from profiles.process import cis_version
 from profiles.docker_host import *
 from profiles.docker_images import *
 from profiles.docker_containers import *
+import argparse
 
 def output():
 	
@@ -48,10 +49,75 @@ def output():
 	sc_co_plugin_111 = cis_version(version_plugins=[cis_version_containers_111()])
 	sc_co_plugin_112 = cis_version(version_plugins=[cis_version_containers_112()])
 
-
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-v", "--version", help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)",
+						action="store_true")
+	parser.add_argument("-sv", "--sub_version", help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)",
+						action="store_true")
+	parser.add_argument("-p", "--profile", help="run for configuration profiles  (currently available docker host , docker images & docker containers)",
+						action="store_true")
+	args = parser.parse_args()
+	if args.version == "1.2.0" or args:
+		sub_version="1.2.0"
+		main_version="v1.2.0 - 07-29-2019"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_120.version_run()
+		print (sc_im)
+		sc_im_plugin_120.version_run()
+		print (sc_co)
+		sc_co_plugin_120.version_run()
+	elif args.version == "1.1.0":
+		sub_version="1.1.0"
+		main_version="v1.1.0 - 07-06-2017"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		
+		print (sc_im)
+		
+		print (sc_co)
+	elif args.version == "1.0.0" and args.sub_version == "1.6":
+		sub_version="1.6"
+		main_version="v1.0.0 - 04-22-2015"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_16.version_run()
+		print (sc_im)
+		sc_im_plugin_16.version_run()
+		print (sc_co)
+		sc_co_plugin_16.version_run()
+	elif args.version == "1.0.0" and args.sub_version == "1.11.0":
+		sub_version="1.11.0"
+		main_version="v1.0.0 - 04-22-2015"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_111.version_run()
+		print (sc_im)
+		sc_im_plugin_111.version_run()
+		print (sc_co)
+		sc_co_plugin_111.version_run()
+	elif args.version == "1.0.0" and args.sub_version == "1.12.0":
+		sub_version="1.12.0"
+		main_version="v1.0.0 - 04-22-2015"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_112.version_run()
+		print (sc_im)
+		sc_im_plugin_112.version_run()
+		print (sc_co)
+		sc_co_plugin_112.version_run()
+	elif args.version == "1.0.0" and args.sub_version == "1.13.0":
+		sub_version="1.13.0"
+		main_version="v1.0.0 - 04-22-2015"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_113.version_run()
+		print (sc_im)
+	
+		print (sc_co)
 
 	arguments = len(sys.argv) -1
-	if arguments == 0 or (sys.argv[1] == '-v' or sys.argv[1] == '--version') and sys.argv[2] == '1.2.0':
+	if arguments == 0:
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
