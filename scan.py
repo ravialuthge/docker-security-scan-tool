@@ -55,7 +55,7 @@ def output():
 	parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)",
 						action="store_true",required=True)
 	args = parser.parse_args()
-	if args.version == "1.2.0" or args:
+	if args:
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
