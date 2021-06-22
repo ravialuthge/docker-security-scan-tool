@@ -49,11 +49,11 @@ def output():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-v", "--version", type=int , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)",
-						action="store_true")
-	parser.add_argument("-sv", "--sub_version", type=int , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)",
-						action="store_true")
-	parser.add_argument("-p", "--profile", help="run for configuration profiles  (currently available docker host , docker images & docker containers)",
-						action="store_true")
+						action="store_true",required=True)
+	parser.add_argument("-sv", "--sub-version", type=int , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)",
+						action="store_true",required=True)
+	parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)",
+						action="store_true",required=True)
 	args = parser.parse_args()
 	if args.version == "1.2.0" or args:
 		sub_version="1.2.0"
