@@ -144,7 +144,3 @@ for list in pwd_list:
     if list.endswith(".txt"):
         os.remove(os.path.join(pwd_output, list))
 
-try:
-    output()
-except KeyboardInterrupt:
-        print ("Interrupted")
