@@ -1,6 +1,6 @@
 class cis_version:
     
-    def __init__(version,version_plugins):
+    def __init__(version, *, version_plugins: list=list()):
         version.version_test_plugins = version_plugins
 
     def version_run(version):
