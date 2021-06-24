@@ -3,6 +3,7 @@ import re
 from termcolor import colored
 
 class contenttrust:
+	"""Enable Content trust for Docker"""
 	def scan(test):
 		contenttrust_cmd = "1"
 		contenttrust_version_cmd = "echo $DOCKER_CONTENT_TRUST"
