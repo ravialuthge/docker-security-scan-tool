@@ -1,14 +1,17 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
+import docker
 
 class  containeruser:
     def scan(test):
-        images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
-        container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
-        images_ch_cmd = "docker images -q  0> /dev/null"
         f = open("re.txt", "w")
         f_st = open("re_st.txt", "w")
+        images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
+        container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
+        client = docker.from_env()
+        for container in client.containers.list():
+            images_ch_cmd = container.id
         if os.popen(images_ch_cmd).read() == "":
             images_ch_co = 'images not found'
         else:
