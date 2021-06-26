@@ -1,17 +1,5 @@
 import os
-import subprocess
-import re
 from termcolor import colored
-from tabulate import tabulate
-import sys
-import getopt
-import profiles.docker_containers
-import profiles.docker_host
-import profiles.docker_images
-import runpy
-from plugins.datadir import dockerdatadirscan
-from plugins.dockeruser import dockeruserscan
-from plugins.common import outputpl
 from profiles.process import cis_version
 from profiles.docker_host import *
 from profiles.docker_images import *
