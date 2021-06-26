@@ -50,7 +50,7 @@ def output():
 		
 		print (sc_co)
 	
-	elif args.sub_version:
+	elif args.sub_version == "1.0.0":
 		sub_version="1.6"
 		main_version="v1.0.0 - 04-22-2015"
 		print (banner .format(sub_version, main_version))
