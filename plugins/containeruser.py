@@ -12,7 +12,7 @@ class  containeruser:
         client = docker.from_env()
         for container in client.containers.list():
             images_ch_cmd = container.id
-        if os.popen(images_ch_cmd).read() == "":
+        if images_ch_cmd == "":
             images_ch_co = 'images not found'
         else:
             container_user_output = os.popen(container_user_cmd).read()
