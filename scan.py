@@ -114,6 +114,9 @@ def output():
 			print (sc_im)
 		
 			print (sc_co)
+		else:
+			parser = argparse.ArgumentParser()
+			parser.parse_args()
 	
 
 if __name__ == "__main__":     
