@@ -115,8 +115,6 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 
-		
-
 if __name__ == "__main__":     
 	output()
 
