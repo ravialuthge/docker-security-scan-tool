@@ -1,6 +1,6 @@
 class outputpl:
     
-    def __init__(test, *, plugins: list=list(), *args, **kwargs):
+    def __init__(test, *, plugins: list=list()):
         test.test_plugins = plugins
 
     def run(test):
