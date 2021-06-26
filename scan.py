@@ -40,7 +40,19 @@ def output():
 	parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 	parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 	args = parser.parse_args()
-	if args.version == "1.1.0":
+
+	if args.version == "1.2.0":
+		sub_version="1.2.0"
+		main_version="v1.2.0 - 07-29-2019"
+		print (banner .format(sub_version, main_version))
+		print (sc_ho)
+		sc_ho_plugin_120.version_run()
+		print (sc_im)
+		sc_im_plugin_120.version_run()
+		print (sc_co)
+		sc_co_plugin_120.version_run()
+
+	elif args.version == "1.1.0":
 		sub_version="1.1.0"
 		main_version="v1.1.0 - 07-06-2017"
 		print (banner .format(sub_version, main_version))
@@ -89,19 +101,7 @@ def output():
 		print (sc_im)
 	
 		print (sc_co)
-
-
-	elif args:
-		
-		sub_version="1.2.0"
-		main_version="v1.2.0 - 07-29-2019"
-		print (banner .format(sub_version, main_version))
-		print (sc_ho)
-		sc_ho_plugin_120.version_run()
-		print (sc_im)
-		sc_im_plugin_120.version_run()
-		print (sc_co)
-		sc_co_plugin_120.version_run()
+	
 
 if __name__ == "__main__":     
 	output()
