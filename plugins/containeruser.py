@@ -10,8 +10,8 @@ class  containeruser:
         images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
         container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
         client = docker.from_env()
-        for container in client.containers.list():
-            images_ch_cmd = container.id
+        for image in client.images.list():
+            images_ch_cmd = image.id
         if images_ch_cmd == "":
             images_ch_co = 'images not found'
         else:

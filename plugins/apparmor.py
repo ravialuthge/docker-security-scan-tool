@@ -8,10 +8,10 @@ class apparmor:
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
         client = docker.from_env()
-        for image in client.images.list():
-            images_ch_cmd = image.id
-        if images_ch_cmd == "":
-            container_user_co = 'images not found'
+        for container in client.containers.list():
+            container_ch_cmd = container.id 
+        if container_ch_cmd == "":
+            container_user_co = 'containers not found'
         else:
             images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
             apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"

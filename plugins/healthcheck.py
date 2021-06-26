@@ -3,13 +3,16 @@ import subprocess
 import re
 from termcolor import colored
 from tabulate import tabulate
+import docker
 
 class healthcheck:
     def scan(test):
-        container_ch_cmd = "docker ps -q  2> /dev/null"
         f_he = open("re_he.txt", "w")
         f_st_he = open("re_st_he.txt", "w")
-        if os.popen(container_ch_cmd).read() == "":
+        client = docker.from_env()
+        for container in client.containers.list():
+            container_ch_cmd = container.id 
+        if container_ch_cmd == "":
             table_he_out = 'containers not running'
             print (table_he_out)
         else:
