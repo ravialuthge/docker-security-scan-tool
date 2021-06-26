@@ -9,7 +9,8 @@ class apparmor:
         f_st_app = open("re_st_apparmor.txt", "w")
         client = docker.from_env()
         for container in client.containers.list():
-            container_ch_cmd = container.id 
+            container_ch_cmd_a = container.id
+            container_ch_cmd = container_ch_cmd_a.splitlines() 
             if container_ch_cmd == "":
                 container_user_co = 'containers not found'
             else:
