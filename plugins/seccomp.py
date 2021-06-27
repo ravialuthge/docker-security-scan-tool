@@ -13,7 +13,7 @@ class seccomp:
             table_seccomp_out = 'containers not running'
             print (table_seccomp_out)
         else:
-            seccomp_ch_cmd = "docker ps --quiet | xargs docker inspect --format  'SecurityOpt={{ .HostConfig.SecurityOpt }}'"
+            seccomp_ch_cmd = "docker inspect $(docker ps -q) --format  'SecurityOpt={{ .HostConfig.SecurityOpt }}'"
             container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
             container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
             seccomp_ch_output = os.popen(seccomp_ch_cmd).read()

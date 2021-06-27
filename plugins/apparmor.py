@@ -18,7 +18,7 @@ class apparmor:
             print ('containers not running')
         else:
             images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
-            apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
+            apparmor_cmd = "docker inspect $(docker ps -q) --format 'AppArmorProfile={{ .AppArmorProfile }}'"
             apparmor_output = os.popen(apparmor_cmd).read()
             images_output = os.popen(images_cmd).read()
         

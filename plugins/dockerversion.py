@@ -2,6 +2,7 @@ import os
 import subprocess
 import re
 from termcolor import colored
+import platform
 
 class dockerversion:
     def scan(test):
@@ -9,10 +10,8 @@ class dockerversion:
         install_version_output_a = install_version_output.rstrip()
         install_version_x = install_version_output_a.decode("utf-8")
         install_version = install_version_x.replace("'",'')
-        centos_version_cmd = "cat /etc/centos-release | awk '{print $4}'"
-        centos_version_cmd_output = os.popen(centos_version_cmd).read()
-        centos_version_cmd_output_a = centos_version_cmd_output.rstrip()
-        centos_version_str_x = centos_version_cmd_output_a.split(".")
+        centos_version_cmd = platform.linux_distribution()[1]
+        centos_version_str_x = centos_version_cmd.split(".")
         centos_version = centos_version_str_x[0]
         if centos_version == '7':
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 6p"
