@@ -4,18 +4,18 @@ from tabulate import tabulate
 import docker
 
 class apparmor:
-    def docker_conatiners():
-        client = docker.from_env()
-        for container in client.containers.list():
-            container_ch_cmd = container.id 
-            return container_ch_cmd
-            
-    def scan(test,container_ch_cmd):
+    def scan(test):
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
-        container_ch_cmd_a = container_ch_cmd
-        if container_ch_cmd_a == "":
-            print ('containers not found')
+        f_st_app_con = open("re_st_apparmor_con.txt", "w")
+        client = docker.from_env()
+        for container in client.containers.list():
+            container_ch_cmd_a = container.id 
+            f_st_app_con.write(container_ch_cmd_a)
+        f_st_app_con = open("re_st_apparmor_con.txt", "r")
+        container_ch_cmd = f_st_app_con.read()
+        if container_ch_cmd == "":
+            print ('containers not running')
         else:
             images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
             apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
@@ -41,4 +41,3 @@ class apparmor:
             apparmor_co_f_st = f_st_app.read()
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
             print (tabulate(table_apparmor))
-    docker_conatiners()
