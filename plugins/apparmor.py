@@ -4,7 +4,7 @@ from tabulate import tabulate
 import docker
 
 class apparmor:
-    def docker_conatiners(container_ch_cmd):
+    def docker_conatiners():
         client = docker.from_env()
         for container in client.containers.list():
             container_ch_cmd = container.id 
