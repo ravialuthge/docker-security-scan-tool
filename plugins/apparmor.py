@@ -4,7 +4,7 @@ from tabulate import tabulate
 import docker
 
 class apparmor:
-    def docker_conatiners():
+    def docker_conatiners(container_ch_cmd):
         client = docker.from_env()
         for container in client.containers.list():
             container_ch_cmd = container.id 
@@ -40,3 +40,4 @@ class apparmor:
             apparmor_co_f_st = f_st_app.read()
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
             print (tabulate(table_apparmor))
+    docker_conatiners()
