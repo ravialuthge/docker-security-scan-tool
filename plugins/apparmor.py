@@ -1,14 +1,21 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
+import docker
 
 class apparmor:
     def scan(test):
-        images_ch_cmd = "docker images -q  0> /dev/null"
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
-        if os.popen(images_ch_cmd).read() == "":
-            container_user_co = 'images not found'
+        f_st_app_con = open("re_st_apparmor_con.txt", "w")
+        client = docker.from_env()
+        for container in client.containers.list():
+            container_ch_cmd_a = container.id 
+            f_st_app_con.write(container_ch_cmd_a)
+        f_st_app_con = open("re_st_apparmor_con.txt", "r")
+        container_ch_cmd = f_st_app_con.read()
+        if container_ch_cmd == "":
+            print ('containers not running')
         else:
             images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
             apparmor_cmd = "docker ps -q | xargs docker inspect --format 'AppArmorProfile={{ .AppArmorProfile }}'"
