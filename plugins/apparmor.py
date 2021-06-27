@@ -13,7 +13,8 @@ class apparmor:
     def scan(test,container_ch_cmd):
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
-        if container_ch_cmd == "":
+        container_ch_cmd_a = container_ch_cmd
+        if container_ch_cmd_a == "":
             print ('containers not found')
         else:
             images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
