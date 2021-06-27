@@ -1,7 +1,7 @@
 import os
 import sys
 from termcolor import colored
-from profiles.process import cis_version
+from profiles.process import *
 from profiles.docker_host import *
 from profiles.docker_images import *
 from profiles.docker_containers import *

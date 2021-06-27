@@ -5,7 +5,7 @@ from termcolor import colored
 from plugins.healthcheck import *
 from plugins.apparmor import *
 from plugins.seccomp import *
-from plugins.common import outputpl
+from plugins.common import *
 
 class cis_version_containers_120:
 	def version_scan(version):

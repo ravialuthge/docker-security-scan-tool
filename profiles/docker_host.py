@@ -9,7 +9,7 @@ from plugins.dockeruser import *
 from plugins.cgroup import *
 from plugins.auditcontainerd import *
 from plugins.encryptnet import *
-from plugins.common import outputpl
+from plugins.common import *
 
 class cis_version_120:
 	def version_scan(version):
