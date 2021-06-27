@@ -1,5 +1,4 @@
 import os
-import re
 from termcolor import colored
 
 class contenttrust:

@@ -1,7 +1,3 @@
-import os
-import subprocess
-import re
-from termcolor import colored
 from plugins.healthcheck import *
 from plugins.apparmor import *
 from plugins.seccomp import *

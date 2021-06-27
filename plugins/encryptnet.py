@@ -1,6 +1,4 @@
 import os
-import subprocess
-import re
 from termcolor import colored
 from tabulate import tabulate
 

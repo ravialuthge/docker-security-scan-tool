@@ -1,7 +1,3 @@
-import os
-import subprocess
-import re
-from termcolor import colored
 from plugins.dockerversion import *
 from plugins.datadir import *
 from plugins.kernelversion import *
