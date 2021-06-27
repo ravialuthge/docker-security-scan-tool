@@ -6,14 +6,16 @@ from tabulate import tabulate
 import docker
 
 class healthcheck:
-    def docker_conatiners():
-        client = docker.from_env()
-        for container in client.containers.list():
-            container_ch_cmd = container.id 
-            return container_ch_cmd
-    def scan(test,container_ch_cmd):
+    def scan(test):
         f_he = open("re_he.txt", "w")
         f_st_he = open("re_st_he.txt", "w")
+        f_he_con = open("re_st_he_con.txt", "w")
+        client = docker.from_env()
+        for container in client.containers.list():
+            container_ch_cmd_a = container.id 
+            f_he_con.write(container_ch_cmd_a)
+        f_he_con = open("re_st_he_con.txt", "r")
+        container_ch_cmd = f_he_con.read()
         if container_ch_cmd == "":
             table_he_out = 'containers not running'
             print (table_he_out)
@@ -45,4 +47,3 @@ class healthcheck:
             health_ch_co_f_st = f_st_he.read()
             table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
             print (tabulate(table_he))
-    docker_conatiners()
