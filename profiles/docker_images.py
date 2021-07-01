@@ -3,6 +3,7 @@
 #from plugins.contenttrust import *
 from plugins.common import *
 from plugins import *
+import plugins
 
 class cis_version_image_120:
 	def version_scan(version):
