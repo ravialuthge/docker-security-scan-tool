@@ -6,7 +6,7 @@ from plugins.cgroup import *
 from plugins.auditcontainerd import *
 from plugins.encryptnet import *
 from plugins.common import *
-from plugins import *
+#from plugins import *
 
 class cis_version_120:
 	def version_scan(version):
