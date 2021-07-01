@@ -1,9 +1,8 @@
-#from plugins.containeruser import *
-#from plugins.updateins import *
-#from plugins.contenttrust import *
+from plugins.containeruser import *
+from plugins.updateins import *
+from plugins.contenttrust import *
 from plugins.common import *
-from plugins import *
-import plugins
+#from plugins import *
 
 class cis_version_image_120:
 	def version_scan(version):
