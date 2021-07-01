@@ -2,7 +2,7 @@ import os
 import sys
 from termcolor import colored
 from profiles.process import *
-#from profiles.docker_host import *
+from profiles.docker_host import *
 from profiles.docker_images import *
 from profiles.docker_containers import *
 import argparse
@@ -25,8 +25,6 @@ def loadImports(path):
 
     file.write(toWrite)
     file.close()
-
-from profiles import *
 
 def output():
 	
@@ -141,7 +139,8 @@ def output():
 	
 
 if __name__ == "__main__":
-	loadImports('profiles/')     
+	loadImports('profiles/') 
+	loadImports('plugins/')    
 	output()
 
 pwd_output = os.getcwd()
