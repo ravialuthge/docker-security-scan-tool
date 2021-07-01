@@ -7,6 +7,27 @@ from profiles.docker_images import *
 from profiles.docker_containers import *
 import argparse
 
+def loadImports(path):
+    files = os.listdir(path)
+    imps = []
+
+    for i in range(len(files)):
+        name = files[i].split('.')
+        if len(name) > 1:
+            if name[1] == 'py' and name[0] != '__init__':
+               name = name[0]
+               imps.append(name)
+
+    file = open(path+'__init__.py','w')
+
+    toWrite = '__all__ = '+str(imps)
+
+    file.write(toWrite)
+    file.close()
+
+loadImports('profiles/')
+from profiles import *
+
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -119,7 +140,8 @@ def output():
 			parser.parse_args()
 	
 
-if __name__ == "__main__":     
+if __name__ == "__main__":
+	loadImports()     
 	output()
 
 pwd_output = os.getcwd()
