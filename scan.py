@@ -1,11 +1,12 @@
 import os
 import sys
 from termcolor import colored
-from profiles.process import *
+#from profiles.process import *
 from profiles.docker_host import *
 from profiles.docker_images import *
 from profiles.docker_containers import *
 import argparse
+from profiles import *
 
 def loadImports(path):
     files = os.listdir(path)
@@ -25,7 +26,6 @@ def loadImports(path):
     file.write(toWrite)
     file.close()
 
-loadImports('profiles/')
 from profiles import *
 
 def output():
