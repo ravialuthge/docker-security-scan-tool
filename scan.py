@@ -141,7 +141,7 @@ def output():
 	
 
 if __name__ == "__main__":
-	loadImports()     
+	loadImports('profiles/')     
 	output()
 
 pwd_output = os.getcwd()
