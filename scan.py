@@ -8,20 +8,20 @@ from profiles.process import *
 import argparse
 #from profiles import *
 
-def loadImports(path):
-    files = os.listdir(path)
-    imps = []
+def modulesimport(folder):
+    files = os.listdir(folder)
+    moduleslist = []
 
     for i in range(len(files)):
         name = files[i].split('.')
         if len(name) > 1:
             if name[1] == 'py' and name[0] != '__init__':
                name = name[0]
-               imps.append(name)
+               moduleslist.append(name)
 
-    file = open(path+'__init__.py','w')
+    file = open(folder+'__init__.py','w')
 
-    toWrite = '__all__ = '+str(imps)
+    toWrite = '__all__ = '+str(moduleslist)
 
     file.write(toWrite)
     file.close()
@@ -139,8 +139,8 @@ def output():
 	
 
 if __name__ == "__main__":
-	loadImports('profiles/') 
-	loadImports('plugins/')    
+	modulesimport('profiles/') 
+	modulesimport('plugins/')    
 	output()
 
 pwd_output = os.getcwd()
