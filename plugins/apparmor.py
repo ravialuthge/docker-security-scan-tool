@@ -43,24 +43,25 @@ class apparmor:
                 apparmor_output = os.popen(apparmor_cmd).read()
                 apparmor_profile = apparmor_output.rstrip()
                 apparmor_profile_str = str(apparmor_profile)
-                apparmor_profile_str_a = apparmor_profile_str.split()
                 f_st_app_images_a.write(apparmor_profile_str)
                 f_st_app_images_a.write("\n")
-                
-                for i in (apparmor_profile_str_a):
-                    if i == 'AppArmorProfile=':
-                            apparmor_co = 'Verify AppArmor Profile, if applicable'
-                            apparmor_co_st = colored('WARN  ', 'red')
-                    else:
-                            apparmor_co = 'AppArmor Profile available'
-                            apparmor_co_st = colored('PASS  ', 'green')
-                    f_app.write(apparmor_co)
-                    f_app.write("\n")
-                    f_st_app.write(apparmor_co_st)
-                    f_st_app.write("\n")
-                f_app= open("re_apparmor.txt", "r")
-                f_st_app= open("re_st_apparmor.txt", "r")
-                apparmor_co_f = f_app.read()
-                apparmor_co_f_st = f_st_app.read()
-                table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-                print (tabulate(table_apparmor))
+            f_st_app_images_a = open("re_st_apparmor_images_a.txt", "r")
+            apparmor_profile_str_a =  f_st_app_images_a.read()   
+            apparmor_profile_str_a_s = apparmor_profile_str_a.split() 
+            for i in (apparmor_profile_str_a_s):
+                if i == 'AppArmorProfile=':
+                        apparmor_co = 'Verify AppArmor Profile, if applicable'
+                        apparmor_co_st = colored('WARN  ', 'red')
+                else:
+                        apparmor_co = 'AppArmor Profile available'
+                        apparmor_co_st = colored('PASS  ', 'green')
+                f_app.write(apparmor_co)
+                f_app.write("\n")
+                f_st_app.write(apparmor_co_st)
+                f_st_app.write("\n")
+            f_app= open("re_apparmor.txt", "r")
+            f_st_app= open("re_st_apparmor.txt", "r")
+            apparmor_co_f = f_app.read()
+            apparmor_co_f_st = f_st_app.read()
+            table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
+            print (tabulate(table_apparmor))
