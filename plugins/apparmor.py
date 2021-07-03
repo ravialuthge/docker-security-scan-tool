@@ -35,13 +35,13 @@ class apparmor:
             f_st_app_images = open("re_st_apparmor_images.txt", "r")
             images_output = f_st_app_images.read()
             f_st_app_images_id = open("re_st_apparmor_images_id.txt", "r")
-            images_output_id =  f_st_app_images_id.read()    
-            images = images_output_id.split()
+            images_output_id =  f_st_app_images_id.read()   
+            images = images_output_id.splitlines()
             for im in (images):
                 apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
                 apparmor_output = os.popen(apparmor_cmd).read()
-                
-                apparmor_profile = apparmor_output.split()
+                apparmor_output_a = apparmor_output.rstrip()
+                apparmor_profile = apparmor_output_a.split()
                 
                 for i in (apparmor_profile):
                     if i == 'AppArmorProfile=':
