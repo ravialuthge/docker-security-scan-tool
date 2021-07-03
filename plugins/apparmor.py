@@ -29,13 +29,11 @@ class apparmor:
                 vv = bbc.replace("'",'')
                 f_st_app_images.write(vv)
                 f_st_app_images.write("\n")
+                a_id = container.id
+                f_st_app_images_id.write(a_id)
+                f_st_app_images_id.write("\n")
             f_st_app_images = open("re_st_apparmor_images.txt", "r")
             images_output = f_st_app_images.read()
-            client = docker.from_env()
-            for container in client.containers.list():
-                a = container.id
-                f_st_app_images_id.write(a)
-                f_st_app_images_id.write("\n")
             f_st_app_images_id = open("re_st_apparmor_images_id.txt", "r")
             images_output_id =  f_st_app_images_id.read()    
             images = images_output_id.split()
