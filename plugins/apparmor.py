@@ -9,6 +9,8 @@ class apparmor:
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_con = open("re_st_apparmor_con.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
+        f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
+        f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
         client = docker.from_env()
         for container in client.containers.list():
             container_ch_cmd_a = container.id 
@@ -28,14 +30,25 @@ class apparmor:
                 vv = bbc.replace("'",'')
                 f_st_app_images.write(vv)
                 f_st_app_images.write("\n")
+                a_id = container.id
+                f_st_app_images_id.write(a_id)
+                f_st_app_images_id.write("\n")
             f_st_app_images = open("re_st_apparmor_images.txt", "r")
             images_output = f_st_app_images.read()
-            apparmor_cmd = "docker inspect $(docker ps -q) --format 'AppArmorProfile={{ .AppArmorProfile }}'"
-            apparmor_output = os.popen(apparmor_cmd).read()
-            
-            apparmor_profile = apparmor_output.split()
-            
-            for i in (apparmor_profile):
+            f_st_app_images_id = open("re_st_apparmor_images_id.txt", "r")
+            images_output_id =  f_st_app_images_id.read()   
+            images = images_output_id.splitlines()
+            for im in (images):
+                apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
+                apparmor_output = os.popen(apparmor_cmd).read()
+                apparmor_profile = apparmor_output.rstrip()
+                apparmor_profile_str = str(apparmor_profile)
+                f_st_app_images_a.write(apparmor_profile_str)
+                f_st_app_images_a.write("\n")
+            f_st_app_images_a = open("re_st_apparmor_images_a.txt", "r")
+            apparmor_profile_str_a =  f_st_app_images_a.read()   
+            apparmor_profile_str_a_s = apparmor_profile_str_a.split() 
+            for i in (apparmor_profile_str_a_s):
                 if i == 'AppArmorProfile=':
                         apparmor_co = 'Verify AppArmor Profile, if applicable'
                         apparmor_co_st = colored('WARN  ', 'red')
