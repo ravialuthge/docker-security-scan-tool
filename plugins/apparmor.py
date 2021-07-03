@@ -40,8 +40,8 @@ class apparmor:
             for im in (images):
                 apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
                 apparmor_output = os.popen(apparmor_cmd).read()
-                apparmor_output_a = apparmor_output.rstrip()
-                apparmor_profile = apparmor_output_a.splitlines()
+                apparmor_profile = apparmor_output.rstrip()
+                
                 
                 for i in (apparmor_profile):
                     if i == 'AppArmorProfile=':
