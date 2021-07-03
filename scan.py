@@ -1,11 +1,30 @@
 import os
 import sys
 from termcolor import colored
-from profiles.process import cis_version
 from profiles.docker_host import *
 from profiles.docker_images import *
 from profiles.docker_containers import *
+from profiles.process import *
 import argparse
+#from profiles import *
+
+def modulesimport(folder):
+    files = os.listdir(folder)
+    moduleslist = []
+
+    for i in range(len(files)):
+        name = files[i].split('.')
+        if len(name) > 1:
+            if name[1] == 'py' and name[0] != '__init__':
+               name = name[0]
+               moduleslist.append(name)
+
+    file = open(folder+'__init__.py','w')
+
+    toWrite = '__all__ = '+str(moduleslist)
+
+    file.write(toWrite)
+    file.close()
 
 def output():
 	
@@ -119,7 +138,9 @@ def output():
 			parser.parse_args()
 	
 
-if __name__ == "__main__":     
+if __name__ == "__main__":
+	modulesimport('profiles/') 
+	modulesimport('plugins/')    
 	output()
 
 pwd_output = os.getcwd()

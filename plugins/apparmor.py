@@ -8,6 +8,7 @@ class apparmor:
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_con = open("re_st_apparmor_con.txt", "w")
+        f_st_app_images = open("re_st_apparmor_images.txt", "w")
         client = docker.from_env()
         for container in client.containers.list():
             container_ch_cmd_a = container.id 
@@ -17,11 +18,21 @@ class apparmor:
         if container_ch_cmd == "":
             print ('containers not running')
         else:
-            images_cmd =  "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
+            client = docker.from_env()
+            for container in client.containers.list():
+                a = container.image
+                ab = str(a)
+                b = ab.split()
+                bb = b[1]
+                bbc = bb.replace(">",'')
+                vv = bbc.replace("'",'')
+                f_st_app_images.write(vv)
+                f_st_app_images.write("\n")
+            f_st_app_images = open("re_st_apparmor_images.txt", "r")
+            images_output = f_st_app_images.read()
             apparmor_cmd = "docker inspect $(docker ps -q) --format 'AppArmorProfile={{ .AppArmorProfile }}'"
             apparmor_output = os.popen(apparmor_cmd).read()
-            images_output = os.popen(images_cmd).read()
-        
+            
             apparmor_profile = apparmor_output.split()
             
             for i in (apparmor_profile):
