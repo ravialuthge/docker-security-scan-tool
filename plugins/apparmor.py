@@ -41,7 +41,7 @@ class apparmor:
                 apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
                 apparmor_output = os.popen(apparmor_cmd).read()
                 apparmor_output_a = apparmor_output.rstrip()
-                apparmor_profile = apparmor_output_a.split()
+                apparmor_profile = apparmor_output_a.splitlines()
                 
                 for i in (apparmor_profile):
                     if i == 'AppArmorProfile=':
