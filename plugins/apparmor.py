@@ -2,7 +2,6 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 import docker
-import re
 
 class apparmor:
     def scan(test):
