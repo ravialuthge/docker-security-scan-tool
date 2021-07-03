@@ -9,6 +9,7 @@ class apparmor:
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_con = open("re_st_apparmor_con.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
+        f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
         f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
         client = docker.from_env()
         for container in client.containers.list():
@@ -41,9 +42,12 @@ class apparmor:
                 apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
                 apparmor_output = os.popen(apparmor_cmd).read()
                 apparmor_profile = apparmor_output.rstrip()
+                apparmor_profile_str = str(apparmor_profile)
+                apparmor_profile_str_a = apparmor_profile_str.split()
+                f_st_app_images_a.write(apparmor_profile_str)
+                f_st_app_images_a.write("\n")
                 
-                
-                for i in (apparmor_profile):
+                for i in (apparmor_profile_str_a):
                     if i == 'AppArmorProfile=':
                             apparmor_co = 'Verify AppArmor Profile, if applicable'
                             apparmor_co_st = colored('WARN  ', 'red')
