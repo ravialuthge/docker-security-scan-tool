@@ -9,6 +9,7 @@ class apparmor:
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_con = open("re_st_apparmor_con.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
+        f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
         client = docker.from_env()
         for container in client.containers.list():
             container_ch_cmd_a = container.id 
@@ -30,25 +31,34 @@ class apparmor:
                 f_st_app_images.write("\n")
             f_st_app_images = open("re_st_apparmor_images.txt", "r")
             images_output = f_st_app_images.read()
-            apparmor_cmd = "docker inspect $(docker ps -q) --format 'AppArmorProfile={{ .AppArmorProfile }}'"
-            apparmor_output = os.popen(apparmor_cmd).read()
-            
-            apparmor_profile = apparmor_output.split()
-            
-            for i in (apparmor_profile):
-                if i == 'AppArmorProfile=':
-                        apparmor_co = 'Verify AppArmor Profile, if applicable'
-                        apparmor_co_st = colored('WARN  ', 'red')
-                else:
-                        apparmor_co = 'AppArmor Profile available'
-                        apparmor_co_st = colored('PASS  ', 'green')
-                f_app.write(apparmor_co)
-                f_app.write("\n")
-                f_st_app.write(apparmor_co_st)
-                f_st_app.write("\n")
-            f_app= open("re_apparmor.txt", "r")
-            f_st_app= open("re_st_apparmor.txt", "r")
-            apparmor_co_f = f_app.read()
-            apparmor_co_f_st = f_st_app.read()
-            table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            print (tabulate(table_apparmor))
+            client = docker.from_env()
+            for container in client.containers.list():
+                a = container.id
+                f_st_app_images_id.write(a)
+                f_st_app_images_id.write("\n")
+            f_st_app_images_id = open("re_st_apparmor_images_id.txt", "r")
+            images_output_id =  f_st_app_images_id.read()    
+            images = images_output_id.split()
+            for im in (images):
+                apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
+                apparmor_output = os.popen(apparmor_cmd).read()
+                
+                apparmor_profile = apparmor_output.split()
+                
+                for i in (apparmor_profile):
+                    if i == 'AppArmorProfile=':
+                            apparmor_co = 'Verify AppArmor Profile, if applicable'
+                            apparmor_co_st = colored('WARN  ', 'red')
+                    else:
+                            apparmor_co = 'AppArmor Profile available'
+                            apparmor_co_st = colored('PASS  ', 'green')
+                    f_app.write(apparmor_co)
+                    f_app.write("\n")
+                    f_st_app.write(apparmor_co_st)
+                    f_st_app.write("\n")
+                f_app= open("re_apparmor.txt", "r")
+                f_st_app= open("re_st_apparmor.txt", "r")
+                apparmor_co_f = f_app.read()
+                apparmor_co_f_st = f_st_app.read()
+                table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
+                print (tabulate(table_apparmor))
