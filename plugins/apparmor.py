@@ -27,6 +27,7 @@ class apparmor:
                 bbc = bb.replace(">",'')
                 vv = bbc.replace("'",'')
                 f_st_app_images.write(vv)
+                f_st_app_images.write("\n")
             f_st_app_images = open("re_st_apparmor_images.txt", "r")
             images_output = f_st_app_images.read()
             apparmor_cmd = "docker inspect $(docker ps -q) --format 'AppArmorProfile={{ .AppArmorProfile }}'"
