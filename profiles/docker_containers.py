@@ -1,8 +1,8 @@
-#from plugins.healthcheck import *
-#from plugins.apparmor import *
-#from plugins.seccomp import *
-#from plugins.common import *
-from plugins import *
+from plugins.healthcheck import *
+from plugins.apparmor import *
+from plugins.seccomp import *
+from plugins.common import *
+#from plugins import *
 
 class cis_version_containers_120:
 	def version_scan(version):
