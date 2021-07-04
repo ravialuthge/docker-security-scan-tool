@@ -6,8 +6,7 @@ from termcolor import colored
 #from profiles.docker_containers import *
 #from profiles.process import *
 import argparse
-from profiles import *profiles  
-import profiles
+from profiles import __init__
 __all__ = []
 
 def modulesimport(folder):
@@ -41,21 +40,21 @@ def output():
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	
-	sc_ho_plugin_120 = profiles.cis_version(version_plugins=[profiles.cis_version_120()])
-	sc_ho_plugin_16 = profiles.cis_version(version_plugins=[profiles.cis_version_16()])
-	sc_ho_plugin_111 = profiles.cis_version(version_plugins=[profiles.cis_version_111()])
-	sc_ho_plugin_112 = profiles.cis_version(version_plugins=[profiles.cis_version_112()])
-	sc_ho_plugin_113 = profiles.cis_version(version_plugins=[profiles.cis_version_113()])
+	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
+	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
+	sc_ho_plugin_111 = cis_version(version_plugins=[cis_version_111()])
+	sc_ho_plugin_112 = cis_version(version_plugins=[cis_version_112()])
+	sc_ho_plugin_113 = cis_version(version_plugins=[cis_version_113()])
 
-	sc_im_plugin_120 = profiles.cis_version(version_plugins=[profiles.cis_version_image_120()])
-	sc_im_plugin_16 = profiles.cis_version(version_plugins=[profiles.cis_version_image_16()])
-	sc_im_plugin_111 = profiles.cis_version(version_plugins=[profiles.cis_version_image_111()]) 
-	sc_im_plugin_112 = profiles.cis_version(version_plugins=[profiles.cis_version_image_112()])
+	sc_im_plugin_120 = cis_version(version_plugins=[cis_version_image_120()])
+	sc_im_plugin_16 = cis_version(version_plugins=[cis_version_image_16()])
+	sc_im_plugin_111 = cis_version(version_plugins=[cis_version_image_111()]) 
+	sc_im_plugin_112 = cis_version(version_plugins=[cis_version_image_112()])
 	
-	sc_co_plugin_120 = profiles.cis_version(version_plugins=[profiles.cis_version_containers_120()])
-	sc_co_plugin_16 = profiles.cis_version(version_plugins=[profiles.cis_version_containers_16()])
-	sc_co_plugin_111 = profiles.cis_version(version_plugins=[profiles.cis_version_containers_111()])
-	sc_co_plugin_112 = profiles.cis_version(version_plugins=[profiles.cis_version_containers_112()])
+	sc_co_plugin_120 = cis_version(version_plugins=[cis_version_containers_120()])
+	sc_co_plugin_16 = cis_version(version_plugins=[cis_version_containers_16()])
+	sc_co_plugin_111 = cis_version(version_plugins=[cis_version_containers_111()])
+	sc_co_plugin_112 = cis_version(version_plugins=[cis_version_containers_112()])
 
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
