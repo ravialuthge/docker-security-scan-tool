@@ -6,7 +6,7 @@ from termcolor import colored
 #from profiles.docker_containers import *
 from profiles.process import *
 import argparse
-from profiles.__init__ import *
+from profiles.__init__ import __all__
 __all__ = []
 
 def modulesimport(folder):
