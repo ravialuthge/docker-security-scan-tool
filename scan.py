@@ -4,9 +4,9 @@ from termcolor import colored
 #from profiles.docker_host import *
 #from profiles.docker_images import *
 #from profiles.docker_containers import *
-from profiles.process import *
+#from profiles.process import *
 import argparse
-from profiles.__init__ import __all__
+from profiles import *
 __all__ = []
 
 def modulesimport(folder):
