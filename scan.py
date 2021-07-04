@@ -1,13 +1,12 @@
 import os
 import sys
 from termcolor import colored
-#from profiles.docker_host import *
-#from profiles.docker_images import *
-#from profiles.docker_containers import *
-#from profiles.process import *
+from profiles.docker_host import *
+from profiles.docker_images import *
+from profiles.docker_containers import *
+from profiles.process import *
 import argparse
 from profiles import *
-import profiles
 __all__ = []
 
 def modulesimport(folder):
@@ -41,7 +40,7 @@ def output():
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 	
-	sc_ho_plugin_120 = profiles.docker_host.cis_version(version_plugins=[profiles.docker_host.cis_version_120()])
+	sc_ho_plugin_120 = cis_version(version_plugins=[cis_version_120()])
 	sc_ho_plugin_16 = cis_version(version_plugins=[cis_version_16()])
 	sc_ho_plugin_111 = cis_version(version_plugins=[cis_version_111()])
 	sc_ho_plugin_112 = cis_version(version_plugins=[cis_version_112()])
