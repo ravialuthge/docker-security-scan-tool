@@ -6,7 +6,7 @@ from termcolor import colored
 #from profiles.docker_containers import *
 #from profiles.process import *
 import argparse
-from profiles import * 
+from profiles import *profiles,  
 import profiles
 __all__ = []
 
