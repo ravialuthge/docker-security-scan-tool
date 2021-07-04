@@ -4,6 +4,7 @@ from tabulate import tabulate
 import docker
 
 class healthcheck:
+    """Check container health at runtime"""
     def scan(test):
         f_he = open("re_he.txt", "w")
         f_st_he = open("re_st_he.txt", "w")

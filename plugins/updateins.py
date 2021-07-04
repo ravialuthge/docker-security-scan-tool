@@ -3,6 +3,7 @@ from termcolor import colored
 from tabulate import tabulate
 
 class updateins:
+    """Do not use update instructions alone in the Dockerfile"""
     def scan(test):
         images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
         

@@ -4,6 +4,7 @@ from tabulate import tabulate
 import docker
 
 class apparmor:
+    """Verify AppArmor Profile, if applicable"""
     def scan(test):
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")

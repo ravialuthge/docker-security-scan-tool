@@ -5,6 +5,7 @@ from termcolor import colored
 import platform
 
 class dockerversion:
+    """Keep Docker up to date"""
     def scan(test):
         install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
         install_version_output_a = install_version_output.rstrip()

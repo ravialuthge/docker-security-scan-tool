@@ -2,6 +2,7 @@ import os
 from termcolor import colored
 
 class cgroup:
+    """Confirm default cgroup usage"""
     def scan(test):
         cgroup_cmd = "ps -ef | grep docker | grep 'cgroup-parent'"
         cgroup_output = os.popen(cgroup_cmd).read()

@@ -3,6 +3,7 @@ from termcolor import colored
 from tabulate import tabulate
 
 class seccomp:
+    """Do not disable default seccomp profile"""    
     def scan(test):
         seccomp_ch_cmd = "docker ps -q  2> /dev/null"
         f_seccomp = open("re_seccomp.txt", "w")
