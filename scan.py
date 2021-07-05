@@ -1,16 +1,15 @@
 import os
 import sys
 from termcolor import colored
-from profiles.docker_host import *
-from profiles.docker_images import *
-from profiles.docker_containers import *
-from profiles.process import *
+#from profiles.docker_host import *
+#from profiles.docker_images import *
+#from profiles.docker_containers import *
+#from profiles.process import *
 import argparse
 from profiles import *
-__all__ = []
 
-def modulesimport(folder):
-    files = os.listdir(folder)
+def modulesimport(folder_path):
+    files = os.listdir(folder_path)
     moduleslist = []
 
     for i in range(len(files)):
@@ -20,7 +19,7 @@ def modulesimport(folder):
                name = name[0]
                moduleslist.append(name)
 
-    file = open(folder+'__init__.py','w')
+    file = open(folder_path+'__init__.py','w')
 
     toWrite = '__all__ = '+str(moduleslist)
 
