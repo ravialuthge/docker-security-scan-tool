@@ -8,23 +8,23 @@ from termcolor import colored
 import argparse
 from profiles import *
 
-#def modulesimport(folder_path):
-#    files = os.listdir(folder_path)
-#    moduleslist = []
+def modulesimport(folder_path):
+    files = os.listdir(folder_path)
+    moduleslist = []
 
-#    for i in range(len(files)):
-#        name = files[i].split('.')
-#        if len(name) > 1:
-#            if name[1] == 'py' and name[0] != '__init__':
-#               name = name[0]
-#               moduleslist.append(name)
+    for i in range(len(files)):
+        name = files[i].split('.')
+        if len(name) > 1:
+            if name[1] == 'py' and name[0] != '__init__':
+               name = name[0]
+               moduleslist.append(name)
 
-#    file = open(folder_path+'__init__.py','w')
+    file = open(folder_path+'__init__.py','w')
 
-#    toWrite = '__all__ = '+str(moduleslist)
+    toWrite = '__all__ = '+str(moduleslist)
 
-#    file.write(toWrite)
-#    file.close()
+    file.write(toWrite)
+    file.close()
 
 def output():
 	
@@ -139,8 +139,9 @@ def output():
 	
 
 if __name__ == "__main__":
-#	modulesimport('profiles/') 
-#	modulesimport('plugins/')    
+	modulesimport('profiles/') 
+	modulesimport('plugins/')
+	modulesimport('.')    
 	output()
 
 pwd_output = os.getcwd()
