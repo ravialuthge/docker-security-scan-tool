@@ -140,8 +140,7 @@ def output():
 
 if __name__ == "__main__":
 	modulesimport('profiles/') 
-	modulesimport('plugins/')
-	modulesimport('./')    
+	modulesimport('plugins/')   
 	output()
 
 pwd_output = os.getcwd()
