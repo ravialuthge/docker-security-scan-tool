@@ -1,36 +1,36 @@
-from plugins.dockerversion import *
-from plugins.datadir import *
-from plugins.kernelversion import *
-from plugins.dockeruser import *
-from plugins.cgroup import *
-from plugins.auditcontainerd import *
-from plugins.encryptnet import *
-from plugins.common import *
-#from plugins import *
+#from plugins.dockerversion import *
+#from plugins.datadir import *
+#from plugins.kernelversion import *
+#from plugins.dockeruser import *
+#from plugins.cgroup import *
+#from plugins.auditcontainerd import *
+#from plugins.encryptnet import *
+#from plugins.common import *
+from plugins import *
 
 class cis_version_120:
 	def version_scan(version):
-		plugin_host_120 = outputpl(plugins=[dockerversion(),dockerdatadirscan(),kernelversion(),dockeruserscan()])
+		plugin_host_120 = common.outputpl(plugins=[dockerversion.dockerversion(),datadir.dockerdatadirscan(),kernelversion.kernelversion(),dockeruser.dockeruserscan()])
 		plugin_host_120.run()
 
 class cis_version_16:
 	def version_scan(version):
-		plugin_host_16 = outputpl(plugins=[dockerversion(),dockerdatadirscan(),kernelversion(),dockeruserscan()])
+		plugin_host_16 = common.outputpl(plugins=[dockerversion.dockerversion(),datadir.dockerdatadirscan(),kernelversion.kernelversion(),dockeruser.dockeruserscan()])
 		plugin_host_16.run()
 
 class cis_version_111:
 	def version_scan(version):
-		plugin_host_111 = outputpl(plugins=[cgroup()])
+		plugin_host_111 = common.outputpl(plugins=[cgroup.cgroup()])
 		plugin_host_111.run()
 
 class cis_version_112:
 	def version_scan(version):
-		plugin_host_112 = outputpl(plugins=[auditcontainerd()])
+		plugin_host_112 = common.outputpl(plugins=[auditcontainerd.auditcontainerd()])
 		plugin_host_112.run()
 
 class cis_version_113:
 	def version_scan(version):
-		plugin_host_113 = outputpl(plugins=[encryptnet()])
+		plugin_host_113 = common.outputpl(plugins=[encryptnet.encryptnet()])
 		plugin_host_113.run()
 
 
