@@ -1,11 +1,3 @@
-#from plugins.dockerversion import *
-#from plugins.datadir import *
-#from plugins.kernelversion import *
-#from plugins.dockeruser import *
-#from plugins.cgroup import *
-#from plugins.auditcontainerd import *
-#from plugins.encryptnet import *
-#from plugins.common import *
 from plugins import *
 
 class cis_version_120:
