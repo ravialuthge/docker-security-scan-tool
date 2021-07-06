@@ -3,6 +3,7 @@ from termcolor import colored
 from tabulate import tabulate
 
 class encryptnet:
+    """Encrypt data exchanged between containers on different nodes on the overlay network"""    
     def scan(test):
         f_encryptnet = open("re_encryptnet.txt", "w")
         f_st_encryptnet = open("re_st_encryptnet.txt", "w")

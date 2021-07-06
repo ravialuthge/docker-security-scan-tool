@@ -2,6 +2,7 @@ import os
 from termcolor import colored
 
 class auditcontainerd:
+	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def scan(test):
 		auditcontainerd_cmd = "auditctl -l | grep /usr/bin/docker-containerd"
 		auditcontainerd_output = os.popen(auditcontainerd_cmd).read()

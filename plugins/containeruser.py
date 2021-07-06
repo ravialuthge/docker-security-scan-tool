@@ -4,6 +4,7 @@ from tabulate import tabulate
 import docker
 
 class  containeruser:
+    """Create a user for the container"""
     def scan(test):
         f = open("re.txt", "w")
         f_st = open("re_st.txt", "w")

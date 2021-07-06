@@ -3,6 +3,7 @@ import re
 from termcolor import colored
 
 class kernelversion:
+	"""Use the updated Linux Kernel"""
 	def scan(test):
 		recommand_version_cmd = "3.10.0"
 		install_kernel_version_cmd = "uname -r"

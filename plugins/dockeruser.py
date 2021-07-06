@@ -3,6 +3,7 @@ import re
 from termcolor import colored
 
 class dockeruserscan:
+    """Only allow trusted users to control Docker daemon"""
     def scan(test):
         trusted_users_cmd = "cat /etc/group | grep docker"
         health_ch_output_output = os.popen(trusted_users_cmd).read()
