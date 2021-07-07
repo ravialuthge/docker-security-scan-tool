@@ -1,0 +1,1 @@
+docker search --format "{{.IsOfficial}}" --filter is-official=true redis
