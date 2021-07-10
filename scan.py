@@ -1,8 +1,11 @@
 import os
+import plugins
+from plugins.officialimage import officialimage
 import sys
 from termcolor import colored
 import argparse
 from profiles import *
+from plugins import *
 
 def modulesimport(folder_path):
     files = os.listdir(folder_path)
@@ -51,6 +54,8 @@ def output():
 	sc_co_plugin_111 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_111()])
 	sc_co_plugin_112 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_112()])
 
+	officialimage = common.outputpl(plugins=[officialimage.officialimage()])
+
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
 		sub_version="1.2.0"
@@ -67,6 +72,7 @@ def output():
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
+		parser.add_argument("-d", "--dockerfile", type=str, help="check Best practices for Dockerfiles")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
@@ -129,6 +135,9 @@ def output():
 			print (sc_im)
 		
 			print (sc_co)
+		elif args.dockerfile:
+			officialimage.run()
+
 		else:
 			parser = argparse.ArgumentParser()
 			parser.parse_args()
