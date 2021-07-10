@@ -1,6 +1,4 @@
 import os
-import plugins
-from plugins.officialimage import officialimage
 import sys
 from termcolor import colored
 import argparse
