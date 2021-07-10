@@ -17,8 +17,8 @@ class officialimage:
                cmdout = os.popen(cmd).read()
                cmdout_a = cmdout.rstrip()
                if cmdout_a == '[OK]':
-                  print (o + "is Docker Official Image")
+                  print (o + " is Docker Official Image")
                else:
-                  print (o + "not Docker Official Images")
+                  print (o + " not Docker Official Images")
        except FileNotFoundError:
           print ("I did not find the file at, "+str(p))
