@@ -54,7 +54,7 @@ def output():
 	sc_co_plugin_111 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_111()])
 	sc_co_plugin_112 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_112()])
 
-	officialimage = common.outputpl(plugins=[officialimage.officialimage()])
+	officialimage_plugin = common.outputpl(plugins=[officialimage.officialimage()])
 
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
@@ -138,7 +138,7 @@ def output():
 			print (sc_co)
 		
 		elif args.dockerfile:
-			officialimage.run()
+			officialimage_plugin.run()
 
 		else:
 			parser.print_help()
