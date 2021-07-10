@@ -86,8 +86,6 @@ def output():
 			print (sc_co)
 			sc_co_plugin_120.version_run()
 		
-		elif args.dockerfile:
-			officialimage.run()
 
 		elif args.version == "1.1.0":
 			sub_version="1.1.0"
@@ -138,6 +136,9 @@ def output():
 			print (sc_im)
 		
 			print (sc_co)
+		
+		elif args.dockerfile:
+			officialimage.run()
 
 		else:
 			parser.print_help()
