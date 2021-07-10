@@ -3,8 +3,8 @@ import os
 class officialimage:
     """Check Docker Official Image"""
     def scan(test):
+       try:
          p = input("enter Dockerfile path :")
-         assert os.path.exists(p), "I did not find the file at, "+str(p)
          f = open(p, "r")
          mystring  = f.read()
 
@@ -20,3 +20,5 @@ class officialimage:
                   print (o + "is Docker Official Image")
                else:
                   print (o + "not Docker Official Images")
+       except:
+          assert os.path.exists(p), "I did not find the file at, "+str(p)
