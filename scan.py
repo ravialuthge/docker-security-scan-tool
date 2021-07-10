@@ -135,12 +135,12 @@ def output():
 			print (sc_im)
 		
 			print (sc_co)
+
 		elif args.dockerfile:
 			officialimage.run()
 
 		else:
-			parser = argparse.ArgumentParser()
-			parser.parse_args()
+			parser.print_help()
 	
 
 if __name__ == "__main__":
