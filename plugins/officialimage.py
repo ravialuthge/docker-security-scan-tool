@@ -20,5 +20,5 @@ class officialimage:
                   print (o + "is Docker Official Image")
                else:
                   print (o + "not Docker Official Images")
-       except:
-          assert os.path.exists(p), "I did not find the file at, "+str(p)
+       except FileNotFoundError:
+          print ("I did not find the file at, "+str(p))
