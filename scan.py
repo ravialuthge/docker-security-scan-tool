@@ -136,7 +136,7 @@ def output():
 		
 			print (sc_co)
 
-		elif args.dockerfile:
+		elif args.dockerfile == "d":
 			officialimage.run()
 
 		else:
