@@ -36,7 +36,7 @@ def output():
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 
-	sc_dockerfile   = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
+	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 	
 	sc_ho_plugin_120 = process.cis_version(version_plugins=[docker_host.cis_version_120()])
 	sc_ho_plugin_16 = process.cis_version(version_plugins=[docker_host.cis_version_16()])
