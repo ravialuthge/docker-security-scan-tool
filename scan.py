@@ -143,7 +143,6 @@ def output():
 			p = args.echo
 			print (sc_dockerfile)
 			officialimage_plugin.run()
-			return p
 
 		else:
 			parser.print_help()
