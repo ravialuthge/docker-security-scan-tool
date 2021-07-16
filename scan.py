@@ -74,7 +74,6 @@ def output():
 		parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files", type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
-		parser.add_argument("echo")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
@@ -139,10 +138,9 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.files == args.echo:
-			p = args.echo
+		elif args.files:
 			print (sc_dockerfile)
-			officialimage_plugin.run(p)
+			officialimage_plugin.run()
 
 		else:
 			parser.print_help()
