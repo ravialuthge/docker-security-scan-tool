@@ -72,7 +72,9 @@ def output():
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-p", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
-		parser.add_argument("-d", "--dockerfile", help="check Best practices for Dockerfiles" , action="store_true")
+		parser.add_argument("-f", "--files", type=str, help="check Best practices for Dockerfiles & docker-compose file")
+		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
+		parser.add_argument("echo")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
@@ -137,9 +139,10 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.dockerfile:
+		elif args.files == args.echo:
+			p = args.echo
 			print (sc_dockerfile)
-			officialimage_plugin.run()
+			officialimage_plugin.run(p)
 
 		else:
 			parser.print_help()
