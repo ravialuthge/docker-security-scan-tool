@@ -75,6 +75,7 @@ def output():
 		parser.add_argument("-f", "--files", help="check Best practices for Dockerfiles & docker-compose file" , action="store_true")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		args = parser.parse_args()
+		parser.add_argument("echo")
 
 		if args.version == "1.2.0":
 			sub_version="1.2.0"
@@ -138,9 +139,10 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.files:
+		elif args.files == args.echo:
+			p = args.echo
 			print (sc_dockerfile)
-			officialimage_plugin.run()
+			officialimage_plugin.run(p)
 
 		else:
 			parser.print_help()
