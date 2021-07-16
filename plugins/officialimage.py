@@ -2,8 +2,9 @@ import os
 
 class officialimage:
     """Check Docker Official Image"""
-    def scan(test,p):
+    def scan(test):
        try:
+         p = input("enter Dockerfile path :")
          f = open(p, "r")
          mystring  = f.read()
 
