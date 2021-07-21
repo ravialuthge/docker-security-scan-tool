@@ -4,9 +4,8 @@ class officialimage:
     """Check Docker Official Image"""
     def scan(test):
        try:
-       #  p = input("enter Dockerfile path :")
-         ap = args.echo
-         f = open(ap, "r")
+         p = input("enter Dockerfile path :")
+         f = open(p, "r")
          mystring  = f.read()
 
          for item in mystring.split("\n"):
