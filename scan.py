@@ -4,6 +4,10 @@ from termcolor import colored
 import argparse
 from profiles import *
 from plugins import *
+import importlib
+import pkgutil
+import profiles
+import plugins
 
 def modulesimport(folder_path):
     files = os.listdir(folder_path)
@@ -145,6 +149,19 @@ def output():
 
 		else:
 			parser.print_help()
+			def iter_namespace(ns_pkg):
+				return pkgutil.iter_modules(ns_pkg.__path__)
+
+			discovered_plugins = {
+				name
+				for finder, name, ispkg
+				in iter_namespace(plugins)
+			}
+			print("plugins\n")
+			for i in (discovered_plugins):
+				if i != 'common':
+					print(i)
+
 	
 
 if __name__ == "__main__":
