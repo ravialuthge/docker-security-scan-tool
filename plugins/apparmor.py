@@ -2,23 +2,20 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 import docker
+import sdk.containers as containers
 
-class apparmor:
+class apparmor(containers.container_ch_cmd_a):
     """Verify AppArmor Profile, if applicable"""
     def scan(test):
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
-        f_st_app_con = open("re_st_apparmor_con.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
         f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
         f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
-        client = docker.from_env()
-        for container in client.containers.list():
-            container_ch_cmd_a = container.id 
-            f_st_app_con.write(container_ch_cmd_a)
-        f_st_app_con = open("re_st_apparmor_con.txt", "r")
-        container_ch_cmd = f_st_app_con.read()
+        
+        container_ch_cmd = containers.container_ch_cmd_a
         if container_ch_cmd == "":
+            print (container_ch_cmd)
             print ('containers not running')
         else:
             client = docker.from_env()
