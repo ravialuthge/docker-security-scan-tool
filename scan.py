@@ -73,14 +73,22 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 	else:
+		def iter_namespace(ns_pkg):
+				return pkgutil.iter_modules(ns_pkg.__path__)
+
+		discovered_plugins = {
+			name
+			for finder, name, ispkg
+			in iter_namespace(plugins)
+		}
+		for i in (discovered_plugins):
+			if i != 'common':
+				return i
 		parser = argparse.ArgumentParser(
 			formatter_class=argparse.RawDescriptionHelpFormatter,
       		epilog=textwrap.dedent('''\
 			plugins:
-				I have indented it
-				exactly the way
-				I want it
-			'''))
+			''' + i))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
@@ -157,18 +165,7 @@ def output():
 
 		else:
 			parser.print_help()
-			def iter_namespace(ns_pkg):
-				return pkgutil.iter_modules(ns_pkg.__path__)
-
-			discovered_plugins = {
-				name
-				for finder, name, ispkg
-				in iter_namespace(plugins)
-			}
-			print("plugins\n")
-			for i in (discovered_plugins):
-				if i != 'common':
-					print(i)
+			
 
 if __name__ == "__main__":
 	modulesimport('profiles/') 
