@@ -29,6 +29,18 @@ def modulesimport(folder_path):
     file.write(toWrite)
     file.close()
 
+def iter_namespace(ns_pkg):
+				return pkgutil.iter_modules(ns_pkg.__path__)
+
+discovered_plugins = {
+	name
+	for finder, name, ispkg
+	in iter_namespace(plugins)
+}
+for he in (discovered_plugins):
+	if he != 'common':
+		return he
+
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -74,17 +86,6 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 	else:
-		def iter_namespace(ns_pkg):
-				return pkgutil.iter_modules(ns_pkg.__path__)
-
-		discovered_plugins = {
-			name
-			for finder, name, ispkg
-			in iter_namespace(plugins)
-		}
-		for he in (discovered_plugins):
-			if he != 'common':
-				return he
 		parser = argparse.ArgumentParser(
 			formatter_class=argparse.RawDescriptionHelpFormatter,
       		epilog=he)
