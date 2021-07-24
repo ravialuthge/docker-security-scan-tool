@@ -76,7 +76,7 @@ def output():
 		parser = argparse.ArgumentParser(
 			formatter_class=argparse.RawDescriptionHelpFormatter,
       		epilog=textwrap.dedent('''\
-			additional information:
+			plugins:
 				I have indented it
 				exactly the way
 				I want it
