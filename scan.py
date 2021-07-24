@@ -29,17 +29,7 @@ def modulesimport(folder_path):
     file.write(toWrite)
     file.close()
 
-def iter_namespace(ns_pkg):
-				return pkgutil.iter_modules(ns_pkg.__path__)
 
-discovered_plugins = {
-	name
-	for finder, name, ispkg
-	in iter_namespace(plugins)
-}
-for he in (discovered_plugins):
-	if he != 'common':
-		return he
 
 def output():
 	
@@ -88,14 +78,18 @@ def output():
 	else:
 		parser = argparse.ArgumentParser(
 			formatter_class=argparse.RawDescriptionHelpFormatter,
-      		epilog=he)
+			epilog=textwrap.dedent('''\
+			plugins:
+				I have indented it
+				exactly the way
+				I want it
+			'''))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files", help="check Best practices for Dockerfiles & docker-compose file" , action="store_true")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		args = parser.parse_args()
-		parser.add_argument("echo")
 
 		if args.version == "1.2.0":
 			sub_version="1.2.0"
@@ -165,6 +159,17 @@ def output():
 
 		else:
 			parser.print_help()
+			def iter_namespace(ns_pkg):
+				return pkgutil.iter_modules(ns_pkg.__path__)
+
+			discovered_plugins = {
+				name
+				for finder, name, ispkg
+				in iter_namespace(plugins)
+			}
+			for he in (discovered_plugins):
+				if he != 'common':
+					print(he)
 			
 
 if __name__ == "__main__":
