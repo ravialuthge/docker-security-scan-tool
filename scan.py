@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from termcolor import colored
 import argparse
@@ -81,14 +82,12 @@ def output():
 			for finder, name, ispkg
 			in iter_namespace(plugins)
 		}
-		for i in (discovered_plugins):
-			if i != 'common':
-				return i
+		for he in (discovered_plugins):
+			if he != 'common':
+				return he
 		parser = argparse.ArgumentParser(
 			formatter_class=argparse.RawDescriptionHelpFormatter,
-      		epilog=textwrap.dedent('''\
-			plugins:
-			'''))
+      		epilog=he)
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
