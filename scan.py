@@ -80,9 +80,6 @@ def output():
 			formatter_class=argparse.RawDescriptionHelpFormatter,
 			epilog=textwrap.dedent('''\
 			plugins:
-				I have indented it
-				exactly the way
-				I want it
 			'''))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
