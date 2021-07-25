@@ -1,8 +1,8 @@
 import docker
 
-class containerlist:
-    def container(container_ch_cmd_a):
+class containerlist(object):
+    def container(self):
         client = docker.from_env()
         for container in client.containers.list():
-                    container_ch_cmd_a = container.id
-                    return container_ch_cmd_a
+                    self.container_ch_cmd_a = container.id
+                    return self.container_ch_cmd_a

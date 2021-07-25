@@ -6,7 +6,11 @@ import sdk.containers as containers
 
 class apparmor(containers.containerlist):
     """Verify AppArmor Profile, if applicable"""
+    def __init__(self, container_list):
+        self.container_ch_cmd_a = container_list.container_ch_cmd_a
+
     def scan(test,container_ch_cmd_a):
+        
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
