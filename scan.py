@@ -86,6 +86,7 @@ def output():
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files", help="check Best practices for Dockerfiles & docker-compose file" , action="store_true")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
+		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
