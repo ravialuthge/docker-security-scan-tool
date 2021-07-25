@@ -4,16 +4,16 @@ from tabulate import tabulate
 import docker
 import sdk.containers as containers
 
-class apparmor(containers.container_ch_cmd_a):
+class apparmor(containers.containerlist):
     """Verify AppArmor Profile, if applicable"""
-    def scan(test):
+    def scan(test,container_ch_cmd_a):
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
         f_st_app_images = open("re_st_apparmor_images.txt", "w")
         f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
         f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
         
-        container_ch_cmd = containers.container_ch_cmd_a
+        container_ch_cmd = container_ch_cmd_a
         if container_ch_cmd == "":
             print (container_ch_cmd)
             print ('containers not running')
