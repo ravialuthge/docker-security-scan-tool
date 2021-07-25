@@ -6,10 +6,10 @@ import sdk.containers as containers
 
 class apparmor(containers.containerlist):
     """Verify AppArmor Profile, if applicable"""
-    def __init__(self, container_list):
-        self.container_ch_cmd_a = container_list.container_ch_cmd_a
+    def __init__(self,test):
+        self.container_ch_cmd_a = self.container_ch_cmd_a
 
-    def scan(test,container_ch_cmd_a):
+    def scan(self,test):
         
         f_app = open("re_apparmor.txt", "w")
         f_st_app = open("re_st_apparmor.txt", "w")
@@ -17,7 +17,7 @@ class apparmor(containers.containerlist):
         f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
         f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
         
-        container_ch_cmd = container_ch_cmd_a
+        container_ch_cmd = self.container_ch_cmd_a
         if container_ch_cmd == "":
             print (container_ch_cmd)
             print ('containers not running')
