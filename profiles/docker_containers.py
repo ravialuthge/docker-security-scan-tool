@@ -1,5 +1,4 @@
 from plugins import *
-import sdk.containers as containers
 
 class cis_version_containers_120:
 	def version_scan(version):
