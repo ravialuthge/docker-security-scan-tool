@@ -2,9 +2,9 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 import docker
-import sdk.containers as containers
+from sdk.containers import *
 
-class apparmor(containers.containerlist):
+class apparmor(containerlist):
     """Verify AppArmor Profile, if applicable"""
     def __init__(self):
         super().__init__()
