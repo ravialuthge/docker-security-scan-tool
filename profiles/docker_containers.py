@@ -1,4 +1,3 @@
-from plugins import *
 from plugins.apparmor import *
 
 class cis_version_containers(apparmor):
