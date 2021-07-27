@@ -16,7 +16,7 @@ class apparmor(containerlist):
         super().__init__()
         lst_str =  str(self.lst)
         if lst_str == '[]':
-            print ('containers not running')
+            apparmor_output_cmd = 'containers not running'
         else:
             client = docker.from_env()
             for container in client.containers.list():
@@ -53,8 +53,5 @@ class apparmor(containerlist):
             apparmor_co_f = f_app
             apparmor_co_f_st = f_st_app
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            print (tabulate(table_apparmor))
-
-
-object1 = apparmor()
-output = object1.apparmor_scan()
+            apparmor_output_cmd = tabulate(table_apparmor)
+        return apparmor_output_cmd
