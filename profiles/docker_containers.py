@@ -1,4 +1,3 @@
-from profiles.process import cis_version
 from plugins import *
 from plugins.apparmor import *
 
