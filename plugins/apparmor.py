@@ -55,4 +55,6 @@ class apparmor(containerlist):
             print (tabulate(table_apparmor))
 
 
-object2 = apparmor()
+object1 = apparmor()
+output = object1.apparmor_scan()
+print(output)
