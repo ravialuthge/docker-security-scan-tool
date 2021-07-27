@@ -7,7 +7,7 @@ from sdk.containers_list import *
 class apparmor(containerlist):
     """Verify AppArmor Profile, if applicable"""
     def __init__(self):
-        #super().__init__()
+        super().__init__()
         if self.lst == "[]":
             print ('containers not running')
         else:
