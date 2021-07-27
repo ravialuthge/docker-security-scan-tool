@@ -14,8 +14,8 @@ class apparmor(containerlist):
     
     def apparmor_scan(self):
         super().__init__()
-        print (self.lst)
-        if self.lst == '[]':
+        lst_str =  str(self.lst)
+        if lst_str == '[]':
             print ('containers not running')
         else:
             client = docker.from_env()
