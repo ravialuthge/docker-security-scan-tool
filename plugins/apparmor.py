@@ -58,3 +58,4 @@ class apparmor(containerlist):
 
 object1 = apparmor()
 output = object1.apparmor_scan()
+print (output)
