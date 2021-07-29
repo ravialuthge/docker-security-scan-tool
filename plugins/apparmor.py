@@ -11,6 +11,8 @@ class apparmor(containerlist):
         self.lst_con_apparmor=[]
         self.lst_apparmor_co=[]
         self.lst_apparmor_co_st=[]
+    
+    def apparmor_scan(self):
         super().__init__()
         lst_str =  str(self.lst)
         if lst_str == '[]':
