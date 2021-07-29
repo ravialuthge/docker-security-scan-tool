@@ -55,3 +55,5 @@ class apparmor(containerlist):
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
             apparmor_output_cmd = tabulate(table_apparmor)
         return apparmor_output_cmd
+
+object1 = apparmor()
