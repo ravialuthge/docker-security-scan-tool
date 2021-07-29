@@ -1,4 +1,4 @@
-from plugins.apparmor import apparmor
+import plugins.apparmor as apparmor
 
 class cis_version_containers(apparmor):
 	def version_120(self):
