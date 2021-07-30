@@ -26,7 +26,19 @@ def modulesimport(folder_path):
     file.write(toWrite)
     file.close()
 
+class plugins_list:
 
+	def iter_namespace(ns_pkg):
+					return pkgutil.iter_modules(ns_pkg.__path__)
+
+	discovered_plugins = {
+		name
+		for name
+		in iter_namespace(plugins)
+	}
+	for he in (discovered_plugins):
+		if he != 'common':
+			print(he)
 
 def output():
 	
@@ -152,17 +164,7 @@ def output():
 
 		else:
 			parser.print_help()
-			def iter_namespace(ns_pkg):
-				return pkgutil.iter_modules(ns_pkg.__path__)
-
-			discovered_plugins = {
-				name
-				for finder, name, ispkg
-				in iter_namespace(plugins)
-			}
-			for he in (discovered_plugins):
-				if he != 'common':
-					print(he)
+			
 			
 
 if __name__ == "__main__":
