@@ -2,7 +2,7 @@ from plugins import *
 
 class cis_version_containers_120:
 	def version_scan(version):
-		plugin_containers_120 = common.outputpl(plugins=[healthcheck.healthcheck(),apparmor.apparmor()])
+		plugin_containers_120 = common.outputpl(plugins=[apparmor.apparmor()])
 		plugin_containers_120.run()
 
 class cis_version_containers_16:
