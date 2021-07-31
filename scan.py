@@ -26,19 +26,20 @@ def modulesimport(folder_path):
     file.write(toWrite)
     file.close()
 
-class plugins_list:
+def iter_namespace(ns_pkg):
+				return pkgutil.iter_modules(ns_pkg.__path__)
 
-	def iter_namespace(ns_pkg):
-					return pkgutil.iter_modules(ns_pkg.__path__)
+discovered_plugins = {
+	name
+	for name
+	in iter_namespace(plugins)
+}
+lst_plugins=[]
+for he in (discovered_plugins):
+	if he != 'common':
+		lst_plugins.append(he)
+plugins_list = lst_plugins
 
-	discovered_plugins = {
-		name
-		for name
-		in iter_namespace(plugins)
-	}
-	for he in (discovered_plugins):
-		if he != 'common':
-			print(he)
 
 def output():
 	
@@ -79,15 +80,14 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
+		print (plugins_list)
 		sc_ho_plugin_120.version_run()
 		print (sc_im)
 		sc_im_plugin_120.version_run()
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 	else:
-		parser = argparse.ArgumentParser(
-			formatter_class=argparse.RawDescriptionHelpFormatter,
-			epilog=textwrap.dedent('''plugins:'''))
+		parser = argparse.ArgumentParser(epilog='plugins:' + plugins_list)
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
