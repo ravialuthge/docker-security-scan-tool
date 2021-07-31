@@ -1,13 +1,13 @@
 import docker
 
 class containerlist(object):
-    def __init__(self): 
+    def __init__(test): 
         lst=[]
         client = docker.from_env()
         for container in client.containers.list():
                     container_ch_cmd_a = container.id
                     lst.append(container_ch_cmd_a)
-        self.lst = lst 
-    def container(self):
-        self.lst = self.lst        
-        return self.lst
+        test.lst = lst 
+    def container(test):
+        test.lst = test.lst        
+        return test.lst
