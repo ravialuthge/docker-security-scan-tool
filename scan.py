@@ -174,7 +174,8 @@ def output():
 			
 			
 
-if __name__ == "__main__":  
+if __name__ == "__main__": 
+	load_plugins() 
 	modulesimport('plugins/') 
 	output()
 
