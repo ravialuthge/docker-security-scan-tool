@@ -67,7 +67,7 @@ def output():
 
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 	
-	sc_ho_plugin_120 = process.cis_version(version_plugins=[docker_host.cis_version_120()])
+	sc_ho_plugin_120 = cis_version(version_plugins=[docker_host.cis_version_120()])
 	sc_ho_plugin_16 = process.cis_version(version_plugins=[docker_host.cis_version_16()])
 	sc_ho_plugin_111 = process.cis_version(version_plugins=[docker_host.cis_version_111()])
 	sc_ho_plugin_112 = process.cis_version(version_plugins=[docker_host.cis_version_112()])
