@@ -1,8 +1,13 @@
 from plugins import *
 
+#object1 = apparmor()
+#output = object1.apparmor_scan()
+
 class cis_version_containers_120:
 	def version_scan(version):
-		plugin_containers_120 = common.outputpl(plugins=[healthcheck.healthcheck(),apparmor.apparmor()])
+		object1 = apparmor()
+		output = object1.apparmor_scan()
+		plugin_containers_120 = common.outputpl(plugins=[healthcheck.healthcheck()])
 		plugin_containers_120.run()
 
 class cis_version_containers_16:
