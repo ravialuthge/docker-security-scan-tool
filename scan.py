@@ -38,7 +38,7 @@ lst_plugins=[]
 for he in (discovered_plugins):
 	if he != 'common':
 		lst_plugins.append(he)
-plugins_list = lst_plugins
+lst_plugins_a = "\n".join(lst_plugins)
 
 
 def output():
@@ -86,7 +86,9 @@ def output():
 		print (sc_co)
 		sc_co_plugin_120.version_run()
 	else:
-		parser = argparse.ArgumentParser(epilog='plugins:' + plugins_list)
+		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent('''plugins:
+
+''' + lst_plugins_a))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
