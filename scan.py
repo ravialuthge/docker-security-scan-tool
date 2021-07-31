@@ -54,6 +54,7 @@ lst_plugins_a = "\n".join(lst_plugins)
 
 
 def output():
+	load_plugins()
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
 # CIS Docker {0} Benchmark\n\
@@ -179,7 +180,6 @@ def output():
 			
 
 if __name__ == "__main__":  
-	load_plugins()
 	modulesimport('plugins/') 
 	output()
 
