@@ -10,13 +10,30 @@ import profiles
 import textwrap
 import importlib
 
-import profiles
+def modulesimport(folder_path):
+    files = os.listdir(folder_path)
+    moduleslist = []
 
-def modulesimport(pkg):
+    for i in range(len(files)):
+        name = files[i].split('.')
+        if len(name) > 1:
+            if name[1] == 'py' and name[0] != '__init__':
+               name = name[0]
+               moduleslist.append(name)
+
+    file = open(folder_path+'__init__.py','w')
+
+    toWrite = '__all__ = '+str(moduleslist)
+
+    file.write(toWrite)
+    file.close()
+
+
+def modules_import(pkg):
     return pkgutil.iter_modules(pkg.__path__, pkg.__name__ + ".")
 
 def load_plugins(path):
-    for _, name, _ in modulesimport(path):
+    for _, name, _ in modules_import(path):
         importlib.import_module(name)
 
 
@@ -160,9 +177,9 @@ def output():
 			
 			
 
-if __name__ == "__main__":
-	load_plugins(plugins)  
-	load_plugins(profiles) 
+if __name__ == "__main__":  
+	load_plugins(profiles)
+	modulesimport(plugins) 
 	output()
 
 pwd_output = os.getcwd()
