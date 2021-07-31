@@ -29,17 +29,12 @@ def modulesimport(folder_path):
     file.write(toWrite)
     file.close()
 
-
-def modules_import(pkg):
-    return pkgutil.iter_modules(pkg.__path__, pkg.__name__ + ".")
+def iter_namespace(ns_pkg):
+	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
 def load_plugins():
-    for _, name, _ in modules_import(profiles):
+    for _, name, _ in iter_namespace(profiles):
         importlib.import_module(name)
-
-
-def iter_namespace(ns_pkg):
-	return pkgutil.iter_modules(ns_pkg.__path__)
 
 discovered_plugins = {
 	name
@@ -69,7 +64,7 @@ def output():
 
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 	
-	sc_ho_plugin_120 = cis_version(version_plugins=[docker_host.cis_version_120()])
+	sc_ho_plugin_120 = process.cis_version(version_plugins=[docker_host.cis_version_120()])
 	sc_ho_plugin_16 = process.cis_version(version_plugins=[docker_host.cis_version_16()])
 	sc_ho_plugin_111 = process.cis_version(version_plugins=[docker_host.cis_version_111()])
 	sc_ho_plugin_112 = process.cis_version(version_plugins=[docker_host.cis_version_112()])
