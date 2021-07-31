@@ -2,32 +2,11 @@ import os
 import sys
 from termcolor import colored
 import argparse
-#from profiles import * 
-from plugins import *
 import pkgutil
 import plugins
 import profiles
 import textwrap
 import importlib
-from profiles.process import *
-
-def modulesimport(folder_path):
-    files = os.listdir(folder_path)
-    moduleslist = []
-
-    for i in range(len(files)):
-        name = files[i].split('.')
-        if len(name) > 1:
-            if name[1] == 'py' and name[0] != '__init__':
-               name = name[0]
-               moduleslist.append(name)
-
-    file = open(folder_path+'__init__.py','w')
-
-    toWrite = '__all__ = '+str(moduleslist)
-
-    file.write(toWrite)
-    file.close()
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
@@ -49,7 +28,6 @@ lst_plugins_a = "\n".join(lst_plugins)
 
 
 def output():
-	load_plugins()
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
 # CIS Docker {0} Benchmark\n\
@@ -176,7 +154,6 @@ def output():
 
 if __name__ == "__main__": 
 	load_plugins() 
-	modulesimport('plugins/') 
 	output()
 
 pwd_output = os.getcwd()
