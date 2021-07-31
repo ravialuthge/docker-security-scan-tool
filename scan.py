@@ -6,26 +6,19 @@ from profiles import *
 from plugins import *
 import pkgutil
 import plugins
+import profiles
 import textwrap
 import importlib
 
-def modulesimport(folder_path):
-    files = os.listdir(folder_path)
-    moduleslist = []
+import profiles
 
-    for i in range(len(files)):
-        name = files[i].split('.')
-        if len(name) > 1:
-            if name[1] == 'py' and name[0] != '__init__':
-               name = name[0]
-               moduleslist.append(name)
+def modulesimport(pkg):
+    return pkgutil.iter_modules(pkg.__path__, pkg.__name__ + ".")
 
-    file = open(folder_path+'__init__.py','w')
+def load_plugins(path):
+    for _, name, _ in modulesimport(path):
+        importlib.import_module(name)
 
-    toWrite = '__all__ = '+str(moduleslist)
-
-    file.write(toWrite)
-    file.close()
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -168,8 +161,8 @@ def output():
 			
 
 if __name__ == "__main__":
-	modulesimport('profiles/') 
-	modulesimport('plugins/')   
+	load_plugins(plugins)  
+	load_plugins(profiles) 
 	output()
 
 pwd_output = os.getcwd()
