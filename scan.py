@@ -7,6 +7,7 @@ from plugins import *
 import pkgutil
 import plugins
 import textwrap
+import importlib
 
 def modulesimport(folder_path):
     files = os.listdir(folder_path)
