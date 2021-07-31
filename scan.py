@@ -32,8 +32,8 @@ def modulesimport(folder_path):
 def modules_import(pkg):
     return pkgutil.iter_modules(pkg.__path__, pkg.__name__ + ".")
 
-def load_plugins(path):
-    for _, name, _ in modules_import(path):
+def load_plugins():
+    for _, name, _ in modules_import(profiles):
         importlib.import_module(name)
 
 
@@ -178,7 +178,7 @@ def output():
 			
 
 if __name__ == "__main__":  
-	load_plugins(profiles)
+	load_plugins()
 	modulesimport('plugins/') 
 	output()
 
