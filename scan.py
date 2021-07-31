@@ -80,7 +80,6 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		print (plugins_list)
 		sc_ho_plugin_120.version_run()
 		print (sc_im)
 		sc_im_plugin_120.version_run()
