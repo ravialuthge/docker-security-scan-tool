@@ -43,8 +43,7 @@ def output():
 
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 
-	object1 = apparmor()
-	output = object1.apparmor_scan()
+	output = apparmor().apparmor_scan()
 
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
@@ -56,8 +55,7 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
-		object1 = apparmor()
-		output = object1.apparmor_scan()
+		apparmor().apparmor_scan()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
