@@ -7,7 +7,6 @@ import plugins
 import profiles
 import textwrap
 import importlib
-from plugins.apparmor import *
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
