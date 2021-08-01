@@ -8,6 +8,12 @@ import profiles
 import textwrap
 import importlib
 
+command = sys.argv[1]
+try:
+    command_module = __import__("plugins.%s" % command, fromlist=["plugins"])
+except ImportError:
+    print ('error')
+
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
@@ -20,12 +26,12 @@ discovered_plugins = {
 	for finder, name, ispkg
 	in iter_namespace(plugins)
 }
+
 lst_plugins=[]
 for he in (discovered_plugins):
 	if he != 'common':
 		lst_plugins.append(he)
 lst_plugins_a = "\n".join(lst_plugins)
-
 
 def output():
 	
@@ -140,6 +146,7 @@ def output():
 			
 
 if __name__ == "__main__": 
+	command_module.run()
 	load_plugins() 
 	output()
 
