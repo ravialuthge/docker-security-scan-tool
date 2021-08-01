@@ -52,6 +52,8 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
+		object1 = apparmor()
+		output = object1.apparmor_scan()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
@@ -72,8 +74,7 @@ def output():
 			print (sc_im)
 	
 			print (sc_co)
-			object1 = apparmor()
-			output = object1.apparmor_scan()
+			
 		
 
 		elif args.version == "1.1.0":
