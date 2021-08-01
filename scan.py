@@ -9,12 +9,6 @@ import textwrap
 import importlib
 #from plugins.apparmor import *
 
-for module in os.listdir(os.path.plugins(__file__)):
-    if module == '__init__.py' or module[-3:] != '.py':
-        continue
-    __import__(module[:-3], locals(), globals())
-
-
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
@@ -140,8 +134,7 @@ def output():
 			parser.print_help()
 			
 if __name__ == "__main__": 
-	load_plugins() 
-	del module
+	load_plugins()
 	output()
 
 pwd_output = os.getcwd()
