@@ -43,8 +43,6 @@ def output():
 
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 
-	output = apparmor().apparmor_scan()
-
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
 		sub_version="1.2.0"
