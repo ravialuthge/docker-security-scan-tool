@@ -13,6 +13,7 @@ try:
     command_module = __import__("plugins.%s" % command, fromlist=["plugins"])
 except ImportError:
     print ('error')
+command_module.run()
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
@@ -146,7 +147,6 @@ def output():
 			
 
 if __name__ == "__main__": 
-	command_module.run()
 	load_plugins() 
 	output()
 
