@@ -41,24 +41,6 @@ def output():
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
 
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
-	
-	sc_ho_plugin_120 = process.cis_version(version_plugins=[docker_host.cis_version_120()])
-	sc_ho_plugin_16 = process.cis_version(version_plugins=[docker_host.cis_version_16()])
-	sc_ho_plugin_111 = process.cis_version(version_plugins=[docker_host.cis_version_111()])
-	sc_ho_plugin_112 = process.cis_version(version_plugins=[docker_host.cis_version_112()])
-	sc_ho_plugin_113 = process.cis_version(version_plugins=[docker_host.cis_version_113()])
-
-	sc_im_plugin_120 = process.cis_version(version_plugins=[docker_images.cis_version_image_120()])
-	sc_im_plugin_16 = process.cis_version(version_plugins=[docker_images.cis_version_image_16()])
-	sc_im_plugin_111 = process.cis_version(version_plugins=[docker_images.cis_version_image_111()]) 
-	sc_im_plugin_112 = process.cis_version(version_plugins=[docker_images.cis_version_image_112()])
-	
-	sc_co_plugin_120 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_120()])
-	sc_co_plugin_16 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_16()])
-	sc_co_plugin_111 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_111()])
-	sc_co_plugin_112 = process.cis_version(version_plugins=[docker_containers.cis_version_containers_112()])
-
-	officialimage_plugin = common.outputpl(plugins=[officialimage.officialimage()])
 
 	arguments_a = len(sys.argv) -1
 	if arguments_a == 0:
@@ -66,11 +48,11 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		sc_ho_plugin_120.version_run()
+	
 		print (sc_im)
-		sc_im_plugin_120.version_run()
+		
 		print (sc_co)
-		sc_co_plugin_120.version_run()
+		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
@@ -86,11 +68,11 @@ def output():
 			main_version="v1.2.0 - 07-29-2019"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			sc_ho_plugin_120.version_run()
+			
 			print (sc_im)
-			sc_im_plugin_120.version_run()
+	
 			print (sc_co)
-			sc_co_plugin_120.version_run()
+
 		
 
 		elif args.version == "1.1.0":
@@ -108,44 +90,44 @@ def output():
 			main_version="v1.0.0 - 04-22-2015"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			sc_ho_plugin_16.version_run()
+	
 			print (sc_im)
-			sc_im_plugin_16.version_run()
+		
 			print (sc_co)
-			sc_co_plugin_16.version_run()
+		
 
 			sub_version="1.11.0"
 			main_version="v1.0.0 - 04-22-2015"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			sc_ho_plugin_111.version_run()
+		
 			print (sc_im)
-			sc_im_plugin_111.version_run()
+			
 			print (sc_co)
-			sc_co_plugin_111.version_run()
+	
 
 			sub_version="1.12.0"
 			main_version="v1.0.0 - 04-22-2015"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			sc_ho_plugin_112.version_run()
+	
 			print (sc_im)
-			sc_im_plugin_112.version_run()
+			
 			print (sc_co)
-			sc_co_plugin_112.version_run()
+		
 
 			sub_version="1.13.0"
 			main_version="v1.0.0 - 04-22-2015"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			sc_ho_plugin_113.version_run()
+			
 			print (sc_im)
 		
 			print (sc_co)
 		
 		elif args.files:
 			print (sc_dockerfile)
-			officialimage_plugin.run()
+		
 
 		else:
 			parser.print_help()
