@@ -129,13 +129,10 @@ def output():
 		
 		elif args.files:
 			print (sc_dockerfile)
-		
 
 		else:
 			parser.print_help()
 			
-			
-
 if __name__ == "__main__": 
 	load_plugins() 
 	output()
