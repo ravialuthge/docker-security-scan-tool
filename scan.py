@@ -8,19 +8,12 @@ import profiles
 import textwrap
 import importlib
 
-command = sys.argv[1]
-try:
-    command_module = __import__("plugins.%s" % command, fromlist=["plugins"])
-except ImportError:
-    print ('error')
-command_module.run()
-
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
 def load_plugins():
     for _, name, _ in iter_namespace(plugins):
-        importlib.import_module(name)
+        __import__(importlib.import_module(name))
 
 discovered_plugins = {
 	name
