@@ -9,7 +9,7 @@ import textwrap
 import importlib
 from plugins import *
 
-for module in os.listdir(os.path.plugins(__file__)):
+for module in os.listdir(plugins):
     if module == '__init__.py' or module[-3:] != '.py':
         continue
     __import__(module[:-3], locals(), globals())
