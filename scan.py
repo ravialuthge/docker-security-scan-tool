@@ -7,7 +7,7 @@ import plugins
 import profiles
 import textwrap
 import importlib
-#from plugins.apparmor import *
+from plugins import *
 
 for module in os.listdir(os.path.dirname(__file__)):
     if module == '__init__.py' or module[-3:] != '.py':
