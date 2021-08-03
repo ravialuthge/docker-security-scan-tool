@@ -10,11 +10,7 @@ import importlib
 from plugins import *
 
 def iter_namespace(ns_pkg):
-	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
-
-def load_plugins():
-    for _, name, _ in iter_namespace(plugins):
-        importlib.import_module(name)
+	return pkgutil.iter_modules(ns_pkg.__name__)
 
 discovered_plugins = {
 	name
@@ -133,8 +129,7 @@ def output():
 		else:
 			parser.print_help()
 			
-if __name__ == "__main__": 
-	load_plugins()
+if __name__ == "__main__":
 	output()
 
 pwd_output = os.getcwd()
