@@ -9,6 +9,13 @@ import textwrap
 import importlib
 from plugins import *
 
+def load_all_modules_from_dir(dirname):
+    for importer, package_name, _ in pkgutil.iter_modules([dirname]):
+        full_package_name = '%s.%s' % (dirname, package_name)
+        if full_package_name not in sys.modules:
+            module = importer.find_module(package_name
+                        ).load_module(full_package_name)
+
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
 
@@ -130,6 +137,7 @@ def output():
 			parser.print_help()
 			
 if __name__ == "__main__":
+	load_all_modules_from_dir('plugins')
 	output()
 
 pwd_output = os.getcwd()
