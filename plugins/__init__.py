@@ -1,5 +1,12 @@
-from os.path import dirname, basename, isfile, join
-import glob
-modules = glob.glob(join(dirname(__file__), "*.py"))
-__all__ = [ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
+import importlib
+import pkgutil
+import plugins
 
+def iter_namespace(ns_pkg):
+	return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
+
+def load_plugins():
+    for _, name, _ in iter_namespace(plugins):
+        importlib.import_module(name)
+        
+load_plugins()
