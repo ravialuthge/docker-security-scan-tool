@@ -46,7 +46,7 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
-		plugins.apparmor().apparmor_scan()
+		apparmor().apparmor_scan()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
