@@ -4,17 +4,7 @@ from termcolor import colored
 import argparse
 import pkgutil
 import plugins
-import profiles
 import textwrap
-import importlib
-#from plugins import *
-
-def load_all_modules_from_dir(dirname):
-    for importer, package_name, _ in pkgutil.iter_modules([dirname]):
-        full_package_name = '%s.%s' % (dirname, package_name)
-        if full_package_name not in sys.modules:
-            module = importer.find_module(package_name).load_module(full_package_name)
-            print (module)
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -56,7 +46,7 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
-		apparmor().apparmor_scan()
+		plugins.apparmor().apparmor_scan()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
@@ -137,7 +127,6 @@ def output():
 			parser.print_help()
 			
 if __name__ == "__main__":
-	load_all_modules_from_dir('plugins')
 	output()
 
 pwd_output = os.getcwd()
