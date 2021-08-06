@@ -4,7 +4,7 @@ from tabulate import tabulate
 import docker
 from sdk.containers_list import *
 
-class apparmor(containerlist):
+class ApparmorPlugin(containerlist):
     """Verify AppArmor Profile, if applicable"""
     def __init__(test):
         test.lst_con_img=[]
