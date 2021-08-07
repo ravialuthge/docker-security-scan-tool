@@ -2,9 +2,12 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 import docker
+from sdk.images_list import *
 
-class  containeruser:
+class  imageuser(imageslist):
     """Create a user for the container"""
+    def __init__(test):
+        
     def scan(test):
         f = open("re.txt", "w")
         f_st = open("re_st.txt", "w")
