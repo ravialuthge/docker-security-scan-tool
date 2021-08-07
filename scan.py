@@ -6,7 +6,7 @@ import pkgutil
 import plugins
 import textwrap
 from plugins import *
-from profiles import *docker_containers, 
+from profiles import *
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
