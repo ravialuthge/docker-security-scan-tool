@@ -124,6 +124,7 @@ def output():
 		
 		elif args.files:
 			print (sc_dockerfile)
+			
 
 		else:
 			parser.print_help()
