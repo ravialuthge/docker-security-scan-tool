@@ -6,6 +6,7 @@ import pkgutil
 import plugins
 import textwrap
 from plugins import *
+from profiles import *docker_containers, 
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -47,7 +48,7 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
-		apparmor.ApparmorPlugin().apparmor_scan()
+		docker_containers.cis_version_containers().cis_version_12()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))

@@ -53,6 +53,6 @@ class ApparmorPlugin(containerlist):
             apparmor_co_f = f_app
             apparmor_co_f_st = f_st_app
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            apparmor_output_cmd = tabulate(table_apparmor)
-        print (apparmor_output_cmd)
+            test.apparmor_output_cmd = tabulate(table_apparmor)
+        return test.apparmor_output_cmd
 
