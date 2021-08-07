@@ -5,7 +5,7 @@ import argparse
 import pkgutil
 import plugins
 import textwrap
-
+from plugins import *
 
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
