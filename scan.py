@@ -6,6 +6,7 @@ import pkgutil
 import plugins
 import textwrap
 
+
 def iter_namespace(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
 
@@ -46,7 +47,7 @@ def output():
 		print (sc_im)
 		
 		print (sc_co)
-		apparmor.apparmor().apparmor_scan()
+		apparmor.ApparmorPlugin().apparmor_scan()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
