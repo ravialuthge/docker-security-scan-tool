@@ -1,10 +1,16 @@
 import os
+import argparse
 
-class officialimage:
+class officialimage(object):
     """Check Docker Official Image"""
-    def scan(test):
+    def __init__(test):
+      parser = argparse.ArgumentParser()
+      parser.add_argument("dockerfile_path")
+      test.args = parser.parse_args()
+
+    def officialimagescan(test):
        try:
-         p = input("enter Dockerfile path :")
+         p = test.args.dockerfile_path
          f = open(p, "r")
          mystring  = f.read()
 
