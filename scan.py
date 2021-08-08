@@ -8,13 +8,13 @@ import textwrap
 from plugins import *
 from profiles import *
 
-def iter_namespace(ns_pkg):
+def plugins_list(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
 
 discovered_plugins = {
 	name
 	for finder, name, ispkg
-	in iter_namespace(plugins)
+	in plugins_list(plugins)
 }
 
 lst_plugins=[]
@@ -58,6 +58,7 @@ def output():
 		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
+		parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
