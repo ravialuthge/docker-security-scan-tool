@@ -126,7 +126,7 @@ def output():
 			print (sc_dockerfile)
 		
 		elif args.plugins == "apparmor":
-			apparmor.ApparmorPlugin().apparmor_scan()
+			print (apparmor.ApparmorPlugin().apparmor_scan())
 			
 		else:
 			parser.print_help()
