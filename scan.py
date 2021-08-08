@@ -58,7 +58,6 @@ def output():
 		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
-		parser.add_argument("-i", "--input", dest="filename", required=True, help="input file", metavar="FILE")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
@@ -125,7 +124,6 @@ def output():
 		
 		elif args.files == "dockerfile":
 			print (sc_dockerfile)
-			path = args.filename
 			officialimage.officialimage().officialimagescan()
 		
 		elif args.plugins == "apparmor":
