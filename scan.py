@@ -122,7 +122,7 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.files:
+		elif args.files == "dockerfile":
 			print (sc_dockerfile)
 			officialimage.officialimage().officialimagescan()
 		
