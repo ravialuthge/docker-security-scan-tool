@@ -124,6 +124,7 @@ def output():
 		
 		elif args.files:
 			print (sc_dockerfile)
+			officialimage.officialimage().officialimagescan()
 		
 		elif args.plugins == "apparmor":
 			print (apparmor.ApparmorPlugin().apparmor_scan())
