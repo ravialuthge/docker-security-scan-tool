@@ -5,13 +5,13 @@ class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
       parser = argparse.ArgumentParser()
-      parser.add_argument("dockerfile_path")
+      parser.add_argument("path")
       test.args = parser.parse_args()
+      test.p = test.args.path
 
     def officialimagescan(test):
        try:
-         p = test.args.dockerfile_path
-         f = open(p, "r")
+         f = open(test.p, "r")
          mystring  = f.read()
 
          for item in mystring.split("\n"):
