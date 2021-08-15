@@ -4,28 +4,20 @@ from tabulate import tabulate
 import docker
 from sdk.images_list import *
 
-class imageuser(imageslist):
+class ImageUser(imageslist):
     """Create a user for the container"""
-    
+    def __init__(test):
+        test.images_cmd =  "docker images --format '{{.Repository}}:{{.Tag}}'"
 
-    def scan(test):
-        f = open("re.txt", "w")
-        f_st = open("re_st.txt", "w")
-        f_st_img = open("re_st_img.txt", "w")
-        images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
-        container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
-        client = docker.from_env()
-        for image in client.images.list():
-            images_ch_cmd_a = image.id
-            f_st_img.write(images_ch_cmd_a)
-        f_st_img = open("re_st_img.txt", "r")
-        images_ch_cmd = f_st_img.read()
-        if images_ch_cmd == "":
-            print ('images not found')
+    def imageuser_scan(test):
+        super().__init__()
+        lst_str =  str(test.lst)
+        if lst_str == '[]':
+            imageuser_output_cmd = 'image not found'
         else:
+            container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
             container_user_output = os.popen(container_user_cmd).read()
-            images_output = os.popen(images_cmd).read()
-            images = images_output.split()
+            images_output = os.popen(test.images_cmd).read()
             container_users = container_user_output.split()
             
             for i in (container_users):
