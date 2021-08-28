@@ -1,8 +1,8 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
-import docker
 from sdk.images_list import *
+from sdk.images_name_list import *
 
 class ImageUser(imageslist):
     """Create a user for the container"""
@@ -15,7 +15,11 @@ class ImageUser(imageslist):
         if lst_str == '[]':
             imageuser_output_cmd = 'image not found'
         else:
-            container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
+            
+            for im in (images):
+                container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
+
+            
             container_user_output = os.popen(container_user_cmd).read()
             images_output = os.popen(test.images_cmd).read()
             container_users = container_user_output.split()
