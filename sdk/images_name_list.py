@@ -12,8 +12,5 @@ class imageslist(object):
                     lst.append(bbcdr)
         test.lst = lst 
     def images(test):
-        test.lst = test.lst        
-        return test.lst
-
-sdk = imageslist().images()
-print (sdk)
+        test.img_name_lst = test.lst        
+        return test.img_name_lst

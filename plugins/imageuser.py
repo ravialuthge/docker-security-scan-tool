@@ -7,37 +7,41 @@ from sdk.images_name_list import *
 class ImageUser(imageslist):
     """Create a user for the container"""
     def __init__(test):
-        test.images_cmd =  "docker images --format '{{.Repository}}:{{.Tag}}'"
+        test.lst_image_user_cmd=[]
+        test.lst_imageuser_output_cmd=[]
+        test.lst_img_user_co_st=[]
 
     def imageuser_scan(test):
         super().__init__()
         lst_str =  str(test.lst)
+        img_name_lst_str =  str(test.img_name_lst)
+        images_output = "\n".join(img_name_lst_str)
         if lst_str == '[]':
-            imageuser_output_cmd = 'image not found'
+            imageuser_output = 'image not found'
         else:
-            
-            for im in (images):
-                container_user_cmd = "docker image inspect -f 'User={{.Config.User}}' $(docker images --format '{{ .Repository }}:{{ .Tag }}')"
-
-            
-            container_user_output = os.popen(container_user_cmd).read()
-            images_output = os.popen(test.images_cmd).read()
-            container_users = container_user_output.split()
-            
-            for i in (container_users):
+            for im in (lst_str):
+                image_user_cmd = "docker image inspect" + im + "-f 'User={{.Config.User}}'"
+                image_user_cmd_output = os.popen(image_user_cmd).read()
+                image_user = image_user_cmd_output.rstrip()
+                image_user_str = str(image_user)
+                test.lst_image_user_cmd.append(image_user_str)
+            image_user_str_a_s = test.lst_image_user_cmd
+            for i in (image_user_str_a_s):
                 if i == 'User=' or i == 'User=root':
-                        container_user_co = 'not user for the container has been created'
-                        container_user_co_st = colored('WARN  ', 'red')
+                        imageuser_output_cmd = 'not user for the container has been created'
+                        img_user_co_st = colored('WARN  ', 'red')
+                        test.lst_imageuser_output_cmd.append(imageuser_output_cmd)
+                        test.lst_img_user_co_st.append(img_user_co_st)
                 else:
-                        container_user_co = 'user for the container has been created'
-                        container_user_co_st = colored('PASS  ', 'green')
-                f.write(container_user_co)
-                f.write("\n")
-                f_st.write(container_user_co_st)
-                f_st.write("\n")
-            f= open("re.txt", "r")
-            f_st= open("re_st.txt", "r")
-            container_user_co_f = f.read()
-            container_user_co_f_st = f_st.read()
-            table = [[container_user_co_f_st , images_output , container_user_co_f]]
-            print (tabulate(table))
+                        imageuser_output_cmd = 'user for the container has been created'
+                        img_user_co_st = colored('PASS  ', 'green')
+                        test.lst_imageuser_output_cmd.append(imageuser_output_cmd)
+                        test.lst_img_user_co_st.append(img_user_co_st)
+            f_user = "\n".join(test.lst_imageuser_output_cmd)
+            f_st_user = "\n".join(test.lst_img_user_co_st)
+            img_user_co_f = f_user
+            img_user_co_f_st = f_st_user
+            table_img_user = [[img_user_co_f_st , images_output , img_user_co_f]]
+            imageuser_output = tabulate(table_img_user)
+        return imageuser_output
+            
