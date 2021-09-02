@@ -11,6 +11,7 @@ class ApparmorPlugin(containerlist):
         test.lst_con_apparmor=[]
         test.lst_apparmor_co=[]
         test.lst_apparmor_co_st=[]
+        test.lst_con_img_name=[]
     
     def apparmor_scan(test):
         super().__init__()
@@ -18,16 +19,14 @@ class ApparmorPlugin(containerlist):
         if lst_str == '[]':
             apparmor_output_cmd = 'containers not running'
         else:
-            client = docker.from_env()
-            for container in client.containers.list():
-                a = container.image
-                ab = str(a)
-                b = ab.split()
-                bb = b[1]
-                bbc = bb.replace(">",'')
-                vv = bbc.replace("'",'')
-                test.lst_con_img.append(vv)
-            lst_con_img_a = "\n".join(test.lst_con_img)
+            con_id = test.lst
+            for d in (con_id):
+                docker_con_img_name_cmd = "docker inspect" + d + "--format='{{.Config.Image}}'"
+                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+                docker_con_img_name = docker_con_img_name_output.rstrip()
+                docker_con_img_name_str = str(docker_con_img_name)
+                test.lst_con_img_name.append(docker_con_img_name_str)
+            lst_con_img_a = "\n".join(test.lst_con_img_name)
             images_output = lst_con_img_a
             images = test.lst
             for im in (images):
