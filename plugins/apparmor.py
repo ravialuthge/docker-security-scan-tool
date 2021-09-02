@@ -21,7 +21,7 @@ class ApparmorPlugin(containerlist):
         else:
             con_id = test.lst
             for d in (con_id):
-                docker_con_img_name_cmd = "docker inspect" + d + "--format='{{.Config.Image}}'"
+                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
                 docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
                 docker_con_img_name = docker_con_img_name_output.rstrip()
                 docker_con_img_name_str = str(docker_con_img_name)
