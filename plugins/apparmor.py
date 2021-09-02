@@ -1,7 +1,6 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
-import docker
 from sdk.containers_id_list import *
 
 class ApparmorPlugin(containerlist):
