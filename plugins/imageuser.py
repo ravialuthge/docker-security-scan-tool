@@ -1,20 +1,28 @@
 import os
+import docker
 from termcolor import colored
 from tabulate import tabulate
 from sdk.images_list import *
-from sdk.images_name_list import *
 
-class ImageUser(imageslist,imagesnamelist):
+class ImageUser(imageslist):
     """Create a user for the container"""
     def __init__(test):
         test.lst_image_user_cmd=[]
         test.lst_imageuser_output_cmd=[]
         test.lst_img_user_co_st=[]
+        test.lst_img_name=[]
 
     def imageuser_scan(test):
         super().__init__()
         lst_str =  str(test.lst)
-        img_name_lst_str =  test.img_name_lst
+        client = docker.from_env()
+        for image in client.images.list():
+                    images_ch_cmd_a_s = image.tags
+                    images_ch_cmd_str = str(images_ch_cmd_a_s)
+                    bbc = images_ch_cmd_str.replace("[",'')
+                    bbcdr = bbc.replace("]",'')
+                    test.lst_img_name.append(bbcdr)
+        img_name_lst_str = test.lst_img_name
         images_output = "\n".join(img_name_lst_str)
         if lst_str == '[]':
             imageuser_output = 'image not found'
