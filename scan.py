@@ -46,7 +46,7 @@ def output():
 		print (sc_ho)
 	
 		print (sc_im)
-		docker_images.cis_version_containers().cis_version_16()
+		docker_images.cis_version_images().cis_version_16()
 		print (sc_co)
 		docker_containers.cis_version_containers().cis_version_12()
 		
