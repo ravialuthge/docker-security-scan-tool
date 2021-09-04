@@ -10,6 +10,7 @@ class cis_version_host(object):
 	def cis_version_16(test):
 		testcases = datadir.dockerdatadir().dockerdatadir_scan()
 		testcases = dockeruser.dockeruser().dockeruserscan_scan()
+		testcases = dockerversion.dockerversion().dockerversion_scan()
 		print (testcases)
 
 
