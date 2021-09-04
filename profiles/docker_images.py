@@ -1,4 +1,4 @@
-from plugins import *contenttrust,  
+from plugins import *
 
 class cis_version_images():
 	def cis_version_16(test):
