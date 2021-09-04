@@ -12,7 +12,7 @@ class ImageUser(imageslist):
 
     def imageuser_scan(test):
         super().__init__()
-        lst_str =  str(test.lst)
+        lst_str =  test.lst
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
