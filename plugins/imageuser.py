@@ -1,5 +1,4 @@
 import os
-import docker
 from termcolor import colored
 from tabulate import tabulate
 from sdk.images_list import *
@@ -15,15 +14,6 @@ class ImageUser(imageslist):
     def imageuser_scan(test):
         super().__init__()
         lst_str =  str(test.lst)
-        client = docker.from_env()
-        for image in client.images.list():
-                    images_ch_cmd_a_s = image.tags
-                    images_ch_cmd_str = str(images_ch_cmd_a_s)
-                    bbc = images_ch_cmd_str.replace("[",'')
-                    bbcdr = bbc.replace("]",'')
-                    test.lst_img_name.append(bbcdr)
-        img_name_lst_str = test.lst_img_name
-        images_output = "\n".join(img_name_lst_str)
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
@@ -49,7 +39,7 @@ class ImageUser(imageslist):
             f_st_user = "\n".join(test.lst_img_user_co_st)
             img_user_co_f = f_user
             img_user_co_f_st = f_st_user
-            table_img_user = [[img_user_co_f_st , images_output , img_user_co_f]]
+            table_img_user = [[img_user_co_f_st , img_user_co_f]]
             imageuser_output = tabulate(table_img_user)
         return imageuser_output
             
