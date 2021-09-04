@@ -6,7 +6,7 @@ import pkgutil
 import plugins
 import textwrap
 from plugins import *
-from profiles import * 
+from profiles import *docker_host,  
 
 def plugins_list(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -44,7 +44,7 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-	
+		docker_host.cis_version_images().cis_version_112()
 		print (sc_im)
 		docker_images.cis_version_images().cis_version_16()
 		print (sc_co)

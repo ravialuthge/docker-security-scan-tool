@@ -14,4 +14,4 @@ class AuditContainerd(object):
 			auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:
 			auditcontainerd_re = colored('PASS  ', 'green') + "Audit Docker files and directories"
-		print (auditcontainerd_re)
+		return auditcontainerd_re

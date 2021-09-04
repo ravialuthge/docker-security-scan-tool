@@ -13,6 +13,7 @@ class Cgroup(object):
         cgroup_output = "cgroup=" + cgroup_output_a
 
         if cgroup_output == "cgroup=":
-            print (colored('PASS   ', 'green') + "default cgroup used")
+            cgroup_output =  colored('PASS   ', 'green') + "default cgroup used"
         else:
-            print (colored('WARN   ', 'red') + "confirm default cgroup usage")
+           cgroup_output = colored('WARN   ', 'red') + "confirm default cgroup usage"
+        return cgroup_output
