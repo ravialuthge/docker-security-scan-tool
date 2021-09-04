@@ -2,3 +2,4 @@ termcolor==1.1.0
 tabulate
 docker
 six
+psutil

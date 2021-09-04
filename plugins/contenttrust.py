@@ -1,7 +1,7 @@
 import os
 from termcolor import colored
 
-class contenttrust():
+class contenttrust(object):
 	"""Enable Content trust for Docker"""
 	def __init__(test):
 		test.contenttrust_cmd = "1"
