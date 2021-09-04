@@ -2,8 +2,9 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 from sdk.images_list import *
+from sdk.images_name_list import *
 
-class ImageUser(imageslist):
+class ImageUser(imageslist,imagesnamelist):
     """Create a user for the container"""
     def __init__(test):
         test.lst_image_user_cmd=[]
@@ -13,6 +14,8 @@ class ImageUser(imageslist):
     def imageuser_scan(test):
         super().__init__()
         lst_str =  test.lst
+        img_name_cmd = test.img_name_lst
+        img_name = "\n".join(img_name_cmd)
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
@@ -38,7 +41,7 @@ class ImageUser(imageslist):
             f_st_user = "\n".join(test.lst_img_user_co_st)
             img_user_co_f = f_user
             img_user_co_f_st = f_st_user
-            table_img_user = [[img_user_co_f_st , img_user_co_f]]
+            table_img_user = [[img_user_co_f_st , img_name , img_user_co_f]]
             imageuser_output = tabulate(table_img_user)
         return imageuser_output
             
