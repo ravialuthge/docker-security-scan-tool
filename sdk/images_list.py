@@ -6,7 +6,9 @@ class imageslist(object):
         client = docker.from_env()
         for image in client.images.list():
                     images_ch_cmd_a = image.id
-                    lst.append(images_ch_cmd_a)
+                    x = images_ch_cmd_a.split(":")
+                    ff = x[1]
+                    lst.append(ff)
         test.lst = lst 
     def images(test):
         test.lst = test.lst        
