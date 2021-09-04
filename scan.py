@@ -44,7 +44,7 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (sc_ho)
-		docker_host.cis_version_images().cis_version_112()
+		docker_host.cis_version_host().cis_version_112()
 		print (sc_im)
 		docker_images.cis_version_images().cis_version_16()
 		print (sc_co)
