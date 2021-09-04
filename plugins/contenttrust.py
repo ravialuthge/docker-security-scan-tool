@@ -1,15 +1,17 @@
 import os
 from termcolor import colored
 
-class contenttrust:
+class contenttrust():
 	"""Enable Content trust for Docker"""
-	def scan(test):
-		contenttrust_cmd = "1"
-		contenttrust_version_cmd = "echo $DOCKER_CONTENT_TRUST"
-		contenttrust_output = os.popen(contenttrust_version_cmd).read()
+	def __init__(test):
+		test.contenttrust_cmd = "1"
+		test.contenttrust_version_cmd = "echo $DOCKER_CONTENT_TRUST"
+	def contenttrust_scan(test):
+		
+		contenttrust_output = os.popen(test.contenttrust_version_cmd).read()
 
-		if contenttrust_output == contenttrust_cmd:
+		if contenttrust_output == test.contenttrust_cmd:
 			contenttrust_re = colored('PASS   ', 'green') + "Enabled Content trust for Docker"
 		else:
 			contenttrust_re = colored('WARN   ', 'red') + "Enable Content trust for Docker"
-		print (contenttrust_re)
+		return contenttrust_re
