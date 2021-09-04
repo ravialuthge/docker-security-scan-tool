@@ -10,6 +10,18 @@ class imageslist(object):
                     ff = x[1]
                     lst.append(ff)
         test.lst = lst 
-    def images(test):
+        lst_img_name=[]
+        client = docker.from_env()
+        for image in client.images.list():
+                    images_ch_cmd_a_s = image.tags
+                    images_ch_cmd_str = str(images_ch_cmd_a_s)
+                    bbc = images_ch_cmd_str.replace("[",'')
+                    bbcdr = bbc.replace("]",'')
+                    lst_img_name.append(bbcdr)
+        test.lst_img_name = lst_img_name
+    def images_id(test):
         test.lst = test.lst        
         return test.lst
+    def images_name(test):
+        test.lst_img_name = test.lst_img_name        
+        return test.lst_img_name
