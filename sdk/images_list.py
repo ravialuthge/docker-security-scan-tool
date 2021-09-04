@@ -16,7 +16,8 @@ class imageslist(object):
                     images_ch_cmd_str = str(images_ch_cmd_a_s)
                     bbc = images_ch_cmd_str.replace("[",'')
                     bbcdr = bbc.replace("]",'')
-                    lst_img_name.append(bbcdr)
+                    bbcf = bbcdr.replace("'",'')
+                    lst_img_name.append(bbcf)
         test.lst_img_name = lst_img_name
     def images_id(test):
         test.lst = test.lst        
