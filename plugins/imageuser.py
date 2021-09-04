@@ -4,7 +4,7 @@ from tabulate import tabulate
 from sdk.images_list import *
 from sdk.images_name_list import *
 
-class ImageUser(imageslist):
+class ImageUser(imageslist,imagesnamelist):
     """Create a user for the container"""
     def __init__(test):
         test.lst_image_user_cmd=[]

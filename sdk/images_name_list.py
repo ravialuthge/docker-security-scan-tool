@@ -1,6 +1,6 @@
 import docker
 
-class imageslist(object):
+class imagesnamelist(object):
     def __init__(test): 
         lst=[]
         client = docker.from_env()
