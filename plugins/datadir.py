@@ -7,7 +7,6 @@ class dockerdatadir(object):
     def __init__(test):
         test.mountdir=[]
 
-        
     def dockerdatadir_scan(test):
         super().__init__()
         root_dir_cmd = "docker info -f '{{.DockerRootDir}}'"
