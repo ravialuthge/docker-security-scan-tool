@@ -9,7 +9,6 @@ class ImageUser(imageslist):
         test.lst_image_user_cmd=[]
         test.lst_imageuser_output_cmd=[]
         test.lst_img_user_co_st=[]
-        test.lst_img_name=[]
 
     def imageuser_scan(test):
         super().__init__()
@@ -18,7 +17,7 @@ class ImageUser(imageslist):
             imageuser_output = 'image not found'
         else:
             for im in (lst_str):
-                image_user_cmd = "docker image inspect" + im + "-f 'User={{.Config.User}}'"
+                image_user_cmd = "docker image inspect " + im + " -f 'User={{.Config.User}}'"
                 image_user_cmd_output = os.popen(image_user_cmd).read()
                 image_user = image_user_cmd_output.rstrip()
                 image_user_str = str(image_user)
