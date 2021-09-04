@@ -14,7 +14,7 @@ class ImageUser(imageslist):
         super().__init__()
         lst_str =  test.lst
         img_name = str(test.lst_img_name)
-        _img_name = "\n".join(_img_name)
+        
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
