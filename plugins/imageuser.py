@@ -14,8 +14,8 @@ class ImageUser(imageslist,imagesnamelist):
     def imageuser_scan(test):
         super().__init__()
         lst_str =  test.lst
-        img_name_cmd = test.img_name_lst
-        img_name = "\n".join(img_name_cmd)
+        img_name = test.img_name_lst
+        img_name_bak = "\n".join(img_name_cmd)
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
