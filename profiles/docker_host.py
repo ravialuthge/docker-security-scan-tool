@@ -14,5 +14,8 @@ class cis_version_host(object):
 		print (testcases)
 		print (testcases2)
 		print (testcases3)
+	def cis_version_113(test):
+		testcases = encryptnet.encryptnet().encryptnet_scan()
+		print (testcases)
 
 

@@ -47,6 +47,7 @@ def output():
 		docker_host.cis_version_host().cis_version_112()
 		docker_host.cis_version_host().cis_version_111()
 		docker_host.cis_version_host().cis_version_16()
+		docker_host.cis_version_host().cis_version_113()
 		print (sc_im)
 		docker_images.cis_version_images().cis_version_16()
 		docker_images.cis_version_images().cis_version_111()
