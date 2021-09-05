@@ -55,6 +55,7 @@ def output():
 		print (sc_co)
 		docker_containers.cis_version_containers().cis_version_12()
 		docker_containers.cis_version_containers().cis_version_112()
+		docker_containers.cis_version_containers().cis_version_111()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
