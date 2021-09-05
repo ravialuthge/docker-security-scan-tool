@@ -19,7 +19,6 @@ discovered_plugins = {
 
 lst_plugins=[]
 for he in (discovered_plugins):
-	if he != 'common':
 		lst_plugins.append(he)
 _lst_plugins_a = "\n".join(lst_plugins)
 lst_plugins_a = sorted(_lst_plugins_a)
