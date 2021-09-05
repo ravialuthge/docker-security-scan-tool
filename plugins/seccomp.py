@@ -51,4 +51,4 @@ class seccomp(containerlist):
             seccomp_ch_co_f_st = "\n".join(test.lst_seccomp_ch_co_st)
             table_seccomp = [[seccomp_ch_co_f_st , container_image_output , container_name_output , seccomp_ch_co_f]]
             table_seccomp_out = tabulate(table_seccomp)
-            return table_seccomp_out
+            return table_seccomp_out , seccomp_ch
