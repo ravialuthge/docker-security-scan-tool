@@ -7,7 +7,7 @@ class seccomp(containerlist):
     """Do not disable default seccomp profile""" 
     def __init__(test):
          test.lst_con_img_name=[]
-         test.lst_health_ch=[]
+         test.lst_seccomp_ch=[]
          test.lst_seccomp_ch_co=[]
          test.lst_seccomp_ch_co_st=[]
 
@@ -28,12 +28,12 @@ class seccomp(containerlist):
                 seccomp_ch_output = os.popen(seccomp_ch_cmd).read()
                 seccomp_ch_name = seccomp_ch_output.rstrip()
                 seccomp_ch_name_str = str(seccomp_ch_name)
-                test.lst_health_ch.append(seccomp_ch_name_str)
+                test.lst_seccomp_ch.append(seccomp_ch_name_str)
             lst_con_img_a = "\n".join(test.lst_con_img_name)
             container_image_output = lst_con_img_a
             _container_name_output = test.con_name_lst
             container_name_output = "\n".join(_container_name_output)
-            seccomp_ch = test.lst_health_ch
+            seccomp_ch = test.lst_seccomp_ch
 
             for h in (seccomp_ch):
                     if h == 'SecurityOpt=[]':
