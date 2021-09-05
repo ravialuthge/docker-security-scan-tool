@@ -13,7 +13,7 @@ def plugins_list(ns_pkg):
 
 discovered_plugins = {
 	name
-	for finder, name, ispkg
+	for finder, name, ispkg , __dict__
 	in plugins_list(plugins)
 }
 
