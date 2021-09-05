@@ -14,7 +14,7 @@ def plugins_list(ns_pkg):
 discovered_plugins = {
 	name
 	for finder, name, ispkg
-	in plugins_list(plugins)
+	in plugins_list(plugins.__dict__)
 }
 
 lst_plugins=[]
