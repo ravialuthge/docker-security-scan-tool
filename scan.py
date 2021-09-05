@@ -21,7 +21,8 @@ lst_plugins=[]
 for he in (discovered_plugins):
 	if he != 'common':
 		lst_plugins.append(he)
-lst_plugins_a = "\n".join(lst_plugins)
+_lst_plugins_a = "\n".join(lst_plugins)
+lst_plugins_a = sorted(_lst_plugins_a)
 
 def output():
 	
@@ -53,6 +54,7 @@ def output():
 		docker_images.cis_version_images().cis_version_111()
 		print (sc_co)
 		docker_containers.cis_version_containers().cis_version_12()
+		docker_containers.cis_version_containers().cis_version_112()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
