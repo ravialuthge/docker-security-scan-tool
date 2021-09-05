@@ -9,11 +9,11 @@ from plugins import *
 from profiles import * 
 
 def plugins_list(ns_pkg):
-	return pkgutil.iter_modules(ns_pkg.__path__)
+	return pkgutil.iter_modules(ns_pkg.__path__,ns_pkg.__dict__)
 
 discovered_plugins = {
 	name
-	for finder, name, ispkg , __dict__
+	for finder, name, ispkg
 	in plugins_list(plugins)
 }
 
