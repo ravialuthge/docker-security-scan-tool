@@ -11,9 +11,11 @@ class cis_version_host(object):
 		testcases = datadir.dockerdatadir().dockerdatadir_scan()
 		testcases2 = dockeruser.dockeruser().dockeruserscan_scan()
 		testcases3 = dockerversion.dockerversion().dockerversion_scan()
+		testcases4 = kernelversion.kernelversion().kernelversion_scan()
 		print (testcases)
 		print (testcases2)
 		print (testcases3)
+		print (testcases4)
 	def cis_version_113(test):
 		testcases = encryptnet.encryptnet().encryptnet_scan()
 		print (testcases)
