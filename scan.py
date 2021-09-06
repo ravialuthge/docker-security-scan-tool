@@ -1,4 +1,3 @@
-import os
 import sys
 from termcolor import colored
 import argparse
@@ -142,10 +141,4 @@ def output():
 			
 if __name__ == "__main__":
 	output()
-
-pwd_output = os.getcwd()
-pwd_list = os.listdir(pwd_output)
-for list in pwd_list:
-    if list.endswith(".txt"):
-        os.remove(os.path.join(pwd_output, list))
 
