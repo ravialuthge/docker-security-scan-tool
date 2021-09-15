@@ -1,15 +1,19 @@
 import os
 from termcolor import colored
 
-class cgroup:
+class Cgroup(object):
     """Confirm default cgroup usage"""
-    def scan(test):
-        cgroup_cmd = "ps -ef | grep docker | grep 'cgroup-parent'"
-        cgroup_output = os.popen(cgroup_cmd).read()
+    def __init__(test):
+        test.cgroup_cmd = "ps -ef | grep docker | grep 'cgroup-parent'"
+        
+    def cgroup_scan(test):
+        
+        cgroup_output = os.popen(test.cgroup_cmd).read()
         cgroup_output_a = cgroup_output.rstrip()
         cgroup_output = "cgroup=" + cgroup_output_a
 
         if cgroup_output == "cgroup=":
-            print (colored('PASS   ', 'green') + "default cgroup used")
+            cgroup_output =  colored('PASS   ', 'green') + "default cgroup used"
         else:
-            print (colored('WARN   ', 'red') + "confirm default cgroup usage")
+           cgroup_output = colored('WARN   ', 'red') + "confirm default cgroup usage"
+        return cgroup_output

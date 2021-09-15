@@ -1,21 +1,12 @@
 from plugins import *
 
-class cis_version_image_120:
-	def version_scan(version):
-		plugin_images_120 = common.outputpl(plugins=[containeruser.containeruser(),updateins.updateins()])
-		plugin_images_120.run()
-
-class cis_version_image_16:
-	def version_scan(version):
-		plugin_images_16 = common.outputpl(plugins=[containeruser.containeruser()])
-		plugin_images_16.run()
-
-class cis_version_image_111:
-	def version_scan(version):
-		plugin_images_111 = common.outputpl(plugins=[contenttrust.contenttrust()])
-		plugin_images_111.run()
-
-class cis_version_image_112:
-	def version_scan(version):
-		plugin_images_112 = common.outputpl(plugins=[updateins.updateins()])
-		plugin_images_112.run()
+class cis_version_images():
+	def cis_version_16(test):
+		testcases = imageuser.ImageUser().imageuser_scan()
+		print (testcases)
+	def cis_version_111(test):
+		testcases = contenttrust.contenttrust().contenttrust_scan()
+		print (testcases)
+	def cis_version_112(test):
+		testcases = updateins.updateins().updateins_scan()
+		print (testcases)

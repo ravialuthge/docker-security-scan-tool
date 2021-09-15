@@ -1,18 +1,19 @@
-import os
-import re
+import grp
 from termcolor import colored
 
-class dockeruserscan:
+class dockeruser(object):
     """Only allow trusted users to control Docker daemon"""
-    def scan(test):
-        trusted_users_cmd = "cat /etc/group | grep docker"
-        health_ch_output_output = os.popen(trusted_users_cmd).read()
-        health_ch_output_output_a = health_ch_output_output.rstrip()
-        trusted_users_cmd_str = re.split(':',health_ch_output_output_a)
-        trusted_users_output_a = trusted_users_cmd_str[3]
-        trusted_users_output = "user=" + trusted_users_output_a
-
-        if trusted_users_output == "user=":
-            print (colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon")
+    def __init__(test):
+        test._trusted_users_output=[]
+    def dockeruserscan_scan(test):
+        groups = grp.getgrall()
+        for group in groups:
+            for user in group[3]:
+                if group[0] == "docker" and user != "root":
+                    test._trusted_users_output.append(user)
+        trusted_users_output = str(test._trusted_users_output)
+        if trusted_users_output == "[]":
+            dockeruserscan =  colored('PASS   ', 'green') + "allowed trusted users to control Docker daemon"
         else:
-            print (colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon")
+            dockeruserscan =  colored('WARN   ', 'red') + "Only allow trusted users to control Docker daemon"
+        return dockeruserscan

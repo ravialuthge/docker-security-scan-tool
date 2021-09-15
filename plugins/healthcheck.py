@@ -1,48 +1,54 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
-import docker
+from sdk.containers_id_list import *
 
-class healthcheck:
+class healthcheck(containerlist):
     """Check container health at runtime"""
-    def scan(test):
-        f_he = open("re_he.txt", "w")
-        f_st_he = open("re_st_he.txt", "w")
-        f_he_con = open("re_st_he_con.txt", "w")
-        client = docker.from_env()
-        for container in client.containers.list():
-            container_ch_cmd_a = container.id 
-            f_he_con.write(container_ch_cmd_a)
-        f_he_con = open("re_st_he_con.txt", "r")
-        container_ch_cmd = f_he_con.read()
-        if container_ch_cmd == "":
-            table_he_out = 'containers not running'
-            print (table_he_out)
-        else:
-            health_ch_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Healthcheck}}'"
-            container_image_cmd = "docker inspect $(docker ps -q) --format='{{.Config.Image}}'"
-            container_name_cmd = "docker inspect $(docker ps -q) --format='{{.Name}}'"
-            health_ch_output = os.popen(health_ch_cmd).read()
-            container_image_output = os.popen(container_image_cmd).read()
-            container_name_output_all = os.popen(container_name_cmd).read()
-            container_name_output = container_name_output_all.replace("/",'')
+    def __init__(test):
+        test.lst_con_img_name=[]
+        test.lst_health_ch=[]
+        test.lst_health_ch_co=[]
+        test.lst_health_ch_co_st=[]
 
-            health_ch = health_ch_output.splitlines()
+    def healthcheck_scan(test):
+        
+        super().__init__()
+        lst_str =  str(test.lst)
+        if lst_str == '[]':
+            table_he_output = 'containers not running'
+        else:
+            con_id = test.lst
+            for d in (con_id):
+                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
+                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+                docker_con_img_name = docker_con_img_name_output.rstrip()
+                docker_con_img_name_str = str(docker_con_img_name)
+                test.lst_con_img_name.append(docker_con_img_name_str)
+                health_ch_cmd = "docker inspect " + d + " --format='{{.Config.Healthcheck}}'"
+                health_ch_output = os.popen(health_ch_cmd).read()
+                health_ch_name = health_ch_output.rstrip()
+                health_ch_name_str = str(health_ch_name)
+                test.lst_health_ch.append(health_ch_name_str)
+            lst_con_img_a = "\n".join(test.lst_con_img_name)
+            container_image_output = lst_con_img_a
+            _container_name_output = test.con_name_lst
+            container_name_output = "\n".join(_container_name_output)
+            health_ch = test.lst_health_ch
 
             for h in (health_ch):
                     if h == '<nil>':
                             health_ch_co = 'not added health check instructions'
                             health_ch_co_st = colored('WARN  ', 'red')
+                            test.lst_health_ch_co.append(health_ch_co)
+                            test.lst_health_ch_co_st.append(health_ch_co_st)
                     else:
                             health_ch_co = 'added health check instructions'
                             health_ch_co_st = colored('PASS  ', 'green')
-                    f_he.write(health_ch_co)
-                    f_he.write("\n")
-                    f_st_he.write(health_ch_co_st)
-                    f_st_he.write("\n")
-            f_he= open("re_he.txt", "r")
-            f_st_he= open("re_st_he.txt", "r")
-            health_ch_co_f = f_he.read()
-            health_ch_co_f_st = f_st_he.read()
+                            test.lst_health_ch_co.append(health_ch_co)
+                            test.lst_health_ch_co_st.append(health_ch_co_st)
+            health_ch_co_f = "\n".join(test.lst_health_ch_co)
+            health_ch_co_f_st = "\n".join(test.lst_health_ch_co_st)
             table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
-            print (tabulate(table_he))
+            table_he_output = tabulate(table_he)
+        return table_he_output

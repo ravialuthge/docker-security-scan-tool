@@ -1,19 +1,28 @@
 import os
-import subprocess
+import psutil
 from termcolor import colored
 
-class dockerdatadirscan:
+class dockerdatadir(object):
     """Create a separate partition for containers"""
-    def scan(test):
-        root_dir_ch_cmd = "df -h | grep $(docker info -f '{{ .DockerRootDir }}') | awk '{print $6}'"
-        root_dir_output = subprocess.check_output(["docker", "info" , "--format" , "'{{.DockerRootDir}}'"])
-        root_dir_x = root_dir_output.decode("utf-8")
-        root_dir = root_dir_x.replace("'",'')
-        root_dir_ch_output = os.popen(root_dir_ch_cmd).read()
-        root_dir_ch = root_dir_ch_output.rstrip()
+    def __init__(test):
+        test.mountdir=[]
 
-        if root_dir == root_dir_ch:
-            print (colored('PASS   ', 'green') + "crated separate partition for docker root directory")
+    def dockerdatadir_scan(test):
+        super().__init__()
+        root_dir_cmd = "docker info -f '{{.DockerRootDir}}'"
+        _root_dir_ch_output = os.popen(root_dir_cmd).read()
+        root_dir_ch_output = _root_dir_ch_output.rstrip()
+        partitions = psutil.disk_partitions()
+        for p in partitions:
+             if (p.mountpoint) == root_dir_ch_output:
+                 test.mountdir.append(p.mountpoint)
+        _root_dir = str(test.mountdir)
+        bbc = _root_dir.replace("[",'')
+        bbcdr = bbc.replace("]",'')
+        root_dir = bbcdr.replace("'",'')
+        if root_dir_ch_output == root_dir:
+            datadir_output =  colored('PASS   ', 'green') + "crated separate partition for docker root directory"
         else:
-            print (colored('WARN   ', 'red') + "not crated separate partition for docker root directory")
+            datadir_output = colored('WARN   ', 'red') + "not crated separate partition for docker root directory"
+        return datadir_output
 

@@ -1,22 +1,24 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
+from sdk.images_list import *
 
-class updateins:
+class updateins(imageslist):
     """Do not use update instructions alone in the Dockerfile"""
-    def scan(test):
-        images_cmd =  "docker images --format '{{ .Repository }}:{{ .Tag }}'"
-        
-        images_ch_cmd = "docker images -q  0> /dev/null"
-        f_up = open("re_up.txt", "w")
-        f_st_up = open("re_st_up.txt", "w")
+    def __init__(test):
+        test._update_instruction_co=[]
+        test._update_instruction_co_st=[]
 
-        if os.popen(images_ch_cmd).read() == "":
-            images_ch_co = 'images not found'
-            print (images_ch_co)
+    def updateins_scan(test):
+        
+        super().__init__()
+        lst_str =  test.lst
+        _img_name = test.lst_img_name
+        images_output = "\n".join(_img_name)
+        if lst_str == '[]':
+            update_instruction_output = 'image not found'
         else:
-            images_output = os.popen(images_cmd).read()
-            images = images_output.split()
+            images = lst_str
             for im in (images):
                 update_ins_cmd = 'docker history ' + im + " | grep -e 'update'"
                 update_ins_output = os.popen(update_ins_cmd).read()
@@ -24,18 +26,17 @@ class updateins:
                 if update_ins_output_a  == []:
                         update_instruction_co = 'Ensure update instructions are not used alone in the Dockerfile'
                         update_instruction_co_st = colored('INFO  ', 'blue')
+                        test._update_instruction_co.append(update_instruction_co)
+                        test._update_instruction_co_st.append(update_instruction_co_st)
                     
                 else:
                         update_instruction_co = 'update instructions are used in the Dockerfile'
                         update_instruction_co_st = colored('PASS  ', 'green')
+                        test._update_instruction_co.append(update_instruction_co)
+                        test._update_instruction_co_st.append(update_instruction_co_st)
                 
-                f_up.write(update_instruction_co)
-                f_up.write("\n")
-                f_st_up.write(update_instruction_co_st)
-                f_st_up.write("\n")
-            f_up= open("re_up.txt", "r")
-            f_st_up= open("re_st_up.txt", "r")
-            update_instruction_co_f = f_up.read()
-            update_instruction_co_f_st = f_st_up.read()
+            update_instruction_co_f = "\n".join(test._update_instruction_co)
+            update_instruction_co_f_st = "\n".join(test._update_instruction_co_st)
             update_instruction_table = [[update_instruction_co_f_st , images_output , update_instruction_co_f]]
-            print (tabulate(update_instruction_table))
+            update_instruction_output = tabulate(update_instruction_table)
+            return update_instruction_output

@@ -4,9 +4,11 @@ import re
 from termcolor import colored
 import platform
 
-class dockerversion:
+class dockerversion(object):
     """Keep Docker up to date"""
-    def scan(test):
+    def __init__(test) -> None:
+        super().__init__()
+    def dockerversion_scan(test):
         install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
         install_version_output_a = install_version_output.rstrip()
         install_version_x = install_version_output_a.decode("utf-8")
@@ -26,7 +28,7 @@ class dockerversion:
                 docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
             else:
                 docker_version_re = "Docker not install"
-            print (docker_version_re)
+    
         elif centos_version == '8':
             latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 3p"
             latest_version_output = os.popen(latest_version_cmd).read()
@@ -39,4 +41,4 @@ class dockerversion:
                 docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
             else:
                 docker_version_re = "Docker not install"
-            print (docker_version_re)
+        return docker_version_re

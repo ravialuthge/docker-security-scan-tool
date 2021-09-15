@@ -1,11 +1,17 @@
 import os
+import argparse
 
-class officialimage:
+class officialimage(object):
     """Check Docker Official Image"""
-    def scan(test):
+    def __init__(test):
+      parser = argparse.ArgumentParser()
+      parser.add_argument("path")
+      test.args = parser.parse_args()
+      test.p = test.args.path
+
+    def officialimagescan(test):
        try:
-         p = input("enter Dockerfile path :")
-         f = open(p, "r")
+         f = open(test.p, "r")
          mystring  = f.read()
 
          for item in mystring.split("\n"):
@@ -21,4 +27,4 @@ class officialimage:
                else:
                   print (o +" not Docker Official Images")
        except FileNotFoundError:
-          print ("I did not find the file at, "+str(p))
+          print ("I did not find the Dockerfile at, "+str(test.p))

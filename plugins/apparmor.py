@@ -1,68 +1,56 @@
 import os
 from termcolor import colored
 from tabulate import tabulate
-import docker
+from sdk.containers_id_list import *
 
-class apparmor:
+class ApparmorPlugin(containerlist):
     """Verify AppArmor Profile, if applicable"""
-    def scan(test):
-        f_app = open("re_apparmor.txt", "w")
-        f_st_app = open("re_st_apparmor.txt", "w")
-        f_st_app_con = open("re_st_apparmor_con.txt", "w")
-        f_st_app_images = open("re_st_apparmor_images.txt", "w")
-        f_st_app_images_a = open("re_st_apparmor_images_a.txt", "w")
-        f_st_app_images_id = open("re_st_apparmor_images_id.txt", "w")
-        client = docker.from_env()
-        for container in client.containers.list():
-            container_ch_cmd_a = container.id 
-            f_st_app_con.write(container_ch_cmd_a)
-        f_st_app_con = open("re_st_apparmor_con.txt", "r")
-        container_ch_cmd = f_st_app_con.read()
-        if container_ch_cmd == "":
-            print ('containers not running')
+    def __init__(test):
+        test.lst_con_img=[]
+        test.lst_con_apparmor=[]
+        test.lst_apparmor_co=[]
+        test.lst_apparmor_co_st=[]
+        test.lst_con_img_name=[]
+    
+    def apparmor_scan(test):
+        super().__init__()
+        lst_str =  str(test.lst)
+        if lst_str == '[]':
+            apparmor_output_cmd = 'containers not running'
         else:
-            client = docker.from_env()
-            for container in client.containers.list():
-                a = container.image
-                ab = str(a)
-                b = ab.split()
-                bb = b[1]
-                bbc = bb.replace(">",'')
-                vv = bbc.replace("'",'')
-                f_st_app_images.write(vv)
-                f_st_app_images.write("\n")
-                a_id = container.id
-                f_st_app_images_id.write(a_id)
-                f_st_app_images_id.write("\n")
-            f_st_app_images = open("re_st_apparmor_images.txt", "r")
-            images_output = f_st_app_images.read()
-            f_st_app_images_id = open("re_st_apparmor_images_id.txt", "r")
-            images_output_id =  f_st_app_images_id.read()   
-            images = images_output_id.splitlines()
+            con_id = test.lst
+            for d in (con_id):
+                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
+                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+                docker_con_img_name = docker_con_img_name_output.rstrip()
+                docker_con_img_name_str = str(docker_con_img_name)
+                test.lst_con_img_name.append(docker_con_img_name_str)
+            lst_con_img_a = "\n".join(test.lst_con_img_name)
+            images_output = lst_con_img_a
+            images = test.lst
             for im in (images):
                 apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
                 apparmor_output = os.popen(apparmor_cmd).read()
                 apparmor_profile = apparmor_output.rstrip()
                 apparmor_profile_str = str(apparmor_profile)
-                f_st_app_images_a.write(apparmor_profile_str)
-                f_st_app_images_a.write("\n")
-            f_st_app_images_a = open("re_st_apparmor_images_a.txt", "r")
-            apparmor_profile_str_a =  f_st_app_images_a.read()   
-            apparmor_profile_str_a_s = apparmor_profile_str_a.split() 
+                test.lst_con_apparmor.append(apparmor_profile_str)
+            apparmor_profile_str_a_s = test.lst_con_apparmor
             for i in (apparmor_profile_str_a_s):
                 if i == 'AppArmorProfile=':
                         apparmor_co = 'Verify AppArmor Profile, if applicable'
                         apparmor_co_st = colored('WARN  ', 'red')
+                        test.lst_apparmor_co.append(apparmor_co)
+                        test.lst_apparmor_co_st.append(apparmor_co_st)
                 else:
                         apparmor_co = 'AppArmor Profile available'
                         apparmor_co_st = colored('PASS  ', 'green')
-                f_app.write(apparmor_co)
-                f_app.write("\n")
-                f_st_app.write(apparmor_co_st)
-                f_st_app.write("\n")
-            f_app= open("re_apparmor.txt", "r")
-            f_st_app= open("re_st_apparmor.txt", "r")
-            apparmor_co_f = f_app.read()
-            apparmor_co_f_st = f_st_app.read()
+                        test.lst_apparmor_co.append(apparmor_co)                      
+                        test.lst_apparmor_co_st.append(apparmor_co_st)
+            f_app = "\n".join(test.lst_apparmor_co)
+            f_st_app = "\n".join(test.lst_apparmor_co_st)
+            apparmor_co_f = f_app
+            apparmor_co_f_st = f_st_app
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            print (tabulate(table_apparmor))
+            apparmor_output_cmd = tabulate(table_apparmor)
+        return apparmor_output_cmd
+
