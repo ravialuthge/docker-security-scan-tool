@@ -17,8 +17,9 @@ discovered_plugins = {
 }
 
 lst_plugins=[]
+
 for he in (discovered_plugins):
-		lst_plugins.append(he)
+		lst_plugins.append(he,str(he.__class__.__name__))
 _lst_plugins_a = sorted(lst_plugins)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 
