@@ -16,18 +16,28 @@ discovered_plugins = {
 	in plugins_list(plugins)
 }
 
+def plugins_list_help(ns_pkg):
+	return pkgutil.ModuleInfo(ns_pkg.__path__)
+
+discovered_plugins_help = {
+	name
+	for finder, name, ispkg
+	in plugins_list_help(plugins)
+}
+
 lst_plugins=[]
 lst_plugins_help=[]
 for he in (discovered_plugins):
 		lst_plugins.append(he)
 		
 _lst_plugins_a = sorted(lst_plugins)
-for he_name in (_lst_plugins_a):
-	lst_plugins_help.append(he_name.__class__.__name__)
+
+for he_name in (discovered_plugins_help):
+	lst_plugins_help.append(he_name)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 _lst_plugins_help = "\n".join(lst_plugins_help)
 
-
+ 
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
