@@ -17,7 +17,7 @@ discovered_plugins = {
 }
 
 def plugins_list_help(ns_pkg):
-	return pkgutil.ModuleInfo(ns_pkg.__path__)
+	return pkgutil.get_data(ns_pkg.__path__)
 
 discovered_plugins_help = {
 	name
