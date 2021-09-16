@@ -23,7 +23,7 @@ for he in (discovered_plugins):
 		
 _lst_plugins_a = sorted(lst_plugins)
 for he_name in (_lst_plugins_a):
-	lst_plugins_help.append(str(he_name.__class__.__name__))
+	lst_plugins_help.append(he_name.__class__.__name__)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 _lst_plugins_help = "\n".join(lst_plugins_help)
 
