@@ -150,7 +150,9 @@ def output():
 			officialimage.officialimage().officialimagescan()
 		
 		elif args.plugins == "apparmor":
-			print (apparmor.ApparmorPlugin().apparmor_scan())
+			#print (apparmor.ApparmorPlugin().apparmor_scan())
+			all_my_base_classes = {cls.__name__: cls for cls in apparmor._MyBase.__subclasses__()}
+			print (all_my_base_classes)
 			
 		else:
 			parser.print_help()
