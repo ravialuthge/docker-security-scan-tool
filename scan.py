@@ -32,7 +32,6 @@ def output():
 # --------------------------------------------------------------------------------------------\n\
 	", 'green', attrs=['bold']))
 
-
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
@@ -131,14 +130,14 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.files == "dockerfile":
-			print (sc_dockerfile)
-			officialimage.officialimage().officialimagescan()
-		
 		elif args.plugins == "apparmor":
 			#print (apparmor.ApparmorPlugin().apparmor_scan())
 			all_my_base_classes = {cls.__name__: cls for cls in apparmor._MyBase.__subclasses__()}
 			print (all_my_base_classes)
+
+		elif args.files == "dockerfile":
+			print (sc_dockerfile)
+			officialimage.officialimage().officialimagescan()
 			
 		else:
 			parser.print_help()
