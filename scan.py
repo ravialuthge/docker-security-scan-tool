@@ -132,8 +132,8 @@ def output():
 		
 		elif args.plugins == "apparmor":
 			#print (apparmor.ApparmorPlugin().apparmor_scan())
-			all_my_base_classes = {cls.__name__: cls for cls in apparmor._MyBase.__subclasses__()}
-			print (all_my_base_classes)
+			#all_my_base_classes = {cls.__name__: cls for cls in apparmor._MyBase.__subclasses__()}
+			print ("all_my_base_classes")
 
 		elif args.files == "dockerfile":
 			print (sc_dockerfile)
