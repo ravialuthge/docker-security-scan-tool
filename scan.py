@@ -61,11 +61,11 @@ def output():
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
-		parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
+		#parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
-		parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
+		#parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
 		args = parser.parse_args()
 
 		if args.version == "1.2.0":
