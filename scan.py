@@ -17,7 +17,7 @@ discovered_plugins = {
 }
 
 lst_plugins=[]
-lst_plugins_help=[]
+
 for he in (discovered_plugins):
 		lst_plugins.append(he)
 		
