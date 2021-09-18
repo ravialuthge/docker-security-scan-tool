@@ -166,7 +166,8 @@ def output():
 				if _def_name != '__init__':
 					_def.append(t)
 			testcases = "apparmor."+_cls()+"."+_def()
-			print (testcases)
+			print (_cls)
+			print (_def)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
