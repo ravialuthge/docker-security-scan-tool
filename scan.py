@@ -135,7 +135,7 @@ def output():
 			all_my_base_classes = {cls.__name__: cls for cls in apparmor.__subclasses__()}
 			print (all_my_base_classes)
 
-		elif args.files == "dockerfile":
+		elif args.files == "officialimage":
 			print (sc_dockerfile)
 			officialimage.officialimage().officialimagescan()
 			
