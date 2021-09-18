@@ -26,7 +26,7 @@ _lst_plugins_a = sorted(lst_plugins)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 
 #def moduleshelp(plugins):
-files = os.listdir(plugins)
+files = os.listdir('plugins/')
 moduleshelplist = []
 
 for i in range(len(files)):
