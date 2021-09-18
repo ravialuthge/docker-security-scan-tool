@@ -1,4 +1,5 @@
 import sys
+import os
 from termcolor import colored
 import argparse
 import pkgutil
@@ -23,6 +24,23 @@ for he in (discovered_plugins):
 		
 _lst_plugins_a = sorted(lst_plugins)
 lst_plugins_a = "\n".join(_lst_plugins_a)
+
+#def moduleshelp(plugins):
+files = os.listdir(plugins)
+moduleshelplist = []
+
+for i in range(len(files)):
+	name = files[i].split('.')
+	if len(name) > 1:
+		if name[1] == 'py' and name[0] != '__init__':
+			f = open(files, "r")
+			mystring  = f.read()
+			for item in mystring.split("\n"):
+				if '"""' in item:
+					d =  item.strip()
+					s = d.split()
+					moduleshelplist.append(s)
+_moduleshelplist = "\n".join(moduleshelplist)
 
 def output():
 	
@@ -58,7 +76,7 @@ def output():
 		docker_containers.cis_version_containers().cis_version_111()
 		
 	else:
-		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a))
+		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + lst_plugins_a + _moduleshelplist))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		#parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
