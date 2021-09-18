@@ -25,21 +25,19 @@ for he in (discovered_plugins):
 _lst_plugins_a = sorted(lst_plugins)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 
-#def moduleshelp(plugins):
 files = os.listdir('plugins/')
 moduleshelplist = []
 
-for i in range(len(files)):
-	name = files[i].split('.')
-	if len(name) > 1:
-		if name[1] == 'py' and name[0] != '__init__':
-			f = open(files, "r")
-			mystring  = f.read()
-			for item in mystring.split("\n"):
-				if '"""' in item:
-					d =  item.strip()
-					s = d.split()
-					moduleshelplist.append(s)
+for i in (os.listdir('plugins/')):
+   if i.endswith(".py") and i != '__init__.py':
+           _i = "plugins/" + i
+           f = open(_i,"r")
+           mystring  = f.read()
+           for item in mystring.split("\n"):
+              if '"""' in item:
+                 d = item.strip()
+                 _d = d.replace('"""','')
+                 moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
 
 def output():
