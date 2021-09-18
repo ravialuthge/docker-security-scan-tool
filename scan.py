@@ -40,7 +40,7 @@ for i in (os.listdir('plugins/')):
                  moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
 
-ou = lst_plugins_a + "   " + _moduleshelplist
+ou = str(lst_plugins_a) + "   " + str(_moduleshelplist)
 
 
 def output():
