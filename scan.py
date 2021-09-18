@@ -5,6 +5,7 @@ import argparse
 import pkgutil
 import plugins
 import textwrap
+from tabulate import tabulate
 from plugins import *
 from profiles import * 
 
@@ -40,8 +41,8 @@ for i in (os.listdir('plugins/')):
                  moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
 
-ou = str(lst_plugins_a) + "   " + str(_moduleshelplist)
-
+_ou = [[lst_plugins_a , _moduleshelplist]]
+ou = tabulate(_ou)
 
 def output():
 	
