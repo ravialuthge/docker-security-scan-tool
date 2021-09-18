@@ -165,7 +165,15 @@ def output():
 			for t in _def_name:
 				if t != '__init__':
 					_def.append(t)
-			testcases = "apparmor."+_cls()+"."+_def()
+			_cls_str = str(_cls)
+			_bbc = _cls_str.replace("[",'')
+			_bbcdr = _bbc.replace("]",'')
+			__cls = _bbcdr.replace("'",'')
+			_def_str = str(_def)
+			def_bbc = _def_str.replace("[",'')
+			def_bbcdr = def_bbc.replace("]",'')
+			__def = def_bbcdr.replace("'",'')
+			testcases = "apparmor."+__cls()+"."+__def()
 			print (_cls)
 			print (_def)
 			print (testcases)
