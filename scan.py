@@ -40,9 +40,9 @@ for i in (os.listdir('plugins/')):
                  moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
 _ou = []
-for mo in _lst_plugins_a:
-	for mo_he in moduleshelplist:
-		ou = mo + "   " + mo_he
+
+for mo_he in moduleshelplist:
+		ou = _lst_plugins_a + "   " + mo_he
 		_ou.append(ou)
 _moduleshelplist = "\n".join(_ou)
 
