@@ -165,7 +165,7 @@ def output():
 			for t in _def_name:
 				if _def_name != '__init__':
 					_def.append(t)
-			testcases = apparmor._cls()._def()
+			testcases = "apparmor."+_cls()+"."+_def()
 			print (testcases)
 
 		elif args.files == "officialimage":
