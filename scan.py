@@ -163,7 +163,7 @@ def output():
 					def_name = '%s' % (match.groups()[0])
 					_def_name.append(def_name)
 			for t in _def_name:
-				if _def_name != '__init__':
+				if t != '__init__':
 					_def.append(t)
 			#testcases = "apparmor."+_cls()+"."+_def()
 			print (_cls)
