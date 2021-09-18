@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 from termcolor import colored
 import argparse
 import pkgutil
@@ -149,9 +150,23 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
-			#print (apparmor.ApparmorPlugin().apparmor_scan())
-			all_my_base_classes = {cls.__name__: cls for cls in apparmor.__subclasses__()}
-			print (all_my_base_classes)
+			_cls = []
+			_def_name = []
+			_def = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern = re.compile("class (.*)\(")
+			for i,line in enumerate(open('plugins/apparmor.py')):
+				for match in re.finditer(pattern,line):
+					cls = '%s' % (match.groups()[0])
+					_cls.append(cls)
+				for match in re.finditer(pattern_def,line):
+					def_name = '%s' % (match.groups()[0])
+					_def_name.append(def_name)
+			for t in _def_name:
+				if _def_name != '__init__':
+					_def.append(t)
+			testcases = apparmor._cls()._def()
+			print (testcases)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
