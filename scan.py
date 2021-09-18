@@ -39,12 +39,9 @@ for i in (os.listdir('plugins/')):
                  _d = d.replace('"""','')
                  moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
-_ou = []
 
-for mo_he in moduleshelplist:
-		ou = str(lst_plugins_a) + "   " + mo_he
-		_ou.append(ou)
-_moduleshelplist = "\n".join(_ou)
+ou = lst_plugins_a + "   " + _moduleshelplist
+
 
 def output():
 	
@@ -80,7 +77,7 @@ def output():
 		docker_containers.cis_version_containers().cis_version_111()
 		
 	else:
-		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + _moduleshelplist))
+		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + ou))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		#parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
