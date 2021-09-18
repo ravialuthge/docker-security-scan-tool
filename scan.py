@@ -26,7 +26,6 @@ for he in (discovered_plugins):
 _lst_plugins_a = sorted(lst_plugins)
 lst_plugins_a = "\n".join(_lst_plugins_a)
 
-files = os.listdir('plugins/')
 moduleshelplist = []
 
 for i in (os.listdir('plugins/')):
@@ -40,7 +39,6 @@ for i in (os.listdir('plugins/')):
                  _d = d.replace('"""','')
                  moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
-
 _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
