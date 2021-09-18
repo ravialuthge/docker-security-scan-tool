@@ -165,9 +165,10 @@ def output():
 			for t in _def_name:
 				if t != '__init__':
 					_def.append(t)
-			#testcases = "apparmor."+_cls()+"."+_def()
+			testcases = "apparmor."+_cls()+"."+_def()
 			print (_cls)
 			print (_def)
+			print (testcases)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
