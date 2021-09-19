@@ -180,7 +180,8 @@ def output():
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			testcases = "apparmor.%s().%s()" % (__cls,__def)
-			print (testcases())
+			_testcases = testcases()
+			print (_testcases)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
