@@ -151,7 +151,7 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
-			clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+			clsmembers = inspect.getmembers(sys.modules[apparmor], inspect.isclass)
 			print(clsmembers)
 
 		elif args.files == "officialimage":
