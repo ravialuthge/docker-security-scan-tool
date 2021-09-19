@@ -152,7 +152,7 @@ def output():
 		
 		elif args.plugins == "apparmor":
 			clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
-    		print(clsmembers)
+			print(clsmembers)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
