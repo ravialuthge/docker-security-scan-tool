@@ -7,6 +7,7 @@ import pkgutil
 import plugins
 import textwrap
 import inspect
+import importlib
 from tabulate import tabulate
 from plugins import *
 from profiles import * 
@@ -151,8 +152,12 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
-			clsmembers = inspect.getmembers(sys.modules[apparmor], inspect.isclass)
-			print(clsmembers)
+			#clsmembers = inspect.getmembers(sys.modules[apparmor], inspect.isclass)
+			#print(clsmembers)
+			for x in apparmor:
+				module = importlib.import_module(x)
+    			for name, obj in inspect.getmembers(module, inspect.isclass):
+        			print (obj)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
