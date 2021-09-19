@@ -178,7 +178,7 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			module = apparmor
+			module = plugins.apparmor
 			function_string = "%s.%s.%s" % (module,_cls,_def)
 			mod_name, func_name = function_string.rsplit('.',1)
 			mod = importlib.import_module(mod_name)
