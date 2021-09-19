@@ -166,12 +166,12 @@ def output():
 				if t != '__init__':
 					_def.append(t)
 		
-			_cls_str = _cls
+			_cls_str = str(_cls)
 			_bbc = _cls_str.replace("[",'')
 			_bbcdr = _bbc.replace("]",'')
 			__cls = _bbcdr.replace("'",'')
 			
-			_def_str = _def
+			_def_str = str(_def)
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
