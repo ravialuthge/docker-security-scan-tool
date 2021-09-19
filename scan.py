@@ -152,8 +152,8 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
-			testcases = apparmor.ApparmorPlugin().apparmor_scan()
-			print (testcases)
+			#testcases = apparmor.ApparmorPlugin().apparmor_scan()
+			#print (testcases)
 			_cls = []
 			_def_name = []
 			_def = []
