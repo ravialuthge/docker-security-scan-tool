@@ -179,7 +179,7 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			testcases = "apparmor.ApparmorPlugin().%s" % (__def())
+			testcases = "apparmor.ApparmorPlugin()."+__def()
 			print (testcases)
 
 		elif args.files == "officialimage":
