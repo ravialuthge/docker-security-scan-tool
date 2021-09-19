@@ -4,7 +4,6 @@ import re
 from termcolor import colored
 import argparse
 import pkgutil
-import plugins
 import textwrap
 import importlib
 from tabulate import tabulate
