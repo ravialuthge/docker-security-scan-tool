@@ -179,10 +179,14 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			#testcases = "apparmor.%s().%s()" % (__cls,__def)
+			function_string = "apparmor.%s.%s" % (__cls,__def)
+			mod_name, func_name = function_string.rsplit('.',1)
+			mod = importlib.import_module(mod_name)
+			func = getattr(mod, func_name)
+			result = func()
 			#_testcases = testcases()
-			_testcases = getattr('apparmor',__cls,__def)()
-			print (_testcases)
+			#_testcases = getattr('apparmor',__cls,__def)()
+			print (result)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
