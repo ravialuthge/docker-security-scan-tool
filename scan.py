@@ -167,7 +167,7 @@ def output():
 					def_name = '%s' % (match.groups()[0])
 					_def_name.append(def_name)
 			for t in _def_name:
-				if t != '_init_':
+				if t != '__init__':
 					_def.append(t)
 		
 			_cls_str = str(_cls)
@@ -179,7 +179,7 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			testcases = "apparmor.ApparmorPlugin().%s()" % (_def)
+			testcases = "apparmor.ApparmorPlugin().%s()" % (__def)
 			print (testcases)
 
 		elif args.files == "officialimage":
