@@ -176,7 +176,7 @@ def output():
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			#testcases = "%s.%s.%s" % (apparmor,__cls(),__def())
-			testcases = apparmor.__cls().__def()
+			testcases = apparmor.obj[__cls]().obj[__def]()
 			print (testcases)
 
 		elif args.files == "officialimage":
