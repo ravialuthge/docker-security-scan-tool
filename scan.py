@@ -8,6 +8,7 @@ import plugins
 import textwrap
 import inspect
 import importlib
+from plugins.apparmor import *
 from tabulate import tabulate
 from plugins import *
 from profiles import * 
