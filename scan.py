@@ -176,7 +176,7 @@ def output():
 			#testcases = "apparmor."+__cls()+"."+__def()
 			print (__cls)
 			print (__def)
-			#print (testcases)
+			print ("apparmor."+__cls()+"."+__def())
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
