@@ -154,12 +154,33 @@ def output():
 		elif args.plugins == "apparmor":
 			testcases = apparmor.ApparmorPlugin().apparmor_scan()
 			print (testcases)
-			#clsmembers = inspect.getmembers(sys.modules[apparmor], inspect.isclass)
-			#print(clsmembers)
-			#for x in apparmor:
-			#	module = importlib.import_module(x)
-			#	for name, obj in inspect.getmembers(module, inspect.isclass):
-			#		print (obj)
+			_cls = []
+			_def_name = []
+			_def = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern = re.compile("class (.*)\(")
+			for i,line in enumerate(open('plugins/apparmor.py')):
+				for match in re.finditer(pattern,line):
+					cls = '%s' % (match.groups()[0])
+					_cls.append(cls)
+				for match in re.finditer(pattern_def,line):
+					def_name = '%s' % (match.groups()[0])
+					_def_name.append(def_name)
+			for t in _def_name:
+				if t != '_init_':
+					_def.append(t)
+		
+			_cls_str = str(_cls)
+			_bbc = _cls_str.replace("[",'')
+			_bbcdr = _bbc.replace("]",'')
+			__cls = _bbcdr.replace("'",'')
+			
+			_def_str = str(_def)
+			def_bbc = _def_str.replace("[",'')
+			def_bbcdr = def_bbc.replace("]",'')
+			__def = def_bbcdr.replace("'",'')
+			testcases = "%s.%s.%s" % (apparmor,ApparmorPlugin(),__def())
+			print (testcases)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
