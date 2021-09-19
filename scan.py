@@ -173,7 +173,7 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			testcases = "%.%.%" % (apparmor,__cls(),__def())
+			testcases = "%.%().%()" % (apparmor,__cls,__def)
 			print (__cls)
 			print (__def)
 			print (testcases)
