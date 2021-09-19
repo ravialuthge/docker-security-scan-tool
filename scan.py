@@ -152,12 +152,14 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
+			testcases = apparmor.ApparmorPlugin().apparmor_scan()
+			print (testcases)
 			#clsmembers = inspect.getmembers(sys.modules[apparmor], inspect.isclass)
 			#print(clsmembers)
-			for x in apparmor:
-				module = importlib.import_module(x)
-				for name, obj in inspect.getmembers(module, inspect.isclass):
-					print (obj)
+			#for x in apparmor:
+			#	module = importlib.import_module(x)
+			#	for name, obj in inspect.getmembers(module, inspect.isclass):
+			#		print (obj)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
