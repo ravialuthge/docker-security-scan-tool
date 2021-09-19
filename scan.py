@@ -180,7 +180,7 @@ def output():
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			#module = __import__('apparmor')
-			function_string = 'apparmor',__cls,__def
+			function_string = 'apparmor.'+__cls+'.'+__def
 			mod_name, func_name = function_string.rsplit('.',1)
 			mod = importlib.import_module(mod_name)
 			func = getattr(mod, func_name)
