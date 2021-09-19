@@ -175,7 +175,7 @@ def output():
 			#def_bbc = _def_str.replace("[",'')
 			#def_bbcdr = def_bbc.replace("]",'')
 			#__def = def_bbcdr.replace("'",'')
-			testcases = "apparmor.%.%" % (_cls(),_def())
+			testcases = "apparmor.%s.%s" % (_cls(),_def())
 			print (testcases)
 
 		elif args.files == "officialimage":
