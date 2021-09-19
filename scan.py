@@ -6,6 +6,7 @@ import argparse
 import pkgutil
 import plugins
 import textwrap
+import inspect
 from tabulate import tabulate
 from plugins import *
 from profiles import * 
@@ -150,34 +151,8 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins == "apparmor":
-			_cls = []
-			_def_name = []
-			_def = []
-			pattern_def = re.compile("def (.*)\(")
-			pattern = re.compile("class (.*)\(")
-			for i,line in enumerate(open('plugins/apparmor.py')):
-				for match in re.finditer(pattern,line):
-					cls = '%s' % (match.groups()[0])
-					_cls.append(cls)
-				for match in re.finditer(pattern_def,line):
-					def_name = '%s' % (match.groups()[0])
-					_def_name.append(def_name)
-			for t in _def_name:
-				if t != '__init__':
-					_def.append(t)
-		
-			_cls_str = str(_cls)
-			_bbc = _cls_str.replace("[",'')
-			_bbcdr = _bbc.replace("]",'')
-			__cls = _bbcdr.replace("'",'')
-			
-			_def_str = str(_def)
-			def_bbc = _def_str.replace("[",'')
-			def_bbcdr = def_bbc.replace("]",'')
-			__def = def_bbcdr.replace("'",'')
-			#testcases = "%s.%s.%s" % (apparmor,__cls(),__def())
-			testcases = apparmor.obj['__cls']().obj['__def']()
-			print (testcases)
+			clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+    		print(clsmembers)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
