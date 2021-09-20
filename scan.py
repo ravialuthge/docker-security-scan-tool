@@ -195,11 +195,11 @@ def output():
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
 			#func = importlib.import_module(function_string)
-			result = str(function_string)
+			result = function_string
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
-			print (result())
+			print (type(result))
 		
 
 		elif args.files == "officialimage":
