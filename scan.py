@@ -87,6 +87,51 @@ def output():
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
 		#parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
 		args = parser.parse_args()
+		
+		#testcases = apparmor.ApparmorPlugin().apparmor_scan()
+		#print (testcases)
+		_cls = []
+		_def_name = []
+		_def = []
+		pattern_def = re.compile("def (.*)\(")
+		pattern = re.compile("class (.*)\(")
+		module_name = "plugins/"+args.plugins+".py"
+		for i,line in enumerate(open(module_name)):
+			for match in re.finditer(pattern,line):
+				cls = '%s' % (match.groups()[0])
+				_cls.append(cls)
+			for match in re.finditer(pattern_def,line):
+				def_name = '%s' % (match.groups()[0])
+				_def_name.append(def_name)
+		for t in _def_name:
+			if t != '__init__':
+				_def.append(t)
+	
+		_cls_str = str(_cls)
+		_bbc = _cls_str.replace("[",'')
+		_bbcdr = _bbc.replace("]",'')
+		__cls = _bbcdr.replace("'",'')
+		
+		_def_str = str(_def)
+		def_bbc = _def_str.replace("[",'')
+		def_bbcdr = def_bbc.replace("]",'')
+		__def = def_bbcdr.replace("'",'')
+		
+		module = args.plugins
+		cls_name = __cls+"()"
+		fun_name = __def+"()"
+		#function_string = module.cls_name.fun_name
+		function_string = "%s.%s.%s" % (module,cls_name,fun_name)
+		#mod_name, func_name = function_string.rsplit('.',1)
+		#mod = importlib.import_module(mod_name)
+		#func = getattr(mod, func_name)
+		func = (function_string)
+		result = func
+		#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
+		#_testcases = testcases()
+		#_testcases = getattr('apparmor',__cls,__def)()
+		print (result)
+
 
 		if args.version == "1.2.0":
 			sub_version="1.2.0"
@@ -150,48 +195,8 @@ def output():
 		
 			print (sc_co)
 		
-		elif args.plugins == "apparmor":
-			#testcases = apparmor.ApparmorPlugin().apparmor_scan()
-			#print (testcases)
-			_cls = []
-			_def_name = []
-			_def = []
-			pattern_def = re.compile("def (.*)\(")
-			pattern = re.compile("class (.*)\(")
-			for i,line in enumerate(open('plugins/apparmor.py')):
-				for match in re.finditer(pattern,line):
-					cls = '%s' % (match.groups()[0])
-					_cls.append(cls)
-				for match in re.finditer(pattern_def,line):
-					def_name = '%s' % (match.groups()[0])
-					_def_name.append(def_name)
-			for t in _def_name:
-				if t != '__init__':
-					_def.append(t)
+		#elif args.plugins == "apparmor":
 		
-			_cls_str = str(_cls)
-			_bbc = _cls_str.replace("[",'')
-			_bbcdr = _bbc.replace("]",'')
-			__cls = _bbcdr.replace("'",'')
-			
-			_def_str = str(_def)
-			def_bbc = _def_str.replace("[",'')
-			def_bbcdr = def_bbc.replace("]",'')
-			__def = def_bbcdr.replace("'",'')
-			module = "apparmor"
-			cls_name = __cls+"()"
-			fun_name = __def+"()"
-			#function_string = module.cls_name.fun_name
-			function_string = "%s.%s.%s" % (module,cls_name,fun_name)
-			#mod_name, func_name = function_string.rsplit('.',1)
-			#mod = importlib.import_module(mod_name)
-			#func = getattr(mod, func_name)
-			func = (function_string)
-			result = func
-			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
-			#_testcases = testcases()
-			#_testcases = getattr('apparmor',__cls,__def)()
-			print (result)
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
