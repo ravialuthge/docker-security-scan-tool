@@ -178,11 +178,11 @@ def output():
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
-			module = apparmor
+			module = "apparmor"
 			cls_name = __cls+"()"
 			fun_name = __def+"()"
 			#function_string = module.cls_name.fun_name
-			function_string = "%s.%s.%s" % ("apparmor",cls_name,fun_name)
+			function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
