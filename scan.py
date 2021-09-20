@@ -93,7 +93,8 @@ def output():
 			main_version="v1.2.0 - 07-29-2019"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			
+			testcases = apparmor.ApparmorPlugin().apparmor_scan()
+			print (testcases)
 			print (sc_im)
 	
 			print (sc_co)
@@ -201,8 +202,7 @@ def output():
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
 			#officialimage.officialimage().officialimagescan()
-			testcases = apparmor.ApparmorPlugin().apparmor_scan()
-			print (testcases)
+			
 			
 		else:
 			parser.print_help()
