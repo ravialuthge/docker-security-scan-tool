@@ -200,7 +200,9 @@ def output():
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
-			officialimage.officialimage().officialimagescan()
+			#officialimage.officialimage().officialimagescan()
+			testcases = apparmor.ApparmorPlugin().apparmor_scan()
+			print (testcases)
 			
 		else:
 			parser.print_help()
