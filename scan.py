@@ -183,19 +183,19 @@ def output():
 			__def = def_bbcdr.replace("'",'')
 			
 			module = args.plugins
-			#cls_name = __cls+"()"
-			#fun_name = __def+"()"
-			cls_name = __cls
-			fun_name = __def
+			cls_name = __cls+"()"
+			fun_name = __def+"()"
+			#cls_name = __cls
+			#fun_name = __def
 			#function_string = module.cls_name.fun_name
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			_function_string = "{0}.{1}.{2}"
 			function_string = _function_string .format(module,cls_name,fun_name)
-			mod_name, func_name = function_string.rsplit('.',1)
-			mod = importlib.import_module(mod_name)
-			func = getattr(mod, func_name)
+			#mod_name, func_name = function_string.rsplit('.',1)
+			#mod = importlib.import_module(mod_name)
+			#func = getattr(mod, func_name)
 			#func = importlib.import_module(function_string)
-			result = func
+			result = function_string()
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
