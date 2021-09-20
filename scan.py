@@ -199,7 +199,7 @@ def output():
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
-			print (result)
+			print (result())
 		
 
 		elif args.files == "officialimage":
