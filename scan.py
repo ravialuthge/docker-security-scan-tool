@@ -182,7 +182,7 @@ def output():
 			cls_name = __cls+"()"
 			fun_name = __def+"()"
 			#function_string = module.cls_name.fun_name
-			function_string = "%s.%s.%s" % (module,cls_name,fun_name)
+			function_string = "%s.%s.%s" % ("apparmor",cls_name,fun_name)
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
