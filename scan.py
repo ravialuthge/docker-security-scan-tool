@@ -196,7 +196,7 @@ def output():
 			#func = getattr(mod, func_name)
 			#func = importlib.import_module(function_string)
 			result = function_string
-			del result
+			del str(result)
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
