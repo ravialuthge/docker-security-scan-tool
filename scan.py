@@ -93,8 +93,8 @@ def output():
 			main_version="v1.2.0 - 07-29-2019"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			_testcases = apparmor.ApparmorPlugin.apparmor_scan
-			testcases = _testcases()
+			testcases = apparmor.ApparmorPlugin().apparmor_scan()
+			#testcases = _testcases()
 			print (testcases)
 			print (sc_im)
 	
