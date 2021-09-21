@@ -3,11 +3,9 @@ import os
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
-      
-      test.p = test
+      test.p = input("Enter File Path:")
 
     def officialimagescan(test):
-       if test.p:
          try:
             f = open(test.p, "r")
             mystring  = f.read()
