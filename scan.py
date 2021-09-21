@@ -186,8 +186,8 @@ def output():
 						#function_string = "{0}.{1}".format(mod,_cl)
 						#cls_string = cl+"()"
 						#function_string = mod+"."+cls_string
-						class_name = cl+"()"
-						my_class = getattr(mod, class_name)
+						class_name = cl
+						my_class = getattr(mod, class_name)()
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
 
