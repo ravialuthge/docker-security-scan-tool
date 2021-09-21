@@ -182,7 +182,7 @@ def output():
 					for cl in _cls:
 						_mod = "plugins."+mo
 						mod = importlib.import_module(_mod)
-						function_string = mod+"."+cl+"()"
+						function_string = mod
 						#result = getattr("%s" %function_string, "%s" % fun_name)()
 						print (function_string)
 
