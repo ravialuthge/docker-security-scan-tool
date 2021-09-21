@@ -183,9 +183,9 @@ def output():
 			__def = def_bbcdr.replace("'",'')
 			
 			module = args.plugins
-			#cls_name = __cls+"()"
+			cls_name = __cls+"()"
 			#fun_name = __def+"()"
-			cls_name = __cls
+			#cls_name = __cls
 			fun_name = __def
 			#function_string = module.cls_name.fun_name
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
