@@ -2,11 +2,11 @@ import os
 
 class officialimage(object):
     """Check Docker Official Image"""
-    def __init__(test,arg):
+    def __init__(test):
       
       test.p = test
 
-    def officialimagescan(test,arg):
+    def officialimagescan(test):
        if test.p:
          try:
             f = open(test.p, "r")

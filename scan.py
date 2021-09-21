@@ -186,8 +186,7 @@ def output():
 
 		elif args.files:
 			print (sc_dockerfile)
-			arg = args.files
-			testcase1 = officialimage.officialimage().officialimagescan(arg)
+			testcase1 = officialimage.officialimage().officialimagescan()
 			print (testcase1)
 			
 		else:
