@@ -191,7 +191,7 @@ def output():
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			_function_string = "{0}.{1}.{2}"
 			function_string = _function_string .format(module,cls_name,fun_name)
-			getattr(sys.modules[__name__], "%s" % function_string)()
+			getattr(sys.modules[apparmor], "%s" % function_string)()
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
