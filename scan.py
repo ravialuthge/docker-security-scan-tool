@@ -182,8 +182,8 @@ def output():
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			
-			module = args.plugins
-			cls_name = __cls+"()"
+			#module = args.plugins
+			#cls_name = __cls+"()"
 			#fun_name = __def+"()"
 			#cls_name = __cls
 			fun_name = __def
@@ -191,8 +191,8 @@ def output():
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			#_function_string = "{0}.{1}"
 			#function_string = _function_string .format(module,cls_name)
-			#function_string  = apparmor.ApparmorPlugin()
-			result = getattr("%s.%s" % (module,cls_name), "%s" % fun_name)()
+			function_string  = apparmor.ApparmorPlugin()
+			result = getattr("%s" % function_string, "%s" % fun_name)()
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
