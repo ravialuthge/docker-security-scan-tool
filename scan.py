@@ -181,7 +181,7 @@ def output():
 				if mo == _module_name:
 					for cl in _cls:
 						function_string = mo+"."+cl+"()"
-						result = getattr(function_string, "%s" % fun_name)()
+						result = getattr("%s" %function_string, "%s" % fun_name)()
 						print (result)	
 				else:
 					print ("error")
