@@ -180,13 +180,13 @@ def output():
 			for mo in _lst_plugins_a:
 				if mo == _module_name:
 					for cl in _cls:
-						_mod = "plugins."+mo
+						_mod = "plugins."+mo+"."+cl+"()"
 						mod = importlib.import_module(_mod)
-						_cl = cl+"()"
-						function_string = "{0}.{1}".format(mod,_cl)
+						#_cl = cl+"()"
+						#function_string = "{0}.{1}".format(mod,_cl)
 						#cls_string = cl+"()"
 						#function_string = mod+"."+cls_string
-						result = getattr(function_string , "%s" % (fun_name))()
+						result = getattr(mod , "%s" % (fun_name))()
 						print (result)
 
 
