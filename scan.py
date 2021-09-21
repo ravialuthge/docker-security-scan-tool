@@ -153,8 +153,7 @@ def output():
 			print (sc_co)
 		
 		elif args.plugins:
-			#testcases = apparmor.ApparmorPlugin().apparmor_scan()
-			#print (testcases)
+			
 			_cls = []
 			_def_name = []
 			_def = []
@@ -182,48 +181,10 @@ def output():
 					for cl in _cls:
 						_mod = "plugins."+mo
 						mod = importlib.import_module(_mod)
-						#_cl = cl+"()"
-						#function_string = "{0}.{1}".format(mod,_cl)
-						#cls_string = cl+"()"
-						#function_string = mod+"."+cls_string
 						class_name = cl
 						my_class = getattr(mod, class_name)()
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
-
-
-		
-			#_cls_str = str(_cls)
-			#_bbc = _cls_str.replace("[",'')
-			#_bbcdr = _bbc.replace("]",'')
-			#__cls = _bbcdr.replace("'",'')
-			
-			#_def_str = str(_def)
-			#def_bbc = _def_str.replace("[",'')
-			#def_bbcdr = def_bbc.replace("]",'')
-			#__def = def_bbcdr.replace("'",'')
-			
-			#module = args.plugins
-			#cls_name = __cls+"()"
-			#fun_name = __def+"()"
-			#cls_name = __cls
-			#fun_name = __def
-			#function_string = module.cls_name.fun_name
-			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
-			#_function_string = "{0}.{1}"
-			#function_string = "%s.%s" .format(module,cls_name)
-			#function_string  = apparmor.%s" % ApparmorPlugin()
-			#result = getattr(apparmor.ApparmorPlugin(), "%s" % fun_name)()
-			#mod_name, func_name = function_string.rsplit('.',1)
-			#mod = importlib.import_module(mod_name)
-			#func = getattr(mod, func_name)
-			#func = importlib.import_module(function_string)
-			#result = function_string
-			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
-			#_testcases = testcases()
-			#_testcases = getattr('apparmor',__cls,__def)()
-			#print (result)
-		
 
 		elif args.files == "officialimage":
 			print (sc_dockerfile)
