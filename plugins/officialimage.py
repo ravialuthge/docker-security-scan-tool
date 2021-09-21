@@ -18,6 +18,7 @@ class officialimage(object):
                   cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   cmdout = os.popen(cmd).read()
                   cmdout_a = cmdout.rstrip()
+                  print (cmdout_a)
                   if cmdout_a == '[OK]':
                      print (o +" is Docker Official Image")
                   else:
