@@ -191,7 +191,7 @@ def output():
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			_function_string = "{0}.{1}"
 			function_string = _function_string .format(module,cls_name)
-			getattr(function_string, "%s" % fun_name)()
+			getattr(apparmor.ApparmorPlugin(), "%s" % fun_name)()
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
