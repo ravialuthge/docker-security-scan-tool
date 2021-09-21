@@ -93,7 +93,7 @@ def output():
 			main_version="v1.2.0 - 07-29-2019"
 			print (banner .format(sub_version, main_version))
 			print (sc_ho)
-			testcases = apparmor.ApparmorPlugin()
+			#testcases = apparmor.ApparmorPlugin()
 			#testcases = _testcases()
 			print (testcases)
 			print (sc_im)
@@ -171,28 +171,44 @@ def output():
 			for t in _def_name:
 				if t != '__init__':
 					_def.append(t)
-		
-			_cls_str = str(_cls)
-			_bbc = _cls_str.replace("[",'')
-			_bbcdr = _bbc.replace("]",'')
-			__cls = _bbcdr.replace("'",'')
-			
+			_module_name = args.plugins
 			_def_str = str(_def)
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
+			fun_name = __def
+			for mo in _lst_plugins_a:
+				if mo == _module_name:
+					for cl in _cls:
+						function_string = mo+"."+cl+"()"
+						result = getattr(function_string, "%s" % fun_name)()
+						print (result)	
+				else:
+					print ("error")
+
+
+		
+			#_cls_str = str(_cls)
+			#_bbc = _cls_str.replace("[",'')
+			#_bbcdr = _bbc.replace("]",'')
+			#__cls = _bbcdr.replace("'",'')
 			
-			module = args.plugins
-			cls_name = __cls+"()"
+			#_def_str = str(_def)
+			#def_bbc = _def_str.replace("[",'')
+			#def_bbcdr = def_bbc.replace("]",'')
+			#__def = def_bbcdr.replace("'",'')
+			
+			#module = args.plugins
+			#cls_name = __cls+"()"
 			#fun_name = __def+"()"
 			#cls_name = __cls
-			fun_name = __def
+			#fun_name = __def
 			#function_string = module.cls_name.fun_name
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			#_function_string = "{0}.{1}"
-			function_string = "%s.%s" .format(module,cls_name)
+			#function_string = "%s.%s" .format(module,cls_name)
 			#function_string  = apparmor.%s" % ApparmorPlugin()
-			result = getattr(function_string, "%s" % fun_name)()
+			#result = getattr(apparmor.ApparmorPlugin(), "%s" % fun_name)()
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
@@ -201,7 +217,7 @@ def output():
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
-			print (result)
+			#print (result)
 		
 
 		elif args.files == "officialimage":
