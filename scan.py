@@ -182,9 +182,7 @@ def output():
 					for cl in _cls:
 						function_string = mo+"."+cl+"()"
 						#result = getattr("%s" %function_string, "%s" % fun_name)()
-						print (function_string)	
-				else:
-					print ("error")
+						print (function_string)
 
 
 		
