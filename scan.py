@@ -191,15 +191,16 @@ def output():
 			#function_string = "%s.%s.%s" % (module,cls_name,fun_name)
 			_function_string = "{0}.{1}.{2}"
 			function_string = _function_string .format(module,cls_name,fun_name)
+			getattr(sys.modules[__name__], "%s" % function_string)()
 			#mod_name, func_name = function_string.rsplit('.',1)
 			#mod = importlib.import_module(mod_name)
 			#func = getattr(mod, func_name)
 			#func = importlib.import_module(function_string)
-			result = function_string
+			#result = function_string
 			#getattr(locals().get("foo") or globals().get("foo") or __import__("foo"), "bar")()
 			#_testcases = testcases()
 			#_testcases = getattr('apparmor',__cls,__def)()
-			print (type(result))
+			#print (type(result))
 		
 
 		elif args.files == "officialimage":
