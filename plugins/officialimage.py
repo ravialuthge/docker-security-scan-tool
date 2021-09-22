@@ -14,6 +14,7 @@ class officialimage(object):
                if "FROM" in item:
                   d =  item.strip()
                   _s = d.split()
+                  print (_s)
                   s = _s.split(':')
                   o = s[0]
                   cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
