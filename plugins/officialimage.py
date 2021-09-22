@@ -28,4 +28,4 @@ class officialimage(object):
                   else:
                      print (o +" not Docker Official Images")
          except FileNotFoundError:
-            print ("I did not find the Dockerfile at, "+str(test.p))
+            print ("I did not find the Dockerfile at, "+p)
