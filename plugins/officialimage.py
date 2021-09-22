@@ -3,10 +3,11 @@ import os
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
-      test.p = input("Enter File Path:")
+      test.p = test.p
 
     def officialimagescan(test):
          try:
+            test.p = input("Enter File Path:")
             f = open(test.p, "r")
             mystring  = f.read()
 
@@ -24,7 +25,7 @@ class officialimage(object):
                   print (cmdout_a)
                   if cmdout_a == '[OK]':
                      print (o +" is Docker Official Image")
-                  #else:
-                   #  print (o +" not Docker Official Images")
+                  else:
+                     print (o +" not Docker Official Images")
          except FileNotFoundError:
             print ("I did not find the Dockerfile at, "+str(test.p))
