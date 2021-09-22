@@ -3,12 +3,12 @@ import os
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
-      test.p = test.p
+      _test = []
 
     def officialimagescan(test):
          try:
-            test.p = input("Enter File Path:")
-            f = open(test.p, "r")
+            p = input("Enter File Path:")
+            f = open(p, "r")
             mystring  = f.read()
 
             for item in mystring.split("\n"):
