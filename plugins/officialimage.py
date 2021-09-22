@@ -6,7 +6,7 @@ class officialimage(object):
       test.p = input("Enter File Path:")
 
     def officialimagescan(test):
-         try:
+         #try:
             f = open(test.p, "r")
             mystring  = f.read()
 
@@ -25,5 +25,5 @@ class officialimage(object):
                      print (o +" is Docker Official Image")
                   else:
                      print (o +" not Docker Official Images")
-         except FileNotFoundError:
-            print ("I did not find the Dockerfile at, "+str(test.p))
+         #except FileNotFoundError:
+          #  print ("I did not find the Dockerfile at, "+str(test.p))
