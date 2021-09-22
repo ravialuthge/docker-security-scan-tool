@@ -15,8 +15,8 @@ class officialimage(object):
                   d =  item.strip()
                   _s = d.split()
                   print (_s)
-                  s = _s.split(':')
-                  o = s[0]
+                  #s = _s.split(':')
+                  o = _s[0]
                   cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   cmdout = os.popen(cmd).read()
                   cmdout_a = cmdout.rstrip()
