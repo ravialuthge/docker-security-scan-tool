@@ -89,15 +89,13 @@ def output():
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			fun_name = __def
-			for mo in _lst_plugins_a:
-				if mo == _module_name:
-					for cl in _cls:
-						_mod = "plugins."+mo
-						mod = importlib.import_module(_mod)
-						class_name = cl
-						my_class = getattr(mod, class_name)()
-						result = getattr(my_class, "%s" % (fun_name))()
-						print (result)
+			for cl in _cls:
+				_mod = "plugins."+lp
+				mod = importlib.import_module(_mod)
+				class_name = cl
+				my_class = getattr(mod, class_name)()
+				result = getattr(my_class, "%s" % (fun_name))()
+				print (result)
 		
 		#print (sc_ho)
 		#docker_host.cis_version_host().cis_version_112()
