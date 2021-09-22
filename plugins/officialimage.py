@@ -13,7 +13,7 @@ class officialimage(object):
             for item in mystring.split("\n"):
                if "FROM" in item:
                   d =  item.strip()
-                  s = d.split('',':')
+                  s = d.split(': ')
                   o = s[1]
                   cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   cmdout = os.popen(cmd).read()
