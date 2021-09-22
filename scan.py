@@ -85,6 +85,7 @@ def output():
 						_def.append(t)
 				_module_name = lp
 				_def_str = str(_def)
+				print (_def_str)
 				def_bbc = _def_str.replace("[",'')
 				def_bbcdr = def_bbc.replace("]",'')
 				__def = def_bbcdr.replace("'",'')
