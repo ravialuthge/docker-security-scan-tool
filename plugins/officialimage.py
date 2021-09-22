@@ -17,11 +17,11 @@ class officialimage(object):
                   img = _s[1]
                   s = img.split(':')
                   o = s[0]
-                  print (o)
+                  
                   cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   cmdout = os.popen(cmd).read()
                   cmdout_a = cmdout.rstrip()
-                 
+                  print (cmdout_a)
                   if cmdout_a == '[OK]':
                      print (o +" is Docker Official Image")
                   else:
