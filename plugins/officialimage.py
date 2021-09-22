@@ -24,7 +24,7 @@ class officialimage(object):
                   print (cmdout_a)
                   if cmdout_a == '[OK]':
                      print (o +" is Docker Official Image")
-                  else:
-                     print (o +" not Docker Official Images")
+                  #else:
+                   #  print (o +" not Docker Official Images")
          except FileNotFoundError:
             print ("I did not find the Dockerfile at, "+str(test.p))
