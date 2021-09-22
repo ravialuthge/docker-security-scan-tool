@@ -73,7 +73,7 @@ def output():
 		pattern = re.compile("class (.*)\(")
 		for lp in _lst_plugins_a:
 			module_name = "plugins/"+lp+".py"
-			for line in enumerate(open(module_name)):
+			for i,line in enumerate(open(module_name)):
 				for match in re.finditer(pattern,line):
 					cls = '%s' % (match.groups()[0])
 					_cls.append(cls)
