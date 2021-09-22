@@ -72,7 +72,12 @@ def output():
 		pattern_def = re.compile("def (.*)\(")
 		pattern = re.compile("class (.*)\(")
 		for lp in _lst_plugins_a:
-			module_name = "plugins/"+lp+".py"
+			_cls = []
+			_def_name = []
+			_def = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern = re.compile("class (.*)\(")
+			module_name = "plugins/"+args.plugins+".py"
 			for i,line in enumerate(open(module_name)):
 				for match in re.finditer(pattern,line):
 					cls = '%s' % (match.groups()[0])
@@ -83,21 +88,21 @@ def output():
 			for t in _def_name:
 				if t != '__init__':
 					_def.append(t)
-			
+			_module_name = args.plugins
 			_def_str = str(_def)
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
 			__def = def_bbcdr.replace("'",'')
 			fun_name = __def
-			_mod = "plugins."+lp
-			mod = importlib.import_module(_mod)
-			_cls_str = str(_cls)
-			cls_bbc = _cls_str.replace("[",'')
-			cls_bbcdr = cls_bbc.replace("]",'')
-			__cls = cls_bbcdr.replace("'",'')
-			my_class = getattr(mod, __cls)()
-			result = getattr(my_class, "%s" % (fun_name))()
-			print (result)
+			for mo in _lst_plugins_a:
+				if mo == _module_name:
+					for cl in _cls:
+						_mod = "plugins."+mo
+						mod = importlib.import_module(_mod)
+						class_name = cl
+						my_class = getattr(mod, class_name)()
+						result = getattr(my_class, "%s" % (fun_name))()
+						print (result)
 		
 		#print (sc_ho)
 		#docker_host.cis_version_host().cis_version_112()
