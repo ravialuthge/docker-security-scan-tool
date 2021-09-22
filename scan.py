@@ -44,6 +44,8 @@ _moduleshelplist = "\n".join(moduleshelplist)
 _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
+
+
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -63,19 +65,53 @@ def output():
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
-		print (sc_ho)
-		docker_host.cis_version_host().cis_version_112()
-		docker_host.cis_version_host().cis_version_111()
-		docker_host.cis_version_host().cis_version_16()
-		docker_host.cis_version_host().cis_version_113()
-		print (sc_im)
-		docker_images.cis_version_images().cis_version_16()
-		docker_images.cis_version_images().cis_version_111()
-		docker_images.cis_version_images().cis_version_112()
-		print (sc_co)
-		docker_containers.cis_version_containers().cis_version_12()
-		docker_containers.cis_version_containers().cis_version_112()
-		docker_containers.cis_version_containers().cis_version_111()
+		_cls = []
+		_def_name = []
+		_def = []
+		module_name = []
+		pattern_def = re.compile("def (.*)\(")
+		pattern = re.compile("class (.*)\(")
+		for lp in _lst_plugins_a:
+			module_name = "plugins/"+lp+".py"
+			for line in enumerate(open(module_name)):
+				for match in re.finditer(pattern,line):
+					cls = '%s' % (match.groups()[0])
+					_cls.append(cls)
+				for match in re.finditer(pattern_def,line):
+					def_name = '%s' % (match.groups()[0])
+					_def_name.append(def_name)
+				for t in _def_name:
+					if t != '__init__':
+						_def.append(t)
+				_module_name = lp
+				_def_str = str(_def)
+				def_bbc = _def_str.replace("[",'')
+				def_bbcdr = def_bbc.replace("]",'')
+				__def = def_bbcdr.replace("'",'')
+				fun_name = __def
+				for mo in _lst_plugins_a:
+					if mo == _module_name:
+						for cl in _cls:
+							_mod = "plugins."+mo
+							mod = importlib.import_module(_mod)
+							class_name = cl
+							my_class = getattr(mod, class_name)()
+							result = getattr(my_class, "%s" % (fun_name))()
+							print (result)
+		
+		#print (sc_ho)
+		#docker_host.cis_version_host().cis_version_112()
+		#docker_host.cis_version_host().cis_version_111()
+		#docker_host.cis_version_host().cis_version_16()
+		#docker_host.cis_version_host().cis_version_113()
+		#print (sc_im)
+		#docker_images.cis_version_images().cis_version_16()
+		#docker_images.cis_version_images().cis_version_111()
+		#docker_images.cis_version_images().cis_version_112()
+		#print (sc_co)
+		#docker_containers.cis_version_containers().cis_version_12()
+		#docker_containers.cis_version_containers().cis_version_112()
+		#docker_containers.cis_version_containers().cis_version_111()
 		
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + ou))
