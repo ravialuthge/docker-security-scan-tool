@@ -1,3 +1,6 @@
+#Profile host
+#CIS_Version 1.0.0:1.6
+
 import grp
 from termcolor import colored
 
