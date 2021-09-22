@@ -90,7 +90,7 @@ def output():
 			__def = def_bbcdr.replace("'",'')
 			fun_name = __def
 			for cl in _cls:
-				_mod = "plugins."+lp
+				_mod = "plugins."+_module_name
 				mod = importlib.import_module(_mod)
 				class_name = cl
 				my_class = getattr(mod, class_name)()
