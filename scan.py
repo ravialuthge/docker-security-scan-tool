@@ -162,6 +162,7 @@ def output():
 					for match in re.finditer(pattern_version,profile):
 						__profile = '%s' % (match.groups()[0])
 						_profile = __profile.split(":")[0]
+						print (_profile)
 						if _profile == args.conprofile:
 							lp_any.append(lp)
 			for lp in lp_any:
@@ -213,47 +214,7 @@ def output():
 				my_class = getattr(mod, class_name)()
 				result = getattr(my_class, "%s" % (fun_name))()
 				print (result)
-		
-		elif args.sub_version == "1.0.0":
-			sub_version="1.6"
-			main_version="v1.0.0 - 04-22-2015"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-	
-			print (sc_im)
-		
-			print (sc_co)
-		
 
-			sub_version="1.11.0"
-			main_version="v1.0.0 - 04-22-2015"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-		
-			print (sc_im)
-			
-			print (sc_co)
-	
-
-			sub_version="1.12.0"
-			main_version="v1.0.0 - 04-22-2015"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-	
-			print (sc_im)
-			
-			print (sc_co)
-		
-
-			sub_version="1.13.0"
-			main_version="v1.0.0 - 04-22-2015"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-			
-			print (sc_im)
-		
-			print (sc_co)
-		
 		elif args.plugins:
 			
 			_cls = []
