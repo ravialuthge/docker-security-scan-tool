@@ -63,8 +63,8 @@ def output():
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
-		_cls = []
-		_def_name = []
+		#_cls = []
+		#_def_name = []
 		_def = []
 		pattern_def = re.compile("def (.*)\(")
 		pattern_cls = re.compile("class (.*)\(")
@@ -73,10 +73,10 @@ def output():
 			for i,line in enumerate(open(module_name)):
 				for match in re.finditer(pattern_cls,line):
 					cls = '%s' % (match.groups()[0])
-					_cls.append(cls)
+					_cls = cls
 				for match in re.finditer(pattern_def,line):
 					def_name = '%s' % (match.groups()[0])
-					_def_name.append(def_name)
+					_def_name = def_name
 			print (module_name)
 			print (_cls)
 			print (_def_name)
