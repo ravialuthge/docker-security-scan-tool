@@ -77,12 +77,13 @@ def output():
 				for match in re.finditer(pattern_def,line):
 					def_name = '%s' % (match.groups()[0])
 					_def_name = def_name
+					for t in _def_name:
+						if t != '__init__':
+							_def = t
 			print (module_name)
 			print (_cls)
-			print (_def_name)
-			for t in _def_name:
-				if t != '__init__':
-					_def.append(t)
+			print (_def)
+			
 			_module_name = lp
 			_def_str = str(_def)
 			def_bbc = _def_str.replace("[",'')
