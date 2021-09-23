@@ -149,15 +149,39 @@ def output():
 		#parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
 		args = parser.parse_args()
 		
-		if args.version == "1.2.0":
-			sub_version="1.2.0"
-			main_version="v1.2.0 - 07-29-2019"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-			
-			print (sc_im)
-	
-			print (sc_co)
+		if args.version:
+			sub_version=args.version
+			main_version=args.version
+			lp_any = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern_cls = re.compile("class (.*)\(")
+			pattern_version = re.compile("###CIS_Version (.*)\(")
+			for lp in _lst_plugins_a:
+				module_name = "plugins/"+lp+".py"
+				for p,profile in enumerate(open(module_name)):
+					for match in re.finditer(pattern_version,profile):
+						__profile = '%s' % (match.groups()[0])
+						_profile = __profile.split(":")[0]
+						if _profile == args.conprofile:
+							lp_any.append(lp)
+			for lp in lp_any:
+				module_name = "plugins/"+lp+".py"
+				for i,line in enumerate(open(module_name)):
+					for match in re.finditer(pattern_cls,line):
+						cls = '%s' % (match.groups()[0])
+						_cls = cls
+					for match in re.finditer(pattern_def,line):
+						def_name = '%s' % (match.groups()[0])
+						if def_name != '__init__':
+							_def = def_name
+				_module_name = lp
+				fun_name = _def
+				_mod = "plugins."+_module_name
+				mod = importlib.import_module(_mod)
+				class_name = _cls
+				my_class = getattr(mod, class_name)()
+				result = getattr(my_class, "%s" % (fun_name))()
+				print (result)
 
 		elif args.conprofile:
 			lp_any = []
