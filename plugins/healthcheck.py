@@ -1,4 +1,4 @@
-#Profile container()
+#Profile containers()
 #CIS_Version 1.0.0:1.12.0
 
 import os
