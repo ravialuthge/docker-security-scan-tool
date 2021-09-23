@@ -78,15 +78,9 @@ def output():
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
-		print (lp_con)
-		print (lp_host)
-		print (lp_img)
-		#_cls = []
-		#_def_name = []
-		#_def = []
 		pattern_def = re.compile("def (.*)\(")
 		pattern_cls = re.compile("class (.*)\(")
-		for lp in _lst_plugins_a:
+		for lp in lp_host:
 			module_name = "plugins/"+lp+".py"
 			for i,line in enumerate(open(module_name)):
 				for match in re.finditer(pattern_cls,line):
@@ -96,10 +90,46 @@ def output():
 					def_name = '%s' % (match.groups()[0])
 					if def_name != '__init__':
 						_def = def_name
-		
 			_module_name = lp
 			fun_name = _def
-			
+			_mod = "plugins."+_module_name
+			mod = importlib.import_module(_mod)
+			class_name = _cls
+			my_class = getattr(mod, class_name)()
+			result = getattr(my_class, "%s" % (fun_name))()
+			print (result)
+		print (sc_im)
+		for lp in lp_img:
+			module_name = "plugins/"+lp+".py"
+			for i,line in enumerate(open(module_name)):
+				for match in re.finditer(pattern_cls,line):
+					cls = '%s' % (match.groups()[0])
+					_cls = cls
+				for match in re.finditer(pattern_def,line):
+					def_name = '%s' % (match.groups()[0])
+					if def_name != '__init__':
+						_def = def_name
+			_module_name = lp
+			fun_name = _def
+			_mod = "plugins."+_module_name
+			mod = importlib.import_module(_mod)
+			class_name = _cls
+			my_class = getattr(mod, class_name)()
+			result = getattr(my_class, "%s" % (fun_name))()
+			print (result)
+		print (sc_co)
+		for lp in lp_con:
+			module_name = "plugins/"+lp+".py"
+			for i,line in enumerate(open(module_name)):
+				for match in re.finditer(pattern_cls,line):
+					cls = '%s' % (match.groups()[0])
+					_cls = cls
+				for match in re.finditer(pattern_def,line):
+					def_name = '%s' % (match.groups()[0])
+					if def_name != '__init__':
+						_def = def_name
+			_module_name = lp
+			fun_name = _def
 			_mod = "plugins."+_module_name
 			mod = importlib.import_module(_mod)
 			class_name = _cls
