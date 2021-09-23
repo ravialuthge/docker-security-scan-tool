@@ -137,26 +137,12 @@ def output():
 			my_class = getattr(mod, class_name)()
 			result = getattr(my_class, "%s" % (fun_name))()
 			print (result)
-		
-		#print (sc_ho)
-		#docker_host.cis_version_host().cis_version_112()
-		#docker_host.cis_version_host().cis_version_111()
-		#docker_host.cis_version_host().cis_version_16()
-		#docker_host.cis_version_host().cis_version_113()
-		#print (sc_im)
-		#docker_images.cis_version_images().cis_version_16()
-		#docker_images.cis_version_images().cis_version_111()
-		#docker_images.cis_version_images().cis_version_112()
-		#print (sc_co)
-		#docker_containers.cis_version_containers().cis_version_12()
-		#docker_containers.cis_version_containers().cis_version_112()
-		#docker_containers.cis_version_containers().cis_version_111()
-		
+
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + ou))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
-		#parser.add_argument("-pr", "--profile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
+		parser.add_argument("-cp", "--conprofile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
@@ -172,18 +158,37 @@ def output():
 			print (sc_im)
 	
 			print (sc_co)
-			
-		
 
-		elif args.version == "1.1.0":
-			sub_version="1.1.0"
-			main_version="v1.1.0 - 07-06-2017"
-			print (banner .format(sub_version, main_version))
-			print (sc_ho)
-			
-			print (sc_im)
-			
-			print (sc_co)
+		elif args.conprofile:
+			lp_any = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern_cls = re.compile("class (.*)\(")
+			pattern_profile = re.compile("###Profile (.*)\(")
+			for lp in _lst_plugins_a:
+				module_name = "plugins/"+lp+".py"
+				for p,profile in enumerate(open(module_name)):
+					for match in re.finditer(pattern_profile,profile):
+						_profile = '%s' % (match.groups()[0])
+						if _profile == args.conprofile:
+							lp_any.append(lp)
+			for lp in lp_any:
+				module_name = "plugins/"+lp+".py"
+				for i,line in enumerate(open(module_name)):
+					for match in re.finditer(pattern_cls,line):
+						cls = '%s' % (match.groups()[0])
+						_cls = cls
+					for match in re.finditer(pattern_def,line):
+						def_name = '%s' % (match.groups()[0])
+						if def_name != '__init__':
+							_def = def_name
+				_module_name = lp
+				fun_name = _def
+				_mod = "plugins."+_module_name
+				mod = importlib.import_module(_mod)
+				class_name = _cls
+				my_class = getattr(mod, class_name)()
+				result = getattr(my_class, "%s" % (fun_name))()
+				print (result)
 		
 		elif args.sub_version == "1.0.0":
 			sub_version="1.6"
