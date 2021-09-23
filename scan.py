@@ -44,6 +44,16 @@ _moduleshelplist = "\n".join(moduleshelplist)
 _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
+lp_con = []
+pattern_profile = re.compile("#Profile ")
+for lp in _lst_plugins_a:
+	module_name = "plugins/"+lp+".py"
+	for p,profile in enumerate(open(module_name)):
+		for match in re.finditer(pattern_profile,profile):
+			_profile = '%s' % (match.groups()[0])
+			if _profile == "containers":
+				lp_con.append(_profile)
+
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -55,7 +65,6 @@ def output():
 	sc_ho	= (colored('Docker Host',attrs=['bold']))
 	sc_im	= (colored('Docker Images',attrs=['bold']))
 	sc_co   = (colored('Docker Containers',attrs=['bold']))
-
 	sc_dockerfile = (colored('Best practices for writing Dockerfiles',attrs=['bold']))
 
 	arguments_a = len(sys.argv) -1
@@ -63,11 +72,13 @@ def output():
 		sub_version="1.2.0"
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
+		print (lp_con)
 		#_cls = []
 		#_def_name = []
-		_def = []
+		#_def = []
 		pattern_def = re.compile("def (.*)\(")
 		pattern_cls = re.compile("class (.*)\(")
+		pattern_profile = re.compile("#Profile ")
 		for lp in _lst_plugins_a:
 			module_name = "plugins/"+lp+".py"
 			for i,line in enumerate(open(module_name)):
