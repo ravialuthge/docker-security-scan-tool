@@ -78,10 +78,7 @@ def output():
 					def_name = '%s' % (match.groups()[0])
 					if def_name != '__init__':
 						_def = def_name
-			print (module_name)
-			print (_cls)
-			print (_def)
-			
+		
 			_module_name = lp
 			fun_name = _def
 			
