@@ -44,8 +44,6 @@ _moduleshelplist = "\n".join(moduleshelplist)
 _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
-
-
 def output():
 	
 	banner = (colored("# --------------------------------------------------------------------------------------------\n\
@@ -68,16 +66,10 @@ def output():
 		_cls = []
 		_def_name = []
 		_def = []
-		module_name = []
 		pattern_def = re.compile("def (.*)\(")
 		pattern = re.compile("class (.*)\(")
 		for lp in _lst_plugins_a:
-			_cls = []
-			_def_name = []
-			_def = []
-			pattern_def = re.compile("def (.*)\(")
-			pattern = re.compile("class (.*)\(")
-			module_name = "plugins/"+args.plugins+".py"
+			module_name = "plugins/"+lp+".py"
 			for i,line in enumerate(open(module_name)):
 				for match in re.finditer(pattern,line):
 					cls = '%s' % (match.groups()[0])
@@ -88,7 +80,7 @@ def output():
 			for t in _def_name:
 				if t != '__init__':
 					_def.append(t)
-			_module_name = args.plugins
+			_module_name = lp
 			_def_str = str(_def)
 			def_bbc = _def_str.replace("[",'')
 			def_bbcdr = def_bbc.replace("]",'')
