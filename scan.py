@@ -141,7 +141,7 @@ def output():
 	else:
 		parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=textwrap.dedent("plugins:\n\n" + ou))
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
-		parser.add_argument("-sv", "--sub-version", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
+		parser.add_argument("-sv", "--subversion", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-cp", "--conprofile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
 		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
 		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
@@ -152,6 +152,7 @@ def output():
 		if args.version:
 			sub_version=args.version
 			main_version=args.version
+			print (banner .format(sub_version, main_version))
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
@@ -182,6 +183,41 @@ def output():
 				my_class = getattr(mod, class_name)()
 				result = getattr(my_class, "%s" % (fun_name))()
 				print (result)
+		
+		elif args.subversion:
+				sub_version=args.subversion
+				main_version=args.version
+				print (banner .format(sub_version, main_version))
+				lp_any = []
+				pattern_def = re.compile("def (.*)\(")
+				pattern_cls = re.compile("class (.*)\(")
+				pattern_version = re.compile("###CIS_Version (.*)\(")
+				for lp in _lst_plugins_a:
+					module_name = "plugins/"+lp+".py"
+					for p,profile in enumerate(open(module_name)):
+						for match in re.finditer(pattern_version,profile):
+							__profile = '%s' % (match.groups()[0])
+							_profile = __profile.split(":")[1]
+							if _profile == args.subversion:
+								lp_any.append(lp)
+				for lp in lp_any:
+					module_name = "plugins/"+lp+".py"
+					for i,line in enumerate(open(module_name)):
+						for match in re.finditer(pattern_cls,line):
+							cls = '%s' % (match.groups()[0])
+							_cls = cls
+						for match in re.finditer(pattern_def,line):
+							def_name = '%s' % (match.groups()[0])
+							if def_name != '__init__':
+								_def = def_name
+					_module_name = lp
+					fun_name = _def
+					_mod = "plugins."+_module_name
+					mod = importlib.import_module(_mod)
+					class_name = _cls
+					my_class = getattr(mod, class_name)()
+					result = getattr(my_class, "%s" % (fun_name))()
+					print (result)
 
 		elif args.conprofile:
 			lp_any = []
