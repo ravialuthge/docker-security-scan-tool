@@ -83,11 +83,7 @@ def output():
 			print (_def)
 			
 			_module_name = lp
-			_def_str = str(_def)
-			def_bbc = _def_str.replace("[",'')
-			def_bbcdr = def_bbc.replace("]",'')
-			__def = def_bbcdr.replace("'",'')
-			fun_name = __def
+			fun_name = _def
 			for cl in _cls:
 				_mod = "plugins."+_module_name
 				mod = importlib.import_module(_mod)
