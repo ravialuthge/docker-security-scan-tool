@@ -76,10 +76,8 @@ def output():
 					_cls = cls
 				for match in re.finditer(pattern_def,line):
 					def_name = '%s' % (match.groups()[0])
-					_def_name = def_name
-					for t in _def_name:
-						if t != '__init__':
-							_def = t
+					if def_name != '__init__':
+						_def = def_name
 			print (module_name)
 			print (_cls)
 			print (_def)
