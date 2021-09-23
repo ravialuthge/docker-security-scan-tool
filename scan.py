@@ -52,7 +52,7 @@ for lp in _lst_plugins_a:
 		for match in re.finditer(pattern_profile,profile):
 			_profile = '%s' % (match.groups()[0])
 			if _profile == "containers":
-				lp_con.append(_profile)
+				lp_con.append(lp)
 
 def output():
 	
