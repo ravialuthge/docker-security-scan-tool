@@ -162,8 +162,7 @@ def output():
 					for match in re.finditer(pattern_version,profile):
 						__profile = '%s' % (match.groups()[0])
 						_profile = __profile.split(":")[0]
-						print (_profile)
-						if _profile == args.conprofile:
+						if _profile == args.version:
 							lp_any.append(lp)
 			for lp in lp_any:
 				module_name = "plugins/"+lp+".py"
