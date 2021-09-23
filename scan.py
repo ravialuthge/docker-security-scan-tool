@@ -84,13 +84,13 @@ def output():
 			
 			_module_name = lp
 			fun_name = _def
-			for cl in _cls:
-				_mod = "plugins."+_module_name
-				mod = importlib.import_module(_mod)
-				class_name = cl
-				my_class = getattr(mod, class_name)()
-				result = getattr(my_class, "%s" % (fun_name))()
-				print (result)
+			
+			_mod = "plugins."+_module_name
+			mod = importlib.import_module(_mod)
+			class_name = _cls
+			my_class = getattr(mod, class_name)()
+			result = getattr(my_class, "%s" % (fun_name))()
+			print (result)
 		
 		#print (sc_ho)
 		#docker_host.cis_version_host().cis_version_112()
