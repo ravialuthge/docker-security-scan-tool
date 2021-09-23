@@ -284,7 +284,7 @@ def output():
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
 
-		elif args.files:
+		elif args.files == "dockerfile":
 			print (sc_dockerfile)
 			testcase1 = officialimage.officialimage().officialimagescan()
 			print (testcase1)
