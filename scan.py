@@ -45,7 +45,9 @@ _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
 lp_con = []
-pattern_profile = re.compile("####Profile ")
+lp_host = []
+lp_img = []
+pattern_profile = re.compile("####Profile (.*)\(")
 for lp in _lst_plugins_a:
 	module_name = "plugins/"+lp+".py"
 	for p,profile in enumerate(open(module_name)):
@@ -53,6 +55,10 @@ for lp in _lst_plugins_a:
 			_profile = '%s' % (match.groups()[0])
 			if _profile == "containers":
 				lp_con.append(lp)
+			elif _profile == "containers":
+				lp_host.append(lp)
+			elif _profile == "containers":
+				lp_img.append(lp)
 
 def output():
 	
@@ -73,6 +79,8 @@ def output():
 		main_version="v1.2.0 - 07-29-2019"
 		print (banner .format(sub_version, main_version))
 		print (lp_con)
+		print (lp_host)
+		print (lp_img)
 		#_cls = []
 		#_def_name = []
 		#_def = []
