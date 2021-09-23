@@ -80,6 +80,7 @@ def output():
 		print (banner .format(sub_version, main_version))
 		pattern_def = re.compile("def (.*)\(")
 		pattern_cls = re.compile("class (.*)\(")
+		print (sc_ho)
 		for lp in lp_host:
 			module_name = "plugins/"+lp+".py"
 			for i,line in enumerate(open(module_name)):
