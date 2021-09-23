@@ -45,7 +45,7 @@ _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
 
 lp_con = []
-pattern_profile = re.compile("#Profile ")
+pattern_profile = re.compile("#Profile (.*)\(")
 for lp in _lst_plugins_a:
 	module_name = "plugins/"+lp+".py"
 	for p,profile in enumerate(open(module_name)):
@@ -78,7 +78,6 @@ def output():
 		#_def = []
 		pattern_def = re.compile("def (.*)\(")
 		pattern_cls = re.compile("class (.*)\(")
-		pattern_profile = re.compile("#Profile (.*)\(")
 		for lp in _lst_plugins_a:
 			module_name = "plugins/"+lp+".py"
 			for i,line in enumerate(open(module_name)):
