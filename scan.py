@@ -61,7 +61,7 @@ lp_img = []
 pattern_profile = re.compile("###Profile (.*)\#")
 for lp in _lst_plugins_a:
 	module_name = "plugins/"+lp+".py"
-	for p,profile in enumerate(open(module_name)):
+	for _p,profile in enumerate(open(module_name)):
 		for match in re.finditer(pattern_profile,profile):
 			_profile = '%s' % (match.groups()[0])
 			if _profile == "containers":
