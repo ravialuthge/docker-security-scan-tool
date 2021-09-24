@@ -45,8 +45,8 @@ for i in (__listpl):
    if i.endswith(".py") and i != '__init__.py':
            _i = "plugins/" + i
            f = open(_i,"r")
-           mystring  = f.read()
-           for item in mystring.split("\n"):
+           heplstring  = f.read()
+           for item in heplstring.split("\n"):
               if '"""' in item:
                  d = item.strip()
                  _d = d.replace('"""','')
