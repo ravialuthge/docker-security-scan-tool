@@ -39,8 +39,9 @@ moduleshelplist = []
 #                _d = '%s' % (match.groups()[0])
 #                moduleshelplist.append(_d)
 
-
-for i in (os.listdir('plugins/')):
+_listpl = os.listdir('plugins/')
+__listpl = sorted(_listpl)
+for i in (__listpl):
    if i.endswith(".py") and i != '__init__.py':
            _i = "plugins/" + i
            f = open(_i,"r")
