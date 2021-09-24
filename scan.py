@@ -299,8 +299,8 @@ def output():
 		elif args.files:
 			print (sc_dockerfile)
 			tmp.filepath.FILEPATH = args.files
-			testcase1 = officialimage.officialimage().officialimagescan()
-			print (testcase1)
+			#testcase1 = officialimage.officialimage().officialimagescan()
+			#print (testcase1)
 			
 		else:
 			parser.print_help()
