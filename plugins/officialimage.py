@@ -7,8 +7,9 @@ class officialimage(object):
        test.p = FILEPATH
      
     def officialimagescan(test):
+         fi = test.p
          try:
-            f = open(test.p, "r")
+            f = open(fi, "r")
             mystring  = f.read()
 
             for item in mystring.split("\n"):
