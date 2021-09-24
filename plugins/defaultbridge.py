@@ -1,4 +1,4 @@
-###Profile host()
+###Profile host#
 ###CIS_Version 1.1.0:1.1.0()
 
 import os
