@@ -30,13 +30,13 @@ class defaultbridge(netlist):
             word = 'com.docker.network.bridge.enable_icc:false'
             for en in (defaultbridge_ch):
                         if word in en:
-                                defaultbridge_ch_co = 'Encrypted data exchanged between containers on different nodes on the overlay network'
+                                defaultbridge_ch_co = 'Network traffic is restricted between containers on the default bridge'
                                 defaultbridge_ch_co_st = colored('PASS  ', 'green')
                                 test._defaultbridge_ch_co.append(defaultbridge_ch_co)
                                 test._defaultbridge_ch_co_st.append(defaultbridge_ch_co_st)
                                 
                         else:
-                                defaultbridge_ch_co = 'Encrypt data exchanged between containers on different nodes on the overlay network'
+                                defaultbridge_ch_co = 'network traffic is not restricted between containers on the default bridge'
                                 defaultbridge_ch_co_st = colored('WARN  ', 'red')
                                 test._defaultbridge_ch_co.append(defaultbridge_ch_co)
                                 test._defaultbridge_ch_co_st.append(defaultbridge_ch_co_st)   
