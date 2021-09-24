@@ -269,7 +269,7 @@ def output():
 			pattern_def = re.compile("def (.*)\(")
 			pattern = re.compile("class (.*)\(")
 			module_name = "plugins/"+args.plugins+".py"
-			for mo,modu in enumerate(open(module_name)):
+			for m,modu in enumerate(open(module_name)):
 				for match in re.finditer(pattern,modu):
 					cls = '%s' % (match.groups()[0])
 					_cls.append(cls)
