@@ -7,8 +7,7 @@ class officialimage(object):
        test.p = FILEPATH
      
     def officialimagescan(test):
-         file_path = str(test.p)
-         print (file_path)
+         file_path = test.p
          try:
             f = open(file_path, "r")
             mystring  = f.read()
