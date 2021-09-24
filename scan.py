@@ -30,7 +30,7 @@ lst_plugins_a = "\n".join(_lst_plugins_a)
 
 moduleshelplist = []
 
-helpstring = re.compile('"""\"')
+helpstring = re.compile('""" \"')
 for lp in _lst_plugins_a:
   if lp != '__init__.py':	 
         module_name = "plugins/"+lp+".py"
