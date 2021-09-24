@@ -296,9 +296,9 @@ def output():
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
 
-		elif args.file_path:
+		elif args.file:
 			print (sc_dockerfile)
-			tmp.filepath.FILEPATH = args.file_path
+			tmp.filepath.FILEPATH = args.file
 			testcase1 = officialimage.officialimage().officialimagescan()
 			print (testcase1)
 			
