@@ -9,8 +9,8 @@ class officialimage(object):
     def officialimagescan(test):
          file_path = test.p
          try:
-            f = open(file_path, "r")
-            mystring  = f.read()
+            #f = open(file_path, "r")
+            mystring  = file_path.read()
 
             for item in mystring.split("\n"):
                if "FROM" in item:
