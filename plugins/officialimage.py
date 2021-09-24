@@ -4,12 +4,11 @@ from tmp.filepath import FILEPATH
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
-       test.p = FILEPATH
+       test.p = input("Enter File Path:")
      
     def officialimagescan(test):
-         
          try:
-            f = open(FILEPATH, "r")
+            f = open(test.p, "r")
             mystring  = f.read()
 
             for item in mystring.split("\n"):
