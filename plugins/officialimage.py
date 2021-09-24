@@ -8,6 +8,7 @@ class officialimage(object):
      
     def officialimagescan(test):
          file_path = str(test.p)
+         print (file_path)
          try:
             f = open(file_path, "r")
             mystring  = f.read()
