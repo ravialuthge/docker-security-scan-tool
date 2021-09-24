@@ -7,7 +7,7 @@ class officialimage(object):
        test.p = FILEPATH
      
     def officialimagescan(test):
-         file_path = os.path.join(os.getenv(test.p,"not found"))
+         file_path = os.path.join(os.getenv(test.p))
          try:
             f = open(file_path, "r")
             mystring  = f.read()
