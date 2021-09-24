@@ -58,7 +58,7 @@ ou = tabulate(_ou)
 lp_con = []
 lp_host = []
 lp_img = []
-pattern_profile = re.compile("###Profile #\#")
+pattern_profile = re.compile("###Profile #")
 for lp in _lst_plugins_a:
 	module_name = "plugins/"+lp+".py"
 	for p,profile in enumerate(open(module_name)):
