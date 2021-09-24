@@ -10,6 +10,7 @@ import importlib
 from tabulate import tabulate
 from plugins import *
 from profiles import * 
+import tmp.filepath
 
 def plugins_list(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -295,8 +296,9 @@ def output():
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
 
-		elif args.files == "dockerfile":
+		elif args.files:
 			print (sc_dockerfile)
+			tmp.filepath.FILEPATH = args.files
 			testcase1 = officialimage.officialimage().officialimagescan()
 			print (testcase1)
 			
