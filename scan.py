@@ -30,16 +30,26 @@ lst_plugins_a = "\n".join(_lst_plugins_a)
 
 moduleshelplist = []
 
-for i in (os.listdir('plugins/')):
-   if i.endswith(".py") and i != '__init__.py':
-           _i = "plugins/" + i
-           f = open(_i,"r")
-           mystring  = f.read()
-           for item in mystring.split("\n"):
-              if '"""' in item:
-                 d = item.strip()
-                 _d = d.replace('"""','')
-                 moduleshelplist.append(_d)
+helpstring = re.compile('"""\"""')
+for lp in _lst_plugins_a:
+  if lp != '__init__.py':	 
+        module_name = "plugins/"+lp+".py"
+        for p,profile in enumerate(open(module_name)):
+            for match in re.finditer(helpstring,profile):
+                _d = '%s' % (match.groups()[0])
+                moduleshelplist.append(_d)
+
+
+#for i in (os.listdir('plugins/')):
+#   if i.endswith(".py") and i != '__init__.py':
+#           _i = "plugins/" + i
+#           f = open(_i,"r")
+#           mystring  = f.read()
+#           for item in mystring.split("\n"):
+#              if '"""' in item:
+#                 d = item.strip()
+#                 _d = d.replace('"""','')
+#                 moduleshelplist.append(_d)
 _moduleshelplist = "\n".join(moduleshelplist)
 _ou = [[lst_plugins_a , _moduleshelplist]]
 ou = tabulate(_ou)
