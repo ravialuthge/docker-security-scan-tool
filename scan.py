@@ -167,7 +167,7 @@ def output():
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
-			pattern_version = re.compile("###CIS_Version (.*)\(")
+			pattern_version = re.compile("###CIS_Version (.*)\#")
 			for lp in _lst_plugins_a:
 				module_name = "plugins/"+lp+".py"
 				for p,profile in enumerate(open(module_name)):
@@ -202,7 +202,7 @@ def output():
 				lp_any = []
 				pattern_def = re.compile("def (.*)\(")
 				pattern_cls = re.compile("class (.*)\(")
-				pattern_version = re.compile("###CIS_Version (.*)\(")
+				pattern_version = re.compile("###CIS_Version (.*)\#")
 				for lp in _lst_plugins_a:
 					module_name = "plugins/"+lp+".py"
 					for p,profile in enumerate(open(module_name)):
@@ -234,7 +234,7 @@ def output():
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
-			pattern_profile = re.compile("###Profile (.*)\(")
+			pattern_profile = re.compile("###Profile (.*)\#")
 			for lp in _lst_plugins_a:
 				module_name = "plugins/"+lp+".py"
 				for p,profile in enumerate(open(module_name)):
@@ -269,11 +269,11 @@ def output():
 			pattern_def = re.compile("def (.*)\(")
 			pattern = re.compile("class (.*)\(")
 			module_name = "plugins/"+args.plugins+".py"
-			for i,line in enumerate(open(module_name)):
-				for match in re.finditer(pattern,line):
+			for mo,modu in enumerate(open(module_name)):
+				for match in re.finditer(pattern,modu):
 					cls = '%s' % (match.groups()[0])
 					_cls.append(cls)
-				for match in re.finditer(pattern_def,line):
+				for match in re.finditer(pattern_def,modu):
 					def_name = '%s' % (match.groups()[0])
 					_def_name.append(def_name)
 			for t in _def_name:
