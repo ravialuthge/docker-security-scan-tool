@@ -1,9 +1,10 @@
 import os
-from tmp.filepath import FILEPATH
+#from tmp.filepath import FILEPATH
 
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
+       from tmp.filepath import FILEPATH
        test.p = FILEPATH
      
     def officialimagescan(test):
