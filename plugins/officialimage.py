@@ -1,5 +1,4 @@
 import os
-#from tmp.filepath import FILEPATH
 
 class officialimage(object):
     """Check Docker Official Image"""
