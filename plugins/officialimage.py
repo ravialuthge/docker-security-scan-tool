@@ -3,7 +3,8 @@ import os
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
-       test.p = input("Enter File Path:")
+       from tmp.filepath import FILEPATH
+       test.p = FILEPATH
      
     def officialimagescan(test):
          try:

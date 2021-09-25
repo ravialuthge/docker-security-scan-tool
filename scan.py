@@ -10,6 +10,7 @@ import importlib
 from tabulate import tabulate
 from plugins import *
 from profiles import * 
+import tmp.filepath
 
 def plugins_list(ns_pkg):
 	return pkgutil.iter_modules(ns_pkg.__path__)
@@ -30,12 +31,23 @@ lst_plugins_a = "\n".join(_lst_plugins_a)
 
 moduleshelplist = []
 
-for i in (os.listdir('plugins/')):
+#helpstring = re.compile('"""\"""')
+#for lp in _lst_plugins_a:
+# if lp != '__init__.py':	 
+#        module_name = "plugins/"+lp+".py"
+#        for p,profile in enumerate(open(module_name)):
+#            for match in re.finditer(helpstring,profile):
+#                _d = '%s' % (match.groups()[0])
+#                moduleshelplist.append(_d)
+
+_listpl = os.listdir('plugins/')
+__listpl = sorted(_listpl)
+for i in (__listpl):
    if i.endswith(".py") and i != '__init__.py':
            _i = "plugins/" + i
            f = open(_i,"r")
-           mystring  = f.read()
-           for item in mystring.split("\n"):
+           heplstring  = f.read()
+           for item in heplstring.split("\n"):
               if '"""' in item:
                  d = item.strip()
                  _d = d.replace('"""','')
@@ -47,10 +59,10 @@ ou = tabulate(_ou)
 lp_con = []
 lp_host = []
 lp_img = []
-pattern_profile = re.compile("###Profile (.*)\(")
+pattern_profile = re.compile("###Profile (.*)\#")
 for lp in _lst_plugins_a:
 	module_name = "plugins/"+lp+".py"
-	for p,profile in enumerate(open(module_name)):
+	for _p,profile in enumerate(open(module_name)):
 		for match in re.finditer(pattern_profile,profile):
 			_profile = '%s' % (match.groups()[0])
 			if _profile == "containers":
@@ -143,8 +155,8 @@ def output():
 		parser.add_argument("-v", "--version", type=str , help="run for main CIS versions (currently available versions 1.2.0 , 1.1.0 , 1.0.0)")
 		parser.add_argument("-sv", "--subversion", type=str , help="run for sub CIS versions  (currently available 1.0.0 sub versions 1.6, 1.11.0, 1.12.0, 1.13.0)")
 		parser.add_argument("-cp", "--conprofile", type=str, help="run for configuration profiles  (currently available docker host , docker images & docker containers)")
-		parser.add_argument("-f", "--files",type=str, help="check Best practices for Dockerfiles & docker-compose file")
-		parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
+		parser.add_argument("-f" ,dest = "file_path" , default = None , help="check Best practices for Dockerfiles & docker-compose file")
+		#parser.add_argument("-i", "--id", type=str, help="run for docker image id & docker container id")
 		parser.add_argument("-p", "--plugins", type=str, help="for individually run plugins")
 		#parser.add_argument("-pa", "--path", dest="filename", required=True,help="input file", metavar="FILE")
 		args = parser.parse_args()
@@ -156,7 +168,7 @@ def output():
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
-			pattern_version = re.compile("###CIS_Version (.*)\(")
+			pattern_version = re.compile("###CIS_Version (.*)\#")
 			for lp in _lst_plugins_a:
 				module_name = "plugins/"+lp+".py"
 				for p,profile in enumerate(open(module_name)):
@@ -191,7 +203,7 @@ def output():
 				lp_any = []
 				pattern_def = re.compile("def (.*)\(")
 				pattern_cls = re.compile("class (.*)\(")
-				pattern_version = re.compile("###CIS_Version (.*)\(")
+				pattern_version = re.compile("###CIS_Version (.*)\#")
 				for lp in _lst_plugins_a:
 					module_name = "plugins/"+lp+".py"
 					for p,profile in enumerate(open(module_name)):
@@ -223,7 +235,7 @@ def output():
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
-			pattern_profile = re.compile("###Profile (.*)\(")
+			pattern_profile = re.compile("###Profile (.*)\#")
 			for lp in _lst_plugins_a:
 				module_name = "plugins/"+lp+".py"
 				for p,profile in enumerate(open(module_name)):
@@ -258,11 +270,11 @@ def output():
 			pattern_def = re.compile("def (.*)\(")
 			pattern = re.compile("class (.*)\(")
 			module_name = "plugins/"+args.plugins+".py"
-			for i,line in enumerate(open(module_name)):
-				for match in re.finditer(pattern,line):
+			for m,modu in enumerate(open(module_name)):
+				for match in re.finditer(pattern,modu):
 					cls = '%s' % (match.groups()[0])
 					_cls.append(cls)
-				for match in re.finditer(pattern_def,line):
+				for match in re.finditer(pattern_def,modu):
 					def_name = '%s' % (match.groups()[0])
 					_def_name.append(def_name)
 			for t in _def_name:
@@ -284,8 +296,9 @@ def output():
 						result = getattr(my_class, "%s" % (fun_name))()
 						print (result)
 
-		elif args.files == "dockerfile":
+		elif args.file_path:
 			print (sc_dockerfile)
+			tmp.filepath.FILEPATH = args.file_path
 			testcase1 = officialimage.officialimage().officialimagescan()
 			print (testcase1)
 			
