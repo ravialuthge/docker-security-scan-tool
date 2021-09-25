@@ -33,7 +33,7 @@ moduleshelplist = []
 
 #helpstring = re.compile('"""\"""')
 #for lp in _lst_plugins_a:
-  #if lp != '__init__.py':	 
+# if lp != '__init__.py':	 
 #        module_name = "plugins/"+lp+".py"
 #        for p,profile in enumerate(open(module_name)):
 #            for match in re.finditer(helpstring,profile):
