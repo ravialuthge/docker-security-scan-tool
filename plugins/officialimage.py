@@ -1,3 +1,5 @@
+###conf dockerfile#
+
 import os
 
 class officialimage(object):
