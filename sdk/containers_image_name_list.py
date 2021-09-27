@@ -9,6 +9,6 @@ class containerimagelist(object):
                     for ci in container_image_list:
                         con_img_lst.append(ci)
         test.con_img_lst = con_img_lst
-    def container(test):
+    def container_img(test):
         test.con_img_lst = test.con_img_lst
         return test.con_img_lst
