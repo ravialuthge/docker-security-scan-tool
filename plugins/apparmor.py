@@ -19,6 +19,7 @@ class ApparmorPlugin(containerlist,containerimagelist):
     def apparmor_scan(test):
         super().__init__()
         lst_str =  str(test.lst)
+        lst_con_img_name = test.con_img_lst
         if lst_str == '[]':
             apparmor_output_cmd = 'containers not running'
         else:
@@ -29,7 +30,7 @@ class ApparmorPlugin(containerlist,containerimagelist):
             #    docker_con_img_name = docker_con_img_name_output.rstrip()
             #    docker_con_img_name_str = str(docker_con_img_name)
             #    test.lst_con_img_name.append(docker_con_img_name_str)
-            lst_con_img_name = test.con_img_lst
+            
             lst_con_img_a = "\n".join(lst_con_img_name)
             images_output = lst_con_img_a
             images = test.lst
