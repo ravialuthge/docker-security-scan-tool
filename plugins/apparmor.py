@@ -5,7 +5,7 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 from sdk.containers_id_list import *
-from sdk.containers_image_name_list import *
+from sdk.containers_image_name_list import containerimagelist
 
 class ApparmorPlugin(containerlist,containerimagelist):
     """Verify AppArmor Profile, if applicable"""
