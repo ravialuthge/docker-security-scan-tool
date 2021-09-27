@@ -14,7 +14,7 @@ class ApparmorPlugin(containerlist,containerimagelist):
         test.lst_con_apparmor=[]
         test.lst_apparmor_co=[]
         test.lst_apparmor_co_st=[]
-        test.lst_con_img_name=[]
+        #test.lst_con_img_name=[]
     
     def apparmor_scan(test):
         super().__init__()
