@@ -5,8 +5,9 @@ import os
 from termcolor import colored
 from tabulate import tabulate
 from sdk.containers_id_list import *
+from sdk.containers_image_name_list import *
 
-class ApparmorPlugin(containerlist):
+class ApparmorPlugin(containerlist,containerimagelist):
     """Verify AppArmor Profile, if applicable"""
     def __init__(test):
         test.lst_con_img=[]
@@ -21,14 +22,15 @@ class ApparmorPlugin(containerlist):
         if lst_str == '[]':
             apparmor_output_cmd = 'containers not running'
         else:
-            con_id = test.lst
-            for d in (con_id):
-                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
-                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
-                docker_con_img_name = docker_con_img_name_output.rstrip()
-                docker_con_img_name_str = str(docker_con_img_name)
-                test.lst_con_img_name.append(docker_con_img_name_str)
-            lst_con_img_a = "\n".join(test.lst_con_img_name)
+            #con_id = test.lst
+            #for d in (con_id):
+            #    docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
+            #    docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+            #    docker_con_img_name = docker_con_img_name_output.rstrip()
+            #    docker_con_img_name_str = str(docker_con_img_name)
+            #    test.lst_con_img_name.append(docker_con_img_name_str)
+            lst_con_img_name = test.con_img_lst
+            lst_con_img_a = "\n".join(lst_con_img_name)
             images_output = lst_con_img_a
             images = test.lst
             for im in (images):
