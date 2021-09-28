@@ -5,17 +5,21 @@ class containerlist(object):
         lst=[]
         con_name_lst=[]
         con_img_lst=[]
+        _container_appar_list=[]
         client = docker.from_env()
         for container in client.containers.list():
                     container_ch_cmd_a = container.id
                     lst.append(container_ch_cmd_a)
                     container_name_ch_cmd_a = container.name
                     con_name_lst.append( container_name_ch_cmd_a)
-                    container_image_list = container_ch_cmd_a = container.attrs['Config']['Image']
+                    container_image_list = container.attrs['Config']['Image']
                     con_img_lst.append(container_image_list)
+                    container_appar_list = container.attrs['AppArmorProfile']
+                    _container_appar_list.append("AppArmorProfile="+container_appar_list)
         test.con_name_lst = con_name_lst
         test.lst = lst 
         test.con_img_lst = con_img_lst
+        test._container_appar_list = _container_appar_list
                     
     def container_id(test):
         test.lst = test.lst        
@@ -28,3 +32,7 @@ class containerlist(object):
     def container_img_name(test):
         test.con_img_lst = test.con_img_lst        
         return test.con_img_lst
+    
+    def container_appar(test):
+        test._container_appar_list = test._container_appar_list        
+        return test._container_appar_list

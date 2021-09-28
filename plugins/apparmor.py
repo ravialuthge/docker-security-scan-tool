@@ -34,14 +34,14 @@ class ApparmorPlugin(containerlist):
             
             lst_con_img_a = "\n".join(lst_con_img_name)
             images_output = lst_con_img_a
-            images = test.lst
-            for im in (images):
-                apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
-                apparmor_output = os.popen(apparmor_cmd).read()
-                apparmor_profile = apparmor_output.rstrip()
-                apparmor_profile_str = str(apparmor_profile)
-                test.lst_con_apparmor.append(apparmor_profile_str)
-            apparmor_profile_str_a_s = test.lst_con_apparmor
+            #images = test.lst
+            #for im in (images):
+            #    apparmor_cmd = "docker inspect " + im + " --format 'AppArmorProfile={{.AppArmorProfile}}'"
+            #    apparmor_output = os.popen(apparmor_cmd).read()
+            #    apparmor_profile = apparmor_output.rstrip()
+            #    apparmor_profile_str = str(apparmor_profile)
+            #    test.lst_con_apparmor.append(apparmor_profile_str)
+            apparmor_profile_str_a_s = test._container_appar_list 
             for i in (apparmor_profile_str_a_s):
                 if i == 'AppArmorProfile=':
                         apparmor_co = 'Verify AppArmor Profile, if applicable'
