@@ -9,7 +9,7 @@ from sdk.containers_id_list import *
 class healthcheck(containerlist):
     """Check container health at runtime"""
     def __init__(test):
-        test.lst_con_img_name=[]
+        #test.lst_con_img_name=[]
         test.lst_health_ch=[]
         test.lst_health_ch_co=[]
         test.lst_health_ch_co_st=[]
@@ -23,17 +23,18 @@ class healthcheck(containerlist):
         else:
             con_id = test.lst
             for d in (con_id):
-                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
-                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
-                docker_con_img_name = docker_con_img_name_output.rstrip()
-                docker_con_img_name_str = str(docker_con_img_name)
-                test.lst_con_img_name.append(docker_con_img_name_str)
+                #docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
+                #docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+                #docker_con_img_name = docker_con_img_name_output.rstrip()
+                #docker_con_img_name_str = str(docker_con_img_name)
+                #test.lst_con_img_name.append(docker_con_img_name_str)
                 health_ch_cmd = "docker inspect " + d + " --format='{{.Config.Healthcheck}}'"
                 health_ch_output = os.popen(health_ch_cmd).read()
                 health_ch_name = health_ch_output.rstrip()
                 health_ch_name_str = str(health_ch_name)
                 test.lst_health_ch.append(health_ch_name_str)
-            lst_con_img_a = "\n".join(test.lst_con_img_name)
+            lst_con_img_name = test.con_img_lst
+            lst_con_img_a = "\n".join(lst_con_img_name)
             container_image_output = lst_con_img_a
             _container_name_output = test.con_name_lst
             container_name_output = "\n".join(_container_name_output)
