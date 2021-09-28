@@ -9,7 +9,7 @@ from sdk.containers_id_list import *
 class seccomp(containerlist):
     """Do not disable default seccomp profile""" 
     def __init__(test):
-         test.lst_con_img_name=[]
+         #test.lst_con_img_name=[]
          test.lst_seccomp_ch=[]
          test.lst_seccomp_ch_co=[]
          test.lst_seccomp_ch_co_st=[]
