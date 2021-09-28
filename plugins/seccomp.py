@@ -22,17 +22,18 @@ class seccomp(containerlist):
         else:
             con_id = test.lst
             for d in (con_id):
-                docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
-                docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
-                docker_con_img_name = docker_con_img_name_output.rstrip()
-                docker_con_img_name_str = str(docker_con_img_name)
-                test.lst_con_img_name.append(docker_con_img_name_str)
+                #docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
+                #docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
+                #docker_con_img_name = docker_con_img_name_output.rstrip()
+                #docker_con_img_name_str = str(docker_con_img_name)
+                #test.lst_con_img_name.append(docker_con_img_name_str)
                 seccomp_ch_cmd = "docker inspect " + d + " --format  'SecurityOpt={{.HostConfig.SecurityOpt}}'"
                 seccomp_ch_output = os.popen(seccomp_ch_cmd).read()
                 seccomp_ch_name = seccomp_ch_output.rstrip()
                 seccomp_ch_name_str = str(seccomp_ch_name)
                 test.lst_seccomp_ch.append(seccomp_ch_name_str)
-            lst_con_img_a = "\n".join(test.lst_con_img_name)
+            lst_con_img_name = test.con_img_lst
+            lst_con_img_a = "\n".join(lst_con_img_name)
             container_image_output = lst_con_img_a
             _container_name_output = test.con_name_lst
             container_name_output = "\n".join(_container_name_output)
