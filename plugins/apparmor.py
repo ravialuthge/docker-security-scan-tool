@@ -6,9 +6,9 @@ from termcolor import colored
 from tabulate import tabulate
 from sdk.containers_id_list import *
 #from sdk.containers_image_name_list import containerimagelist
-import sdk.containers_image_name_list as containers_image_name_list
+#import sdk.containers_image_name_list as containers_image_name_list
 
-class ApparmorPlugin(containerlist,containers_image_name_list.containerimagelist):
+class ApparmorPlugin(containerlist):
     """Verify AppArmor Profile, if applicable"""
     def __init__(test):
         test.lst_con_img=[]
