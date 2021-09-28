@@ -24,7 +24,7 @@ class defaultbridge(netlist):
                 defaultbridge_cmd = "docker network inspect " + d + " --format '{{.Name}} {{.Options}}'"
                 defaultbridge_output = os.popen(defaultbridge_cmd).read()
                 defaultbridge_name = defaultbridge_output.rstrip()
-                defaultbridge_name_str = str( defaultbridge_name)
+                defaultbridge_name_str = str(defaultbridge_name)
                 test.lst_defaultbridge_name.append(defaultbridge_name_str)
             defaultbridge_ch = test.lst_defaultbridge_name
             word = 'com.docker.network.bridge.enable_icc:false'
