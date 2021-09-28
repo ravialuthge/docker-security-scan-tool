@@ -17,7 +17,8 @@ class containerlist(object):
                     con_img_lst.append(container_image_list)
                     container_appar_list = container.attrs['AppArmorProfile']
                     _container_appar_list.append("AppArmorProfile="+container_appar_list)
-                    container_secc_list = container.attrs['HostConfig']['SecurityOpt']
+                    __container_secc_list = container.attrs['HostConfig']['SecurityOpt']
+                    container_secc_list = str(__container_secc_list)
                     _container_secc_list.append(container_secc_list)
         test.con_name_lst = con_name_lst
         test.lst = lst 
