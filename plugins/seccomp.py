@@ -41,7 +41,7 @@ class seccomp(containerlist):
             seccomp_ch = test._container_secc_list
 
             for h in (seccomp_ch):
-                    if h == 'None':
+                    if h == '':
                             seccomp_ch_co = 'Do not disable default seccomp profile'
                             seccomp_ch_co_st = colored('WARN  ', 'red')
                             test.lst_seccomp_ch_co.append(seccomp_ch_co)
