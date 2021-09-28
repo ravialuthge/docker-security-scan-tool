@@ -39,7 +39,6 @@ class seccomp(containerlist):
             _container_name_output = test.con_name_lst
             container_name_output = "\n".join(_container_name_output)
             seccomp_ch = test._container_secc_list
-            print (seccomp_ch)
 
             for h in (seccomp_ch):
                     if h == 'None':
