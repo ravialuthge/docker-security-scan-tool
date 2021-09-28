@@ -6,6 +6,7 @@ class containerlist(object):
         con_name_lst=[]
         con_img_lst=[]
         _container_appar_list=[]
+        _container_secc_list=[]
         client = docker.from_env()
         for container in client.containers.list():
                     container_ch_cmd_a = container.id
@@ -16,10 +17,13 @@ class containerlist(object):
                     con_img_lst.append(container_image_list)
                     container_appar_list = container.attrs['AppArmorProfile']
                     _container_appar_list.append("AppArmorProfile="+container_appar_list)
+                    container_secc_list = container.attrs['HostConfig']['SecurityOpt']
+                    _container_secc_list.append(container_secc_list)
         test.con_name_lst = con_name_lst
         test.lst = lst 
         test.con_img_lst = con_img_lst
         test._container_appar_list = _container_appar_list
+        test._container_secc_list = _container_secc_list
                     
     def container_id(test):
         test.lst = test.lst        
@@ -36,3 +40,7 @@ class containerlist(object):
     def container_appar(test):
         test._container_appar_list = test._container_appar_list        
         return test._container_appar_list
+
+    def container_secc(test):
+        test._container_secc_list = test._container_secc_list        
+        return test._container_secc_list
