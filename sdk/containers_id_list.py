@@ -11,9 +11,8 @@ class containerlist(object):
                     lst.append(container_ch_cmd_a)
                     container_name_ch_cmd_a = container.name
                     con_name_lst.append( container_name_ch_cmd_a)
-                    container_image_list = container.image.tags
-                    for ci in container_image_list:
-                        con_img_lst.append(ci)
+                    container_image_list = container_ch_cmd_a = container.attrs['Config']['Image']
+                    con_img_lst.append(container_image_list)
         test.con_name_lst = con_name_lst
         test.lst = lst 
         test.con_img_lst = con_img_lst
