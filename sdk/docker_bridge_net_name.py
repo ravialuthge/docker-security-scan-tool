@@ -11,7 +11,11 @@ class netlist(object):
                 netlist_output_lst.append(netlist_output)
                 _netlist_opt = network.attrs['Options']
                 netlist_opt.append(_netlist_opt)
-        test.netlist_output_lst = sorted(netlist_output_lst)
+        test.netlist_output_lst = netlist_output_lst
+        test.netlist_opt = netlist_opt
     def net(test):
         test.netlist_output_lst = test.netlist_output_lst
         return test.netlist_output_lst
+    def net_opt(test):
+        test.netlist_opt = test.netlist_opt
+        return test.netlist_opt

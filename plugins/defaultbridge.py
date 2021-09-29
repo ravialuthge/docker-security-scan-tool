@@ -9,7 +9,7 @@ from sdk.docker_bridge_net_name import *
 class defaultbridge(netlist):
     """Ensure network traffic is restricted between containers on the default bridge"""
     def __init__(test):
-            test.lst_defaultbridge_name=[]
+            #test.lst_defaultbridge_name=[]
             test._defaultbridge_ch_co=[]
             test._defaultbridge_ch_co_st=[]
 
@@ -19,14 +19,14 @@ class defaultbridge(netlist):
             _netlist_output_lst = test.netlist_output_lst
             defaultbridge_ch_output = "\n".join(_netlist_output_lst)
 
-            for d in (_netlist_output_lst):
+            #for d in (_netlist_output_lst):
                 
-                defaultbridge_cmd = "docker network inspect " + d + " --format '{{.Name}} {{.Options}}'"
-                defaultbridge_output = os.popen(defaultbridge_cmd).read()
-                defaultbridge_name = defaultbridge_output.rstrip()
-                defaultbridge_name_str = str(defaultbridge_name)
-                test.lst_defaultbridge_name.append(defaultbridge_name_str)
-            defaultbridge_ch = test.lst_defaultbridge_name
+            #    defaultbridge_cmd = "docker network inspect " + d + " --format '{{.Name}} {{.Options}}'"
+            #    defaultbridge_output = os.popen(defaultbridge_cmd).read()
+            #    defaultbridge_name = defaultbridge_output.rstrip()
+            #    defaultbridge_name_str = str(defaultbridge_name)
+            #    test.lst_defaultbridge_name.append(defaultbridge_name_str)
+            defaultbridge_ch = test.netlist_opt
             word = 'com.docker.network.bridge.enable_icc:false'
             for en in (defaultbridge_ch):
                         if word in en:
