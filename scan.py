@@ -302,13 +302,13 @@ def output():
 			lp_any = []
 			pattern_def = re.compile("def (.*)\(")
 			pattern_cls = re.compile("class (.*)\(")
-			pattern_profile = re.compile("###conf dockerfile#")
+			pattern_conf = re.compile("###conf (.*)\#")
 			for lp in _lst_plugins_a:
 				module_name = "plugins/"+lp+".py"
 				for p,profile in enumerate(open(module_name)):
-					for match in re.finditer(pattern_profile,profile):
+					for match in re.finditer(pattern_conf,profile):
 						_profile = '%s' % (match.groups()[0])
-						if _profile == args.conprofile:
+						if _profile == 'dockerfile':
 							lp_any.append(lp)
 			for lp in lp_any:
 				module_name = "plugins/"+lp+".py"
