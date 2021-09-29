@@ -27,8 +27,7 @@ class defaultbridge(netlist):
             #    defaultbridge_name_str = str(defaultbridge_name)
             #    test.lst_defaultbridge_name.append(defaultbridge_name_str)
             defaultbridge_ch = test.netlist_opt
-            print (defaultbridge_ch)
-            word = 'com.docker.network.bridge.enable_icc:false'
+            word = """'com.docker.network.bridge.enable_icc':", "'true',"""
             for en in (defaultbridge_ch):
                         if word in en:
                                 defaultbridge_ch_co = 'Network traffic is restricted between containers on the default bridge'
