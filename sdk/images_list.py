@@ -4,6 +4,7 @@ class imageslist(object):
     def __init__(test): 
         lst=[]
         lst_img_name=[]
+        _lst_img_user=[]
         client = docker.from_env()
         for image in client.images.list():
                     images_ch_cmd_a = image.id
@@ -16,11 +17,17 @@ class imageslist(object):
                     bbcdr = bbc.replace("]",'')
                     bbcf = bbcdr.replace("'",'')
                     lst_img_name.append(bbcf)
+                    lst_img_user = image.attrs['Config']['User']
+                    _lst_img_user.append("User="+lst_img_user)
         test.lst = lst
         test.lst_img_name = lst_img_name
+        test._lst_img_user = _lst_img_user
     def images_id(test):
         test.lst = test.lst        
         return test.lst
     def images_name(test):
         test.lst_img_name = test.lst_img_name        
         return test.lst_img_name
+    def images_user(test):
+        test._lst_img_user = test._lst_img_user        
+        return test._lst_img_user

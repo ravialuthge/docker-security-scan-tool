@@ -28,7 +28,7 @@ class ImageUser(imageslist):
                 image_user = image_user_cmd_output.rstrip()
                 image_user_str = str(image_user)
                 test.lst_image_user_cmd.append(image_user_str)
-            image_user_str_a_s = test.lst_image_user_cmd
+            image_user_str_a_s = test._lst_img_user
             for i in (image_user_str_a_s):
                 if i == 'User=' or i == 'User=root':
                         imageuser_output_cmd = 'not user for the container has been created'
