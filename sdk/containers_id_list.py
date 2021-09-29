@@ -7,6 +7,7 @@ class containerlist(object):
         con_img_lst=[]
         _container_appar_list=[]
         _container_secc_list=[]
+        _container_hel_list=[]
         client = docker.from_env()
         for container in client.containers.list():
                     container_ch_cmd_a = container.id
@@ -20,11 +21,17 @@ class containerlist(object):
                     __container_secc_list = container.attrs['HostConfig']['SecurityOpt']
                     container_secc_list = str(__container_secc_list)
                     _container_secc_list.append(container_secc_list)
+                    try:
+                     container_hel_list = container.attrs['Config']['Healthcheck']['Test']
+                     _container_hel_list.append(container_hel_list)
+                    except KeyError:
+                     _container_hel_list.append("<nil>")
         test.con_name_lst = con_name_lst
         test.lst = lst 
         test.con_img_lst = con_img_lst
         test._container_appar_list = _container_appar_list
         test._container_secc_list = _container_secc_list
+        test._container_hel_list = _container_hel_list
                     
     def container_id(test):
         test.lst = test.lst        
@@ -45,3 +52,7 @@ class containerlist(object):
     def container_secc(test):
         test._container_secc_list = test._container_secc_list        
         return test._container_secc_list
+    
+    def container_hel(test):
+        test._container_hel_list = test._container_hel_list        
+        return test._container_hel_list
