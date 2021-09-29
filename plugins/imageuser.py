@@ -9,7 +9,7 @@ from sdk.images_list import *
 class ImageUser(imageslist):
     """Create a user for the container"""
     def __init__(test):
-        test.lst_image_user_cmd=[]
+       # test.lst_image_user_cmd=[]
         test.lst_imageuser_output_cmd=[]
         test.lst_img_user_co_st=[]
         
@@ -22,12 +22,12 @@ class ImageUser(imageslist):
         if lst_str == '[]':
             imageuser_output = 'image not found'
         else:
-            for im in (lst_str):
-                image_user_cmd = "docker image inspect " + im + " -f 'User={{.Config.User}}'"
-                image_user_cmd_output = os.popen(image_user_cmd).read()
-                image_user = image_user_cmd_output.rstrip()
-                image_user_str = str(image_user)
-                test.lst_image_user_cmd.append(image_user_str)
+            #for im in (lst_str):
+             #   image_user_cmd = "docker image inspect " + im + " -f 'User={{.Config.User}}'"
+              #  image_user_cmd_output = os.popen(image_user_cmd).read()
+               # image_user = image_user_cmd_output.rstrip()
+               # image_user_str = str(image_user)
+                #test.lst_image_user_cmd.append(image_user_str)
             image_user_str_a_s = test._lst_img_user
             for i in (image_user_str_a_s):
                 if i == 'User=' or i == 'User=root':
