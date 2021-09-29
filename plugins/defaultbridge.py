@@ -36,7 +36,6 @@ class defaultbridge(netlist):
                                 test._defaultbridge_ch_co_st.append(defaultbridge_ch_co_st)
                                 
                         else:
-                                print (en)
                                 defaultbridge_ch_co = 'network traffic is not restricted between containers on the default bridge'
                                 defaultbridge_ch_co_st = colored('WARN  ', 'red')
                                 test._defaultbridge_ch_co.append(defaultbridge_ch_co)

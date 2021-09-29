@@ -36,7 +36,6 @@ class encryptnet(netlist):
                                 test._encryptnet_ch_co_st.append(encryptnet_ch_co_st)
                                 
                         else:
-                                print (en)
                                 encryptnet_ch_co = 'Encrypt data exchanged between containers on different nodes on the overlay network'
                                 encryptnet_ch_co_st = colored('WARN  ', 'red')
                                 test._encryptnet_ch_co.append(encryptnet_ch_co)
