@@ -299,8 +299,36 @@ def output():
 		elif args.file_path:
 			print (sc_dockerfile)
 			tmp.filepath.FILEPATH = args.file_path
-			testcase1 = officialimage.officialimage().officialimagescan()
-			print (testcase1)
+			lp_any = []
+			pattern_def = re.compile("def (.*)\(")
+			pattern_cls = re.compile("class (.*)\(")
+			pattern_conf = re.compile("###conf (.*)\#")
+			for lp in _lst_plugins_a:
+				module_name = "plugins/"+lp+".py"
+				for p,profile in enumerate(open(module_name)):
+					for match in re.finditer(pattern_conf,profile):
+						_profile = '%s' % (match.groups()[0])
+						if _profile == 'dockerfile':
+							lp_any.append(lp)
+			for lp in lp_any:
+				module_name = "plugins/"+lp+".py"
+				for i,line in enumerate(open(module_name)):
+					for match in re.finditer(pattern_cls,line):
+						cls = '%s' % (match.groups()[0])
+						_cls = cls
+					for match in re.finditer(pattern_def,line):
+						def_name = '%s' % (match.groups()[0])
+						if def_name != '__init__':
+							_def = def_name
+				_module_name = lp
+				fun_name = _def
+				_mod = "plugins."+_module_name
+				mod = importlib.import_module(_mod)
+				class_name = _cls
+				my_class = getattr(mod, class_name)()
+				result = getattr(my_class, "%s" % (fun_name))()
+				#print (result)
+			#officialimage.officialimage().officialimagescan()
 			
 		else:
 			parser.print_help()
