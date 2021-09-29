@@ -19,14 +19,14 @@ class encryptnet(netlist):
             _netlist_output_lst = test.netlist_output_lst
             encryptnet_ch_output = "\n".join(_netlist_output_lst)
 
-            for d in (_netlist_output_lst):
+            #for d in (_netlist_output_lst):
                 
-                encryptnet_cmd = "docker network inspect " + d + " --format '{{.Name}} {{.Options}}'"
-                encryptnet_output = os.popen(encryptnet_cmd).read()
-                encryptnet_name = encryptnet_output.rstrip()
-                encryptnet_name_str = str( encryptnet_name)
-                test.lst_encryptnet_name.append(encryptnet_name_str)
-            encryptnet_ch = test.lst_encryptnet_name
+            #    encryptnet_cmd = "docker network inspect " + d + " --format '{{.Name}} {{.Options}}'"
+            #    encryptnet_output = os.popen(encryptnet_cmd).read()
+            #    encryptnet_name = encryptnet_output.rstrip()
+            #    encryptnet_name_str = str( encryptnet_name)
+            #    test.lst_encryptnet_name.append(encryptnet_name_str)
+            encryptnet_ch = test.netlist_opt
             word = 'encrypted:'
             for en in (encryptnet_ch):
                         if word in en:
