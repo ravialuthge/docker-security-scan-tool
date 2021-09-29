@@ -11,7 +11,7 @@ class netlist(object):
                 netlist_output_lst.append(netlist_output)
                 _netlist_opt = network.attrs['Options']
                 __netlist_opt = str(_netlist_opt)
-                a__netlist_opt = __netlist_opt.split()
+                a__netlist_opt = __netlist_opt.split(",")
                 netlist_opt.append(a__netlist_opt)
         test.netlist_output_lst = netlist_output_lst
         test.netlist_opt = netlist_opt
