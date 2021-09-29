@@ -27,7 +27,7 @@ class encryptnet(netlist):
             #    encryptnet_name_str = str( encryptnet_name)
             #    test.lst_encryptnet_name.append(encryptnet_name_str)
             encryptnet_ch = test.netlist_opt
-            word = "'encrypted': ''}"
+            word = " 'encrypted': ''}"
             for en in (encryptnet_ch):
                         if word in en:
                                 encryptnet_ch_co = 'Encrypted data exchanged between containers on different nodes on the overlay network'
