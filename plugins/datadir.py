@@ -4,9 +4,9 @@
 import os
 import psutil
 from termcolor import colored
-from sdk.docker_version import *
+from sdk.docker_info import *
 
-class dockerdatadir(dockerversion):
+class dockerdatadir(dockerinfo):
     """Create a separate partition for containers"""
     def __init__(test):
         test.mountdir=[]
@@ -14,7 +14,7 @@ class dockerdatadir(dockerversion):
     def dockerdatadir_scan(test):
         super().__init__()
         word = " 'DockerRootDir':"
-        vv = test.lst_version
+        vv = test.lst_dir
         for h in vv:
             if word in h:
               _h = h.split(":")
