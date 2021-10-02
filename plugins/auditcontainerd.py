@@ -9,11 +9,12 @@ from other_modules.auditctl import *
 class AuditContainerd(Audit):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
+		
 		test.auditcontainerd_cmd = "/usr/bin/docker-containerd"
 		
 
 	def auditcontainerd_scan(test):
-		tmp.audit_filepath.AUDITFILEPATH = test.auditcontainerd_cmd
+		tmp.audit_filepath.AUDITFILEPATH = "/usr/bin/docker-containerd"
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
 		auditcontainerd_output = test._item 
