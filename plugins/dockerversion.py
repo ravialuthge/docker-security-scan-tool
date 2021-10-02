@@ -6,16 +6,26 @@ import subprocess
 import re
 from termcolor import colored
 import platform
+from sdk.docker_info import *
 
-class dockerversion(object):
+class dockerversion(dockerinfo):
     """Keep Docker up to date"""
-    def __init__(test) -> None:
-        super().__init__()
+    def __init__(test):
+        test.a_h=[]
     def dockerversion_scan(test):
-        install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
-        install_version_output_a = install_version_output.rstrip()
-        install_version_x = install_version_output_a.decode("utf-8")
-        install_version = install_version_x.replace("'",'')
+        super().__init__()
+        
+        vv = test.lst_ver
+        word = " 'Version':"
+        for h in vv:
+          if word in h:
+            test.a_h.append(h)
+        __h = test.a_h[0]
+        _h = __h.split(":")
+        _install_version  = _h[1]
+        bbc =  _install_version.replace(" '",'')
+        install_version = bbc.replace("'",'')
+    
         centos_version_cmd = platform.linux_distribution()[1]
         centos_version_str_x = centos_version_cmd.split(".")
         centos_version = centos_version_str_x[0]

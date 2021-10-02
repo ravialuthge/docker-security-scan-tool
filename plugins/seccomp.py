@@ -1,7 +1,6 @@
 ###Profile containers#
 ###CIS_Version 1.0.0:1.11.0#
 
-import os
 from termcolor import colored
 from tabulate import tabulate
 from sdk.containers_id_list import *
@@ -9,8 +8,7 @@ from sdk.containers_id_list import *
 class seccomp(containerlist):
     """Do not disable default seccomp profile""" 
     def __init__(test):
-         #test.lst_con_img_name=[]
-         #test.lst_seccomp_ch=[]
+        
          test.lst_seccomp_ch_co=[]
          test.lst_seccomp_ch_co_st=[]
 
@@ -20,18 +18,6 @@ class seccomp(containerlist):
         if lst_str == '[]':
             table_seccomp_out = 'containers not running'
         else:
-            #con_id = test.lst
-            #for d in (con_id):
-                #docker_con_img_name_cmd = "docker inspect " + d + " --format='{{.Config.Image}}'"
-                #docker_con_img_name_output = os.popen(docker_con_img_name_cmd).read()
-                #docker_con_img_name = docker_con_img_name_output.rstrip()
-                #docker_con_img_name_str = str(docker_con_img_name)
-                #test.lst_con_img_name.append(docker_con_img_name_str)
-                #seccomp_ch_cmd = "docker inspect " + d + " --format  'SecurityOpt={{.HostConfig.SecurityOpt}}'"
-                #seccomp_ch_output = os.popen(seccomp_ch_cmd).read()
-                #seccomp_ch_name = seccomp_ch_output.rstrip()
-                #seccomp_ch_name_str = str(seccomp_ch_name)
-                #test.lst_seccomp_ch.append(seccomp_ch_name_str)
             
             lst_con_img_name = test.con_img_lst
             lst_con_img_a = "\n".join(lst_con_img_name)
