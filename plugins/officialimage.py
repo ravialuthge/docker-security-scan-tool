@@ -11,6 +11,7 @@ class officialimage(imageslist):
        from tmp.imagename import IMAGENAME
        test.p = FILEPATH
        test._o = IMAGENAME
+       test.a_h=[]
      
     def officialimagescan(test):
          try:
@@ -29,8 +30,19 @@ class officialimage(imageslist):
                   #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   #cmdout = os.popen(cmd).read()
                   #cmdout_a = cmdout.rstrip()
-                  cmdout_a = test.__images_off_ch
-                  if cmdout_a == 'True':
+                  images = test.__images_off_ch
+                  wo = " 'is_official':"
+                  for im in images:
+                   if wo in im:
+                     test.a_h.append(im)
+                  __h = test.a_h[0]
+                  _h = __h.split(":")
+                  _install_version  = _h[1]
+                  bbc =  _install_version.replace(" ",'')
+                  #install_version = bbc.replace("'",'')
+                  #print (_install_version)
+                  
+                  if bbc == 'True':
                      print (o +" is Docker Official Image")
                   else:
                      print (o +" not Docker Official Images")
