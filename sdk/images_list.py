@@ -10,7 +10,7 @@ class imageslist(object):
         img_name = IMAGENAME
         images_off = client.images.search(img_name)
         __images_off = str(images_off)
-        __images_off_ch =  __images_off.split(",")
+        a__images_off_ch =  __images_off.split(",")
         for image in client.images.list():
                     images_ch_cmd_a = image.id
                     x = images_ch_cmd_a.split(":")
@@ -27,7 +27,7 @@ class imageslist(object):
         test.lst = lst
         test.lst_img_name = lst_img_name
         test._lst_img_user = _lst_img_user
-        test.__images_off_ch = __images_off_ch
+        test.a__images_off_ch = a__images_off_ch
     def images_id(test):
         test.lst = test.lst        
         return test.lst
@@ -38,5 +38,5 @@ class imageslist(object):
         test._lst_img_user = test._lst_img_user        
         return test._lst_img_user
     def images_off(test):
-        test.__images_off_ch = test.__images_off_ch       
-        return test.__images_off_ch
+        test.a__images_off_ch = test.a__images_off_ch     
+        return test.a__images_off_ch
