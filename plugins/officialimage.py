@@ -1,16 +1,16 @@
 ###conf dockerfile#
 
 #import os
-#import tmp.imagename
+import tmp.imagename
 from sdk.images_list import *
 
-class officialimage(imageslist):
+class officialimage(imageslist,tmp.imagename.IMAGENAME):
     """Check Docker Official Image"""
     def __init__(test):
        from tmp.filepath import FILEPATH
-       from tmp.imagename import IMAGENAME
+       #from tmp.imagename import IMAGENAME
        test.p = FILEPATH
-       test._o = IMAGENAME
+       #test._o = IMAGENAME
        test.a_h=[]
      
     def officialimagescan(test):
