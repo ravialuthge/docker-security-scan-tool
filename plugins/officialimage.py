@@ -1,6 +1,7 @@
 ###conf dockerfile#
 
 import os
+from typing_extensions import runtime
 import docker
 
 class officialimage(object):
@@ -42,8 +43,11 @@ class officialimage(object):
                   #cmdout_a = cmdout.rstrip()
           
                   if bbc == 'True':
-                     print (o +" is Docker Official Image")
+                     out = (o +" is Docker Official Image")
+                     return out
                   else:
-                     print (o +" not Docker Official Images")
+                     out = (o +" not Docker Official Images")
+                     return out
          except FileNotFoundError:
-            print ("I did not find the Dockerfile at, "+str(test.p))
+            out = ("I did not find the Dockerfile at, "+str(test.p))
+            return out
