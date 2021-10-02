@@ -4,7 +4,7 @@
 import tmp.imagename
 from sdk.images_list import *
 
-class officialimage(imageslist,tmp.imagename.IMAGENAME):
+class officialimage(imageslist):
     """Check Docker Official Image"""
     def __init__(test):
        from tmp.filepath import FILEPATH
@@ -26,7 +26,7 @@ class officialimage(imageslist,tmp.imagename.IMAGENAME):
                   s = img.split(':')
                   o = s[0]
                   
-                  IMAGENAME = o
+                  tmp.imagename.IMAGENAME = o
                   #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   #cmdout = os.popen(cmd).read()
                   #cmdout_a = cmdout.rstrip()
