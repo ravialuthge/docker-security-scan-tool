@@ -43,11 +43,9 @@ class officialimage(object):
                   #cmdout_a = cmdout.rstrip()
           
                   if bbc == 'True':
-                     out = o +" is Docker Official Image"
-                  
+                     print(o +" is Docker Official Image")
                   else:
-                     out = o +" not Docker Official Images"
-                  return out
+                     print(o +" not Docker Official Images")
          except FileNotFoundError:
             print ("I did not find the Dockerfile at, "+str(test.p))
          
