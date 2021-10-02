@@ -327,7 +327,7 @@ def output():
 				class_name = _cls
 				my_class = getattr(mod, class_name)()
 				result = getattr(my_class, "%s" % (fun_name))()
-				print (result)
+				#print (result)
 			#officialimage.officialimage().officialimagescan()
 			
 		else:
