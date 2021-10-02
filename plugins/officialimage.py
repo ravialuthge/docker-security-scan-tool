@@ -34,12 +34,7 @@ class officialimage(object):
                   _h = __h.split(":")
                   _install_version  = _h[1]
                   bbc =  _install_version.replace(" ",'')
-                  #install_version = bbc.replace("'",'')
-                  #print (_install_version)
-                  #print (bbc)
-                  #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
-                  #cmdout = os.popen(cmd).read()
-                  #cmdout_a = cmdout.rstrip()
+               
           
                   if bbc == 'True':
                      print (o +" is Docker Official Image")

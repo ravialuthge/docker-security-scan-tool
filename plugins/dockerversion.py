@@ -14,9 +14,7 @@ class dockerversion(dockerinfo):
         test.a_h=[]
     def dockerversion_scan(test):
         super().__init__()
-        #install_version_output = subprocess.check_output(["docker", "version" , "--format" , "'{{.Server.Version}}'"])
-        #install_version_output_a = install_version_output.rstrip()
-        #install_version_x = install_version_output_a.decode("utf-8")
+        
         vv = test.lst_ver
         word = " 'Version':"
         for h in vv:
@@ -27,7 +25,7 @@ class dockerversion(dockerinfo):
         _install_version  = _h[1]
         bbc =  _install_version.replace(" '",'')
         install_version = bbc.replace("'",'')
-        #install_version = install_version_x.replace("'",'')
+    
         centos_version_cmd = platform.linux_distribution()[1]
         centos_version_str_x = centos_version_cmd.split(".")
         centos_version = centos_version_str_x[0]
