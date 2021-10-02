@@ -262,8 +262,8 @@ def output():
 				result = getattr(my_class, "%s" % (fun_name))()
 				print (result)
 
-		elif args.plugins:
-			
+		elif args.plugins or args.file_path:
+			tmp.filepath.FILEPATH = args.file_path
 			_cls = []
 			_def_name = []
 			_def = []
