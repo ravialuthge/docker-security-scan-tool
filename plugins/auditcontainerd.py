@@ -3,16 +3,20 @@
 
 import os
 from termcolor import colored
+import tmp.audit_filepath
+from other_modules.auditctl import *
 
-class AuditContainerd(object):
+class AuditContainerd(Audit):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
-		test.auditcontainerd_cmd = "auditctl -l | grep /usr/bin/docker-containerd"
+		test.auditcontainerd_cmd = "/usr/bin/docker-containerd"
+		
 
 	def auditcontainerd_scan(test):
+		tmp.audit_filepath.AUDITFILEPATH = test.auditcontainerd_cmd
 		
-		auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
-		
+		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
+		auditcontainerd_output = test._item 
 		if auditcontainerd_output == '':
 			auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:

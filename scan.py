@@ -9,7 +9,7 @@ import textwrap
 import importlib
 from tabulate import tabulate
 from plugins import *
-from profiles import * 
+#from profiles import * 
 import tmp.filepath
 
 def plugins_list(ns_pkg):
