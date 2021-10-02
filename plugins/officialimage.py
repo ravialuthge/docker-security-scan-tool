@@ -1,12 +1,14 @@
 ###conf dockerfile#
 
 import os
+import docker
 
 class officialimage(object):
     """Check Docker Official Image"""
     def __init__(test):
        from tmp.filepath import FILEPATH
        test.p = FILEPATH
+       test.a_h=[]
      
     def officialimagescan(test):
          try:
@@ -20,12 +22,26 @@ class officialimage(object):
                   img = _s[1]
                   s = img.split(':')
                   o = s[0]
-                  
-                  cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
-                  cmdout = os.popen(cmd).read()
-                  cmdout_a = cmdout.rstrip()
+                  client = docker.from_env()
+                  images_off = client.images.search(o)
+                  __images_off = str(images_off)
+                  a__images_off_ch =  __images_off.split(",")
+                  wo = " 'is_official':"
+                  for im in a__images_off_ch:
+                     if wo in im:
+                        test.a_h.append(im)
+                  __h = test.a_h[0]
+                  _h = __h.split(":")
+                  _install_version  = _h[1]
+                  bbc =  _install_version.replace(" ",'')
+                  #install_version = bbc.replace("'",'')
+                  #print (_install_version)
+                  #print (bbc)
+                  #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
+                  #cmdout = os.popen(cmd).read()
+                  #cmdout_a = cmdout.rstrip()
           
-                  if cmdout_a == '[OK]':
+                  if bbc == 'True':
                      print (o +" is Docker Official Image")
                   else:
                      print (o +" not Docker Official Images")
