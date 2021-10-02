@@ -1,8 +1,10 @@
 ###conf dockerfile#
 
 import os
+import tmp.imagename
+from sdk.images_list import *
 
-class officialimage(object):
+class officialimage(imageslist):
     """Check Docker Official Image"""
     def __init__(test):
        from tmp.filepath import FILEPATH
@@ -21,11 +23,12 @@ class officialimage(object):
                   s = img.split(':')
                   o = s[0]
                   
-                  cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
-                  cmdout = os.popen(cmd).read()
-                  cmdout_a = cmdout.rstrip()
-          
-                  if cmdout_a == '[OK]':
+                  tmp.imagename.IMAGENAME = o
+                  #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
+                  #cmdout = os.popen(cmd).read()
+                  #cmdout_a = cmdout.rstrip()
+                  cmdout_a = test.__images_off_ch
+                  if cmdout_a == 'True':
                      print (o +" is Docker Official Image")
                   else:
                      print (o +" not Docker Official Images")
