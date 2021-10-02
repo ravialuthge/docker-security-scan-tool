@@ -2,11 +2,11 @@ import docker
 
 class imageslist(object):
     def __init__(test): 
+        from tmp.imagename import IMAGENAME
         lst=[]
         lst_img_name=[]
         _lst_img_user=[]
         client = docker.from_env()
-        from tmp.imagename import IMAGENAME
         img_name = IMAGENAME
         images_off = client.images.search(img_name)
         __images_off = str(images_off)
