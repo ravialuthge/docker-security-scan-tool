@@ -43,10 +43,10 @@ class officialimage(object):
           
                   if bbc == 'True':
                      out = o +" is Docker Official Image"
-                  
+                     return out
                   else:
                      out = o +" not Docker Official Images"
-                  return out
+                     return out
          except FileNotFoundError:
             out = "I did not find the Dockerfile at, "+str(test.p)
             return out
