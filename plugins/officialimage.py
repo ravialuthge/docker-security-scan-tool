@@ -27,7 +27,7 @@ class officialimage(imageslist):
                   #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   #cmdout = os.popen(cmd).read()
                   #cmdout_a = cmdout.rstrip()
-            _images = test.__images_off_ch
+            _images = test.a__images_off_ch
             wo = " 'is_official':"
             for im in _images:
                if wo in im:
