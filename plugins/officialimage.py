@@ -26,7 +26,7 @@ class officialimage(imageslist,tmp.imagename.IMAGENAME):
                   s = img.split(':')
                   o = s[0]
                   
-                  test._o = o
+                  IMAGENAME = o
                   #cmd = "docker search --format '{{.IsOfficial}}' --filter is-official=true " + o
                   #cmdout = os.popen(cmd).read()
                   #cmdout_a = cmdout.rstrip()
