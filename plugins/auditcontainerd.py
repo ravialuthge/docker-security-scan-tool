@@ -10,9 +10,7 @@ class AuditContainerd(object):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
 		
-		test.auditcontainerd_cmd = "/usr/bin/docker-containerd"
-		test.au = "/etc/audit/audit.rules" 
-		
+		audit = []
 
 	def auditcontainerd_scan(test):
 		super().__init__()
