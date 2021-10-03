@@ -16,13 +16,15 @@ class AuditContainerd(object):
 
 	def auditcontainerd_scan(test):
 		super().__init__()
-		_au = test.au
-		_auditcontainerd_cmd = test.auditcontainerd_cmd
+		auditcontainerd_cmd = "/usr/bin/docker-containerd"
+		au = "/etc/audit/audit.rules"
+		_au = au
+		_auditcontainerd_cmd = auditcontainerd_cmd
 		fi = open(_au, "r")
 		mystring  = fi.read()
 		for item in mystring.split("\n"):
-			if _auditcontainerd_cmd in item:
-				auditcontainerd_output = item
+  			if _auditcontainerd_cmd in item:
+     				auditcontainerd_output = item
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
 		 
