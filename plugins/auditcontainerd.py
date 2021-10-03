@@ -18,11 +18,11 @@ class AuditContainerd(object):
 		au = "/etc/audit/audit.rules"
 		_au = au
 		_auditcontainerd_cmd = auditcontainerd_cmd
-		fi = open(_au, "r")
-		mystring  = fi.read()
-		for item in mystring.split("\n"):
-  			if _auditcontainerd_cmd in item:
-     				_auditcontainerd_output = item
+		_fi = open(_au, "r")
+		_mystring  = _fi.read()
+		for it in _mystring.split("\n"):
+  			if _auditcontainerd_cmd in it:
+     				_auditcontainerd_output = it
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
 		auditcontainerd_output = str(_auditcontainerd_output)
