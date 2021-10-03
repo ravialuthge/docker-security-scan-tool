@@ -16,10 +16,12 @@ class AuditContainerd(object):
 
 	def auditcontainerd_scan(test):
 		super().__init__()
-		fi = open(test.au, "r")
+		_au = test.au
+		_auditcontainerd_cmd = test.auditcontainerd_cmd
+		fi = open(_au, "r")
 		mystring  = fi.read()
 		for item in mystring.split("\n"):
-			if test.auditcontainerd_cmd in item:
+			if _auditcontainerd_cmd in item:
 				auditcontainerd_output = item
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
