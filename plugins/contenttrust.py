@@ -8,10 +8,10 @@ class contenttrust(object):
 	"""Enable Content trust for Docker"""
 	def __init__(test):
 		test.contenttrust_cmd = "1"
-		test.contenttrust_version_cmd = os.environ['DOCKER_CONTENT_TRUST']
+		#test.contenttrust_version_cmd = os.environ['DOCKER_CONTENT_TRUST']
 	def contenttrust_scan(test):
 		try:
-			contenttrust_output = test.contenttrust_version_cmd
+			contenttrust_output = os.environ['DOCKER_CONTENT_TRUST']
 
 			if contenttrust_output == test.contenttrust_cmd:
 				contenttrust_re = colored('PASS   ', 'green') + "Enabled Content trust for Docker"
