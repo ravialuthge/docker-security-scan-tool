@@ -1,23 +1,28 @@
 ###Profile host#
 ###CIS_Version 1.0.0:1.12.0#
 
-import os
+#import os
 from termcolor import colored
-import tmp.audit_filepath
-from other_modules.auditctl import *
+#import tmp.audit_filepath
+#from other_modules.auditctl import *
 
-class AuditContainerd(Audit):
+class AuditContainerd(object):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
 		
 		test.auditcontainerd_cmd = "/usr/bin/docker-containerd"
+		test.au = "/etc/audit/audit.rules" 
 		
 
 	def auditcontainerd_scan(test):
-		tmp.audit_filepath.AUDITFILEPATH = "/usr/bin/docker-containerd"
+		fi = open(test.au, "r")
+		mystring  = fi.read()
+		for item in mystring.split("\n"):
+			if test.auditcontainerd_cmd in item:
+				_item = item
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
-		auditcontainerd_output = test._item 
+		auditcontainerd_output = _item 
 		if auditcontainerd_output == '':
 			auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:
