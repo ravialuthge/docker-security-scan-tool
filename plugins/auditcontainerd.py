@@ -15,6 +15,7 @@ class AuditContainerd(object):
 		
 
 	def auditcontainerd_scan(test):
+		super().__init__()
 		fi = open(test.au, "r")
 		mystring  = fi.read()
 		for item in mystring.split("\n"):
