@@ -9,11 +9,8 @@ from other_modules.auditctl import *
 class AuditContainerd(Audit):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
-		
-		audit = []
-
-	def auditcontainerd_scan(test):
 		super().__init__()
+	def auditcontainerd_scan(test):
 		auditcontainerd_output = test._auditcontainerd_output
 		if auditcontainerd_output == '':
 	    		auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
