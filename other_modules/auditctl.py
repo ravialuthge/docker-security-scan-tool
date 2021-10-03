@@ -10,7 +10,7 @@ class Audit(object):
         for it in _mystring.split("\n"):
             if _auditcontainerd_cmd in it:
                 _auditcontainerd_output = it
-		test._auditcontainerd_output = _auditcontainerd_output		  
+        test._auditcontainerd_output = _auditcontainerd_output		  
     def auditfile_scan(test):
         test._auditcontainerd_output = test._auditcontainerd_output      
         return test._auditcontainerd_output
