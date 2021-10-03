@@ -4,9 +4,9 @@
 #import os
 from termcolor import colored
 #import tmp.audit_filepath
-#from other_modules.auditctl import *
+from other_modules.auditctl import *
 
-class AuditContainerd(object):
+class AuditContainerd(Audit):
 	"""Audit Docker files and directories - /usr/bin/docker-containerd"""
 	def __init__(test):
 		
@@ -14,21 +14,9 @@ class AuditContainerd(object):
 
 	def auditcontainerd_scan(test):
 		super().__init__()
-		auditcontainerd_cmd = "/usr/bin/docker-containerd"
-		au = "/etc/audit/audit.rules"
-		_au = au
-		_auditcontainerd_cmd = auditcontainerd_cmd
-		_fi = open(_au, "r")
-		_mystring  = _fi.read()
-		for it in _mystring.split("\n"):
-  			if _auditcontainerd_cmd in it:
-				  _auditcontainerd_output = it
-				  print (_auditcontainerd_output)
-
-		
-		#auditcontainerd_output = _auditcontainerd_output
-		#if auditcontainerd_output == '':
-	    #		auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
-		#else:
-		#	auditcontainerd_re = colored('PASS  ', 'green') + "Audit Docker files and directories"
-		#return auditcontainerd_re
+		auditcontainerd_output = test._auditcontainerd_output
+		if auditcontainerd_output == '':
+	    		auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
+		else:
+			auditcontainerd_re = colored('PASS  ', 'green') + "Audit Docker files and directories"
+		return auditcontainerd_re
