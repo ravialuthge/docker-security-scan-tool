@@ -23,6 +23,7 @@ class AuditContainerd(object):
 		for it in _mystring.split("\n"):
   			if _auditcontainerd_cmd in it:
 				  _auditcontainerd_output = it
+				  print (_auditcontainerd_output)
 
 		
 		auditcontainerd_output = _auditcontainerd_output
