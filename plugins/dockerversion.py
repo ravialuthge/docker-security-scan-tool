@@ -37,7 +37,6 @@ class dockerversion(dockerinfo):
         #    latest_version_str_x = re.split(':|-',latest_version_str)
         #    latest_version = latest_version_str_x[1]
         latest_version = RELEASEVERSION
-        print (latest_version)
         if install_version == latest_version:
             docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
         elif install_version != latest_version:
