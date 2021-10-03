@@ -12,7 +12,6 @@ class AuditContainerd(Audit):
 		super().__init__()
 	def auditcontainerd_scan(test):
 		auditcontainerd_output = str(test._auditcontainerd_output)
-		print (auditcontainerd_output)
 		if auditcontainerd_output == "[]":
 	    		auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:
