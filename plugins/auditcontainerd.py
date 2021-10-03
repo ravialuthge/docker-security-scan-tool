@@ -25,7 +25,7 @@ class AuditContainerd(object):
      				_auditcontainerd_output = item
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
-		auditcontainerd_output = _auditcontainerd_output
+		auditcontainerd_output = str(_auditcontainerd_output)
 		if auditcontainerd_output == '':
 			auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:
