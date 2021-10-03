@@ -6,6 +6,7 @@ class imageslist(object):
         lst=[]
         lst_img_name=[]
         _lst_img_user=[]
+        _images_ch_cmd_a=[]
         client = docker.from_env()
         img_name = IMAGENAME
         images_off = client.images.search(img_name)
@@ -24,10 +25,14 @@ class imageslist(object):
                     lst_img_name.append(bbcf)
                     lst_img_user = image.attrs['Config']['User']
                     _lst_img_user.append("User="+lst_img_user)
+                    a__images_ch_cmd_a = image.history()
+                    __images_ch_cmd_a = str(a__images_ch_cmd_a)
+                    _images_ch_cmd_a.append(__images_ch_cmd_a)
         test.lst = lst
         test.lst_img_name = lst_img_name
         test._lst_img_user = _lst_img_user
         test.a__images_off_ch = a__images_off_ch
+        test._images_ch_cmd_a = _images_ch_cmd_a
     def images_id(test):
         test.lst = test.lst        
         return test.lst
@@ -40,3 +45,6 @@ class imageslist(object):
     def images_off(test):
         test.a__images_off_ch = test.a__images_off_ch     
         return test.a__images_off_ch
+    def images_update(test):
+        test._images_ch_cmd_a = test._images_ch_cmd_a    
+        return test._images_ch_cmd_a
