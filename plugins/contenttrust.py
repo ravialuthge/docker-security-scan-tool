@@ -19,5 +19,5 @@ class contenttrust(object):
 				contenttrust_re = colored('WARN   ', 'red') + "Enable Content trust for Docker"
 			return contenttrust_re
 		except KeyError:
-			contenttrust_re = "KeyError: 'DOCKER_CONTENT_TRUST'"
+			contenttrust_re = colored('WARN   ', 'red') + "Enable Content trust for Docker"
 			return contenttrust_re
