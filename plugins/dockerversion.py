@@ -42,7 +42,7 @@ class dockerversion(dockerinfo):
         elif install_version != latest_version:
             docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
         else:
-            docker_version_re = "Docker not install"
+            docker_version_re = "docker: command not found... please install Docker"
     
         #elif centos_version == '8':
         ##    latest_version_cmd = "yum list docker-ce | sort -r | awk '{print $2}' | sed -n 3p"
