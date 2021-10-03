@@ -19,10 +19,10 @@ class AuditContainerd(object):
 		mystring  = fi.read()
 		for item in mystring.split("\n"):
 			if test.auditcontainerd_cmd in item:
-				_item = item
+				auditcontainerd_output = item
 		
 		#auditcontainerd_output = os.popen(test.auditcontainerd_cmd).read()
-		auditcontainerd_output = _item 
+		 
 		if auditcontainerd_output == '':
 			auditcontainerd_re = colored('WARN   ', 'red') + "Add a rule for /usr/bin/docker-containerd file"
 		else:
