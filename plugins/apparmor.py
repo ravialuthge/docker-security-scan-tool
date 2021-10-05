@@ -14,7 +14,7 @@ class ApparmorPlugin(containerlist):
         test.lst_apparmor_co_st=[]
     
     def apparmor_scan(test):
-        super().__init__()
+        #super().__init__()
         lst_str =  str(test.lst)
         lst_con_img_name = test.con_img_lst
         if lst_str == '[]':
