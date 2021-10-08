@@ -10,5 +10,8 @@ class ApparmorPlugin(ContainerList):
     def apparmor_scan():
         
         ContainerList.container_appar_print()
+
+sdk = ApparmorPlugin.apparmor_scan()
+print(sdk)
         
 
