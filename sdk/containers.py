@@ -75,6 +75,10 @@ class ContainerList(Serverity):
         test.apparmor_output = tabulate(table_apparmor)
         return test.apparmor_output
     
+    def container_appar_print_1(test):
+        apparmor_output = test.apparmor_output
+        return apparmor_output 
+    
     def container_secc():
         
         _container_secc_list=[]
