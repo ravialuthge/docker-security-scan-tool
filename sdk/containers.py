@@ -1,6 +1,7 @@
 import docker
+from other_modules.severity import *
 
-class ContainerList(object):
+class ContainerList(Serverity):
     client = docker.from_env()
     def container_id():
         con_id_lst=[]
@@ -31,6 +32,8 @@ class ContainerList(object):
     
     def container_appar():
         _container_appar_list=[]
+        lst_apparmor_co=[]
+        lst_apparmor_co_st=[]
         for container in __class__.client.containers.list():
             container_appar_list = container.attrs['AppArmorProfile']
             _container_appar_list.append("AppArmorProfile="+container_appar_list)
@@ -38,15 +41,15 @@ class ContainerList(object):
         for i in (apparmor_profile_str_a_s):
                 if i == 'AppArmorProfile=':
                         apparmor_co = 'Verify AppArmor Profile, if applicable'
-                        apparmor_co_st = colored('WARN  ', 'red')
-                        test.lst_apparmor_co.append(apparmor_co)
-                        test.lst_apparmor_co_st.append(apparmor_co_st)
+                        apparmor_co_st = Serverity.wan()
+                        lst_apparmor_co.append(apparmor_co)
+                        lst_apparmor_co_st.append(apparmor_co_st)
                 else:
                         apparmor_co = 'AppArmor Profile available'
-                        apparmor_co_st = colored('PASS  ', 'green')
-                        test.lst_apparmor_co.append(apparmor_co)                      
-                        test.lst_apparmor_co_st.append(apparmor_co_st)
-        return _container_appar_list
+                        apparmor_co_st = Serverity.pas()
+                        lst_apparmor_co.append(apparmor_co)                      
+                        lst_apparmor_co_st.append(apparmor_co_st)
+        return lst_apparmor_co,lst_apparmor_co_st
     
     def container_secc():
         
