@@ -1,17 +1,14 @@
 import docker
-from other_modules.severity import *
 from tabulate import tabulate
 
-class ContainerList(Serverity):
+class ContainerList(object):
     client = docker.from_env()
-    def container_id(test):
-        test.con_id_lst=[]
-        client = docker.from_env()
-        for container in client.containers.list():
+    def container_id():
+        con_id_lst=[]
+        for container in __class__.client.containers.list():
                     container_ch_cmd_a = container.id
-                    test.con_id_lst.append(container_ch_cmd_a)
-        test.con_id_lst = test.con_id_lst
-        return test.con_id_lst
+                    con_id_lst.append(container_ch_cmd_a)
+        return con_id_lst
 
     def container_name():
         con_name_lst=[]
@@ -22,50 +19,22 @@ class ContainerList(Serverity):
         
         return con_name_lst
 
-    def container_img_name(test):
+    def container_img_name():
         con_img_lst=[]
     
         for container in __class__.client.containers.list():
                     container_image_list = container.attrs['Config']['Image']
                     con_img_lst.append(container_image_list)
+
+        return con_img_lst
     
-        test.con_img_lst = con_img_lst
-    
-    def container_appar(test):
+    def container_appar():
         _container_appar_list=[]
-        lst_apparmor_co=[]
-        lst_apparmor_co_st=[]
         for container in __class__.client.containers.list():
             container_appar_list = container.attrs['AppArmorProfile']
             _container_appar_list.append("AppArmorProfile="+container_appar_list)
-        apparmor_profile_str_a_s = _container_appar_list
-        con_id_lst = test.con_id_lst
-        _con_id_lst = str(con_id_lst)
-        lst_con_img_name = test.con_img_lst
-        lst_con_img_a = "\n".join(lst_con_img_name)
-        images_output = lst_con_img_a 
-        if _con_id_lst == '[]':
-            apparmor_output = 'containers not running'
 
-        else: 
-            for i in (apparmor_profile_str_a_s):
-                    if i == 'AppArmorProfile=':
-                            apparmor_co = 'Verify AppArmor Profile, if applicable'
-                            apparmor_co_st = Serverity.wan()
-                            lst_apparmor_co.append(apparmor_co)
-                            lst_apparmor_co_st.append(apparmor_co_st)
-                    else:
-                            apparmor_co = 'AppArmor Profile available'
-                            apparmor_co_st = Serverity.pas()
-                            lst_apparmor_co.append(apparmor_co)                      
-                            lst_apparmor_co_st.append(apparmor_co_st)
-            f_app = "\n".join(lst_apparmor_co)
-            f_st_app = "\n".join(lst_apparmor_co_st)
-            apparmor_co_f = f_app
-            apparmor_co_f_st = f_st_app
-            table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
-            apparmor_output = tabulate(table_apparmor)
-        return apparmor_output
+        return _container_appar_list
         
     def container_secc():
         

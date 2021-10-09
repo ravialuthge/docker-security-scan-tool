@@ -3,16 +3,16 @@
 
 #from termcolor import colored
 #from tabulate import tabulate
-from sdk.containers import *
+from other_modules.print import *
 
-class ApparmorPlugin():
+class ApparmorPlugin(object):
     """Verify AppArmor Profile, if applicable"""
     #def __init__(test) -> None:
     #    super().__init__()
     @staticmethod
     def apparmor_scan():
         
-        abc = ContainerList().container_appar()
+        abc = Print().container_appar_print()
         return abc
 
 #sdk = ApparmorPlugin().apparmor_scan()
