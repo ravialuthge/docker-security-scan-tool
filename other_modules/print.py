@@ -3,6 +3,7 @@ from sdk.containers import *
 from sdk.host import *
 from .severity import *
 import os
+import psutil
 
 class Print(object):
 
@@ -81,3 +82,28 @@ class Print(object):
         else:
             contenttrust_re = Serverity.wan() + "Enable Content trust for Docker"
         return contenttrust_re
+    
+    def container_datadir_print():
+        mountdir=[]
+        word = " 'DockerRootDir':"
+        vv = GetHost.docker_dir()
+        for h in vv:
+            if word in h:
+              _h = h.split(":")
+              _root_dir  = _h[1]
+              bbc = _root_dir.replace(" '",'')
+              root_dir_ch_output = bbc.replace("'",'')
+        partitions = psutil.disk_partitions()
+        for p in partitions:
+             if (p.mountpoint) == root_dir_ch_output:
+                 mountdir.append(p.mountpoint)
+        _root_dir = str(mountdir)
+        bbc = _root_dir.replace("[",'')
+        bbcdr = bbc.replace("]",'')
+        root_dir = bbcdr.replace("'",'')
+        if root_dir_ch_output == root_dir:
+            datadir_output =  Serverity.pas() + "crated separate partition for docker root directory"
+        else:
+            datadir_output = Serverity.wan() + "not crated separate partition for docker root directory"
+        return datadir_output
+
