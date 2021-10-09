@@ -1,6 +1,7 @@
 from tabulate import tabulate
 from sdk.containers import *
 from sdk.host import *
+from sdk.network import *
 from .severity import *
 import os
 import psutil
@@ -106,4 +107,31 @@ class Print(object):
         else:
             datadir_output = Serverity.wan() + "not crated separate partition for docker root directory"
         return datadir_output
+    
+    def container_defaultbridge_print():
+            _defaultbridge_ch_co=[]
+            _defaultbridge_ch_co_st=[]
+            _netlist_output_lst = NetList.net_bridge()
+            defaultbridge_ch_output = "\n".join(_netlist_output_lst)
+
+            defaultbridge_ch = NetList.net_option()
+            word = "{'com.docker.network.bridge.enable_icc': 'false'"
+            for en in (defaultbridge_ch):
+                        if word in en:
+                                defaultbridge_ch_co = 'Network traffic is restricted between containers on the default bridge'
+                                defaultbridge_ch_co_st = Serverity.pas()
+                                _defaultbridge_ch_co.append(defaultbridge_ch_co)
+                                _defaultbridge_ch_co_st.append(defaultbridge_ch_co_st)
+                                
+                        else:
+                                defaultbridge_ch_co = 'network traffic is not restricted between containers on the default bridge'
+                                defaultbridge_ch_co_st = Serverity.wan()
+                                _defaultbridge_ch_co.append(defaultbridge_ch_co)
+                                _defaultbridge_ch_co_st.append(defaultbridge_ch_co_st)   
+            defaultbridge_ch_co_f_st = "\n".join(_defaultbridge_ch_co_st)
+            defaultbridge_ch_co_f = "\n".join(_defaultbridge_ch_co)  
+            table_defaultbridge = [[defaultbridge_ch_co_f_st , defaultbridge_ch_output, defaultbridge_ch_co_f]]
+            table_defaultbridge_out = tabulate(table_defaultbridge)
+            return table_defaultbridge_out
+
 
