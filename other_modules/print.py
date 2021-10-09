@@ -1,6 +1,6 @@
 from tabulate import tabulate
 from sdk.containers import *
-from severity import *
+from .severity import *
 
 class Print(object):
 
