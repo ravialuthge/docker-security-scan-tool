@@ -4,8 +4,9 @@
 #from termcolor import colored
 #from tabulate import tabulate
 from other_modules import *
+from other_modules.print import Print
 
-class ApparmorPlugin():
+class ApparmorPlugin(Print):
     """Verify AppArmor Profile, if applicable"""
     def apparmor_scan():
         
