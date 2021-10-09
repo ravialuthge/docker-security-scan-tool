@@ -7,8 +7,8 @@ from sdk.containers import *
 
 class ApparmorPlugin():
     """Verify AppArmor Profile, if applicable"""
-    def __init__(test) -> None:
-        super().__init__()
+    #def __init__(test) -> None:
+    #    super().__init__()
     def apparmor_scan(test):
         
         abc = ContainerList().container_appar()
