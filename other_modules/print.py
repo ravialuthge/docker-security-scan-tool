@@ -148,5 +148,31 @@ class Print(object):
         else:
             dockeruserscan =  Serverity.wan() + "Only allow trusted users to control Docker daemon"
         return dockeruserscan
+    
+    def container_dockerversion_print(_latest_version):
+        a_h=[]
+        vv = GetHost.docker_version()
+        word = " 'Version':"
+        for h in vv:
+          if word in h:
+            a_h.append(h)
+        __h = a_h[0]
+        _h = __h.split(":")
+        _install_version  = _h[1]
+        bbc =  _install_version.replace(" '",'')
+        install_version = bbc.replace("'",'')
+    
+        
+        latest_version = _latest_version
+        if install_version == latest_version:
+            docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
+        elif install_version != latest_version:
+            docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
+        else:
+            docker_version_re = "docker: command not found... please install Docker"
+    
+        
+        return docker_version_re
+
 
 
