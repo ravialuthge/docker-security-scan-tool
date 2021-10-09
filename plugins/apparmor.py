@@ -5,7 +5,7 @@
 #from tabulate import tabulate
 from other_modules.print import *
 
-class ApparmorPlugin(object):
+class ApparmorPlugin(Print):
     """Verify AppArmor Profile, if applicable"""
     def __init__(test) -> None:
         super().__init__()
