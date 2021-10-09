@@ -1,6 +1,6 @@
 import docker
 from other_modules.severity import *
-from other_modules.print import Print
+from other_modules.print import *
 
 class ContainerList(Serverity,Print):
     client = docker.from_env()
