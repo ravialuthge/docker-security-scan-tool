@@ -35,3 +35,20 @@ class Print(object):
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
             apparmor_output = tabulate(table_apparmor)
         return apparmor_output
+    
+    def container_audit_print(auditcontainerd_path):
+        _auditcontainerd_cmd = auditcontainerd_path
+        _au = "/etc/audit/audit.rules"
+        _auditcontainerd_output=[]
+        _fi = open(_au, "r")
+        _mystring  = _fi.read()
+        for it in _mystring.split("\n"):
+            if _auditcontainerd_cmd in it:
+                _auditcontainerd_output.append(it)
+        _auditcontainerd_output = _auditcontainerd_output
+        auditcontainerd_output = str(_auditcontainerd_output)
+        if auditcontainerd_output == "[]":
+            auditcontainerd_re = Serverity.wan() + "Add a rule for /usr/bin/docker-containerd file"
+        else:
+            auditcontainerd_re = Serverity.pas() + "Audit Docker files and directories"
+        return auditcontainerd_re	
