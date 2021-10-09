@@ -58,8 +58,8 @@ class ContainerList(Serverity):
                             apparmor_co_st = Serverity.pas()
                             lst_apparmor_co.append(apparmor_co)                      
                             lst_apparmor_co_st.append(apparmor_co_st)
-            f_app = "\n".join(test.lst_apparmor_co)
-            f_st_app = "\n".join(test.lst_apparmor_co_st)
+            f_app = "\n".join(lst_apparmor_co)
+            f_st_app = "\n".join(lst_apparmor_co_st)
             apparmor_co_f = f_app
             apparmor_co_f_st = f_st_app
             table_apparmor = [[apparmor_co_f_st , images_output , apparmor_co_f]]
