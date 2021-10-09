@@ -3,12 +3,12 @@
 
 from termcolor import colored
 from tabulate import tabulate
-from sdk.containers import *
+from other_modules.print import *
 
-class ApparmorPlugin(ContainerList):
+class ApparmorPlugin():
     """Verify AppArmor Profile, if applicable"""
     def apparmor_scan():
         
-        ContainerList.container_appar_print()
+        Print().container_appar_print()
         
 
