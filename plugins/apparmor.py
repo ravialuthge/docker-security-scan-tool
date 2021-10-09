@@ -11,8 +11,8 @@ class ApparmorPlugin(object):
     #    super().__init__()
     def apparmor_scan(test):
         
-        abc = Print().container_appar_print()
-        return abc
+        Print().container_appar_print()
+        #return abc
 
 #sdk = ApparmorPlugin().apparmor_scan()
 #print (sdk)
