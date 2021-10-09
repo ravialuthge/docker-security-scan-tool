@@ -10,6 +10,7 @@ class ApparmorPlugin(Print):
     """Verify AppArmor Profile, if applicable"""
     def apparmor_scan():
         
-        Print().container_appar_print()
+        abc = Print().container_appar_print()
+        return abc
         
 
