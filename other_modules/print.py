@@ -1,5 +1,6 @@
 from tabulate import tabulate
 from sdk.containers import *
+from sdk.host import *
 from .severity import *
 
 class Print(object):
@@ -52,3 +53,19 @@ class Print(object):
         else:
             auditcontainerd_re = Serverity.pas() + "Audit Docker files and directories"
         return auditcontainerd_re	
+
+    def container_cgroup_print():
+        word = " 'CgroupDriver':"
+        vv = GetHost.docker_dir()
+        for h in vv:
+            if word in h:
+              _h = h.split(":")
+              _cgroup_output  = _h[1]
+              bbc = _cgroup_output.replace(" '",'')
+              cgroup_output = bbc.replace("'",'')
+        
+        if cgroup_output == "cgroup-parent":
+            cgroup_output =  Serverity.pas() + "default cgroup used"
+        else:
+           cgroup_output = Serverity.wan() + "confirm default cgroup usage"
+        return cgroup_output

@@ -1,5 +1,4 @@
 import docker
-from tabulate import tabulate
 
 class ContainerList(object):
     client = docker.from_env()
