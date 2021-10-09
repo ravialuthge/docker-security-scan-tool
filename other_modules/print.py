@@ -2,6 +2,7 @@ from tabulate import tabulate
 from sdk.containers import *
 from sdk.host import *
 from .severity import *
+import os
 
 class Print(object):
 
@@ -69,3 +70,14 @@ class Print(object):
         else:
            cgroup_output = Serverity.wan() + "confirm default cgroup usage"
         return cgroup_output
+    
+    def container_contenttrust_print(contenttrust_value,contenttrust_env):
+        contenttrust_cmd = contenttrust_value
+        contenttrust_version_cmd = os.environ.get(contenttrust_env)
+        contenttrust_output = contenttrust_version_cmd
+
+        if contenttrust_output == contenttrust_cmd:
+            contenttrust_re = Serverity.pas() + "Enabled Content trust for Docker"
+        else:
+            contenttrust_re = Serverity.wan() + "Enable Content trust for Docker"
+        return contenttrust_re
