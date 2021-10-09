@@ -9,6 +9,7 @@ class ApparmorPlugin():
     """Verify AppArmor Profile, if applicable"""
     #def __init__(test) -> None:
     #    super().__init__()
+    @staticmethod
     def apparmor_scan():
         
         abc = ContainerList().container_appar()
