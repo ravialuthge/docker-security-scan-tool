@@ -5,12 +5,12 @@ from tabulate import tabulate
 class ContainerList(Serverity):
     client = docker.from_env()
     def container_id(test):
-        con_id_lst=[]
-
-        for container in __class__.client.containers.list():
+        test.con_id_lst=[]
+        client = docker.from_env()
+        for container in client.containers.list():
                     container_ch_cmd_a = container.id
-                    con_id_lst.append(container_ch_cmd_a)
-        test.con_id_lst = con_id_lst
+                    test.con_id_lst.append(container_ch_cmd_a)
+        test.con_id_lst = test.con_id_lst
         return test.con_id_lst
 
     def container_name():
