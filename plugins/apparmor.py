@@ -7,10 +7,10 @@ from other_modules.print import *
 
 class ApparmorPlugin(Print):
     """Verify AppArmor Profile, if applicable"""
-    def __init__(test) -> None:
-        super().__init__()
+    def __init__(test):
+        dd=[]
     def apparmor_scan(test):
-        
+        super().__init__()
         Print().container_appar_print()
         #return abc
 
