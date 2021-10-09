@@ -11,6 +11,7 @@ class ContainerList(Serverity):
                     container_ch_cmd_a = container.id
                     con_id_lst.append(container_ch_cmd_a)
         test.con_id_lst = con_id_lst
+        return test.con_id_lst
 
     def container_name():
         con_name_lst=[]
