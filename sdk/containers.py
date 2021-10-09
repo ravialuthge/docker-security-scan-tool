@@ -2,7 +2,7 @@ import docker
 from other_modules.severity import *
 from other_modules.print import *
 
-class ContainerList(Serverity,Print):
+class ContainerList(Serverity):
     client = docker.from_env()
     def container_id(test):
         con_id_lst=[]

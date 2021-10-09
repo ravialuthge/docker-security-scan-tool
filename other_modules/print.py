@@ -1,5 +1,5 @@
 from tabulate import tabulate
-from sdk.containers import ContainerList
+from sdk.containers import *
 
 class Print(object):
 
