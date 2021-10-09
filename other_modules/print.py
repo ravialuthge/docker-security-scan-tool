@@ -5,6 +5,7 @@ from sdk.network import *
 from .severity import *
 import os
 import psutil
+import grp
 
 class Print(object):
 
@@ -133,5 +134,19 @@ class Print(object):
             table_defaultbridge = [[defaultbridge_ch_co_f_st , defaultbridge_ch_output, defaultbridge_ch_co_f]]
             table_defaultbridge_out = tabulate(table_defaultbridge)
             return table_defaultbridge_out
+        
+    def container_defaultbridge_print():
+        _trusted_users_output=[]
+        groups = grp.getgrall()
+        for group in groups:
+            for user in group[3]:
+                if group[0] == "docker" and user != "root":
+                    _trusted_users_output.append(user)
+        trusted_users_output = str(_trusted_users_output)
+        if trusted_users_output == "[]":
+            dockeruserscan =  Serverity.pas() + "allowed trusted users to control Docker daemon"
+        else:
+            dockeruserscan =  Serverity.wan() + "Only allow trusted users to control Docker daemon"
+        return dockeruserscan
 
 
