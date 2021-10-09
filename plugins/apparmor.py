@@ -12,5 +12,8 @@ class ApparmorPlugin(Print):
         
         abc = Print().container_appar_print()
         return abc
+
+sdk = ApparmorPlugin().apparmor_scan()
+print (sdk)
         
 
