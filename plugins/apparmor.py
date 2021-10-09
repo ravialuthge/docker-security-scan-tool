@@ -3,7 +3,7 @@
 
 #from termcolor import colored
 #from tabulate import tabulate
-from other_modules.print import *
+from other_modules import *
 
 class ApparmorPlugin():
     """Verify AppArmor Profile, if applicable"""
