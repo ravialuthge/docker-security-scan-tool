@@ -11,7 +11,7 @@ class ApparmorPlugin(ContainerList):
         super().__init__()
     def apparmor_scan(test):
         
-        abc = ContainerList().container_appar()
+        abc = ContainerList().container_appar(test)
         return abc
 
 #sdk = ApparmorPlugin().apparmor_scan()
