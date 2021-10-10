@@ -1,10 +1,7 @@
 ###Profile containers#
 ###CIS_Version 1.0.0:1.12.0#
 
-from termcolor import colored
-from tabulate import tabulate
 from other_modules.print import Print
-from sdk.containers_id_list import *
 
 class healthcheck(Print):
     """Check container health at runtime"""

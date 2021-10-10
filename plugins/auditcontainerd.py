@@ -1,9 +1,6 @@
 ###Profile host#
 ###CIS_Version 1.0.0:1.12.0#
 
-#import os
-#from termcolor import colored
-#import tmp.audit_filepath
 from other_modules.print import *
 
 class AuditContainerd(Print):

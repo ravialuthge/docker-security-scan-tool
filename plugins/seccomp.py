@@ -1,8 +1,6 @@
 ###Profile containers#
 ###CIS_Version 1.0.0:1.11.0#
 
-from termcolor import colored
-from tabulate import tabulate
 from other_modules.print import *
 
 class seccomp(Print):

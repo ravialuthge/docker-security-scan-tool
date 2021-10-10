@@ -1,9 +1,6 @@
 ###Profile host#
 ###CIS_Version 1.0.0:1.6#
 
-import re
-from termcolor import colored
-import platform
 from other_modules.print import *
 
 class kernelversion(Print):

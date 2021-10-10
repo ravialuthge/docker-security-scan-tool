@@ -1,8 +1,6 @@
 ###Profile images#
 ###CIS_Version 1.0.0:1.6#
 
-from termcolor import colored
-from tabulate import tabulate
 from other_modules.print import *
 
 class ImageUser(Print):

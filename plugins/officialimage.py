@@ -1,11 +1,6 @@
 ###conf dockerfile#
 
-import os
-import re
-import docker
 from other_modules.print import Print
-
-from sdk.images import ImagesList
 
 class officialimage(Print):
     """Check Docker Official Image"""
