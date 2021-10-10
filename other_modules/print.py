@@ -306,6 +306,40 @@ class Print(object):
                      print (o +" not Docker Official Images")
         except FileNotFoundError:
             print ("I did not find the Dockerfile at, "+str(dockerfile_path))
+    
+    def conatiner_seccomp_print():
+        lst_seccomp_ch_co=[]
+        lst_seccomp_ch_co_st=[]
+        lst = ContainerList.container_id()
+        lst_str =  str(lst)
+        if lst_str == '[]':
+            table_seccomp_out = 'containers not running'
+        else:
+            
+            lst_con_img_name = ContainerList.container_img_name()
+            lst_con_img_a = "\n".join(lst_con_img_name)
+            container_image_output = lst_con_img_a
+            _container_name_output = ContainerList.container_name()
+            container_name_output = "\n".join(_container_name_output)
+            seccomp_ch = ContainerList.container_secc()
+
+            for h in (seccomp_ch):
+                    if h == 'None':
+                            seccomp_ch_co = 'Do not disable default seccomp profile'
+                            seccomp_ch_co_st = Serverity.wan()
+                            lst_seccomp_ch_co.append(seccomp_ch_co)
+                            lst_seccomp_ch_co_st.append(seccomp_ch_co_st)
+                    else:
+                            seccomp_ch_co = 'enabled default seccomp profile'
+                            seccomp_ch_co_st = Serverity.pas()
+                            lst_seccomp_ch_co.append(seccomp_ch_co)
+                            lst_seccomp_ch_co_st.append(seccomp_ch_co_st)
+
+            seccomp_ch_co_f = "\n".join(lst_seccomp_ch_co)
+            seccomp_ch_co_f_st = "\n".join(lst_seccomp_ch_co_st)
+            table_seccomp = [[seccomp_ch_co_f_st , container_image_output , container_name_output , seccomp_ch_co_f]]
+            table_seccomp_out = tabulate(table_seccomp)
+        return table_seccomp_out
 
 
 
