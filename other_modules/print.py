@@ -7,6 +7,8 @@ from .severity import *
 import os
 import psutil
 import grp
+import re
+import platform
 
 class Print(object):
 
@@ -259,6 +261,18 @@ class Print(object):
             table_img_user = [[img_user_co_f_st , img_name , img_user_co_f]]
             imageuser_output = tabulate(table_img_user)
         return imageuser_output
+    
+    def container_kernelversion_print():
+        recommand_version_cmd = "3.10.0"
+        install_kernel_version_cmd = platform.release()
+        install_kernel_version_str = re.split('-',install_kernel_version_cmd)
+        install_kernel_version = install_kernel_version_str[0]
+
+        if install_kernel_version >= recommand_version_cmd:
+            kernel_version_re = Serverity.pas() + "kernal is up to date"
+        else:
+            kernel_version_re = Serverity.wan() + "kernal not update"
+        return kernel_version_re
 
 
 
