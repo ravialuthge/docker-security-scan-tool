@@ -9,7 +9,5 @@ class ravi(Print):
     
      
     def ravi(test):
-       from tmp.filepath import FILEPATH
-       dockerfile_path = FILEPATH
-       officialimag = Print.host_officialimagescan_print(dockerfile_path)
-       return officialimag
+       cgroup_out = Print.container_cgroup_print()
+       return cgroup_out
