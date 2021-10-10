@@ -9,5 +9,5 @@ class dockeruser(Print):
     """Only allow trusted users to control Docker daemon"""
     
     def dockeruserscan_scan(test):
-        dockeruserscan_out = Print.container_defaultbridge_print()
+        dockeruserscan_out = Print.host_dockeruser_print()
         return dockeruserscan_out

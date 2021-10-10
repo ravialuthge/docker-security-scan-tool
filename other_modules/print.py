@@ -138,7 +138,7 @@ class Print(object):
             table_defaultbridge_out = tabulate(table_defaultbridge)
             return table_defaultbridge_out
         
-    def container_defaultbridge_print():
+    def host_dockeruser_print():
         _trusted_users_output=[]
         groups = grp.getgrall()
         for group in groups:
