@@ -2,6 +2,7 @@ from tabulate import tabulate
 from sdk.containers import *
 from sdk.host import *
 from sdk.network import *
+from sdk.images import *
 from .severity import *
 import os
 import psutil
@@ -228,6 +229,36 @@ class Print(object):
             table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
             table_he_output = tabulate(table_he)
         return table_he_output
+    
+    def container_imageuser_print():
+        lst_imageuser_output_cmd=[]
+        lst_img_user_co_st=[]
+        lst_str =  ImagesList.images_id()
+        _img_name = ImagesList.images_name()
+        img_name = "\n".join(_img_name)
+        if lst_str == '[]':
+            imageuser_output = 'image not found'
+        else:
+        
+            image_user_str_a_s = ImagesList.images_user()
+            for i in (image_user_str_a_s):
+                if i == 'User=' or i == 'User=root':
+                        imageuser_output_cmd = 'not user for the container has been created'
+                        img_user_co_st = Serverity.wan()
+                        lst_imageuser_output_cmd.append(imageuser_output_cmd)
+                        lst_img_user_co_st.append(img_user_co_st)
+                else:
+                        imageuser_output_cmd = 'user for the container has been created'
+                        img_user_co_st = Serverity.pas()
+                        lst_imageuser_output_cmd.append(imageuser_output_cmd)
+                        lst_img_user_co_st.append(img_user_co_st)
+            f_user = "\n".join(lst_imageuser_output_cmd)
+            f_st_user = "\n".join(lst_img_user_co_st)
+            img_user_co_f = f_user
+            img_user_co_f_st = f_st_user
+            table_img_user = [[img_user_co_f_st , img_name , img_user_co_f]]
+            imageuser_output = tabulate(table_img_user)
+        return imageuser_output
 
 
 
