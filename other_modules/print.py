@@ -161,8 +161,6 @@ class Print(object):
         _install_version  = _h[1]
         bbc =  _install_version.replace(" '",'')
         install_version = bbc.replace("'",'')
-    
-        
         latest_version = _latest_version
         if install_version == latest_version:
             docker_version_re = Serverity.pas() + "Docker is up to date"
@@ -170,9 +168,33 @@ class Print(object):
             docker_version_re = Serverity.info() + "Docker not update"
         else:
             docker_version_re = "docker: command not found... please install Docker"
-    
-        
         return docker_version_re
+    
+    def container_encryptnet_print():
+        _encryptnet_ch_co=[]
+        _encryptnet_ch_co_st=[]
+        _netlist_output_lst = NetList.net_overlay()
+        encryptnet_ch_output = "\n".join(_netlist_output_lst)
+
+        encryptnet_ch = NetList.net_overlay_option()
+        word = " 'encrypted': ''}"
+        for en in (encryptnet_ch):
+                    if word in en:
+                            encryptnet_ch_co = 'Encrypted data exchanged between containers on different nodes on the overlay network'
+                            encryptnet_ch_co_st = Serverity.pas()
+                            _encryptnet_ch_co.append(encryptnet_ch_co)
+                            _encryptnet_ch_co_st.append(encryptnet_ch_co_st)
+                            
+                    else:
+                            encryptnet_ch_co = 'Encrypt data exchanged between containers on different nodes on the overlay network'
+                            encryptnet_ch_co_st = Serverity.wan()
+                            _encryptnet_ch_co.append(encryptnet_ch_co)
+                            _encryptnet_ch_co_st.append(encryptnet_ch_co_st)   
+        encryptnet_ch_co_f_st = "\n".join(_encryptnet_ch_co_st)
+        encryptnet_ch_co_f = "\n".join(_encryptnet_ch_co)  
+        table_encryptnet = [[encryptnet_ch_co_f_st , encryptnet_ch_output, encryptnet_ch_co_f]]
+        table_encryptnet_out = tabulate(table_encryptnet)
+        return table_encryptnet_out
 
 
 
