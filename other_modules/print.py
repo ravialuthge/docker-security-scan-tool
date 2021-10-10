@@ -273,6 +273,39 @@ class Print(object):
         else:
             kernel_version_re = Serverity.wan() + "kernal not update"
         return kernel_version_re
+    
+    def host_officialimagescan_print(dockerfile_path):
+        a_h=[]
+        try:
+            f = open(dockerfile_path, "r")
+            mystring  = f.read()
+
+            for item in mystring.split("\n"):
+               if "FROM" in item:
+                  d =  item.strip()
+                  _s = d.split()
+                  img = _s[1]
+                  s = img.split(':')
+                  o = s[0]
+                  img_name = o
+                  a__images_off_ch =  ImagesList.images_off(img_name)
+                  wo = " 'is_official':"
+                  for im in a__images_off_ch:
+                     if wo in im:
+                        a_h.append(im)
+                  __h = a_h[0]
+                  _h = __h.split(":")
+                  _install_version  = _h[1]
+                  bbc =  _install_version.replace(" ",'')
+               
+          
+                  if bbc == 'True':
+                     print (o +" is Docker Official Image")
+                     
+                  else:
+                     print (o +" not Docker Official Images")
+        except FileNotFoundError:
+            print ("I did not find the Dockerfile at, "+str(dockerfile_path))
 
 
 
