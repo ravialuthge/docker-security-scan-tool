@@ -3,43 +3,13 @@
 
 from termcolor import colored
 from tabulate import tabulate
+from other_modules.print import Print
 from sdk.containers_id_list import *
 
-class healthcheck(containerlist):
+class healthcheck(Print):
     """Check container health at runtime"""
-    def __init__(test):
-        
-        test.lst_health_ch_co=[]
-        test.lst_health_ch_co_st=[]
-
+    
     def healthcheck_scan(test):
         
-        super().__init__()
-        lst_str =  str(test.lst)
-        if lst_str == '[]':
-            table_he_output = 'containers not running'
-        else:
-            
-            lst_con_img_name = test.con_img_lst
-            lst_con_img_a = "\n".join(lst_con_img_name)
-            container_image_output = lst_con_img_a
-            _container_name_output = test.con_name_lst
-            container_name_output = "\n".join(_container_name_output)
-            health_ch = test._container_hel_list
-
-            for h in (health_ch):
-                    if h == '<nil>':
-                            health_ch_co = 'not added health check instructions'
-                            health_ch_co_st = colored('WARN  ', 'red')
-                            test.lst_health_ch_co.append(health_ch_co)
-                            test.lst_health_ch_co_st.append(health_ch_co_st)
-                    else:
-                            health_ch_co = 'added health check instructions'
-                            health_ch_co_st = colored('PASS  ', 'green')
-                            test.lst_health_ch_co.append(health_ch_co)
-                            test.lst_health_ch_co_st.append(health_ch_co_st)
-            health_ch_co_f = "\n".join(test.lst_health_ch_co)
-            health_ch_co_f_st = "\n".join(test.lst_health_ch_co_st)
-            table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
-            table_he_output = tabulate(table_he)
-        return table_he_output
+        _table_he_output = Print.container_healthcheck_print()
+        return _table_he_output

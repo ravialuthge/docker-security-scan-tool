@@ -195,6 +195,39 @@ class Print(object):
         table_encryptnet = [[encryptnet_ch_co_f_st , encryptnet_ch_output, encryptnet_ch_co_f]]
         table_encryptnet_out = tabulate(table_encryptnet)
         return table_encryptnet_out
+    
+    def container_healthcheck_print():
+        lst_health_ch_co=[]
+        lst_health_ch_co_st=[]
+        lst = ContainerList.container_id()
+        lst_str =  str(lst)
+        if lst_str == '[]':
+            table_he_output = 'containers not running'
+        else:
+            
+            lst_con_img_name = ContainerList.container_img_name()
+            lst_con_img_a = "\n".join(lst_con_img_name)
+            container_image_output = lst_con_img_a
+            _container_name_output = ContainerList.container_name()
+            container_name_output = "\n".join(_container_name_output)
+            health_ch = ContainerList.container_hel()
+
+            for h in (health_ch):
+                    if h == '<nil>':
+                            health_ch_co = 'not added health check instructions'
+                            health_ch_co_st = Serverity.wan()
+                            lst_health_ch_co.append(health_ch_co)
+                            lst_health_ch_co_st.append(health_ch_co_st)
+                    else:
+                            health_ch_co = 'added health check instructions'
+                            health_ch_co_st = Serverity.pas()
+                            lst_health_ch_co.append(health_ch_co)
+                            lst_health_ch_co_st.append(health_ch_co_st)
+            health_ch_co_f = "\n".join(lst_health_ch_co)
+            health_ch_co_f_st = "\n".join(lst_health_ch_co_st)
+            table_he = [[health_ch_co_f_st , container_image_output , container_name_output , health_ch_co_f]]
+            table_he_output = tabulate(table_he)
+        return table_he_output
 
 
 
