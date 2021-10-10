@@ -262,7 +262,7 @@ class Print(object):
             imageuser_output = tabulate(table_img_user)
         return imageuser_output
     
-    def container_kernelversion_print():
+    def host_kernelversion_print():
         recommand_version_cmd = "3.10.0"
         install_kernel_version_cmd = platform.release()
         install_kernel_version_str = re.split('-',install_kernel_version_cmd)

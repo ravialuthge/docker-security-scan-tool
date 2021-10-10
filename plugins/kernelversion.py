@@ -10,5 +10,5 @@ class kernelversion(Print):
 	"""Use the updated Linux Kernel"""
 	
 	def kernelversion_scan(test):
-		kernel_version_output = Print.container_kernelversion_print()
+		kernel_version_output = Print.host_kernelversion_print()
 		return kernel_version_output
