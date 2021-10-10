@@ -8,3 +8,7 @@ class Serverity(object):
     def pas():
         pas_output = colored('PASS  ', 'green')
         return pas_output
+    
+    def info():
+        info_output = colored('INFO   ', 'blue')
+        return info_output

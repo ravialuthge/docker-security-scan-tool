@@ -165,9 +165,9 @@ class Print(object):
         
         latest_version = _latest_version
         if install_version == latest_version:
-            docker_version_re = colored('PASS   ', 'green') + "Docker is up to date"
+            docker_version_re = Serverity.pas() + "Docker is up to date"
         elif install_version != latest_version:
-            docker_version_re = colored('INFO   ', 'blue') + "Docker not update"
+            docker_version_re = Serverity.info() + "Docker not update"
         else:
             docker_version_re = "docker: command not found... please install Docker"
     
