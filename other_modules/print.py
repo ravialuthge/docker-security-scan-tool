@@ -325,13 +325,13 @@ class Print(object):
 
             for h in (seccomp_ch):
                     if h == 'None':
-                            seccomp_ch_co = 'Do not disable default seccomp profile'
-                            seccomp_ch_co_st = Serverity.wan()
+                            seccomp_ch_co = 'enabled default seccomp profile'
+                            seccomp_ch_co_st = Serverity.pas()
                             lst_seccomp_ch_co.append(seccomp_ch_co)
                             lst_seccomp_ch_co_st.append(seccomp_ch_co_st)
                     else:
-                            seccomp_ch_co = 'enabled default seccomp profile'
-                            seccomp_ch_co_st = Serverity.pas()
+                            seccomp_ch_co = 'Do not disable default seccomp profile'
+                            seccomp_ch_co_st = Serverity.wan()
                             lst_seccomp_ch_co.append(seccomp_ch_co)
                             lst_seccomp_ch_co_st.append(seccomp_ch_co_st)
 
