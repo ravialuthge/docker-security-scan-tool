@@ -1,1 +1,1 @@
-# docker-scan-tool-py
+# docker security scan tool
