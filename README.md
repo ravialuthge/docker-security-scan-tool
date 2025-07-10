@@ -1,3 +1,3 @@
 # docker-security-scan-tool
 
-![kubectl-ai demo GIF using: kubectl-ai "how's nginx app doing in my cluster"](./.github/kubectl-ai.gif)
+![docker-security-scan-tool demo GIF using: docker-security-scan-tool](https://drive.google.com/file/d/11gekssch7ImGFZ5xmuuITmPRgMoD3bsv/view)
